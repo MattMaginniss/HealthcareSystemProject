@@ -1,31 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
+    /// <summary>
+    ///     Form for adding a patient to the database
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class AddUserForm : Form
     {
-        private PatientController pr;
+        #region Data members
 
+        private readonly PatientController pr;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddUserForm" /> class.
+        /// </summary>
         public AddUserForm()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddUserForm" /> class.
+        /// </summary>
+        /// <param name="patientController">The patient controller to use.</param>
         public AddUserForm(PatientController patientController)
         {
             this.InitializeComponent();
             this.pr = patientController;
         }
+
+        #endregion
 
         private void addUser()
         {
@@ -53,7 +65,7 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             var p = new Patient(fname, lname, dob, address, phone);
             this.pr.Add(p);
-            this.Dispose();
+            Dispose();
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -63,7 +75,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            Dispose();
         }
 
         private void fNameTextBox_KeyPress(object sender, KeyPressEventArgs e)

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
-using HealthcareProjectBeamMaginniss.DAL.Repository;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
+    /// <summary>
+    ///     Form for login. Serves as main form so is hidden on successful login
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class LoginForm : Form
     {
         #region Data members
@@ -15,6 +18,9 @@ namespace HealthcareProjectBeamMaginniss.View
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="LoginForm" /> class.
+        /// </summary>
         public LoginForm()
         {
             this.InitializeComponent();
@@ -43,7 +49,7 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             var mainform = new MainForm();
             mainform.Show();
-            this.Hide();
+            Hide();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

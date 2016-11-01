@@ -1,32 +1,24 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
-using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
-using MySql.Data.MySqlClient;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
+    /// <summary>
+    ///     Login class to handle login data requests
+    /// </summary>
+    /// <seealso cref="HealthcareProjectBeamMaginniss.DAL.Interfaces.ILogin" />
     internal class Login : ILogin
     {
-        #region Data members
-
-        private readonly string connectionLabel;
-
-        #endregion
-
-        #region Constructors
-
-        public Login(string connLabel = "MySqlDbConnection")
-        {
-            this.connectionLabel = connLabel;
-        }
-
-        #endregion
-
         #region Methods
 
+        /// <summary>
+        ///     Checks if the login is valid.
+        /// </summary>
+        /// <param name="userName">Username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>True if valid login, false otherwise</returns>
         public bool CheckLogin(string userName, string password)
         {
             var adapter = new staff_credentialsTableAdapter();
@@ -40,10 +32,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                         return false;
                     }
                     var pword = staffCredentialsRow.password;
-                    return (pword.Equals(password));
+                    return pword.Equals(password);
                 }
                 catch (Exception)
-                { 
+                {
                     return false;
                 }
             }

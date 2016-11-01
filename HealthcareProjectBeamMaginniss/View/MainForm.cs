@@ -1,20 +1,35 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
+    /// <summary>
+    ///     Main form with datagridview of all patients
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MainForm : Form
     {
+        #region Data members
+
         private BindingSource bindingSource;
         private readonly PatientController patientController;
+
+        #endregion
+
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MainForm" /> class.
+        /// </summary>
         public MainForm()
         {
             this.InitializeComponent();
             this.patientController = new PatientController();
             this.populateTable();
         }
+
+        #endregion
 
         private void populateTable()
         {
@@ -29,7 +44,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void updateTable()
         {
-            this.bindingSource = new BindingSource() { DataSource = this.patientController.GetAll() };
+            this.bindingSource = new BindingSource {DataSource = this.patientController.GetAll()};
             this.patientDataGridView.DataSource = this.bindingSource;
         }
 
@@ -43,8 +58,6 @@ namespace HealthcareProjectBeamMaginniss.View
             this.patientDataGridView.Columns.Add(column);
         }
 
-        #endregion
-
         private void resizeToFit()
         {
             this.patientDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -57,10 +70,9 @@ namespace HealthcareProjectBeamMaginniss.View
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-
         }
 
-        private void addPatientButton_Click(object sender, System.EventArgs e)
+        private void addPatientButton_Click(object sender, EventArgs e)
         {
             var addPatient = new AddUserForm(this.patientController);
             addPatient.ShowDialog();

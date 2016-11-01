@@ -4,6 +4,9 @@ using HealthcareProjectBeamMaginniss.View;
 
 namespace HealthcareProjectBeamMaginniss
 {
+    /// <summary>
+    ///     Entry point for application
+    /// </summary>
     internal static class Program
     {
         /// <summary>
