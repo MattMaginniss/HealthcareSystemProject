@@ -62,6 +62,7 @@
     <Compile Include="DAL\Interfaces\ILogin.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\Login.cs" />
+    <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

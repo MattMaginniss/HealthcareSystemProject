@@ -37,6 +37,7 @@ namespace HealthcareProjectBeamMaginniss.View
             this.addPatientColumn("FirstName", "First Name");
             this.addPatientColumn("LastName", "Last Name");
             this.addPatientColumn("DobString", "Date of Birth");
+            this.addPatientColumn("Sex", "Sex");
             this.addPatientColumn("Street1", "Street 1");
             this.addPatientColumn("Street2", "Street 2");
             this.addPatientColumn("City", "City");
@@ -68,8 +69,14 @@ namespace HealthcareProjectBeamMaginniss.View
             this.patientDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.patientDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.patientDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.patientDataGridView.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

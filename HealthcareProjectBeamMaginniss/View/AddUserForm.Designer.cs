@@ -41,11 +41,11 @@
             this.addButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.groupBoxSex = new System.Windows.Forms.GroupBox();
-            this.labelSex = new System.Windows.Forms.Label();
-            this.radioMale = new System.Windows.Forms.RadioButton();
             this.radioFemale = new System.Windows.Forms.RadioButton();
+            this.radioMale = new System.Windows.Forms.RadioButton();
+            this.labelSex = new System.Windows.Forms.Label();
             this.labelStreet2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxStreet2 = new System.Windows.Forms.TextBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxState = new System.Windows.Forms.TextBox();
             this.textBoxZip = new System.Windows.Forms.TextBox();
@@ -173,14 +173,15 @@
             this.groupBoxSex.TabIndex = 13;
             this.groupBoxSex.TabStop = false;
             // 
-            // labelSex
+            // radioFemale
             // 
-            this.labelSex.AutoSize = true;
-            this.labelSex.Location = new System.Drawing.Point(46, 99);
-            this.labelSex.Name = "labelSex";
-            this.labelSex.Size = new System.Drawing.Size(25, 13);
-            this.labelSex.TabIndex = 14;
-            this.labelSex.Text = "Sex";
+            this.radioFemale.AutoSize = true;
+            this.radioFemale.Location = new System.Drawing.Point(101, 9);
+            this.radioFemale.Name = "radioFemale";
+            this.radioFemale.Size = new System.Drawing.Size(59, 17);
+            this.radioFemale.TabIndex = 1;
+            this.radioFemale.Text = "Female";
+            this.radioFemale.UseVisualStyleBackColor = true;
             // 
             // radioMale
             // 
@@ -194,15 +195,14 @@
             this.radioMale.Text = "Male";
             this.radioMale.UseVisualStyleBackColor = true;
             // 
-            // radioFemale
+            // labelSex
             // 
-            this.radioFemale.AutoSize = true;
-            this.radioFemale.Location = new System.Drawing.Point(101, 9);
-            this.radioFemale.Name = "radioFemale";
-            this.radioFemale.Size = new System.Drawing.Size(59, 17);
-            this.radioFemale.TabIndex = 1;
-            this.radioFemale.Text = "Female";
-            this.radioFemale.UseVisualStyleBackColor = true;
+            this.labelSex.AutoSize = true;
+            this.labelSex.Location = new System.Drawing.Point(46, 99);
+            this.labelSex.Name = "labelSex";
+            this.labelSex.Size = new System.Drawing.Size(25, 13);
+            this.labelSex.TabIndex = 14;
+            this.labelSex.Text = "Sex";
             // 
             // labelStreet2
             // 
@@ -213,12 +213,12 @@
             this.labelStreet2.TabIndex = 15;
             this.labelStreet2.Text = "Street 2";
             // 
-            // textBox1
+            // textBoxStreet2
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 157);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 20);
-            this.textBox1.TabIndex = 16;
+            this.textBoxStreet2.Location = new System.Drawing.Point(78, 157);
+            this.textBoxStreet2.Name = "textBoxStreet2";
+            this.textBoxStreet2.Size = new System.Drawing.Size(193, 20);
+            this.textBoxStreet2.TabIndex = 16;
             // 
             // textBoxCity
             // 
@@ -299,7 +299,7 @@
             this.Controls.Add(this.textBoxZip);
             this.Controls.Add(this.textBoxState);
             this.Controls.Add(this.textBoxCity);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxStreet2);
             this.Controls.Add(this.labelStreet2);
             this.Controls.Add(this.labelSex);
             this.Controls.Add(this.groupBoxSex);
@@ -343,7 +343,7 @@
         private System.Windows.Forms.RadioButton radioMale;
         private System.Windows.Forms.Label labelSex;
         private System.Windows.Forms.Label labelStreet2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxStreet2;
         private System.Windows.Forms.TextBox textBoxCity;
         private System.Windows.Forms.TextBox textBoxState;
         private System.Windows.Forms.TextBox textBoxZip;

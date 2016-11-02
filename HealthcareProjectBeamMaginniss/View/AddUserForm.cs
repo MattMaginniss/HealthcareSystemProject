@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
@@ -25,6 +27,7 @@ namespace HealthcareProjectBeamMaginniss.View
         public AddUserForm()
         {
             this.InitializeComponent();
+            this.loadCountries();
         }
 
         /// <summary>
@@ -35,6 +38,8 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.InitializeComponent();
             this.pr = patientController;
+            this.loadCountries();
+
         }
 
         #endregion
@@ -44,9 +49,15 @@ namespace HealthcareProjectBeamMaginniss.View
             var fname = this.fNameTextBox.Text;
             var lname = this.lNameTextBox.Text;
             var dob = this.dateTimePicker.Value;
-            var address = this.textBoxStreet1.Text;
+            var sex = this.radioMale.Checked ? 'M' : 'F';
+            var street1 = this.textBoxStreet1.Text;
+            var street2 = this.textBoxStreet2.Text;
+            var city = this.textBoxCity.Text;
+            var state = this.textBoxState.Text;
+            var country = this.comboBoxCountry.Text;
+            var zip = this.textBoxZip.Text; 
             var phone = this.phoneNumBox.Text;
-
+            var ctry = new Country();
             if (string.IsNullOrWhiteSpace(fname))
             {
                 return;
@@ -55,7 +66,7 @@ namespace HealthcareProjectBeamMaginniss.View
             {
                 return;
             }
-            if (string.IsNullOrWhiteSpace(address))
+            if (string.IsNullOrWhiteSpace(street1))
             {
                 return;
             }
@@ -63,8 +74,25 @@ namespace HealthcareProjectBeamMaginniss.View
             {
                 return;
             }
-            //TODO var p = new Patient(fname, lname, dob, address, phone);
-            //this.pr.Add(p);
+            if (string.IsNullOrWhiteSpace(city))
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(state))
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(country) || !ctry.Contains(country))
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(zip))
+            {
+                return;
+            }
+            var ccode = ctry.Get(country);
+            var p = new Patient(fname, lname, dob, sex, street1, street2,city,state,zip,ccode, phone);
+            this.pr.Add(p);
             Dispose();
         }
 
@@ -83,6 +111,15 @@ namespace HealthcareProjectBeamMaginniss.View
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void loadCountries()
+        {
+            var country = new Country();
+            foreach(var ctry in country.CountryDict.Keys)
+            {
+                this.comboBoxCountry.Items.Add(ctry);
             }
         }
     }
