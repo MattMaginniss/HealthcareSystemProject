@@ -74,9 +74,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var fname = row.IsfirstNameNull() ? "" : row.firstName;
             var lname = row.IslastNameNull() ? "" : row.lastName;
             var bdate = row.IsdateOfBirthNull() ? DateTime.MinValue : row.dateOfBirth;
-            var address = row.IsaddressNull() ? "" : row.address;
+            var sex = row.IssexNull() ? ' ' : row.sex[0];
+            var street1 = row.Isstreet1Null() ? "" : row.street1;
+            var street2 = row.Isstreet2Null() ? "" : row.street2;
+            var city = row.IscityNull() ? "" : row.city;
+            var state = row.IsstateNull() ? "" : row.state;
+            var zip = row.IszipNull() ? "" : row.zip;
+            var country = row.IscountryNull() ? "" : row.country;
             var phoneNo = row.Is_phone_Null() ? "" : row._phone_;
-            return new Patient(fname, lname, bdate, address, phoneNo);
+            return new Patient(fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
         }
     }
 }

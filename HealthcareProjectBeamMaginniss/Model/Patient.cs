@@ -42,12 +42,60 @@ namespace HealthcareProjectBeamMaginniss.Model
         public string DobString => this.Dob.ToShortDateString();
 
         /// <summary>
-        ///     Gets the address.
+        /// Gets the sex.
         /// </summary>
         /// <value>
-        ///     The address.
+        /// The sex.
         /// </value>
-        public string Address { get; }
+        public char sex { get; }
+
+        /// <summary>
+        ///     Gets the first line of the address.
+        /// </summary>
+        /// <value>
+        ///     The first line of the address.
+        /// </value>
+        public string Street1 { get; }
+
+        /// <summary>
+        ///     Gets the second line of the address.
+        /// </summary>
+        /// <value>
+        ///     The second line of the address.
+        /// </value>
+        public string Street2 { get; }
+
+        /// <summary>
+        /// Gets the city.
+        /// </summary>
+        /// <value>
+        /// The city.
+        /// </value>
+        public string City { get; }
+
+        /// <summary>
+        /// Gets the state.
+        /// </summary>
+        /// <value>
+        /// The state.
+        /// </value>
+        public string State { get; }
+
+        /// <summary>
+        /// Gets the zip.
+        /// </summary>
+        /// <value>
+        /// The zip.
+        /// </value>
+        public string zip { get;  }
+
+        /// <summary>
+        /// Gets the country.
+        /// </summary>
+        /// <value>
+        /// The country.
+        /// </value>
+        public string Country { get; }
 
         /// <summary>
         ///     Gets the phone no.
@@ -61,21 +109,19 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         #region Constructors
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Patient" /> class.
-        /// </summary>
-        /// <param name="firstName">The first name.</param>
-        /// <param name="lastName">The last name.</param>
-        /// <param name="dob">The date of birth.</param>
-        /// <param name="address">The address.</param>
-        /// <param name="phoneNo">The phone no.</param>
-        public Patient(string firstName, string lastName, DateTime dob, string address, string phoneNo)
+        public Patient(string firstName, string lastName, DateTime dob, char sex, string street1, string street2, string city, string state, string zip, string country, string phoneNo)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Dob = dob;
-            this.Address = address;
-            this.PhoneNo = phoneNo;
+            FirstName = firstName;
+            LastName = lastName;
+            Dob = dob;
+            this.sex = sex;
+            Street1 = street1;
+            Street2 = street2;
+            City = city;
+            State = state;
+            this.zip = zip;
+            Country = country;
+            PhoneNo = phoneNo;
         }
 
         #endregion
