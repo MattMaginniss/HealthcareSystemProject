@@ -78,7 +78,7 @@ namespace HealthcareProjectBeamMaginniss.View
             Dispose();
         }
 
-        private void fNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void phoneNumBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {

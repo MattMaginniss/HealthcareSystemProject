@@ -94,7 +94,6 @@
             this.fNameTextBox.Name = "fNameTextBox";
             this.fNameTextBox.Size = new System.Drawing.Size(195, 20);
             this.fNameTextBox.TabIndex = 5;
-            this.fNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fNameTextBox_KeyPress);
             // 
             // lNameTextBox
             // 
@@ -128,6 +127,7 @@
             this.phoneNumBox.Name = "phoneNumBox";
             this.phoneNumBox.Size = new System.Drawing.Size(196, 20);
             this.phoneNumBox.TabIndex = 9;
+            this.phoneNumBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phoneNumBox_KeyPress);
             // 
             // addButton
             // 
