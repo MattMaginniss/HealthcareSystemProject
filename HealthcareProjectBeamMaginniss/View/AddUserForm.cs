@@ -44,7 +44,7 @@ namespace HealthcareProjectBeamMaginniss.View
             var fname = this.fNameTextBox.Text;
             var lname = this.lNameTextBox.Text;
             var dob = this.dateTimePicker.Value;
-            var address = this.addressTextBox.Text;
+            var address = this.textBoxStreet1.Text;
             var phone = this.phoneNumBox.Text;
 
             if (string.IsNullOrWhiteSpace(fname))
@@ -63,8 +63,8 @@ namespace HealthcareProjectBeamMaginniss.View
             {
                 return;
             }
-            var p = new Patient(fname, lname, dob, address, phone);
-            this.pr.Add(p);
+            //TODO var p = new Patient(fname, lname, dob, address, phone);
+            //this.pr.Add(p);
             Dispose();
         }
 

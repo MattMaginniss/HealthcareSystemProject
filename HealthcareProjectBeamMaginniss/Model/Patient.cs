@@ -87,7 +87,7 @@ namespace HealthcareProjectBeamMaginniss.Model
         /// <value>
         /// The zip.
         /// </value>
-        public string zip { get;  }
+        public string Zip { get;  }
 
         /// <summary>
         /// Gets the country.
@@ -119,7 +119,7 @@ namespace HealthcareProjectBeamMaginniss.Model
             Street2 = street2;
             City = city;
             State = state;
-            this.zip = zip;
+            this.Zip = zip;
             Country = country;
             PhoneNo = phoneNo;
         }

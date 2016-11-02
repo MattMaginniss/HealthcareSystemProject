@@ -37,7 +37,12 @@ namespace HealthcareProjectBeamMaginniss.View
             this.addPatientColumn("FirstName", "First Name");
             this.addPatientColumn("LastName", "Last Name");
             this.addPatientColumn("DobString", "Date of Birth");
-            this.addPatientColumn("Address", "Address");
+            this.addPatientColumn("Street1", "Street 1");
+            this.addPatientColumn("Street2", "Street 2");
+            this.addPatientColumn("City", "City");
+            this.addPatientColumn("State", "State");
+            this.addPatientColumn("Zip", "ZIP");
+            this.addPatientColumn("Country", "Country");
             this.addPatientColumn("PhoneNo", "Phone #");
             this.resizeToFit();
         }
