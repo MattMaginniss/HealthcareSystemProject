@@ -31,6 +31,7 @@
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
             this.addPatientButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
+            this.labelWelcome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,6 @@
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.Size = new System.Drawing.Size(915, 569);
             this.patientDataGridView.TabIndex = 0;
-            this.patientDataGridView.AutoGenerateColumns = false;
             // 
             // addPatientButton
             // 
@@ -62,11 +62,21 @@
             this.searchButton.Text = "Search Patient Data";
             this.searchButton.UseVisualStyleBackColor = true;
             // 
+            // labelWelcome
+            // 
+            this.labelWelcome.AutoSize = true;
+            this.labelWelcome.Location = new System.Drawing.Point(934, 13);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(58, 13);
+            this.labelWelcome.TabIndex = 3;
+            this.labelWelcome.Text = "Welcome, ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 601);
+            this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.addPatientButton);
             this.Controls.Add(this.patientDataGridView);
@@ -75,6 +85,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,5 +94,6 @@
         private System.Windows.Forms.DataGridView patientDataGridView;
         private System.Windows.Forms.Button addPatientButton;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Label labelWelcome;
     }
 }

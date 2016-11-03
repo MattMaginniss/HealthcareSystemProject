@@ -47,7 +47,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void successfulLogin()
         {
-            var mainform = new MainForm();
+            var mainform = new MainForm(this.usernameTextBox.Text);
             mainform.Show();
             Hide();
         }

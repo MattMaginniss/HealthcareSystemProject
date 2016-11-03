@@ -10,6 +10,7 @@ namespace HealthcareProjectBeamMaginniss.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MainForm : Form
     {
+
         #region Data members
 
         private BindingSource bindingSource;
@@ -22,17 +23,27 @@ namespace HealthcareProjectBeamMaginniss.View
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainForm" /> class.
         /// </summary>
-        public MainForm()
+        /// <param name="text"></param>
+        public MainForm(string username)
         {
             this.InitializeComponent();
             this.patientController = new PatientController();
             this.populateTable();
+            this.displayName(username);
+        }
+
+        private void displayName(string username)
+        {
+            LoginController login = new LoginController();
+            var name = login.GetName(username) ?? "Unknown User";
+            this.labelWelcome.Text += name + "!";
         }
 
         #endregion
 
         private void populateTable()
         {
+            this.patientDataGridView.AutoGenerateColumns = false;
             this.updateTable();
             this.addPatientColumn("FirstName", "First Name");
             this.addPatientColumn("LastName", "Last Name");
