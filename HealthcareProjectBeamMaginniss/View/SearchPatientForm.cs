@@ -7,13 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HealthcareProjectBeamMaginniss.DAL.Controller;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
     public partial class SearchPatientForm : Form
     {
+        private readonly PatientController pr;
+
         public SearchPatientForm()
         {
+            InitializeComponent();
+        }
+        public SearchPatientForm(PatientController patientController)
+        {
+            this.pr = patientController;
             InitializeComponent();
         }
 
