@@ -15,7 +15,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private BindingSource bindingSource;
         private readonly PatientController patientController;
-
+        private readonly LoginForm loginForm;
         #endregion
 
         #region Constructors
@@ -24,12 +24,13 @@ namespace HealthcareProjectBeamMaginniss.View
         ///     Initializes a new instance of the <see cref="MainForm" /> class.
         /// </summary>
         /// <param name="text"></param>
-        public MainForm(string username)
+        public MainForm(LoginForm loginForm)
         {
+            this.loginForm = loginForm;
             this.InitializeComponent();
             this.patientController = new PatientController();
             this.populateTable();
-            this.displayName(username);
+            this.displayName(loginForm.getUsername());
         }
 
         private void displayName(string username)
@@ -92,7 +93,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            this.loginForm.logout();
         }
 
         private void addPatientButton_Click(object sender, EventArgs e)
@@ -100,6 +101,12 @@ namespace HealthcareProjectBeamMaginniss.View
             var addPatient = new AddUserForm(this.patientController);
             addPatient.ShowDialog();
             this.updateTable();
+        }
+
+        private void labelLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+            this.loginForm.logout();
         }
     }
 }

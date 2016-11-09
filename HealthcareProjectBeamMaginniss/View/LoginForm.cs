@@ -13,6 +13,7 @@ namespace HealthcareProjectBeamMaginniss.View
         #region Data members
 
         private readonly LoginController login;
+        private string username;
 
         #endregion
 
@@ -45,11 +46,24 @@ namespace HealthcareProjectBeamMaginniss.View
             }
         }
 
+        public void logout()
+        {
+            this.Show();
+        }
+
+        public string getUsername()
+        {
+            return this.username;
+        }
+
         private void successfulLogin()
         {
-            var mainform = new MainForm(this.usernameTextBox.Text);
+            this.username = this.usernameTextBox.Text.Trim();
+            this.usernameTextBox.Clear();
+            this.passwordTextBox.Clear();
+            var mainform = new MainForm(this);
             mainform.Show();
-            Hide();
+            this.Hide();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

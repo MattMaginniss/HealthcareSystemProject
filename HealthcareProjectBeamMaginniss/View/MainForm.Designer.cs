@@ -32,6 +32,7 @@
             this.addPatientButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
+            this.labelLogout = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,11 +72,23 @@
             this.labelWelcome.TabIndex = 3;
             this.labelWelcome.Text = "Welcome, ";
             // 
+            // labelLogout
+            // 
+            this.labelLogout.AutoSize = true;
+            this.labelLogout.Location = new System.Drawing.Point(934, 42);
+            this.labelLogout.Name = "labelLogout";
+            this.labelLogout.Size = new System.Drawing.Size(40, 13);
+            this.labelLogout.TabIndex = 4;
+            this.labelLogout.TabStop = true;
+            this.labelLogout.Text = "Logout";
+            this.labelLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelLogout_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 601);
+            this.Controls.Add(this.labelLogout);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.addPatientButton);
@@ -95,5 +108,6 @@
         private System.Windows.Forms.Button addPatientButton;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label labelWelcome;
+        private System.Windows.Forms.LinkLabel labelLogout;
     }
 }
