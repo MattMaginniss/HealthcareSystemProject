@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
+using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
@@ -111,7 +112,8 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            var addAppointment = new AddAppointmentForm();
+            var patient = ((Patient) this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
+            var addAppointment = new AddAppointmentForm(patient);
             addAppointment.ShowDialog();
         }
 
