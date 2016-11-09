@@ -114,5 +114,12 @@ namespace HealthcareProjectBeamMaginniss.View
             var addAppointment = new AddAppointmentForm();
             addAppointment.ShowDialog();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            var searchPatient = new SearchPatientForm();
+            searchPatient.ShowDialog();
+            this.updateTable();
+        }
     }
 }
