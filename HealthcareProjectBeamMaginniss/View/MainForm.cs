@@ -108,5 +108,12 @@ namespace HealthcareProjectBeamMaginniss.View
             this.Close();
             this.loginForm.logout();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            var searchPatient = new SearchPatientForm();
+            searchPatient.ShowDialog();
+            this.updateTable();
+        }
     }
 }

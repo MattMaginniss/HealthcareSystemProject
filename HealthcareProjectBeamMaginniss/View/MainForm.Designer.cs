@@ -65,6 +65,7 @@
             this.searchButton.TabIndex = 2;
             this.searchButton.Text = "Search Patient Data";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // labelWelcome
             // 
