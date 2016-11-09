@@ -33,6 +33,8 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
             this.labelLogout = new System.Windows.Forms.LinkLabel();
+            this.buttonAddAppointment = new System.Windows.Forms.Button();
+            this.buttonViewAppointments = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(934, 143);
+            this.searchButton.Location = new System.Drawing.Point(934, 144);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(144, 23);
             this.searchButton.TabIndex = 2;
@@ -83,11 +85,32 @@
             this.labelLogout.Text = "Logout";
             this.labelLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelLogout_LinkClicked);
             // 
+            // buttonAddAppointment
+            // 
+            this.buttonAddAppointment.Location = new System.Drawing.Point(934, 115);
+            this.buttonAddAppointment.Name = "buttonAddAppointment";
+            this.buttonAddAppointment.Size = new System.Drawing.Size(144, 23);
+            this.buttonAddAppointment.TabIndex = 5;
+            this.buttonAddAppointment.Text = "Add Appointment";
+            this.buttonAddAppointment.UseVisualStyleBackColor = true;
+            this.buttonAddAppointment.Click += new System.EventHandler(this.buttonAddAppointment_Click);
+            // 
+            // buttonViewAppointments
+            // 
+            this.buttonViewAppointments.Location = new System.Drawing.Point(937, 559);
+            this.buttonViewAppointments.Name = "buttonViewAppointments";
+            this.buttonViewAppointments.Size = new System.Drawing.Size(141, 23);
+            this.buttonViewAppointments.TabIndex = 6;
+            this.buttonViewAppointments.Text = "View Appointments";
+            this.buttonViewAppointments.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 601);
+            this.Controls.Add(this.buttonViewAppointments);
+            this.Controls.Add(this.buttonAddAppointment);
             this.Controls.Add(this.labelLogout);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.searchButton);
@@ -109,5 +132,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label labelWelcome;
         private System.Windows.Forms.LinkLabel labelLogout;
+        private System.Windows.Forms.Button buttonAddAppointment;
+        private System.Windows.Forms.Button buttonViewAppointments;
     }
 }

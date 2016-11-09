@@ -15,6 +15,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
     {
         private Patient getPatientFromRow(cs3230f16bDataSet.patientRow row)
         {
+            var pid = row.patientID;
             var fname = row.IsfirstNameNull() ? "" : row.firstName;
             var lname = row.IslastNameNull() ? "" : row.lastName;
             var bdate = row.IsdateOfBirthNull() ? DateTime.MinValue : row.dateOfBirth;
@@ -26,7 +27,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var zip = row.IszipNull() ? "" : row.zip;
             var country = row.IscountryNull() ? "" : row.country;
             var phoneNo = row.Is_phone_Null() ? "" : row._phone_;
-            return new Patient(fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
+            return new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
         }
 
         #region Methods
@@ -41,7 +42,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var fname = patient.FirstName;
             var lname = patient.LastName;
             var bdate = patient.Dob;
-            var sex = patient.sex.ToString();
+            var sex = patient.Sex.ToString();
             var street1 = patient.Street1;
             var street2 = patient.Street2;
             var city = patient.City;

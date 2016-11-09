@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
@@ -8,7 +9,8 @@ namespace HealthcareProjectBeamMaginniss.Model
     public class Patient
     {
         #region Properties
-
+        public int PatientId { get; }
+        
         /// <summary>
         ///     Gets the first name.
         /// </summary>
@@ -47,7 +49,7 @@ namespace HealthcareProjectBeamMaginniss.Model
         /// <value>
         /// The sex.
         /// </value>
-        public char sex { get; }
+        public char Sex { get; }
 
         /// <summary>
         ///     Gets the first line of the address.
@@ -109,12 +111,13 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         #region Constructors
 
-        public Patient(string firstName, string lastName, DateTime dob, char sex, string street1, string street2, string city, string state, string zip, string country, string phoneNo)
+        public Patient( int pid ,string firstName, string lastName, DateTime dob, char sex, string street1, string street2, string city, string state, string zip, string country, string phoneNo)
         {
+            this.PatientId = pid;
             FirstName = firstName;
             LastName = lastName;
             Dob = dob;
-            this.sex = sex;
+            this.Sex = sex;
             Street1 = street1;
             Street2 = street2;
             City = city;

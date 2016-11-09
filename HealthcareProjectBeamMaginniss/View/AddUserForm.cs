@@ -91,7 +91,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 return;
             }
             var ccode = ctry.Get(country);
-            var p = new Patient(fname, lname, dob, sex, street1, street2,city,state,zip,ccode, phone);
+            var p = new Patient(0, fname, lname, dob, sex, street1, street2,city,state,zip,ccode, phone);
             this.pr.Add(p);
             Dispose();
         }

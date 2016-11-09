@@ -30,7 +30,7 @@ namespace HealthcareProjectBeamMaginniss.View
             this.InitializeComponent();
             this.patientController = new PatientController();
             this.populateTable();
-            this.displayName(loginForm.getUsername());
+            this.displayName(loginForm.GetUsername());
         }
 
         private void displayName(string username)
@@ -93,7 +93,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.loginForm.logout();
+            this.loginForm.Logout();
         }
 
         private void addPatientButton_Click(object sender, EventArgs e)
@@ -106,7 +106,13 @@ namespace HealthcareProjectBeamMaginniss.View
         private void labelLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Close();
-            this.loginForm.logout();
+            this.loginForm.Logout();
+        }
+
+        private void buttonAddAppointment_Click(object sender, EventArgs e)
+        {
+            var addAppointment = new AddAppointmentForm();
+            addAppointment.ShowDialog();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             var username = this.usernameTextBox.Text;
             var password = this.passwordTextBox.Text;
-            this.passwordTextBox.Text = "";
+            this.passwordTextBox.Clear();
 
             if (this.login.CheckLogin(username, password))
             {
@@ -46,12 +46,20 @@ namespace HealthcareProjectBeamMaginniss.View
             }
         }
 
-        public void logout()
+        /// <summary>
+        /// Handles the user logging out from the main form.
+        /// </summary>
+        public void Logout()
         {
             this.Show();
         }
 
-        public string getUsername()
+
+        /// <summary>
+        /// Gets the username for use elsewhere.
+        /// </summary>
+        /// <returns>The username used to login</returns>
+        public string GetUsername()
         {
             return this.username;
         }
