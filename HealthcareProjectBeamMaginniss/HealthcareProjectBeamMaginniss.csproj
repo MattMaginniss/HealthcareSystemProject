@@ -102,6 +102,12 @@
     <Compile Include="View\SearchPatientForm.Designer.cs">
       <DependentUpon>SearchPatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewAppointmentForm.Designer.cs">
+      <DependentUpon>ViewAppointmentForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\SearchPatientForm.resx">
       <DependentUpon>SearchPatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewAppointmentForm.resx">
+      <DependentUpon>ViewAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="cs3230f16bDataSet.xsc">
       <DependentUpon>cs3230f16bDataSet.xsd</DependentUpon>

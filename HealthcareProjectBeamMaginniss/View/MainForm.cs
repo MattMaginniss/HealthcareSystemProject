@@ -112,8 +112,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            var patient = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
-            var addAppointment = new AddAppointmentForm(patient);
+            var addAppointment = new AddAppointmentForm();
             addAppointment.ShowDialog();
         }
 
@@ -127,6 +126,12 @@ namespace HealthcareProjectBeamMaginniss.View
                 
             }
             this.updateTable();
+        }
+
+        private void buttonViewAppointments_Click(object sender, EventArgs e)
+        {
+            var viewAppointments = new ViewAppointmentForm();
+            viewAppointments.ShowDialog();
         }
     }
 }

@@ -45,7 +45,6 @@
             this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientDataGridView.Location = new System.Drawing.Point(13, 13);
             this.patientDataGridView.Name = "patientDataGridView";
-            this.patientDataGridView.RowHeadersVisible = false;
             this.patientDataGridView.Size = new System.Drawing.Size(915, 569);
             this.patientDataGridView.TabIndex = 0;
             // 
@@ -107,6 +106,7 @@
             this.buttonViewAppointments.TabIndex = 6;
             this.buttonViewAppointments.Text = "View Appointments";
             this.buttonViewAppointments.UseVisualStyleBackColor = true;
+            this.buttonViewAppointments.Click += new System.EventHandler(this.buttonViewAppointments_Click);
             // 
             // MainForm
             // 

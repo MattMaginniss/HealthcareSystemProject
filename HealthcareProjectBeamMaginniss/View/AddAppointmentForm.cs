@@ -51,7 +51,7 @@ namespace HealthcareProjectBeamMaginniss.View
             var date = this.dateTimePickerAppointment.Value;
             var nurse = ((Staff)this.comboBoxNurse.SelectedItem).StaffId;
             var doctor = ((Staff)this.comboBoxDoctor.SelectedItem).StaffId;
-            var systolicBP = (int)this.numericUpDownSystolic.Value;
+            var systolicBP =(int) this.numericUpDownSystolic.Value;
             var diastolicBP = (int)this.numericUpDownDiastolic.Value;
             var temp = this.numericUpDownTemperature.Value;
             var pulse = (int)this.numericUpDownPulse.Value;
@@ -61,7 +61,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 return;
             }
             this.aptController = new AppointmentController();
-            this.aptController.Add(new Appointment(0, reason, date, nurse, doctor, this.patientID, systolicBP, diastolicBP, temp, pulse, weight, symptoms, 0));
+            this.aptController.Add(new Appointment(0,reason,date,nurse,doctor, this.patientID, systolicBP, diastolicBP, temp,pulse,weight,symptoms,0));
             this.Close();
         }
     }
