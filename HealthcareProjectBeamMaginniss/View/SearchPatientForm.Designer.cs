@@ -37,8 +37,8 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
-            this.radBtnDOB = new System.Windows.Forms.RadioButton();
             this.radioBtnName = new System.Windows.Forms.RadioButton();
+            this.radBtnDOB = new System.Windows.Forms.RadioButton();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +109,7 @@
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBoxSearch
             // 
@@ -119,17 +120,6 @@
             this.groupBoxSearch.Size = new System.Drawing.Size(113, 64);
             this.groupBoxSearch.TabIndex = 8;
             this.groupBoxSearch.TabStop = false;
-            // 
-            // radBtnDOB
-            // 
-            this.radBtnDOB.AutoSize = true;
-            this.radBtnDOB.Location = new System.Drawing.Point(14, 36);
-            this.radBtnDOB.Name = "radBtnDOB";
-            this.radBtnDOB.Size = new System.Drawing.Size(84, 17);
-            this.radBtnDOB.TabIndex = 0;
-            this.radBtnDOB.Text = "Date of Birth";
-            this.radBtnDOB.UseVisualStyleBackColor = true;
-            this.radBtnDOB.CheckedChanged += new System.EventHandler(this.radBtnDOB_CheckedChanged);
             // 
             // radioBtnName
             // 
@@ -143,6 +133,17 @@
             this.radioBtnName.Text = "Name";
             this.radioBtnName.UseVisualStyleBackColor = true;
             this.radioBtnName.CheckedChanged += new System.EventHandler(this.radioBtnName_CheckedChanged);
+            // 
+            // radBtnDOB
+            // 
+            this.radBtnDOB.AutoSize = true;
+            this.radBtnDOB.Location = new System.Drawing.Point(14, 36);
+            this.radBtnDOB.Name = "radBtnDOB";
+            this.radBtnDOB.Size = new System.Drawing.Size(84, 17);
+            this.radBtnDOB.TabIndex = 0;
+            this.radBtnDOB.Text = "Date of Birth";
+            this.radBtnDOB.UseVisualStyleBackColor = true;
+            this.radBtnDOB.CheckedChanged += new System.EventHandler(this.radBtnDOB_CheckedChanged);
             // 
             // SearchPatientForm
             // 

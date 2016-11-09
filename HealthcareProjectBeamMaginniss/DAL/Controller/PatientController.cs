@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -62,6 +64,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         public IList<Patient> GetAll()
         {
             return this.pr.GetAll();
+        }
+
+        public IList<Patient> GetPatientsByName(string fName, string lName)
+        {
+            return this.pr.GetPatientsByName(fName, lName);
+        }
+
+        public IList<Patient> GetPatientsByDateOfBirth(DateTime dob)
+        {
+            return this.pr.GetPatientsByDateOfBirth(dob);
         }
     }
 }

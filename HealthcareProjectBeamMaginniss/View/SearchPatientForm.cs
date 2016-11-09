@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
+using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
@@ -37,6 +38,25 @@ namespace HealthcareProjectBeamMaginniss.View
             this.txtFirstName.Enabled = false;
             this.txtLastName.Enabled = false;
             this.dateTimeDateOfBirth.Enabled = true;
+        }
+
+        public IList<Patient> Search()
+        {
+            IList<Patient> patients;
+            if (this.radioBtnName.Checked)
+            {
+                patients = this.pr.GetPatientsByName(this.txtFirstName.Text, this.txtLastName.Text);
+            }
+            else
+            {
+                patients = this.pr.GetPatientsByDateOfBirth(this.dateTimeDateOfBirth.Value);
+            }
+            return patients;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

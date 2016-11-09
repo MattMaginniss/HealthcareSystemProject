@@ -90,6 +90,46 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return patientList;
         }
 
+        public IList<Patient> GetPatientsByName(String fName, String lName)
+        {
+            var patientList = new List<Patient>();
+            var adapter = new patientTableAdapter();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    if (patient.FirstName.Equals(fName) || patient.LastName.Equals(lName))
+                    {
+                        patientList.Add(patient);
+                    }
+                }
+            }
+
+            return patientList;
+        }
+
+        public IList<Patient> GetPatientsByDateOfBirth(DateTime dob)
+        {
+            var patientList = new List<Patient>();
+            var adapter = new patientTableAdapter();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    if (patient.Dob.Equals(dob))
+                    {
+                        patientList.Add(patient);
+                    }
+                }
+            }
+
+            return patientList;
+        }
+
         #endregion
     }
 }

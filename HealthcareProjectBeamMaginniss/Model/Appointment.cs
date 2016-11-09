@@ -4,6 +4,12 @@ namespace HealthcareProjectBeamMaginniss.Model
 {
     public class Appointment
     {
+        private int v;
+        private string reason;
+        private DateTime date1;
+        private int nurse;
+        private int doctor;
+
         public int AppointmentID { get; }
         public string ReasonForAppointment { get; }
         public DateTime date { get; }
@@ -36,6 +42,6 @@ namespace HealthcareProjectBeamMaginniss.Model
             this.symptoms = symptoms;
             this.diagnosisID = diagnosisId;
         }
-
+        
     }
 }
