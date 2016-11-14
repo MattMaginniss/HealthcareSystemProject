@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
@@ -65,6 +67,7 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.bindingSource = new BindingSource {DataSource = this.patientController.GetAll()};
             this.patientDataGridView.DataSource = this.bindingSource;
+           
         }
 
         private void addPatientColumn(string patientProperty, string columnTitle)
@@ -119,20 +122,34 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            var searchPatient = new SearchPatientForm();
-            searchPatient.ShowDialog();
-            if (searchPatient.DialogResult == DialogResult.OK)
+            if (this.radioBtnName.Checked)
             {
-                this.bindingSource = new BindingSource { DataSource = searchPatient.Search()};
                 
             }
-            this.updateTable();
+            else
+            {
+            }
+            this.patientDataGridView.DataSource = this.bindingSource;
+            this.patientDataGridView.Update();
         }
 
         private void buttonViewAppointments_Click(object sender, EventArgs e)
         {
             var viewAppointments = new ViewAppointmentForm();
             viewAppointments.ShowDialog();
+        }
+        private void radioBtnName_CheckedChanged_1(object sender, EventArgs e)
+        {
+            this.txtFirstName.Enabled = true;
+            this.txtLastName.Enabled = true;
+            this.dateTimeDateOfBirth.Enabled = false;
+        }
+
+        private void radBtnDOB_CheckedChanged_1(object sender, EventArgs e)
+        {
+            this.txtFirstName.Enabled = false;
+            this.txtLastName.Enabled = false;
+            this.dateTimeDateOfBirth.Enabled = true;
         }
     }
 }
