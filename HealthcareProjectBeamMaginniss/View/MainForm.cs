@@ -40,7 +40,7 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             LoginController login = new LoginController();
             var name = login.GetName(username) ?? "Unknown User";
-            this.labelWelcome.Text += name + "!";
+            this.lblWelcome.Text += name + "!";
         }
 
         #endregion

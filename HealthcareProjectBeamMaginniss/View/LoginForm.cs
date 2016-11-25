@@ -32,9 +32,9 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void attemptLogin()
         {
-            var username = this.usernameTextBox.Text;
-            var password = this.passwordTextBox.Text;
-            this.passwordTextBox.Clear();
+            var username = this.txtUsername.Text;
+            var password = this.txtPassword.Text;
+            this.txtPassword.Clear();
 
             if (this.login.CheckLogin(username, password))
             {
@@ -42,7 +42,7 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             else
             {
-                this.wrongLoginLabel.Visible = true;
+                this.lblInvalidLogin.Visible = true;
             }
         }
 
@@ -66,9 +66,9 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void successfulLogin()
         {
-            this.username = this.usernameTextBox.Text.Trim();
-            this.usernameTextBox.Clear();
-            this.passwordTextBox.Clear();
+            this.username = this.txtUsername.Text.Trim();
+            this.txtUsername.Clear();
+            this.txtPassword.Clear();
             var mainform = new MainForm(this);
             mainform.Show();
             this.Hide();

@@ -46,17 +46,17 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void addUser()
         {
-            var fname = this.fNameTextBox.Text;
-            var lname = this.lNameTextBox.Text;
-            var dob = this.dateTimePicker.Value;
-            var sex = this.radioMale.Checked ? 'M' : 'F';
-            var street1 = this.textBoxStreet1.Text;
-            var street2 = this.textBoxStreet2.Text;
-            var city = this.textBoxCity.Text;
-            var state = this.textBoxState.Text;
+            var fname = this.txtFirstName.Text;
+            var lname = this.txtLastName.Text;
+            var dob = this.dateTimeDOB.Value;
+            var sex = this.radioBtnMale.Checked ? 'M' : 'F';
+            var street1 = this.txtAddr1.Text;
+            var street2 = this.txtAddr2.Text;
+            var city = this.txtCity.Text;
+            var state = this.txtState.Text;
             var country = this.comboBoxCountry.Text;
-            var zip = this.textBoxZip.Text; 
-            var phone = this.phoneNumBox.Text;
+            var zip = this.txtZip.Text; 
+            var phone = this.txtPhone.Text;
             var ctry = new Country();
             if (string.IsNullOrWhiteSpace(fname))
             {

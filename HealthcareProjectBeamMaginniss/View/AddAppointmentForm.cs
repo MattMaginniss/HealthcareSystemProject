@@ -46,16 +46,16 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            var reason = this.textBoxReason.Text;
-            var symptoms = this.textBoxSymptoms.Text;
-            var date = this.dateTimePickerAppointment.Value;
+            var reason = this.txtBoxReason.Text;
+            var symptoms = this.txtBoxSymptoms.Text;
+            var date = this.dateTimeAppointment.Value;
             var nurse = ((Staff)this.comboBoxNurse.SelectedItem).StaffId;
             var doctor = ((Staff)this.comboBoxDoctor.SelectedItem).StaffId;
-            var systolicBP =(int) this.numericUpDownSystolic.Value;
-            var diastolicBP = (int)this.numericUpDownDiastolic.Value;
-            var temp = this.numericUpDownTemperature.Value;
-            var pulse = (int)this.numericUpDownPulse.Value;
-            var weight = this.numericUpDownWeight.Value;
+            var systolicBP =(int) this.numUpDownSystolic.Value;
+            var diastolicBP = (int)this.numUpDownDiastolic.Value;
+            var temp = this.numUpDownTemperature.Value;
+            var pulse = (int)this.numUpDownPulse.Value;
+            var weight = this.numUpDownWeight.Value;
             if (string.IsNullOrWhiteSpace(reason) || string.IsNullOrWhiteSpace(symptoms))
             {
                 return;

@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewAppointment = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).BeginInit();
+            this.dgvAppointment = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewAppointment
+            // dgvAppointment
             // 
-            this.dataGridViewAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAppointment.Location = new System.Drawing.Point(12, 12);
-            this.dataGridViewAppointment.Name = "dataGridViewAppointment";
-            this.dataGridViewAppointment.Size = new System.Drawing.Size(684, 418);
-            this.dataGridViewAppointment.TabIndex = 0;
+            this.dgvAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppointment.Location = new System.Drawing.Point(12, 12);
+            this.dgvAppointment.Name = "dgvAppointment";
+            this.dgvAppointment.Size = new System.Drawing.Size(684, 418);
+            this.dgvAppointment.TabIndex = 0;
             // 
             // ViewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 442);
-            this.Controls.Add(this.dataGridViewAppointment);
+            this.Controls.Add(this.dgvAppointment);
             this.Name = "ViewAppointmentForm";
             this.Text = "View Appointment";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewAppointment;
+        private System.Windows.Forms.DataGridView dgvAppointment;
     }
 }

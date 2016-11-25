@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
-            this.addPatientButton = new System.Windows.Forms.Button();
+            this.btnAddPatientButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.labelWelcome = new System.Windows.Forms.Label();
-            this.labelLogout = new System.Windows.Forms.LinkLabel();
-            this.buttonAddAppointment = new System.Windows.Forms.Button();
-            this.buttonViewAppointments = new System.Windows.Forms.Button();
+            this.lblWelcome = new System.Windows.Forms.Label();
+            this.lblLogout = new System.Windows.Forms.LinkLabel();
+            this.btnAddAppointment = new System.Windows.Forms.Button();
+            this.btnViewAppointments = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
             this.radioBtnName = new System.Windows.Forms.RadioButton();
             this.radBtnDOB = new System.Windows.Forms.RadioButton();
@@ -60,15 +60,15 @@
             this.patientDataGridView.Size = new System.Drawing.Size(915, 569);
             this.patientDataGridView.TabIndex = 0;
             // 
-            // addPatientButton
+            // btnAddPatientButton
             // 
-            this.addPatientButton.Location = new System.Drawing.Point(933, 86);
-            this.addPatientButton.Name = "addPatientButton";
-            this.addPatientButton.Size = new System.Drawing.Size(144, 23);
-            this.addPatientButton.TabIndex = 1;
-            this.addPatientButton.Text = "Add Patient";
-            this.addPatientButton.UseVisualStyleBackColor = true;
-            this.addPatientButton.Click += new System.EventHandler(this.addPatientButton_Click);
+            this.btnAddPatientButton.Location = new System.Drawing.Point(933, 86);
+            this.btnAddPatientButton.Name = "btnAddPatientButton";
+            this.btnAddPatientButton.Size = new System.Drawing.Size(144, 23);
+            this.btnAddPatientButton.TabIndex = 1;
+            this.btnAddPatientButton.Text = "Add Patient";
+            this.btnAddPatientButton.UseVisualStyleBackColor = true;
+            this.btnAddPatientButton.Click += new System.EventHandler(this.addPatientButton_Click);
             // 
             // searchButton
             // 
@@ -80,45 +80,45 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // labelWelcome
+            // lblWelcome
             // 
-            this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Location = new System.Drawing.Point(933, 9);
-            this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(58, 13);
-            this.labelWelcome.TabIndex = 3;
-            this.labelWelcome.Text = "Welcome, ";
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Location = new System.Drawing.Point(933, 9);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(58, 13);
+            this.lblWelcome.TabIndex = 3;
+            this.lblWelcome.Text = "Welcome, ";
             // 
-            // labelLogout
+            // lblLogout
             // 
-            this.labelLogout.AutoSize = true;
-            this.labelLogout.Location = new System.Drawing.Point(933, 31);
-            this.labelLogout.Name = "labelLogout";
-            this.labelLogout.Size = new System.Drawing.Size(40, 13);
-            this.labelLogout.TabIndex = 4;
-            this.labelLogout.TabStop = true;
-            this.labelLogout.Text = "Logout";
-            this.labelLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelLogout_LinkClicked);
+            this.lblLogout.AutoSize = true;
+            this.lblLogout.Location = new System.Drawing.Point(933, 31);
+            this.lblLogout.Name = "lblLogout";
+            this.lblLogout.Size = new System.Drawing.Size(40, 13);
+            this.lblLogout.TabIndex = 4;
+            this.lblLogout.TabStop = true;
+            this.lblLogout.Text = "Logout";
+            this.lblLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelLogout_LinkClicked);
             // 
-            // buttonAddAppointment
+            // btnAddAppointment
             // 
-            this.buttonAddAppointment.Location = new System.Drawing.Point(933, 115);
-            this.buttonAddAppointment.Name = "buttonAddAppointment";
-            this.buttonAddAppointment.Size = new System.Drawing.Size(144, 23);
-            this.buttonAddAppointment.TabIndex = 5;
-            this.buttonAddAppointment.Text = "Add Appointment";
-            this.buttonAddAppointment.UseVisualStyleBackColor = true;
-            this.buttonAddAppointment.Click += new System.EventHandler(this.buttonAddAppointment_Click);
+            this.btnAddAppointment.Location = new System.Drawing.Point(933, 115);
+            this.btnAddAppointment.Name = "btnAddAppointment";
+            this.btnAddAppointment.Size = new System.Drawing.Size(144, 23);
+            this.btnAddAppointment.TabIndex = 5;
+            this.btnAddAppointment.Text = "Add Appointment";
+            this.btnAddAppointment.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Click += new System.EventHandler(this.buttonAddAppointment_Click);
             // 
-            // buttonViewAppointments
+            // btnViewAppointments
             // 
-            this.buttonViewAppointments.Location = new System.Drawing.Point(936, 632);
-            this.buttonViewAppointments.Name = "buttonViewAppointments";
-            this.buttonViewAppointments.Size = new System.Drawing.Size(141, 23);
-            this.buttonViewAppointments.TabIndex = 6;
-            this.buttonViewAppointments.Text = "View Appointments";
-            this.buttonViewAppointments.UseVisualStyleBackColor = true;
-            this.buttonViewAppointments.Click += new System.EventHandler(this.buttonViewAppointments_Click);
+            this.btnViewAppointments.Location = new System.Drawing.Point(936, 632);
+            this.btnViewAppointments.Name = "btnViewAppointments";
+            this.btnViewAppointments.Size = new System.Drawing.Size(141, 23);
+            this.btnViewAppointments.TabIndex = 6;
+            this.btnViewAppointments.Text = "View Appointments";
+            this.btnViewAppointments.UseVisualStyleBackColor = true;
+            this.btnViewAppointments.Click += new System.EventHandler(this.buttonViewAppointments_Click);
             // 
             // groupBoxSearch
             // 
@@ -175,7 +175,7 @@
             this.dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
             this.dateTimeDateOfBirth.Size = new System.Drawing.Size(181, 20);
             this.dateTimeDateOfBirth.TabIndex = 13;
-            this.dateTimeDateOfBirth.Value = new System.DateTime(2016, 11, 9, 0, 0, 0, 0);
+            this.dateTimeDateOfBirth.Value = new System.DateTime(2016, 11, 25, 0, 0, 0, 0);
             // 
             // lblLastName
             // 
@@ -237,12 +237,12 @@
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblDoB);
             this.Controls.Add(this.lblSeachForPatient);
-            this.Controls.Add(this.buttonViewAppointments);
-            this.Controls.Add(this.buttonAddAppointment);
-            this.Controls.Add(this.labelLogout);
-            this.Controls.Add(this.labelWelcome);
+            this.Controls.Add(this.btnViewAppointments);
+            this.Controls.Add(this.btnAddAppointment);
+            this.Controls.Add(this.lblLogout);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.addPatientButton);
+            this.Controls.Add(this.btnAddPatientButton);
             this.Controls.Add(this.patientDataGridView);
             this.Name = "MainForm";
             this.Text = "NATT Healthcare Systems";
@@ -258,12 +258,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView patientDataGridView;
-        private System.Windows.Forms.Button addPatientButton;
+        private System.Windows.Forms.Button btnAddPatientButton;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Label labelWelcome;
-        private System.Windows.Forms.LinkLabel labelLogout;
-        private System.Windows.Forms.Button buttonAddAppointment;
-        private System.Windows.Forms.Button buttonViewAppointments;
+        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.LinkLabel lblLogout;
+        private System.Windows.Forms.Button btnAddAppointment;
+        private System.Windows.Forms.Button btnViewAppointments;
         private System.Windows.Forms.GroupBox groupBoxSearch;
         private System.Windows.Forms.RadioButton radioBtnName;
         private System.Windows.Forms.RadioButton radBtnDOB;

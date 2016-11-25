@@ -26,7 +26,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void populateTable()
         {
-            this.dataGridViewAppointment.AutoGenerateColumns = false;
+            this.dgvAppointment.AutoGenerateColumns = false;
             this.updateTable();
             this.addPatientColumn("ReasonForAppointment", "Reason");
             this.addPatientColumn("date", "Date");
@@ -44,23 +44,23 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void resizeToFit()
         {
-            this.dataGridViewAppointment.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewAppointment.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewAppointment.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvAppointment.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         private void updateTable()
         {
             this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAll() };
-            this.dataGridViewAppointment.DataSource = this.bindingSource;
+            this.dgvAppointment.DataSource = this.bindingSource;
         }
 
         private void addPatientColumn(string patientProperty, string columnTitle)
@@ -70,7 +70,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 DataPropertyName = patientProperty,
                 Name = columnTitle
             };
-            this.dataGridViewAppointment.Columns.Add(column);
+            this.dgvAppointment.Columns.Add(column);
         }
     }
 }
