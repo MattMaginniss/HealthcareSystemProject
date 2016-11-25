@@ -45,6 +45,7 @@
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblDoB = new System.Windows.Forms.Label();
             this.lblSeachForPatient = new System.Windows.Forms.Label();
+            this.btnDGVReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -174,7 +175,7 @@
             this.dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
             this.dateTimeDateOfBirth.Size = new System.Drawing.Size(181, 20);
             this.dateTimeDateOfBirth.TabIndex = 13;
-            this.dateTimeDateOfBirth.Value = new System.DateTime(2016, 11, 9, 9, 49, 50, 0);
+            this.dateTimeDateOfBirth.Value = new System.DateTime(2016, 11, 9, 0, 0, 0, 0);
             // 
             // lblLastName
             // 
@@ -212,11 +213,22 @@
             this.lblSeachForPatient.TabIndex = 9;
             this.lblSeachForPatient.Text = "Search for Patient by:";
             // 
+            // btnDGVReset
+            // 
+            this.btnDGVReset.Location = new System.Drawing.Point(754, 57);
+            this.btnDGVReset.Name = "btnDGVReset";
+            this.btnDGVReset.Size = new System.Drawing.Size(144, 23);
+            this.btnDGVReset.TabIndex = 18;
+            this.btnDGVReset.Text = "Reset";
+            this.btnDGVReset.UseVisualStyleBackColor = true;
+            this.btnDGVReset.Click += new System.EventHandler(this.btnDGVReset_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 673);
+            this.Controls.Add(this.btnDGVReset);
             this.Controls.Add(this.groupBoxSearch);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
@@ -262,5 +274,6 @@
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.Label lblDoB;
         private System.Windows.Forms.Label lblSeachForPatient;
+        private System.Windows.Forms.Button btnDGVReset;
     }
 }

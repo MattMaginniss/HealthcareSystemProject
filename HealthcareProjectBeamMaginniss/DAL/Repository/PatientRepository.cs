@@ -90,7 +90,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return patientList;
         }
 
-        public IList<Patient> GetPatientsByName(String fName, String lName)
+        public IList<Patient> GetPatientsByFirstName(String fName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -100,7 +100,26 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 foreach (var row in adapter.GetData().Rows)
                 {
                     var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
-                    if (patient.FirstName.Equals(fName) || patient.LastName.Equals(lName))
+                    if (patient.FirstName.ToLower().Equals(fName))
+                    {
+                        patientList.Add(patient);
+                    }
+                }
+            }
+
+            return patientList;
+        }
+        public IList<Patient> GetPatientsByLastName(String lName)
+        {
+            var patientList = new List<Patient>();
+            var adapter = new patientTableAdapter();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    if (patient.LastName.ToLower().Equals(lName))
                     {
                         patientList.Add(patient);
                     }
@@ -110,7 +129,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return patientList;
         }
 
-        public IList<Patient> GetPatientsByDateOfBirth(DateTime dob)
+
+        public IList<Patient> GetPatientsByFullName(String fName, String lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -120,7 +140,27 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 foreach (var row in adapter.GetData().Rows)
                 {
                     var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
-                    if (patient.Dob.Equals(dob))
+                    if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
+                    {
+                        patientList.Add(patient);
+                    }
+                }
+            }
+
+            return patientList;
+        }
+
+        public IList<Patient> GetPatientsByDateOfBirth(String dob)
+        {
+            var patientList = new List<Patient>();
+            var adapter = new patientTableAdapter();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    if (patient.Dob.ToShortDateString().Equals(dob))
                     {
                         patientList.Add(patient);
                     }

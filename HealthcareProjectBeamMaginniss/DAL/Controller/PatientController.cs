@@ -66,12 +66,20 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.pr.GetAll();
         }
 
-        public IList<Patient> GetPatientsByName(string fName, string lName)
+        public IList<Patient> GetPatientsByFirstName(string fName)
         {
-            return this.pr.GetPatientsByName(fName, lName);
+            return this.pr.GetPatientsByFirstName(fName);
+        }
+        public IList<Patient> GetPatientsByLastName(string lName)
+        {
+            return this.pr.GetPatientsByLastName(lName);
+        }
+        public IList<Patient> GetPatientsByFullName(string fName, string lName)
+        {
+            return this.pr.GetPatientsByFullName(fName, lName);
         }
 
-        public IList<Patient> GetPatientsByDateOfBirth(DateTime dob)
+        public IList<Patient> GetPatientsByDateOfBirth(String dob)
         {
             return this.pr.GetPatientsByDateOfBirth(dob);
         }

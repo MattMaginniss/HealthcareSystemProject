@@ -124,13 +124,36 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.radioBtnName.Checked)
             {
-                
-            }
-            else
+                string firstNameQuery = txtFirstName.Text.ToLower();
+                string lastNameQuery = txtLastName.Text.ToLower();
+
+                if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource { DataSource = this.patientController.GetPatientsByFullName(firstNameQuery, lastNameQuery) };
+                    this.patientDataGridView.DataSource = this.bindingSource;
+                } else if (!firstNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource { DataSource = this.patientController.GetPatientsByFirstName(firstNameQuery) };
+                    this.patientDataGridView.DataSource = this.bindingSource;
+                } else if (!lastNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource
+                    {
+                        DataSource = this.patientController.GetPatientsByLastName(lastNameQuery)
+                    };
+                    this.patientDataGridView.DataSource = this.bindingSource;
+                }
+                else
+                {
+                   this.updateTable(); 
+                }
+            } else if (this.radBtnDOB.Checked)
             {
+                String dobQuery = dateTimeDateOfBirth.Value.ToShortDateString();
+
+                this.bindingSource = new BindingSource { DataSource = this.patientController.GetPatientsByDateOfBirth(dobQuery) };
+                this.patientDataGridView.DataSource = this.bindingSource;
             }
-            this.patientDataGridView.DataSource = this.bindingSource;
-            this.patientDataGridView.Update();
         }
 
         private void buttonViewAppointments_Click(object sender, EventArgs e)
@@ -150,6 +173,15 @@ namespace HealthcareProjectBeamMaginniss.View
             this.txtFirstName.Enabled = false;
             this.txtLastName.Enabled = false;
             this.dateTimeDateOfBirth.Enabled = true;
+        }
+
+        private void btnDGVReset_Click(object sender, EventArgs e)
+        {
+            this.radioBtnName.Checked = true;
+            this.txtFirstName.Text = "";
+            this.txtLastName.Text = "";
+            this.dateTimeDateOfBirth.Value = DateTime.Today;
+            this.updateTable();
         }
     }
 }
