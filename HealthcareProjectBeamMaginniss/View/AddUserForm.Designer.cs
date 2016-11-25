@@ -108,7 +108,7 @@
             this.fNameTextBox.MaxLength = 45;
             this.fNameTextBox.Name = "fNameTextBox";
             this.fNameTextBox.Size = new System.Drawing.Size(195, 20);
-            this.fNameTextBox.TabIndex = 5;
+            this.fNameTextBox.TabIndex = 1;
             // 
             // lNameTextBox
             // 
@@ -116,14 +116,14 @@
             this.lNameTextBox.MaxLength = 45;
             this.lNameTextBox.Name = "lNameTextBox";
             this.lNameTextBox.Size = new System.Drawing.Size(195, 20);
-            this.lNameTextBox.TabIndex = 6;
+            this.lNameTextBox.TabIndex = 2;
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(76, 64);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(195, 20);
-            this.dateTimePicker.TabIndex = 7;
+            this.dateTimePicker.TabIndex = 3;
             // 
             // textBoxStreet1
             // 
@@ -132,7 +132,7 @@
             this.textBoxStreet1.MaxLength = 100;
             this.textBoxStreet1.Name = "textBoxStreet1";
             this.textBoxStreet1.Size = new System.Drawing.Size(194, 20);
-            this.textBoxStreet1.TabIndex = 8;
+            this.textBoxStreet1.TabIndex = 5;
             // 
             // phoneNumBox
             // 
@@ -140,7 +140,7 @@
             this.phoneNumBox.MaxLength = 10;
             this.phoneNumBox.Name = "phoneNumBox";
             this.phoneNumBox.Size = new System.Drawing.Size(196, 20);
-            this.phoneNumBox.TabIndex = 9;
+            this.phoneNumBox.TabIndex = 11;
             this.phoneNumBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phoneNumBox_KeyPress);
             // 
             // addButton
@@ -148,7 +148,7 @@
             this.addButton.Location = new System.Drawing.Point(199, 315);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 10;
+            this.addButton.TabIndex = 13;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -158,7 +158,7 @@
             this.cancelButton.Location = new System.Drawing.Point(78, 315);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 11;
+            this.cancelButton.TabIndex = 12;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -170,7 +170,7 @@
             this.groupBoxSex.Location = new System.Drawing.Point(77, 90);
             this.groupBoxSex.Name = "groupBoxSex";
             this.groupBoxSex.Size = new System.Drawing.Size(194, 34);
-            this.groupBoxSex.TabIndex = 13;
+            this.groupBoxSex.TabIndex = 4;
             this.groupBoxSex.TabStop = false;
             // 
             // radioFemale
@@ -218,28 +218,28 @@
             this.textBoxStreet2.Location = new System.Drawing.Point(78, 157);
             this.textBoxStreet2.Name = "textBoxStreet2";
             this.textBoxStreet2.Size = new System.Drawing.Size(193, 20);
-            this.textBoxStreet2.TabIndex = 16;
+            this.textBoxStreet2.TabIndex = 6;
             // 
             // textBoxCity
             // 
             this.textBoxCity.Location = new System.Drawing.Point(78, 183);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(193, 20);
-            this.textBoxCity.TabIndex = 17;
+            this.textBoxCity.TabIndex = 7;
             // 
             // textBoxState
             // 
             this.textBoxState.Location = new System.Drawing.Point(78, 209);
             this.textBoxState.Name = "textBoxState";
             this.textBoxState.Size = new System.Drawing.Size(193, 20);
-            this.textBoxState.TabIndex = 18;
+            this.textBoxState.TabIndex = 8;
             // 
             // textBoxZip
             // 
             this.textBoxZip.Location = new System.Drawing.Point(78, 235);
             this.textBoxZip.Name = "textBoxZip";
             this.textBoxZip.Size = new System.Drawing.Size(193, 20);
-            this.textBoxZip.TabIndex = 19;
+            this.textBoxZip.TabIndex = 9;
             // 
             // labelCity
             // 
@@ -275,7 +275,7 @@
             this.comboBoxCountry.Location = new System.Drawing.Point(78, 262);
             this.comboBoxCountry.Name = "comboBoxCountry";
             this.comboBoxCountry.Size = new System.Drawing.Size(193, 21);
-            this.comboBoxCountry.TabIndex = 23;
+            this.comboBoxCountry.TabIndex = 10;
             // 
             // labelCountry
             // 
