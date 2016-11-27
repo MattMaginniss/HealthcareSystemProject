@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvAppointment = new System.Windows.Forms.DataGridView();
+            this.buttonCheckIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,14 +38,25 @@
             this.dgvAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppointment.Location = new System.Drawing.Point(12, 12);
             this.dgvAppointment.Name = "dgvAppointment";
-            this.dgvAppointment.Size = new System.Drawing.Size(684, 418);
+            this.dgvAppointment.Size = new System.Drawing.Size(1137, 418);
             this.dgvAppointment.TabIndex = 0;
+            // 
+            // buttonCheckIn
+            // 
+            this.buttonCheckIn.Location = new System.Drawing.Point(1155, 12);
+            this.buttonCheckIn.Name = "buttonCheckIn";
+            this.buttonCheckIn.Size = new System.Drawing.Size(96, 23);
+            this.buttonCheckIn.TabIndex = 1;
+            this.buttonCheckIn.Text = "Check In";
+            this.buttonCheckIn.UseVisualStyleBackColor = true;
+            this.buttonCheckIn.Click += new System.EventHandler(this.buttonCheckIn_Click);
             // 
             // ViewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 442);
+            this.ClientSize = new System.Drawing.Size(1263, 444);
+            this.Controls.Add(this.buttonCheckIn);
             this.Controls.Add(this.dgvAppointment);
             this.Name = "ViewAppointmentForm";
             this.Text = "View Appointment";
@@ -56,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAppointment;
+        private System.Windows.Forms.Button buttonCheckIn;
     }
 }

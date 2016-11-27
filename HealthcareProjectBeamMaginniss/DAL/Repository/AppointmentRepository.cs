@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
+using System.Data;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
@@ -27,6 +29,59 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId,systolicBp, diastolicBp, temperature, pulse, weight, symptoms, diagnosisId);
             }
+        }
+
+        public void Update(Appointment appointment)
+        {
+            var adapter = new appointmentTableAdapter();
+            DataRow aptrow = null;
+            using (adapter)
+            {
+                aptrow = adapter.GetData().FirstOrDefault(apt => apt.appointmentID == appointment.AppointmentID);
+            }
+            if (aptrow != null)
+            {
+                aptrow[1] = appointment.ReasonForAppointment;
+                aptrow[2] = appointment.date;
+                aptrow[3] = appointment.nureseID;
+                aptrow[4] = appointment.doctorID;
+                aptrow[5] = appointment.patientID;
+                aptrow[6] = appointment.systolicBP;
+                aptrow[7] = appointment.diastolicBP;
+                aptrow[8] = appointment.temperature;
+                aptrow[9] = appointment.pulse;
+                aptrow[10] = appointment.weight;
+                aptrow[11] = appointment.symptoms;
+                aptrow[12] = appointment.diagnosisID;
+                using (adapter)
+                {
+                    adapter.Update(aptrow);
+                }
+            }
+
+        }
+
+        public void AddPartial(Appointment appointment)
+        {
+            var adapter = new appointmentTableAdapter();
+            var reasonForAppointment = appointment.ReasonForAppointment;
+            var date = appointment.date;
+            var doctorId = appointment.doctorID;
+            var patientId = appointment.patientID;
+            var symptoms = appointment.symptoms;
+
+            int nureseId = 0;
+            int systolicBp = 0;
+            int diastolicBp = 0;
+            int temperature = 0;
+            int pulse = 0;
+            int weight = 0;
+            int diagnosisId = 0;
+            using (adapter)
+            {
+                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId, systolicBp, diastolicBp, temperature, pulse, weight, symptoms, diagnosisId);
+            }
+
         }
 
         public Appointment GetById(int id)

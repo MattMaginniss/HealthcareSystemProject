@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
+using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
@@ -28,17 +29,17 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.dgvAppointment.AutoGenerateColumns = false;
             this.updateTable();
-            this.addPatientColumn("ReasonForAppointment", "Reason");
-            this.addPatientColumn("date", "Date");
-            this.addPatientColumn("nureseID", "Nurse");
-            this.addPatientColumn("doctorID", "Doctor");
-            this.addPatientColumn("patientID", "Patient");
-            this.addPatientColumn("systolicBP", "systolicBP");
-            this.addPatientColumn("diastolicBP", "diastolicBP");
-            this.addPatientColumn("temperature", "temperature");
-            this.addPatientColumn("pulse", "pulse");
-            this.addPatientColumn("weight", "weight");
-            this.addPatientColumn("symptoms", "symptoms");
+            this.addAppointmentColumn("ReasonForAppointment", "Reason");
+            this.addAppointmentColumn("date", "Date");
+            this.addAppointmentColumn("nureseID", "Nurse");
+            this.addAppointmentColumn("doctorID", "Doctor");
+            this.addAppointmentColumn("patientID", "Patient");
+            this.addAppointmentColumn("systolicBP", "systolicBP");
+            this.addAppointmentColumn("diastolicBP", "diastolicBP");
+            this.addAppointmentColumn("temperature", "temperature");
+            this.addAppointmentColumn("pulse", "pulse");
+            this.addAppointmentColumn("weight", "weight");
+            this.addAppointmentColumn("symptoms", "symptoms");
             this.resizeToFit();
         }
 
@@ -48,13 +49,13 @@ namespace HealthcareProjectBeamMaginniss.View
             this.dgvAppointment.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgvAppointment.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvAppointment.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvAppointment.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dgvAppointment.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dgvAppointment.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void updateTable()
@@ -63,7 +64,7 @@ namespace HealthcareProjectBeamMaginniss.View
             this.dgvAppointment.DataSource = this.bindingSource;
         }
 
-        private void addPatientColumn(string patientProperty, string columnTitle)
+        private void addAppointmentColumn(string patientProperty, string columnTitle)
         {
             var column = new DataGridViewTextBoxColumn
             {
@@ -71,6 +72,21 @@ namespace HealthcareProjectBeamMaginniss.View
                 Name = columnTitle
             };
             this.dgvAppointment.Columns.Add(column);
+        }
+
+        private void buttonCheckIn_Click(object sender, EventArgs e)
+        {
+            if (this.dgvAppointment.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select an appointment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var addAppointment = new AppointmentCheckinForm(appt);
+                addAppointment.ShowDialog();
+                this.updateTable();
+            }
         }
     }
 }

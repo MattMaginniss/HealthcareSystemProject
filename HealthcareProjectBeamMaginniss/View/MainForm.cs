@@ -115,9 +115,17 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            var patient = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
-            var addAppointment = new AddAppointmentForm(patient);
-            addAppointment.ShowDialog();
+            if(this.patientDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select a user","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                var patient = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
+                var addAppointment = new AddAppointmentForm(patient);
+                addAppointment.ShowDialog();
+            }
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)

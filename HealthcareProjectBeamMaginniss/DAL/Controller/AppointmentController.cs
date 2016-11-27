@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -21,6 +22,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         public void Add(Appointment appointment)
         {
             this.appointmentRepository.Add(appointment);
+
         }
 
         public Appointment GetById(int id)
@@ -34,5 +36,14 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.appointmentRepository.GetAll();
         }
 
+        public void AddPartial(Appointment appointment)
+        {
+            this.appointmentRepository.AddPartial(appointment);
+        }
+
+        public void Update(Appointment appointment)
+        {
+            this.appointmentRepository.Update(appointment);
+        }
     }
 }
