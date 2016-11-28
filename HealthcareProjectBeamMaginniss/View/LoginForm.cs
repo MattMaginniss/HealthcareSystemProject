@@ -33,7 +33,7 @@ namespace HealthcareProjectBeamMaginniss.View
         private void attemptLogin()
         {
             var username = this.txtUsername.Text;
-            var password = this.txtPassword.Text;
+            var password = this.txtPassword.Text.GetHashCode()+"";
             this.txtPassword.Clear();
 
             if (this.login.CheckLogin(username, password))
