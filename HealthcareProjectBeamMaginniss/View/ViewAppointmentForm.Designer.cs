@@ -43,6 +43,7 @@
             this.lblDoB = new System.Windows.Forms.Label();
             this.lblSeachForAppointment = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnOrderTests = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -191,11 +192,22 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnOrderTests
+            // 
+            this.btnOrderTests.Location = new System.Drawing.Point(1156, 176);
+            this.btnOrderTests.Name = "btnOrderTests";
+            this.btnOrderTests.Size = new System.Drawing.Size(95, 23);
+            this.btnOrderTests.TabIndex = 29;
+            this.btnOrderTests.Text = "Order Tests";
+            this.btnOrderTests.UseVisualStyleBackColor = true;
+            this.btnOrderTests.Click += new System.EventHandler(this.btnOrderTests_Click);
+            // 
             // ViewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 576);
+            this.Controls.Add(this.btnOrderTests);
             this.Controls.Add(this.btnDGVReset);
             this.Controls.Add(this.groupBoxSearch);
             this.Controls.Add(this.txtLastName);
@@ -235,5 +247,6 @@
         private System.Windows.Forms.Label lblSeachForAppointment;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.RadioButton radBtnBoth;
+        private System.Windows.Forms.Button btnOrderTests;
     }
 }

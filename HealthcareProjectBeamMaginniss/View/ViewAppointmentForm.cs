@@ -186,5 +186,20 @@ namespace HealthcareProjectBeamMaginniss.View
             this.dateTimeDateOfBirth.Value = DateTime.Today;
             this.updateTable();
         }
+
+        private void btnOrderTests_Click(object sender, EventArgs e)
+        {
+            if (this.dgvAppointment.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select an appointment to order tests for.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var addAppointment = new AppointmentCheckinForm(appt);
+                addAppointment.ShowDialog();
+                this.updateTable();
+            }
+        }
     }
 }

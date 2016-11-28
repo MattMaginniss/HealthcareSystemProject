@@ -60,6 +60,7 @@
             // 
             // txtBoxReason
             // 
+            this.txtBoxReason.Enabled = false;
             this.txtBoxReason.Location = new System.Drawing.Point(83, 12);
             this.txtBoxReason.Multiline = true;
             this.txtBoxReason.Name = "txtBoxReason";
@@ -305,7 +306,7 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
-            // AddAppointmentForm
+            // AppointmentCheckinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -333,8 +334,8 @@
             this.Controls.Add(this.dateTimeAppointment);
             this.Controls.Add(this.lblReason);
             this.Controls.Add(this.txtBoxReason);
-            this.Name = "AddAppointmentForm";
-            this.Text = "Add Appointment";
+            this.Name = "AppointmentCheckinForm";
+            this.Text = "Appointment Check-in";
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownSystolic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownDiastolic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTemperature)).EndInit();
