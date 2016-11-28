@@ -24,10 +24,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var pulse = appointment.pulse;
             var weight = appointment.weight;
             var symptoms = appointment.symptoms;
-            var diagnosisId = appointment.diagnosisID;
             using (adapter)
             {
-                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId,systolicBp, diastolicBp, temperature, pulse, weight, symptoms, diagnosisId);
+                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId,systolicBp, diastolicBp, temperature, pulse, weight, symptoms);
             }
         }
 
@@ -52,7 +51,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 aptrow[9] = appointment.pulse;
                 aptrow[10] = appointment.weight;
                 aptrow[11] = appointment.symptoms;
-                aptrow[12] = appointment.diagnosisID;
                 using (adapter)
                 {
                     adapter.Update(aptrow);
@@ -76,10 +74,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             int temperature = 0;
             int pulse = 0;
             int weight = 0;
-            int diagnosisId = 0;
             using (adapter)
             {
-                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId, systolicBp, diastolicBp, temperature, pulse, weight, symptoms, diagnosisId);
+                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId, systolicBp, diastolicBp, temperature, pulse, weight, symptoms);
             }
 
         }
@@ -124,10 +121,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var pulse = row.pulse;
             var weight = row.weight;
             var symptoms = row.symptoms;
-            var diagnosisId = row.diagnosis_diagnosisID;
             return new Appointment(appointmentId, reasonForAppointment, date, nureseId, doctorId,
             patientId, systolicBp, diastolicBp, temperature, pulse, weight,
-            symptoms, diagnosisId);
+            symptoms);
         }
 
         public IList<Appointment> GetAppointmentByPatientDateOfBirth(String dob)

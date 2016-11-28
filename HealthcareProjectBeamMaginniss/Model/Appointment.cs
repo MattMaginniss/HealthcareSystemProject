@@ -16,11 +16,10 @@ namespace HealthcareProjectBeamMaginniss.Model
         public int pulse { get; }
         public decimal weight { get; }
         public string symptoms { get; }
-        public int diagnosisID { get; }
 
         public Appointment(int appointmentId, string reasonForAppointment, DateTime date, int nureseId, int doctorId,
             int patientId, int systolicBp, int diastolicBp, decimal temperature, int pulse, decimal weight,
-            string symptoms, int diagnosisId)
+            string symptoms)
         {
             this.AppointmentID = appointmentId;
             this.ReasonForAppointment = reasonForAppointment;
@@ -34,7 +33,6 @@ namespace HealthcareProjectBeamMaginniss.Model
             this.pulse = pulse;
             this.weight = weight;
             this.symptoms = symptoms;
-            this.diagnosisID = diagnosisId;
         }
 
         public Appointment(string reasonForAppointment, DateTime date, int doctorId, int patientId, string symptoms)
