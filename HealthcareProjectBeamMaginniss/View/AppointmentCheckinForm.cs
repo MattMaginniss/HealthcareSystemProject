@@ -70,7 +70,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 return;
             }
             this.aptController = new AppointmentController();
-            this.aptController.Update(new Appointment(this.apt.AppointmentID,reason,date,nurse,doctor, this.apt.patientID, systolicBP, diastolicBP, temp,pulse,weight,symptoms,this.apt.diagnosisID));
+            this.aptController.Update(new Appointment(this.apt.AppointmentID,reason,date,nurse,doctor, this.apt.patientID, systolicBP, diastolicBP, temp,pulse,weight,symptoms));
             this.Close();
         }
     }
