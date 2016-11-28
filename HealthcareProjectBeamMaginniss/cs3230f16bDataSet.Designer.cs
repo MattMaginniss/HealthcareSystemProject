@@ -26,6 +26,8 @@ namespace HealthcareProjectBeamMaginniss {
         
         private appointmentDataTable tableappointment;
         
+        private appointment_has_lab_orderDataTable tableappointment_has_lab_order;
+        
         private diagnosisDataTable tablediagnosis;
         
         private diagnosis_has_lab_testsDataTable tablediagnosis_has_lab_tests;
@@ -99,6 +101,9 @@ namespace HealthcareProjectBeamMaginniss {
                 if ((ds.Tables["appointment"] != null)) {
                     base.Tables.Add(new appointmentDataTable(ds.Tables["appointment"]));
                 }
+                if ((ds.Tables["appointment_has_lab_order"] != null)) {
+                    base.Tables.Add(new appointment_has_lab_orderDataTable(ds.Tables["appointment_has_lab_order"]));
+                }
                 if ((ds.Tables["diagnosis"] != null)) {
                     base.Tables.Add(new diagnosisDataTable(ds.Tables["diagnosis"]));
                 }
@@ -157,6 +162,16 @@ namespace HealthcareProjectBeamMaginniss {
         public appointmentDataTable appointment {
             get {
                 return this.tableappointment;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public appointment_has_lab_orderDataTable appointment_has_lab_order {
+            get {
+                return this.tableappointment_has_lab_order;
             }
         }
         
@@ -340,6 +355,9 @@ namespace HealthcareProjectBeamMaginniss {
                 if ((ds.Tables["appointment"] != null)) {
                     base.Tables.Add(new appointmentDataTable(ds.Tables["appointment"]));
                 }
+                if ((ds.Tables["appointment_has_lab_order"] != null)) {
+                    base.Tables.Add(new appointment_has_lab_orderDataTable(ds.Tables["appointment_has_lab_order"]));
+                }
                 if ((ds.Tables["diagnosis"] != null)) {
                     base.Tables.Add(new diagnosisDataTable(ds.Tables["diagnosis"]));
                 }
@@ -410,6 +428,12 @@ namespace HealthcareProjectBeamMaginniss {
             if ((initTable == true)) {
                 if ((this.tableappointment != null)) {
                     this.tableappointment.InitVars();
+                }
+            }
+            this.tableappointment_has_lab_order = ((appointment_has_lab_orderDataTable)(base.Tables["appointment_has_lab_order"]));
+            if ((initTable == true)) {
+                if ((this.tableappointment_has_lab_order != null)) {
+                    this.tableappointment_has_lab_order.InitVars();
                 }
             }
             this.tablediagnosis = ((diagnosisDataTable)(base.Tables["diagnosis"]));
@@ -500,6 +524,8 @@ namespace HealthcareProjectBeamMaginniss {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableappointment = new appointmentDataTable();
             base.Tables.Add(this.tableappointment);
+            this.tableappointment_has_lab_order = new appointment_has_lab_orderDataTable();
+            base.Tables.Add(this.tableappointment_has_lab_order);
             this.tablediagnosis = new diagnosisDataTable();
             base.Tables.Add(this.tablediagnosis);
             this.tablediagnosis_has_lab_tests = new diagnosis_has_lab_testsDataTable();
@@ -540,7 +566,7 @@ namespace HealthcareProjectBeamMaginniss {
             this.Relations.Add(this.relationfk_scheduled_appointment_patient1);
             this.relationfk_diagnosis_has_lab_tests_diagnosis1 = new global::System.Data.DataRelation("fk_diagnosis_has_lab_tests_diagnosis1", new global::System.Data.DataColumn[] {
                         this.tablediagnosis.diagnosisIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tablediagnosis_has_lab_tests.diagnosis_diagnosisIDColumn}, false);
+                        this.tablediagnosis_has_lab_tests.appointmentIDColumn}, false);
             this.Relations.Add(this.relationfk_diagnosis_has_lab_tests_diagnosis1);
             this.relationfk_diagnosis_has_lab_tests_lab_tests1 = new global::System.Data.DataRelation("fk_diagnosis_has_lab_tests_lab_tests1", new global::System.Data.DataColumn[] {
                         this.tablelab_tests.testCodeColumn}, new global::System.Data.DataColumn[] {
@@ -559,7 +585,7 @@ namespace HealthcareProjectBeamMaginniss {
                         this.tablestaff_credentials.staff_staffIDColumn}, false);
             this.Relations.Add(this.relationfk_staffCredentials_staff1);
             this.relationfk_test_results_diagnosis_has_lab_tests1 = new global::System.Data.DataRelation("fk_test_results_diagnosis_has_lab_tests1", new global::System.Data.DataColumn[] {
-                        this.tablediagnosis_has_lab_tests.diagnosis_diagnosisIDColumn,
+                        this.tablediagnosis_has_lab_tests.appointmentIDColumn,
                         this.tablediagnosis_has_lab_tests.test_order_idColumn}, new global::System.Data.DataColumn[] {
                         this.tabletest_results.lab_tests_diagnosisIDColumn,
                         this.tabletest_results.lab_tests_testCodeColumn}, false);
@@ -569,6 +595,12 @@ namespace HealthcareProjectBeamMaginniss {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeappointment() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeappointment_has_lab_order() {
             return false;
         }
         
@@ -695,6 +727,9 @@ namespace HealthcareProjectBeamMaginniss {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void appointmentRowChangeEventHandler(object sender, appointmentRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void appointment_has_lab_orderRowChangeEventHandler(object sender, appointment_has_lab_orderRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void diagnosisRowChangeEventHandler(object sender, diagnosisRowChangeEvent e);
@@ -1186,6 +1221,280 @@ namespace HealthcareProjectBeamMaginniss {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class appointment_has_lab_orderDataTable : global::System.Data.TypedTableBase<appointment_has_lab_orderRow> {
+            
+            private global::System.Data.DataColumn columnappointment_id;
+            
+            private global::System.Data.DataColumn columnlab_order_id;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderDataTable() {
+                this.TableName = "appointment_has_lab_order";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal appointment_has_lab_orderDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected appointment_has_lab_orderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn appointment_idColumn {
+                get {
+                    return this.columnappointment_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lab_order_idColumn {
+                get {
+                    return this.columnlab_order_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderRow this[int index] {
+                get {
+                    return ((appointment_has_lab_orderRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event appointment_has_lab_orderRowChangeEventHandler appointment_has_lab_orderRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event appointment_has_lab_orderRowChangeEventHandler appointment_has_lab_orderRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event appointment_has_lab_orderRowChangeEventHandler appointment_has_lab_orderRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event appointment_has_lab_orderRowChangeEventHandler appointment_has_lab_orderRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Addappointment_has_lab_orderRow(appointment_has_lab_orderRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderRow Addappointment_has_lab_orderRow(int appointment_id, int lab_order_id) {
+                appointment_has_lab_orderRow rowappointment_has_lab_orderRow = ((appointment_has_lab_orderRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        appointment_id,
+                        lab_order_id};
+                rowappointment_has_lab_orderRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowappointment_has_lab_orderRow);
+                return rowappointment_has_lab_orderRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderRow FindByappointment_idlab_order_id(int appointment_id, int lab_order_id) {
+                return ((appointment_has_lab_orderRow)(this.Rows.Find(new object[] {
+                            appointment_id,
+                            lab_order_id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                appointment_has_lab_orderDataTable cln = ((appointment_has_lab_orderDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new appointment_has_lab_orderDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnappointment_id = base.Columns["appointment_id"];
+                this.columnlab_order_id = base.Columns["lab_order_id"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnappointment_id = new global::System.Data.DataColumn("appointment_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnappointment_id);
+                this.columnlab_order_id = new global::System.Data.DataColumn("lab_order_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlab_order_id);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnappointment_id,
+                                this.columnlab_order_id}, true));
+                this.columnappointment_id.AllowDBNull = false;
+                this.columnlab_order_id.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderRow Newappointment_has_lab_orderRow() {
+                return ((appointment_has_lab_orderRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new appointment_has_lab_orderRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(appointment_has_lab_orderRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.appointment_has_lab_orderRowChanged != null)) {
+                    this.appointment_has_lab_orderRowChanged(this, new appointment_has_lab_orderRowChangeEvent(((appointment_has_lab_orderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.appointment_has_lab_orderRowChanging != null)) {
+                    this.appointment_has_lab_orderRowChanging(this, new appointment_has_lab_orderRowChangeEvent(((appointment_has_lab_orderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.appointment_has_lab_orderRowDeleted != null)) {
+                    this.appointment_has_lab_orderRowDeleted(this, new appointment_has_lab_orderRowChangeEvent(((appointment_has_lab_orderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.appointment_has_lab_orderRowDeleting != null)) {
+                    this.appointment_has_lab_orderRowDeleting(this, new appointment_has_lab_orderRowChangeEvent(((appointment_has_lab_orderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Removeappointment_has_lab_orderRow(appointment_has_lab_orderRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                cs3230f16bDataSet ds = new cs3230f16bDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "appointment_has_lab_orderDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class diagnosisDataTable : global::System.Data.TypedTableBase<diagnosisRow> {
             
             private global::System.Data.DataColumn columndiagnosisID;
@@ -1461,7 +1770,7 @@ namespace HealthcareProjectBeamMaginniss {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class diagnosis_has_lab_testsDataTable : global::System.Data.TypedTableBase<diagnosis_has_lab_testsRow> {
             
-            private global::System.Data.DataColumn columndiagnosis_diagnosisID;
+            private global::System.Data.DataColumn columnappointmentID;
             
             private global::System.Data.DataColumn columntest_order_id;
             
@@ -1500,9 +1809,9 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn diagnosis_diagnosisIDColumn {
+            public global::System.Data.DataColumn appointmentIDColumn {
                 get {
-                    return this.columndiagnosis_diagnosisID;
+                    return this.columnappointmentID;
                 }
             }
             
@@ -1569,9 +1878,9 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public diagnosis_has_lab_testsRow FindBydiagnosis_diagnosisIDtest_order_id(int diagnosis_diagnosisID, int test_order_id) {
+            public diagnosis_has_lab_testsRow FindByappointmentIDtest_order_id(int appointmentID, int test_order_id) {
                 return ((diagnosis_has_lab_testsRow)(this.Rows.Find(new object[] {
-                            diagnosis_diagnosisID,
+                            appointmentID,
                             test_order_id})));
             }
             
@@ -1592,21 +1901,21 @@ namespace HealthcareProjectBeamMaginniss {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columndiagnosis_diagnosisID = base.Columns["diagnosis_diagnosisID"];
+                this.columnappointmentID = base.Columns["appointmentID"];
                 this.columntest_order_id = base.Columns["test_order_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columndiagnosis_diagnosisID = new global::System.Data.DataColumn("diagnosis_diagnosisID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndiagnosis_diagnosisID);
+                this.columnappointmentID = new global::System.Data.DataColumn("appointmentID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnappointmentID);
                 this.columntest_order_id = new global::System.Data.DataColumn("test_order_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntest_order_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columndiagnosis_diagnosisID,
+                                this.columnappointmentID,
                                 this.columntest_order_id}, true));
-                this.columndiagnosis_diagnosisID.AllowDBNull = false;
+                this.columnappointmentID.AllowDBNull = false;
                 this.columntest_order_id.AllowDBNull = false;
             }
             
@@ -4860,6 +5169,43 @@ namespace HealthcareProjectBeamMaginniss {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class appointment_has_lab_orderRow : global::System.Data.DataRow {
+            
+            private appointment_has_lab_orderDataTable tableappointment_has_lab_order;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal appointment_has_lab_orderRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableappointment_has_lab_order = ((appointment_has_lab_orderDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int appointment_id {
+                get {
+                    return ((int)(this[this.tableappointment_has_lab_order.appointment_idColumn]));
+                }
+                set {
+                    this[this.tableappointment_has_lab_order.appointment_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int lab_order_id {
+                get {
+                    return ((int)(this[this.tableappointment_has_lab_order.lab_order_idColumn]));
+                }
+                set {
+                    this[this.tableappointment_has_lab_order.lab_order_idColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class diagnosisRow : global::System.Data.DataRow {
             
             private diagnosisDataTable tablediagnosis;
@@ -4949,12 +5295,12 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int diagnosis_diagnosisID {
+            public int appointmentID {
                 get {
-                    return ((int)(this[this.tablediagnosis_has_lab_tests.diagnosis_diagnosisIDColumn]));
+                    return ((int)(this[this.tablediagnosis_has_lab_tests.appointmentIDColumn]));
                 }
                 set {
-                    this[this.tablediagnosis_has_lab_tests.diagnosis_diagnosisIDColumn] = value;
+                    this[this.tablediagnosis_has_lab_tests.appointmentIDColumn] = value;
                 }
             }
             
@@ -5953,6 +6299,40 @@ namespace HealthcareProjectBeamMaginniss {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public appointmentRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class appointment_has_lab_orderRowChangeEvent : global::System.EventArgs {
+            
+            private appointment_has_lab_orderRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderRowChangeEvent(appointment_has_lab_orderRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public appointment_has_lab_orderRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7348,6 +7728,357 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class appointment_has_lab_orderTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public appointment_has_lab_orderTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "appointment_has_lab_order";
+            tableMapping.ColumnMappings.Add("appointment_id", "appointment_id");
+            tableMapping.ColumnMappings.Add("lab_order_id", "lab_order_id");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `appointment_has_lab_order` WHERE ((`appointment_id` = @p1) AND (`lab" +
+                "_order_id` = @p2))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "appointment_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "lab_order_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `appointment_has_lab_order` (`appointment_id`, `lab_order_id`) VALUES" +
+                " (@p1, @p2)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "appointment_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "lab_order_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE `appointment_has_lab_order` SET `appointment_id` = @p1, `lab_order_id` = @" +
+                "p2 WHERE ((`appointment_id` = @p3) AND (`lab_order_id` = @p4))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "appointment_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "lab_order_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "appointment_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "lab_order_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::HealthcareProjectBeamMaginniss.Properties.Settings.Default.cs3230f16bConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT `appointment_id`, `lab_order_id` FROM `appointment_has_lab_order`";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(cs3230f16bDataSet.appointment_has_lab_orderDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual cs3230f16bDataSet.appointment_has_lab_orderDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            cs3230f16bDataSet.appointment_has_lab_orderDataTable dataTable = new cs3230f16bDataSet.appointment_has_lab_orderDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(cs3230f16bDataSet.appointment_has_lab_orderDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(cs3230f16bDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "appointment_has_lab_order");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int p1, int p2) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(p2));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int p1, int p2) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(p2));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int p1, int p2, int p3, int p4) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(p2));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(p3));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(p4));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int p3, int p4) {
+            return this.Update(p3, p4, p3, p4);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class diagnosisTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -7800,20 +8531,20 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "diagnosis_has_lab_tests";
-            tableMapping.ColumnMappings.Add("diagnosis_diagnosisID", "diagnosis_diagnosisID");
+            tableMapping.ColumnMappings.Add("appointmentID", "appointmentID");
             tableMapping.ColumnMappings.Add("test_order_id", "test_order_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `diagnosis_has_lab_tests` WHERE ((`diagnosis_diagnosisID` = @p1) AND " +
-                "(`test_order_id` = @p2))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `diagnosis_has_lab_tests` WHERE ((`appointmentID` = @p1) AND (`test_o" +
+                "rder_id` = @p2))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "diagnosis_diagnosisID";
+            param.SourceColumn = "appointmentID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -7826,15 +8557,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `diagnosis_has_lab_tests` (`diagnosis_diagnosisID`, `test_order_id`) " +
-                "VALUES (@p1, @p2)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `diagnosis_has_lab_tests` (`appointmentID`, `test_order_id`) VALUES (" +
+                "@p1, @p2)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "diagnosis_diagnosisID";
+            param.SourceColumn = "appointmentID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
@@ -7845,15 +8576,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `diagnosis_has_lab_tests` SET `diagnosis_diagnosisID` = @p1, `test_order_i" +
-                "d` = @p2 WHERE ((`diagnosis_diagnosisID` = @p3) AND (`test_order_id` = @p4))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `diagnosis_has_lab_tests` SET `appointmentID` = @p1, `test_order_id` = @p2" +
+                " WHERE ((`appointmentID` = @p3) AND (`test_order_id` = @p4))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "diagnosis_diagnosisID";
+            param.SourceColumn = "appointmentID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
@@ -7867,7 +8598,7 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "diagnosis_diagnosisID";
+            param.SourceColumn = "appointmentID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -7893,7 +8624,7 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `diagnosis_diagnosisID`, `test_order_id` FROM `diagnosis_has_lab_tests`";
+            this._commandCollection[0].CommandText = "SELECT `appointmentID`, `test_order_id` FROM `diagnosis_has_lab_tests`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12333,6 +13064,8 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
         
         private appointmentTableAdapter _appointmentTableAdapter;
         
+        private appointment_has_lab_orderTableAdapter _appointment_has_lab_orderTableAdapter;
+        
         private diagnosisTableAdapter _diagnosisTableAdapter;
         
         private diagnosis_has_lab_testsTableAdapter _diagnosis_has_lab_testsTableAdapter;
@@ -12381,6 +13114,20 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             }
             set {
                 this._appointmentTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public appointment_has_lab_orderTableAdapter appointment_has_lab_orderTableAdapter {
+            get {
+                return this._appointment_has_lab_orderTableAdapter;
+            }
+            set {
+                this._appointment_has_lab_orderTableAdapter = value;
             }
         }
         
@@ -12561,6 +13308,10 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                             && (this._appointmentTableAdapter.Connection != null))) {
                     return this._appointmentTableAdapter.Connection;
                 }
+                if (((this._appointment_has_lab_orderTableAdapter != null) 
+                            && (this._appointment_has_lab_orderTableAdapter.Connection != null))) {
+                    return this._appointment_has_lab_orderTableAdapter.Connection;
+                }
                 if (((this._diagnosisTableAdapter != null) 
                             && (this._diagnosisTableAdapter.Connection != null))) {
                     return this._diagnosisTableAdapter.Connection;
@@ -12619,6 +13370,9 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             get {
                 int count = 0;
                 if ((this._appointmentTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._appointment_has_lab_orderTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._diagnosisTableAdapter != null)) {
@@ -12725,6 +13479,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._appointmentTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._appointment_has_lab_orderTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.appointment_has_lab_order.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._appointment_has_lab_orderTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12839,6 +13602,14 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._appointment_has_lab_orderTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.appointment_has_lab_order.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._appointment_has_lab_orderTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._doctor_has_doctor_specialtiesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.doctor_has_doctor_specialties.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12926,6 +13697,14 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._doctor_has_doctor_specialtiesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._appointment_has_lab_orderTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.appointment_has_lab_order.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._appointment_has_lab_orderTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -13029,6 +13808,11 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._appointment_has_lab_orderTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._appointment_has_lab_orderTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             if (((this._diagnosisTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._diagnosisTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -13123,6 +13907,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     if (this._appointmentTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._appointmentTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._appointmentTableAdapter.Adapter);
+                    }
+                }
+                if ((this._appointment_has_lab_orderTableAdapter != null)) {
+                    revertConnections.Add(this._appointment_has_lab_orderTableAdapter, this._appointment_has_lab_orderTableAdapter.Connection);
+                    this._appointment_has_lab_orderTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
+                    this._appointment_has_lab_orderTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
+                    if (this._appointment_has_lab_orderTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._appointment_has_lab_orderTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._appointment_has_lab_orderTableAdapter.Adapter);
                     }
                 }
                 if ((this._diagnosisTableAdapter != null)) {
@@ -13285,6 +14078,10 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if ((this._appointmentTableAdapter != null)) {
                     this._appointmentTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._appointmentTableAdapter]));
                     this._appointmentTableAdapter.Transaction = null;
+                }
+                if ((this._appointment_has_lab_orderTableAdapter != null)) {
+                    this._appointment_has_lab_orderTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._appointment_has_lab_orderTableAdapter]));
+                    this._appointment_has_lab_orderTableAdapter.Transaction = null;
                 }
                 if ((this._diagnosisTableAdapter != null)) {
                     this._diagnosisTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._diagnosisTableAdapter]));
