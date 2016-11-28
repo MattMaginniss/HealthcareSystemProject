@@ -88,5 +88,103 @@ namespace HealthcareProjectBeamMaginniss.View
                 this.updateTable();
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (this.radioBtnName.Checked)
+            {
+                string firstNameQuery = txtFirstName.Text.ToLower();
+                string lastNameQuery = txtLastName.Text.ToLower();
+
+                if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFullName(firstNameQuery, lastNameQuery) };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else if (!firstNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFirstName(firstNameQuery) };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else if (!lastNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource
+                    {
+                        DataSource = this.appointmentController.GetAppointmentByPatientLastName(lastNameQuery)
+                    };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else
+                {
+                    this.updateTable();
+                }
+            }
+            else if (this.radBtnDOB.Checked)
+            {
+                String dobQuery = dateTimeDateOfBirth.Value.ToShortDateString();
+
+                this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientDateOfBirth(dobQuery) };
+                this.dgvAppointment.DataSource = this.bindingSource;
+            }
+
+            else if (this.radBtnBoth.Checked)
+            {
+                string firstNameQuery = txtFirstName.Text.ToLower();
+                string lastNameQuery = txtLastName.Text.ToLower();
+                String dobQuery = dateTimeDateOfBirth.Value.ToShortDateString();
+
+                if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFullNameAndDob(firstNameQuery, lastNameQuery, dobQuery) };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else if (!firstNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFirstNameAndDob(firstNameQuery, dobQuery) };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else if (!lastNameQuery.Equals(""))
+                {
+                    this.bindingSource = new BindingSource
+                    {
+                        DataSource = this.appointmentController.GetAppointmentByPatientLastNameAndDob(lastNameQuery, dobQuery)
+                    };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else
+                {
+                    this.updateTable();
+                }
+            }
+        }
+        private void radioBtnName_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtFirstName.Enabled = true;
+            this.txtLastName.Enabled = true;
+            this.dateTimeDateOfBirth.Enabled = false;
+        }
+
+        private void radBtnDOB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtFirstName.Enabled = false;
+            this.txtLastName.Enabled = false;
+            this.dateTimeDateOfBirth.Enabled = true;
+        }
+
+        private void radBtnBoth_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtFirstName.Enabled = true;
+            this.txtLastName.Enabled = true;
+            this.dateTimeDateOfBirth.Enabled = true;
+        }
+
+        private void btnDGVReset_Click(object sender, EventArgs e)
+        {
+            this.radioBtnName.Checked = true;
+            this.txtFirstName.Text = "";
+            this.txtLastName.Text = "";
+            this.dateTimeDateOfBirth.Value = DateTime.Today;
+            this.updateTable();
+        }
     }
 }

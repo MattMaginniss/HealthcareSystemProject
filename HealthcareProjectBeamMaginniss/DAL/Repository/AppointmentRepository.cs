@@ -110,7 +110,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-        private Appointment getAppointmentFromRow(cs3230f16bDataSet.appointmentRow row)
+        public Appointment getAppointmentFromRow(cs3230f16bDataSet.appointmentRow row)
         {
             var appointmentId = row.appointmentID;
             var reasonForAppointment = row.reasonForAppointment;
@@ -128,6 +128,175 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return new Appointment(appointmentId, reasonForAppointment, date, nureseId, doctorId,
             patientId, systolicBp, diastolicBp, temperature, pulse, weight,
             symptoms, diagnosisId);
+        }
+
+        public IList<Appointment> GetAppointmentByPatientDateOfBirth(String dob)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.Dob.ToShortDateString().Equals(dob))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
+        }
+
+        public IList<Appointment> GetAppointmentByPatientFirstName(String fName)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.FirstName.ToLower().Equals(fName))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
+        }
+
+        public IList<Appointment> GetAppointmentByPatientLastName(String lName)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.LastName.ToLower().Equals(lName))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
+        }
+
+        public IList<Appointment> GetAppointmentByPatientFullName(String fName, String lName)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
+        }
+
+        public IList<Appointment> GetAppointmentByPatientFirstNameAndDob(String fName, String dob)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.FirstName.ToLower().Equals(fName) && patient.Dob.ToShortDateString().Equals(dob))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
+        }
+
+        public IList<Appointment> GetAppointmentByPatientLastNameAndDob(String lName, String dob)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.LastName.ToLower().Equals(lName) && patient.Dob.ToShortDateString().Equals(dob))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
+        }
+
+
+        public IList<Appointment> GetAppointmentByPatientFullNameAndDob(String fName, String lName, String dob)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            var patientRepository = new PatientRepository();
+
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var patient = patientRepository.GetById(appointment.patientID);
+
+                    if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName) && patient.Dob.ToShortDateString().Equals(dob))
+                    {
+                        appointmentList.Add(appointment);
+                    }
+                }
+            }
+
+            return appointmentList;
         }
     }
 }

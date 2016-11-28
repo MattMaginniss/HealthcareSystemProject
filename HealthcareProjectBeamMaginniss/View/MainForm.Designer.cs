@@ -30,7 +30,7 @@
         {
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
             this.btnAddPatientButton = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.lblLogout = new System.Windows.Forms.LinkLabel();
             this.btnAddAppointment = new System.Windows.Forms.Button();
@@ -70,15 +70,15 @@
             this.btnAddPatientButton.UseVisualStyleBackColor = true;
             this.btnAddPatientButton.Click += new System.EventHandler(this.addPatientButton_Click);
             // 
-            // searchButton
+            // btnSearch
             // 
-            this.searchButton.Location = new System.Drawing.Point(754, 24);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(144, 26);
-            this.searchButton.TabIndex = 2;
-            this.searchButton.Text = "Search Patient Data";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.btnSearch.Location = new System.Drawing.Point(754, 24);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(144, 26);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Search Patient Data";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // lblWelcome
             // 
@@ -241,7 +241,7 @@
             this.Controls.Add(this.btnAddAppointment);
             this.Controls.Add(this.lblLogout);
             this.Controls.Add(this.lblWelcome);
-            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnAddPatientButton);
             this.Controls.Add(this.patientDataGridView);
             this.Name = "MainForm";
@@ -259,7 +259,7 @@
 
         private System.Windows.Forms.DataGridView patientDataGridView;
         private System.Windows.Forms.Button btnAddPatientButton;
-        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.LinkLabel lblLogout;
         private System.Windows.Forms.Button btnAddAppointment;
