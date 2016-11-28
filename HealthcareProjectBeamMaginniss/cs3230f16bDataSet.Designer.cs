@@ -44,6 +44,8 @@ namespace HealthcareProjectBeamMaginniss {
         
         private staff_typesDataTable tablestaff_types;
         
+        private test_orderedDataTable tabletest_ordered;
+        
         private test_resultsDataTable tabletest_results;
         
         private global::System.Data.DataRelation relationfk_appointment_diagnosis1;
@@ -123,6 +125,9 @@ namespace HealthcareProjectBeamMaginniss {
                 }
                 if ((ds.Tables["staff_types"] != null)) {
                     base.Tables.Add(new staff_typesDataTable(ds.Tables["staff_types"]));
+                }
+                if ((ds.Tables["test_ordered"] != null)) {
+                    base.Tables.Add(new test_orderedDataTable(ds.Tables["test_ordered"]));
                 }
                 if ((ds.Tables["test_results"] != null)) {
                     base.Tables.Add(new test_resultsDataTable(ds.Tables["test_results"]));
@@ -249,6 +254,16 @@ namespace HealthcareProjectBeamMaginniss {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public test_orderedDataTable test_ordered {
+            get {
+                return this.tabletest_ordered;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public test_resultsDataTable test_results {
             get {
                 return this.tabletest_results;
@@ -352,6 +367,9 @@ namespace HealthcareProjectBeamMaginniss {
                 if ((ds.Tables["staff_types"] != null)) {
                     base.Tables.Add(new staff_typesDataTable(ds.Tables["staff_types"]));
                 }
+                if ((ds.Tables["test_ordered"] != null)) {
+                    base.Tables.Add(new test_orderedDataTable(ds.Tables["test_ordered"]));
+                }
                 if ((ds.Tables["test_results"] != null)) {
                     base.Tables.Add(new test_resultsDataTable(ds.Tables["test_results"]));
                 }
@@ -448,6 +466,12 @@ namespace HealthcareProjectBeamMaginniss {
                     this.tablestaff_types.InitVars();
                 }
             }
+            this.tabletest_ordered = ((test_orderedDataTable)(base.Tables["test_ordered"]));
+            if ((initTable == true)) {
+                if ((this.tabletest_ordered != null)) {
+                    this.tabletest_ordered.InitVars();
+                }
+            }
             this.tabletest_results = ((test_resultsDataTable)(base.Tables["test_results"]));
             if ((initTable == true)) {
                 if ((this.tabletest_results != null)) {
@@ -494,6 +518,8 @@ namespace HealthcareProjectBeamMaginniss {
             base.Tables.Add(this.tablestaff_credentials);
             this.tablestaff_types = new staff_typesDataTable();
             base.Tables.Add(this.tablestaff_types);
+            this.tabletest_ordered = new test_orderedDataTable();
+            base.Tables.Add(this.tabletest_ordered);
             this.tabletest_results = new test_resultsDataTable();
             base.Tables.Add(this.tabletest_results);
             this.relationfk_appointment_diagnosis1 = new global::System.Data.DataRelation("fk_appointment_diagnosis1", new global::System.Data.DataColumn[] {
@@ -602,6 +628,12 @@ namespace HealthcareProjectBeamMaginniss {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializetest_ordered() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializetest_results() {
             return false;
         }
@@ -690,6 +722,9 @@ namespace HealthcareProjectBeamMaginniss {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void staff_typesRowChangeEventHandler(object sender, staff_typesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void test_orderedRowChangeEventHandler(object sender, test_orderedRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void test_resultsRowChangeEventHandler(object sender, test_resultsRowChangeEvent e);
@@ -2578,8 +2613,6 @@ namespace HealthcareProjectBeamMaginniss {
             
             private global::System.Data.DataColumn columndateOfBirth;
             
-            private global::System.Data.DataColumn _columnphone_;
-            
             private global::System.Data.DataColumn columnsex;
             
             private global::System.Data.DataColumn columnstreet1;
@@ -2593,6 +2626,8 @@ namespace HealthcareProjectBeamMaginniss {
             private global::System.Data.DataColumn columnzip;
             
             private global::System.Data.DataColumn columncountry;
+            
+            private global::System.Data.DataColumn _columnphone_;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2661,14 +2696,6 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn _phone_Column {
-                get {
-                    return this._columnphone_;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn sexColumn {
                 get {
                     return this.columnsex;
@@ -2725,6 +2752,14 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn _phone_Column {
+                get {
+                    return this._columnphone_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2760,21 +2795,21 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public patientRow AddpatientRow(string firstName, string lastName, System.DateTime dateOfBirth, string _phone_, string sex, string street1, string street2, string city, string state, string zip, string country) {
+            public patientRow AddpatientRow(string firstName, string lastName, System.DateTime dateOfBirth, string sex, string street1, string street2, string city, string state, string zip, string country, string _phone_) {
                 patientRow rowpatientRow = ((patientRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         firstName,
                         lastName,
                         dateOfBirth,
-                        _phone_,
                         sex,
                         street1,
                         street2,
                         city,
                         state,
                         zip,
-                        country};
+                        country,
+                        _phone_};
                 rowpatientRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpatientRow);
                 return rowpatientRow;
@@ -2808,7 +2843,6 @@ namespace HealthcareProjectBeamMaginniss {
                 this.columnfirstName = base.Columns["firstName"];
                 this.columnlastName = base.Columns["lastName"];
                 this.columndateOfBirth = base.Columns["dateOfBirth"];
-                this._columnphone_ = base.Columns["phone#"];
                 this.columnsex = base.Columns["sex"];
                 this.columnstreet1 = base.Columns["street1"];
                 this.columnstreet2 = base.Columns["street2"];
@@ -2816,6 +2850,7 @@ namespace HealthcareProjectBeamMaginniss {
                 this.columnstate = base.Columns["state"];
                 this.columnzip = base.Columns["zip"];
                 this.columncountry = base.Columns["country"];
+                this._columnphone_ = base.Columns["phone#"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2829,10 +2864,6 @@ namespace HealthcareProjectBeamMaginniss {
                 base.Columns.Add(this.columnlastName);
                 this.columndateOfBirth = new global::System.Data.DataColumn("dateOfBirth", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndateOfBirth);
-                this._columnphone_ = new global::System.Data.DataColumn("phone#", typeof(string), null, global::System.Data.MappingType.Element);
-                this._columnphone_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnphone_");
-                this._columnphone_.ExtendedProperties.Add("Generator_UserColumnName", "phone#");
-                base.Columns.Add(this._columnphone_);
                 this.columnsex = new global::System.Data.DataColumn("sex", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsex);
                 this.columnstreet1 = new global::System.Data.DataColumn("street1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2847,6 +2878,10 @@ namespace HealthcareProjectBeamMaginniss {
                 base.Columns.Add(this.columnzip);
                 this.columncountry = new global::System.Data.DataColumn("country", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncountry);
+                this._columnphone_ = new global::System.Data.DataColumn("phone#", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnphone_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnphone_");
+                this._columnphone_.ExtendedProperties.Add("Generator_UserColumnName", "phone#");
+                base.Columns.Add(this._columnphone_);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpatientID}, true));
                 this.columnpatientID.AutoIncrement = true;
@@ -2856,7 +2891,6 @@ namespace HealthcareProjectBeamMaginniss {
                 this.columnpatientID.Unique = true;
                 this.columnfirstName.MaxLength = 45;
                 this.columnlastName.MaxLength = 45;
-                this._columnphone_.MaxLength = 10;
                 this.columnsex.MaxLength = 1;
                 this.columnstreet1.MaxLength = 50;
                 this.columnstreet2.MaxLength = 50;
@@ -2864,6 +2898,7 @@ namespace HealthcareProjectBeamMaginniss {
                 this.columnstate.MaxLength = 30;
                 this.columnzip.MaxLength = 7;
                 this.columncountry.MaxLength = 30;
+                this._columnphone_.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3849,6 +3884,312 @@ namespace HealthcareProjectBeamMaginniss {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "staff_typesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class test_orderedDataTable : global::System.Data.TypedTableBase<test_orderedRow> {
+            
+            private global::System.Data.DataColumn columntest_ordered_id;
+            
+            private global::System.Data.DataColumn columntest_id;
+            
+            private global::System.Data.DataColumn columndoctor_id;
+            
+            private global::System.Data.DataColumn columntest_date;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedDataTable() {
+                this.TableName = "test_ordered";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal test_orderedDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected test_orderedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn test_ordered_idColumn {
+                get {
+                    return this.columntest_ordered_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn test_idColumn {
+                get {
+                    return this.columntest_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn doctor_idColumn {
+                get {
+                    return this.columndoctor_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn test_dateColumn {
+                get {
+                    return this.columntest_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedRow this[int index] {
+                get {
+                    return ((test_orderedRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event test_orderedRowChangeEventHandler test_orderedRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event test_orderedRowChangeEventHandler test_orderedRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event test_orderedRowChangeEventHandler test_orderedRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event test_orderedRowChangeEventHandler test_orderedRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Addtest_orderedRow(test_orderedRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedRow Addtest_orderedRow(int test_id, int doctor_id, System.DateTime test_date) {
+                test_orderedRow rowtest_orderedRow = ((test_orderedRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        test_id,
+                        doctor_id,
+                        test_date};
+                rowtest_orderedRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowtest_orderedRow);
+                return rowtest_orderedRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedRow FindBytest_ordered_id(int test_ordered_id) {
+                return ((test_orderedRow)(this.Rows.Find(new object[] {
+                            test_ordered_id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                test_orderedDataTable cln = ((test_orderedDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new test_orderedDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columntest_ordered_id = base.Columns["test_ordered_id"];
+                this.columntest_id = base.Columns["test_id"];
+                this.columndoctor_id = base.Columns["doctor_id"];
+                this.columntest_date = base.Columns["test_date"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columntest_ordered_id = new global::System.Data.DataColumn("test_ordered_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntest_ordered_id);
+                this.columntest_id = new global::System.Data.DataColumn("test_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntest_id);
+                this.columndoctor_id = new global::System.Data.DataColumn("doctor_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoctor_id);
+                this.columntest_date = new global::System.Data.DataColumn("test_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntest_date);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columntest_ordered_id}, true));
+                this.columntest_ordered_id.AutoIncrement = true;
+                this.columntest_ordered_id.AutoIncrementSeed = -1;
+                this.columntest_ordered_id.AutoIncrementStep = -1;
+                this.columntest_ordered_id.AllowDBNull = false;
+                this.columntest_ordered_id.Unique = true;
+                this.columntest_id.AllowDBNull = false;
+                this.columndoctor_id.AllowDBNull = false;
+                this.columntest_date.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedRow Newtest_orderedRow() {
+                return ((test_orderedRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new test_orderedRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(test_orderedRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.test_orderedRowChanged != null)) {
+                    this.test_orderedRowChanged(this, new test_orderedRowChangeEvent(((test_orderedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.test_orderedRowChanging != null)) {
+                    this.test_orderedRowChanging(this, new test_orderedRowChangeEvent(((test_orderedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.test_orderedRowDeleted != null)) {
+                    this.test_orderedRowDeleted(this, new test_orderedRowChangeEvent(((test_orderedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.test_orderedRowDeleting != null)) {
+                    this.test_orderedRowDeleting(this, new test_orderedRowChangeEvent(((test_orderedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Removetest_orderedRow(test_orderedRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                cs3230f16bDataSet ds = new cs3230f16bDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "test_orderedDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4966,22 +5307,6 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string _phone_ {
-                get {
-                    try {
-                        return ((string)(this[this.tablepatient._phone_Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'phone#\' in table \'patient\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablepatient._phone_Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string sex {
                 get {
                     try {
@@ -5094,6 +5419,22 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string _phone_ {
+                get {
+                    try {
+                        return ((string)(this[this.tablepatient._phone_Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'phone#\' in table \'patient\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepatient._phone_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsfirstNameNull() {
                 return this.IsNull(this.tablepatient.firstNameColumn);
             }
@@ -5126,18 +5467,6 @@ namespace HealthcareProjectBeamMaginniss {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetdateOfBirthNull() {
                 this[this.tablepatient.dateOfBirthColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is_phone_Null() {
-                return this.IsNull(this.tablepatient._phone_Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set_phone_Null() {
-                this[this.tablepatient._phone_Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5222,6 +5551,18 @@ namespace HealthcareProjectBeamMaginniss {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcountryNull() {
                 this[this.tablepatient.countryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is_phone_Null() {
+                return this.IsNull(this.tablepatient._phone_Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set_phone_Null() {
+                this[this.tablepatient._phone_Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5453,6 +5794,65 @@ namespace HealthcareProjectBeamMaginniss {
                 }
                 set {
                     this[this.tablestaff_types.staffTypeNameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class test_orderedRow : global::System.Data.DataRow {
+            
+            private test_orderedDataTable tabletest_ordered;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal test_orderedRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tabletest_ordered = ((test_orderedDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int test_ordered_id {
+                get {
+                    return ((int)(this[this.tabletest_ordered.test_ordered_idColumn]));
+                }
+                set {
+                    this[this.tabletest_ordered.test_ordered_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int test_id {
+                get {
+                    return ((int)(this[this.tabletest_ordered.test_idColumn]));
+                }
+                set {
+                    this[this.tabletest_ordered.test_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int doctor_id {
+                get {
+                    return ((int)(this[this.tabletest_ordered.doctor_idColumn]));
+                }
+                set {
+                    this[this.tabletest_ordered.doctor_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime test_date {
+                get {
+                    return ((global::System.DateTime)(this[this.tabletest_ordered.test_dateColumn]));
+                }
+                set {
+                    this[this.tabletest_ordered.test_dateColumn] = value;
                 }
             }
         }
@@ -5859,6 +6259,40 @@ namespace HealthcareProjectBeamMaginniss {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public staff_typesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class test_orderedRowChangeEvent : global::System.EventArgs {
+            
+            private test_orderedRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedRowChangeEvent(test_orderedRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public test_orderedRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -8875,7 +9309,6 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("firstName", "firstName");
             tableMapping.ColumnMappings.Add("lastName", "lastName");
             tableMapping.ColumnMappings.Add("dateOfBirth", "dateOfBirth");
-            tableMapping.ColumnMappings.Add("phone#", "phone#");
             tableMapping.ColumnMappings.Add("sex", "sex");
             tableMapping.ColumnMappings.Add("street1", "street1");
             tableMapping.ColumnMappings.Add("street2", "street2");
@@ -8883,6 +9316,7 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("state", "state");
             tableMapping.ColumnMappings.Add("zip", "zip");
             tableMapping.ColumnMappings.Add("country", "country");
+            tableMapping.ColumnMappings.Add("phone#", "phone#");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -11119,6 +11553,405 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class test_orderedTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public test_orderedTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "test_ordered";
+            tableMapping.ColumnMappings.Add("test_ordered_id", "test_ordered_id");
+            tableMapping.ColumnMappings.Add("test_id", "test_id");
+            tableMapping.ColumnMappings.Add("doctor_id", "doctor_id");
+            tableMapping.ColumnMappings.Add("test_date", "test_date");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `test_ordered` WHERE ((`test_ordered_id` = @p1) AND (`test_id` = @p2)" +
+                " AND (`doctor_id` = @p3) AND (`test_date` = @p4))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "test_ordered_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "test_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "doctor_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
+            param.DbType = global::System.Data.DbType.Date;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "test_date";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `test_ordered` (`test_id`, `doctor_id`, `test_date`) VALUES (@p1, @p2" +
+                ", @p3)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "test_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "doctor_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Date;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "test_date";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE `test_ordered` SET `test_id` = @p1, `doctor_id` = @p2, `test_date` = @p3 W" +
+                "HERE ((`test_ordered_id` = @p4) AND (`test_id` = @p5) AND (`doctor_id` = @p6) AN" +
+                "D (`test_date` = @p7))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "test_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "doctor_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Date;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "test_date";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "test_ordered_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p5";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "test_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p6";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "doctor_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p7";
+            param.DbType = global::System.Data.DbType.Date;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "test_date";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::HealthcareProjectBeamMaginniss.Properties.Settings.Default.cs3230f16bConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT `test_ordered_id`, `test_id`, `doctor_id`, `test_date` FROM `test_ordered`" +
+                "";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(cs3230f16bDataSet.test_orderedDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual cs3230f16bDataSet.test_orderedDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            cs3230f16bDataSet.test_orderedDataTable dataTable = new cs3230f16bDataSet.test_orderedDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(cs3230f16bDataSet.test_orderedDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(cs3230f16bDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "test_ordered");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int p1, int p2, int p3, System.DateTime p4) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(p2));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(p3));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(p4));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int p1, int p2, System.DateTime p3) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(p2));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(p3));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int p1, int p2, System.DateTime p3, int p4, int p5, int p6, System.DateTime p7) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(p2));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(p3));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(p5));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(p7));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class test_resultsTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -11520,6 +12353,8 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
         
         private staff_typesTableAdapter _staff_typesTableAdapter;
         
+        private test_orderedTableAdapter _test_orderedTableAdapter;
+        
         private test_resultsTableAdapter _test_resultsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
@@ -11682,6 +12517,20 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+        public test_orderedTableAdapter test_orderedTableAdapter {
+            get {
+                return this._test_orderedTableAdapter;
+            }
+            set {
+                this._test_orderedTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
         public test_resultsTableAdapter test_resultsTableAdapter {
             get {
                 return this._test_resultsTableAdapter;
@@ -11750,6 +12599,10 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                             && (this._staff_typesTableAdapter.Connection != null))) {
                     return this._staff_typesTableAdapter.Connection;
                 }
+                if (((this._test_orderedTableAdapter != null) 
+                            && (this._test_orderedTableAdapter.Connection != null))) {
+                    return this._test_orderedTableAdapter.Connection;
+                }
                 if (((this._test_resultsTableAdapter != null) 
                             && (this._test_resultsTableAdapter.Connection != null))) {
                     return this._test_resultsTableAdapter.Connection;
@@ -11795,6 +12648,9 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     count = (count + 1);
                 }
                 if ((this._staff_typesTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._test_orderedTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._test_resultsTableAdapter != null)) {
@@ -11901,6 +12757,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._test_orderedTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.test_ordered.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._test_orderedTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._test_resultsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.test_results.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12000,6 +12865,14 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._test_orderedTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.test_ordered.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._test_orderedTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._test_resultsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.test_results.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12023,6 +12896,14 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._test_resultsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._test_orderedTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.test_ordered.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._test_orderedTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12195,6 +13076,11 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._test_orderedTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._test_orderedTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             if (((this._test_resultsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._test_resultsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -12322,6 +13208,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._staff_typesTableAdapter.Adapter);
                     }
                 }
+                if ((this._test_orderedTableAdapter != null)) {
+                    revertConnections.Add(this._test_orderedTableAdapter, this._test_orderedTableAdapter.Connection);
+                    this._test_orderedTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
+                    this._test_orderedTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
+                    if (this._test_orderedTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._test_orderedTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._test_orderedTableAdapter.Adapter);
+                    }
+                }
                 if ((this._test_resultsTableAdapter != null)) {
                     revertConnections.Add(this._test_resultsTableAdapter, this._test_resultsTableAdapter.Connection);
                     this._test_resultsTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
@@ -12428,6 +13323,10 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if ((this._staff_typesTableAdapter != null)) {
                     this._staff_typesTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._staff_typesTableAdapter]));
                     this._staff_typesTableAdapter.Transaction = null;
+                }
+                if ((this._test_orderedTableAdapter != null)) {
+                    this._test_orderedTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._test_orderedTableAdapter]));
+                    this._test_orderedTableAdapter.Transaction = null;
                 }
                 if ((this._test_resultsTableAdapter != null)) {
                     this._test_resultsTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._test_resultsTableAdapter]));
