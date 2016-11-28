@@ -17,6 +17,7 @@ namespace HealthcareProjectBeamMaginniss.View
         private readonly StaffController staffController;
         private AppointmentController aptController;
         private readonly LabTestController ltController;
+        private readonly LabTestOrderedController ltoController;
         private readonly Appointment apt;
 
         public OrderLabTestForm(Appointment apt)
@@ -24,6 +25,7 @@ namespace HealthcareProjectBeamMaginniss.View
             InitializeComponent();
             this.staffController = new StaffController();
             this.ltController = new LabTestController();
+            this.ltoController = new LabTestOrderedController();
             this.apt = apt;
             this.SetUpForm();
         }
@@ -50,7 +52,12 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            var labTest = ((LabTest) this.comboBoxLabTests.SelectedItem).LabTestId;
+            var date = this.dateTimeLabTest.Value;
+            var doctor = ((Staff)this.comboBoxDoctor.SelectedItem).StaffId;
+            
+            this.ltoController.Add(new LabTestOrdered(labTest, doctor, date));
+            this.Close();
         }
 
         private void btnCreateTest_Click(object sender, EventArgs e)

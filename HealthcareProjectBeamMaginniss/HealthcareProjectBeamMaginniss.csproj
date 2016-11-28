@@ -58,10 +58,12 @@
     </Compile>
     <Compile Include="DAL\Controller\AppointmentController.cs" />
     <Compile Include="DAL\Controller\LabTestController.cs" />
+    <Compile Include="DAL\Controller\LabTestOrderedController.cs" />
     <Compile Include="DAL\Controller\LoginController.cs" />
     <Compile Include="DAL\Controller\PatientController.cs" />
     <Compile Include="DAL\Controller\StaffController.cs" />
     <Compile Include="DAL\Repository\AppointmentRepository.cs" />
+    <Compile Include="DAL\Repository\LabTestOrderedRepository.cs" />
     <Compile Include="DAL\Repository\LabTestRepository.cs" />
     <Compile Include="DAL\Repository\StaffRepository.cs" />
     <Compile Include="DAL\Repository\PatientRepository.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\LabTest.cs" />
+    <Compile Include="Model\LabTestOrdered.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />
