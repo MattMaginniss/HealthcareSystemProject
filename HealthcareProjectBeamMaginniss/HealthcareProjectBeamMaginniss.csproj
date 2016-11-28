@@ -57,10 +57,12 @@
       <DependentUpon>cs3230f16bDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAL\Controller\AppointmentController.cs" />
+    <Compile Include="DAL\Controller\FreeSqlController.cs" />
     <Compile Include="DAL\Controller\LoginController.cs" />
     <Compile Include="DAL\Controller\PatientController.cs" />
     <Compile Include="DAL\Controller\StaffController.cs" />
     <Compile Include="DAL\Repository\AppointmentRepository.cs" />
+    <Compile Include="DAL\Repository\FreeSqlRepository.cs" />
     <Compile Include="DAL\Repository\LabTestRepository.cs" />
     <Compile Include="DAL\Repository\StaffRepository.cs" />
     <Compile Include="DAL\Repository\PatientRepository.cs" />
@@ -104,6 +106,12 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\QueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QueryForm.Designer.cs">
+      <DependentUpon>QueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QueryForm.resx">
+      <DependentUpon>QueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ViewAppointmentForm.resx">
       <DependentUpon>ViewAppointmentForm.cs</DependentUpon>

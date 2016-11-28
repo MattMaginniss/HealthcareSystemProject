@@ -49,5 +49,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             return this.login.GetNameByUsername(userName);
         }
+
+        public int GetStaffType(string username)
+        {
+            return this.login.getStaffTypeByUsername(username);
+        }
     }
 }

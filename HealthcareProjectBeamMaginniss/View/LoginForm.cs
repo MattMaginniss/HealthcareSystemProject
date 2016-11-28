@@ -69,9 +69,21 @@ namespace HealthcareProjectBeamMaginniss.View
             this.username = this.txtUsername.Text.Trim();
             this.txtUsername.Clear();
             this.txtPassword.Clear();
-            var mainform = new MainForm(this);
-            mainform.Show();
-            this.Hide();
+            var staffType = this.login.GetStaffType(username);
+            if(staffType == 1)
+            {
+                var queryForm = new QueryForm(this);
+                queryForm.Show();
+                this.Hide();
+
+            }
+            else if(staffType == 2)
+            {
+                var mainform = new MainForm(this);
+                mainform.Show();
+                this.Hide();
+            }
+
         }
 
         private void loginButton_Click(object sender, EventArgs e)
