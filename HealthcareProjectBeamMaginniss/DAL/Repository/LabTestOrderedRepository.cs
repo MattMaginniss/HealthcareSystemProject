@@ -58,5 +58,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var testDate = row.test_date;
             return new LabTestOrdered(testOrderedId, testId, doctorId, testDate);
         }
+
+
+        public int GetLastID()
+        {
+            var adapter = new test_orderedTableAdapter();
+            using (adapter)
+            {
+                var labTestOrdered = adapter.GetData().LastOrDefault();
+                return labTestOrdered.test_ordered_id;
+            }
+        }
     }
 }

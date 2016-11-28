@@ -57,6 +57,7 @@
       <DependentUpon>cs3230f16bDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAL\Controller\AppointmentController.cs" />
+    <Compile Include="DAL\Controller\AppointmentLabOrderController.cs" />
     <Compile Include="DAL\Controller\FreeSqlController.cs" />
     <Compile Include="DAL\Controller\LabTestController.cs" />
     <Compile Include="DAL\Controller\LabTestOrderedController.cs" />

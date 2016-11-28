@@ -56,7 +56,9 @@ namespace HealthcareProjectBeamMaginniss.View
             var date = this.dateTimeLabTest.Value;
             var doctor = ((Staff)this.comboBoxDoctor.SelectedItem).StaffId;
             
+            var aptLabOrderController = new AppointmentLabOrderController();
             this.ltoController.Add(new LabTestOrdered(labTest, doctor, date));
+            aptLabOrderController.Add(new AppointmentLabOrder(apt.AppointmentID,this.ltoController.GetLastID()));
             this.Close();
         }
 
