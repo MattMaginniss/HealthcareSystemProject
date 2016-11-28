@@ -29,7 +29,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
             using (adapter)
             {
-                var aptLabOrder = adapter.GetData().FirstOrDefault(alo => alo.apt_test_id == id);
+                var aptLabOrder = adapter.GetData().FirstOrDefault(alo => alo.appointment_id == id);
                 return this.getAptTestOrderedFromRow(aptLabOrder);
             }
         }

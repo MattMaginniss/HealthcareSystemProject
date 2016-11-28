@@ -57,22 +57,16 @@
       <DependentUpon>cs3230f16bDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAL\Controller\AppointmentController.cs" />
-<<<<<<< HEAD
+    <Compile Include="DAL\Controller\FreeSqlController.cs" />
     <Compile Include="DAL\Controller\LabTestController.cs" />
     <Compile Include="DAL\Controller\LabTestOrderedController.cs" />
-=======
-	<Compile Include="DAL\Controller\LabTestController.cs" />
-    <Compile Include="DAL\Controller\FreeSqlController.cs" />
->>>>>>> d2adaed9e4709b5cc5e22ed808a7d50aafe5b4cb
     <Compile Include="DAL\Controller\LoginController.cs" />
     <Compile Include="DAL\Controller\PatientController.cs" />
     <Compile Include="DAL\Controller\StaffController.cs" />
+    <Compile Include="DAL\Repository\AppointmentLabOrderRepository.cs" />
     <Compile Include="DAL\Repository\AppointmentRepository.cs" />
-<<<<<<< HEAD
-    <Compile Include="DAL\Repository\LabTestOrderedRepository.cs" />
-=======
     <Compile Include="DAL\Repository\FreeSqlRepository.cs" />
->>>>>>> d2adaed9e4709b5cc5e22ed808a7d50aafe5b4cb
+    <Compile Include="DAL\Repository\LabTestOrderedRepository.cs" />
     <Compile Include="DAL\Repository\LabTestRepository.cs" />
     <Compile Include="DAL\Repository\StaffRepository.cs" />
     <Compile Include="DAL\Repository\PatientRepository.cs" />
@@ -80,6 +74,7 @@
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\Login.cs" />
     <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\AppointmentLabOrder.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\LabTestOrdered.cs" />
@@ -105,7 +100,7 @@
     <Compile Include="View\AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
-	<Compile Include="View\CreateLabTestForm.cs">
+    <Compile Include="View\CreateLabTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\CreateLabTestForm.Designer.cs">
@@ -123,7 +118,7 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-	    <Compile Include="View\OrderLabTestForm.cs">
+    <Compile Include="View\OrderLabTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\OrderLabTestForm.Designer.cs">
@@ -159,17 +154,17 @@
     <EmbeddedResource Include="View\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="View\CreateLabTestForm.resx">
+    <EmbeddedResource Include="View\CreateLabTestForm.resx">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
-    </EmbeddedResource>
-	 <EmbeddedResource Include="View\OrderLabTestForm.resx">
-      <DependentUpon>OrderLabTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OrderLabTestForm.resx">
+      <DependentUpon>OrderLabTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\QueryForm.resx">
       <DependentUpon>QueryForm.cs</DependentUpon>
