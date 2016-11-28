@@ -73,6 +73,37 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return null;
         }
 
+        public int getStaffTypeByUsername(string userName)
+        {
+            var loginAdapter = new staff_credentialsTableAdapter();
+            using (loginAdapter)
+            {
+                try
+                {
+                    var staffCredentialsRow = loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
+                    if (staffCredentialsRow != null)
+                    {
+                        var id = staffCredentialsRow.staff_staffID;
+                        var staffadapter = new staffTableAdapter();
+                        using (staffadapter)
+                        {
+                            var staffRow = staffadapter.GetData().FirstOrDefault(staff => staff.staffID == id);
+                            if (staffRow != null)
+                            {
+                                return staffRow.staffType;
+
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            return -1;
+        }
+
         #endregion
 
     }
