@@ -544,7 +544,7 @@ namespace HealthcareProjectBeamMaginniss {
             this.Relations.Add(this.relationfk_diagnosis_has_lab_tests_diagnosis1);
             this.relationfk_diagnosis_has_lab_tests_lab_tests1 = new global::System.Data.DataRelation("fk_diagnosis_has_lab_tests_lab_tests1", new global::System.Data.DataColumn[] {
                         this.tablelab_tests.testCodeColumn}, new global::System.Data.DataColumn[] {
-                        this.tablediagnosis_has_lab_tests.lab_tests_testCodeColumn}, false);
+                        this.tablediagnosis_has_lab_tests.test_order_idColumn}, false);
             this.Relations.Add(this.relationfk_diagnosis_has_lab_tests_lab_tests1);
             this.relationfk_doctor_has_doctor_specialties_doctor_specialties1 = new global::System.Data.DataRelation("fk_doctor_has_doctor_specialties_doctor_specialties1", new global::System.Data.DataColumn[] {
                         this.tabledoctor_specialties.specialtyIDColumn}, new global::System.Data.DataColumn[] {
@@ -560,7 +560,7 @@ namespace HealthcareProjectBeamMaginniss {
             this.Relations.Add(this.relationfk_staffCredentials_staff1);
             this.relationfk_test_results_diagnosis_has_lab_tests1 = new global::System.Data.DataRelation("fk_test_results_diagnosis_has_lab_tests1", new global::System.Data.DataColumn[] {
                         this.tablediagnosis_has_lab_tests.diagnosis_diagnosisIDColumn,
-                        this.tablediagnosis_has_lab_tests.lab_tests_testCodeColumn}, new global::System.Data.DataColumn[] {
+                        this.tablediagnosis_has_lab_tests.test_order_idColumn}, new global::System.Data.DataColumn[] {
                         this.tabletest_results.lab_tests_diagnosisIDColumn,
                         this.tabletest_results.lab_tests_testCodeColumn}, false);
             this.Relations.Add(this.relationfk_test_results_diagnosis_has_lab_tests1);
@@ -1463,7 +1463,7 @@ namespace HealthcareProjectBeamMaginniss {
             
             private global::System.Data.DataColumn columndiagnosis_diagnosisID;
             
-            private global::System.Data.DataColumn columnlab_tests_testCode;
+            private global::System.Data.DataColumn columntest_order_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1508,9 +1508,9 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn lab_tests_testCodeColumn {
+            public global::System.Data.DataColumn test_order_idColumn {
                 get {
-                    return this.columnlab_tests_testCode;
+                    return this.columntest_order_id;
                 }
             }
             
@@ -1569,10 +1569,10 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public diagnosis_has_lab_testsRow FindBydiagnosis_diagnosisIDlab_tests_testCode(int diagnosis_diagnosisID, int lab_tests_testCode) {
+            public diagnosis_has_lab_testsRow FindBydiagnosis_diagnosisIDtest_order_id(int diagnosis_diagnosisID, int test_order_id) {
                 return ((diagnosis_has_lab_testsRow)(this.Rows.Find(new object[] {
                             diagnosis_diagnosisID,
-                            lab_tests_testCode})));
+                            test_order_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1593,7 +1593,7 @@ namespace HealthcareProjectBeamMaginniss {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columndiagnosis_diagnosisID = base.Columns["diagnosis_diagnosisID"];
-                this.columnlab_tests_testCode = base.Columns["lab_tests_testCode"];
+                this.columntest_order_id = base.Columns["test_order_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1601,13 +1601,13 @@ namespace HealthcareProjectBeamMaginniss {
             private void InitClass() {
                 this.columndiagnosis_diagnosisID = new global::System.Data.DataColumn("diagnosis_diagnosisID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndiagnosis_diagnosisID);
-                this.columnlab_tests_testCode = new global::System.Data.DataColumn("lab_tests_testCode", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnlab_tests_testCode);
+                this.columntest_order_id = new global::System.Data.DataColumn("test_order_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntest_order_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columndiagnosis_diagnosisID,
-                                this.columnlab_tests_testCode}, true));
+                                this.columntest_order_id}, true));
                 this.columndiagnosis_diagnosisID.AllowDBNull = false;
-                this.columnlab_tests_testCode.AllowDBNull = false;
+                this.columntest_order_id.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4960,12 +4960,12 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int lab_tests_testCode {
+            public int test_order_id {
                 get {
-                    return ((int)(this[this.tablediagnosis_has_lab_tests.lab_tests_testCodeColumn]));
+                    return ((int)(this[this.tablediagnosis_has_lab_tests.test_order_idColumn]));
                 }
                 set {
-                    this[this.tablediagnosis_has_lab_tests.lab_tests_testCodeColumn] = value;
+                    this[this.tablediagnosis_has_lab_tests.test_order_idColumn] = value;
                 }
             }
             
@@ -7801,12 +7801,12 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "diagnosis_has_lab_tests";
             tableMapping.ColumnMappings.Add("diagnosis_diagnosisID", "diagnosis_diagnosisID");
-            tableMapping.ColumnMappings.Add("lab_tests_testCode", "lab_tests_testCode");
+            tableMapping.ColumnMappings.Add("test_order_id", "test_order_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `diagnosis_has_lab_tests` WHERE ((`diagnosis_diagnosisID` = @p1) AND " +
-                "(`lab_tests_testCode` = @p2))";
+                "(`test_order_id` = @p2))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -7821,13 +7821,13 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "lab_tests_testCode";
+            param.SourceColumn = "test_order_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `diagnosis_has_lab_tests` (`diagnosis_diagnosisID`, `lab_tests_testCo" +
-                "de`) VALUES (@p1, @p2)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `diagnosis_has_lab_tests` (`diagnosis_diagnosisID`, `test_order_id`) " +
+                "VALUES (@p1, @p2)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -7841,13 +7841,12 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "lab_tests_testCode";
+            param.SourceColumn = "test_order_id";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `diagnosis_has_lab_tests` SET `diagnosis_diagnosisID` = @p1, `lab_tests_te" +
-                "stCode` = @p2 WHERE ((`diagnosis_diagnosisID` = @p3) AND (`lab_tests_testCode` =" +
-                " @p4))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `diagnosis_has_lab_tests` SET `diagnosis_diagnosisID` = @p1, `test_order_i" +
+                "d` = @p2 WHERE ((`diagnosis_diagnosisID` = @p3) AND (`test_order_id` = @p4))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -7861,7 +7860,7 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "lab_tests_testCode";
+            param.SourceColumn = "test_order_id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
@@ -7876,7 +7875,7 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "lab_tests_testCode";
+            param.SourceColumn = "test_order_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -7894,8 +7893,7 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `diagnosis_diagnosisID`, `lab_tests_testCode` FROM `diagnosis_has_lab_test" +
-                "s`";
+            this._commandCollection[0].CommandText = "SELECT `diagnosis_diagnosisID`, `test_order_id` FROM `diagnosis_has_lab_tests`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
