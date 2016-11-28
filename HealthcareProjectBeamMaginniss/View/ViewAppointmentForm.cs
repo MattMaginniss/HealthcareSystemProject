@@ -196,8 +196,8 @@ namespace HealthcareProjectBeamMaginniss.View
             else
             {
                 var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
-                var addAppointment = new AppointmentCheckinForm(appt);
-                addAppointment.ShowDialog();
+                var orderLabTestForm = new OrderLabTestForm(appt);
+                orderLabTestForm.ShowDialog();
                 this.updateTable();
             }
         }

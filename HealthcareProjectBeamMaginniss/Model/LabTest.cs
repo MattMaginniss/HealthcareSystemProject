@@ -8,12 +8,16 @@ namespace HealthcareProjectBeamMaginniss.Model
 {
     class LabTest
     {
-        public int LabTestID { get; }
+        public int LabTestId { get; }
         public string TestName { get; }
 
         public LabTest(int labTestId, string testName)
         {
-            this.LabTestID = labTestId;
+            this.LabTestId = labTestId;
+            this.TestName = testName;
+        }
+        public LabTest(string testName)
+        {
             this.TestName = testName;
         }
     }
