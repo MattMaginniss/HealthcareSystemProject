@@ -206,5 +206,11 @@ namespace HealthcareProjectBeamMaginniss.View
                 this.updateTable();
             }
         }
+
+        private void btnDoBReport_Click(object sender, EventArgs e)
+        {
+            var histogramForm = new HistogramForm();
+            histogramForm.Show();
+        }
     }
 }
