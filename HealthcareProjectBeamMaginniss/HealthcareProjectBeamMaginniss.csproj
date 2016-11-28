@@ -95,17 +95,23 @@
     <Compile Include="View\AddAppointmentForm.Designer.cs">
       <DependentUpon>AddAppointmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AddUserForm.cs">
+    <Compile Include="View\AddPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddUserForm.Designer.cs">
-      <DependentUpon>AddUserForm.cs</DependentUpon>
+    <Compile Include="View\AddPatientForm.Designer.cs">
+      <DependentUpon>AddPatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CreateLabTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\CreateLabTestForm.Designer.cs">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditPatientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditPatientForm.Designer.cs">
+      <DependentUpon>EditPatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -152,11 +158,14 @@
     <EmbeddedResource Include="View\AddAppointmentForm.resx">
       <DependentUpon>AddAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AddUserForm.resx">
-      <DependentUpon>AddUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\AddPatientForm.resx">
+      <DependentUpon>AddPatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CreateLabTestForm.resx">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditPatientForm.resx">
+      <DependentUpon>EditPatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

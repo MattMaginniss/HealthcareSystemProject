@@ -15,7 +15,6 @@ namespace HealthcareProjectBeamMaginniss.View
     public partial class OrderLabTestForm : Form
     {
         private readonly StaffController staffController;
-        private AppointmentController aptController;
         private readonly LabTestController ltController;
         private readonly LabTestOrderedController ltoController;
         private readonly Appointment apt;

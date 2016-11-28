@@ -47,6 +47,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.pr.Add(patient);
         }
 
+        public void Update(Patient patient)
+        {
+            this.pr.Update(patient);
+        }
         /// <summary>
         ///     Gets the patient by patientID.
         /// </summary>

@@ -102,7 +102,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void addPatientButton_Click(object sender, EventArgs e)
         {
-            var addPatient = new AddUserForm(this.patientController);
+            var addPatient = new AddPatientForm(this.patientController);
             addPatient.ShowDialog();
             this.updateTable();
         }
@@ -190,6 +190,21 @@ namespace HealthcareProjectBeamMaginniss.View
             this.txtLastName.Text = "";
             this.dateTimeDateOfBirth.Value = DateTime.Today;
             this.updateTable();
+        }
+
+        private void btnEditPatient_Click(object sender, EventArgs e)
+        {
+            if (this.patientDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select a user to edit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var patient = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem);
+                var editPatient = new EditPatientForm(patient);
+                editPatient.ShowDialog();
+                this.updateTable();
+            }
         }
     }
 }

@@ -46,6 +46,7 @@
             this.lblDoB = new System.Windows.Forms.Label();
             this.lblSeachForPatient = new System.Windows.Forms.Label();
             this.btnDGVReset = new System.Windows.Forms.Button();
+            this.btnEditPatient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +103,7 @@
             // 
             // btnAddAppointment
             // 
-            this.btnAddAppointment.Location = new System.Drawing.Point(933, 115);
+            this.btnAddAppointment.Location = new System.Drawing.Point(933, 144);
             this.btnAddAppointment.Name = "btnAddAppointment";
             this.btnAddAppointment.Size = new System.Drawing.Size(144, 23);
             this.btnAddAppointment.TabIndex = 5;
@@ -223,11 +224,22 @@
             this.btnDGVReset.UseVisualStyleBackColor = true;
             this.btnDGVReset.Click += new System.EventHandler(this.btnDGVReset_Click);
             // 
+            // btnEditPatient
+            // 
+            this.btnEditPatient.Location = new System.Drawing.Point(933, 115);
+            this.btnEditPatient.Name = "btnEditPatient";
+            this.btnEditPatient.Size = new System.Drawing.Size(143, 23);
+            this.btnEditPatient.TabIndex = 19;
+            this.btnEditPatient.Text = "Edit Patient";
+            this.btnEditPatient.UseVisualStyleBackColor = true;
+            this.btnEditPatient.Click += new System.EventHandler(this.btnEditPatient_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 673);
+            this.Controls.Add(this.btnEditPatient);
             this.Controls.Add(this.btnDGVReset);
             this.Controls.Add(this.groupBoxSearch);
             this.Controls.Add(this.txtLastName);
@@ -275,5 +287,6 @@
         private System.Windows.Forms.Label lblDoB;
         private System.Windows.Forms.Label lblSeachForPatient;
         private System.Windows.Forms.Button btnDGVReset;
+        private System.Windows.Forms.Button btnEditPatient;
     }
 }

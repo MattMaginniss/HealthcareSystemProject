@@ -1,6 +1,6 @@
 ﻿namespace HealthcareProjectBeamMaginniss.View
 {
-    partial class AddUserForm
+    partial class AddPatientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -286,7 +286,7 @@
             this.lblCountry.TabIndex = 24;
             this.lblCountry.Text = "Country";
             // 
-            // AddUserForm
+            // AddPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -315,8 +315,8 @@
             this.Controls.Add(this.lblDOB);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblFirstName);
-            this.Name = "AddUserForm";
-            this.Text = "Add User";
+            this.Name = "AddPatientForm";
+            this.Text = "Add Patient";
             this.groupBoxSex.ResumeLayout(false);
             this.groupBoxSex.PerformLayout();
             this.ResumeLayout(false);

@@ -11,7 +11,7 @@ namespace HealthcareProjectBeamMaginniss.View
     ///     Form for adding a patient to the database
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Form" />
-    public partial class AddUserForm : Form
+    public partial class AddPatientForm : Form
     {
         #region Data members
 
@@ -22,19 +22,19 @@ namespace HealthcareProjectBeamMaginniss.View
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AddUserForm" /> class.
+        ///     Initializes a new instance of the <see cref="AddPatientForm" /> class.
         /// </summary>
-        public AddUserForm()
+        public AddPatientForm()
         {
             this.InitializeComponent();
             this.loadCountries();
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AddUserForm" /> class.
+        ///     Initializes a new instance of the <see cref="AddPatientForm" /> class.
         /// </summary>
         /// <param name="patientController">The patient controller to use.</param>
-        public AddUserForm(PatientController patientController)
+        public AddPatientForm(PatientController patientController)
         {
             this.InitializeComponent();
             this.pr = patientController;

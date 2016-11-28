@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
@@ -53,6 +54,34 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             using (adapter)
             {
                 adapter.Insert(fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
+            }
+        }
+
+        public void Update(Patient patient)
+        {
+            var adapter = new patientTableAdapter();
+            DataRow patRow = null;
+            using (adapter)
+            {
+                patRow = adapter.GetData().FirstOrDefault(pat => pat.patientID == patient.PatientId);
+            }
+            if (patRow != null)
+            {
+                patRow[1] = patient.FirstName;
+                patRow[2] = patient.LastName;
+                patRow[3] = patient.Dob;
+                patRow[4] = patient.Sex.ToString();
+                patRow[5] = patient.Street1;
+                patRow[6] = patient.Street2;
+                patRow[7] = patient.City;
+                patRow[8] = patient.State;
+                patRow[9] = patient.Zip;
+                patRow[10] = patient.Country;
+                patRow[11] = patient.PhoneNo;
+                using (adapter)
+                {
+                    adapter.Update(patRow);
+                }
             }
         }
 

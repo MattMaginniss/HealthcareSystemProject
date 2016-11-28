@@ -126,6 +126,20 @@ namespace HealthcareProjectBeamMaginniss.Model
             Country = country;
             PhoneNo = phoneNo;
         }
+        public Patient(string firstName, string lastName, DateTime dob, char sex, string street1, string street2, string city, string state, string zip, string country, string phoneNo)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Dob = dob;
+            this.Sex = sex;
+            Street1 = street1;
+            Street2 = street2;
+            City = city;
+            State = state;
+            this.Zip = zip;
+            Country = country;
+            PhoneNo = phoneNo;
+        }
 
         #endregion
     }
