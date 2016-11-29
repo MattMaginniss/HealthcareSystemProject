@@ -53,6 +53,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.diagnosisReposity.GetAllDiagnosisByAptId(id);
         }
 
+        public IList<Diagnosis> GetAllDiagnosisByPatientId(int id)
+        {
+            return this.diagnosisReposity.GetAllDiagnosisByPatientId(id);
+        }
+
         #endregion
     }
 }

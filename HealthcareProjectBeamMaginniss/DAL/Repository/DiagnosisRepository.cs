@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
+using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -109,13 +110,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Rows)
+                    foreach (var row in adapter.GetData().Where(diag => diag.appointment_id == aptId))
                     {
                         var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow) row);
-                        if (diagnosis.AppointmentId.Equals(aptId))
-                        {
                             diagnosisList.Add(diagnosis);
-                        }
                     }
                 }
                 return diagnosisList;
@@ -136,5 +134,27 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         }
 
         #endregion
+
+        public IList<Diagnosis> GetAllDiagnosisByPatientId(int patientId)
+        {
+            var diagnosisList = new List<Diagnosis>();
+            var adapter = new diagnosisTableAdapter();
+            try
+            {
+                using (adapter)
+                {
+                    foreach (var row in adapter.GetData().Where(diag => new AppointmentController().GetById(diag.appointment_id).PatientId == patientId))
+                    {
+                        var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow)row);
+                        diagnosisList.Add(diagnosis);
+                    }
+                }
+                return diagnosisList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
-}
+    }

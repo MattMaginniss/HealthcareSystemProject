@@ -47,8 +47,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
-                    return this.GetAppointmentFromRow(patient);
+                    var appointment = adapter.GetData().FirstOrDefault(apt => apt.appointmentID == id);
+                    return this.GetAppointmentFromRow(appointment);
                 }
             }
             catch (Exception e)
@@ -146,6 +146,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
         public Appointment GetAppointmentFromRow(cs3230f16bDataSet.appointmentRow row)
         {
+            if (row == null)
+            {
+                return null;
+            }
             var appointmentId = row.appointmentID;
             var reasonForAppointment = row.reasonForAppointment;
             var date = row.dateScheduled;
@@ -375,5 +379,29 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         }
 
         #endregion
+
+        public IList<Appointment> GetAppointmentByPatientId(int patientId)
+        {
+            var appointmentList = new List<Appointment>();
+            var adapter = new appointmentTableAdapter();
+
+            try
+            {
+                using (adapter)
+                {
+                    foreach (cs3230f16bDataSet.appointmentRow row in adapter.GetData().Where(apt =>apt.patientID == patientId))
+                    {
+                        var appointment = this.GetAppointmentFromRow(row);
+                        appointmentList.Add(appointment);
+                    }
+                }
+
+                return appointmentList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

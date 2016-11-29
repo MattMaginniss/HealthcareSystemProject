@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
+using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -122,5 +123,33 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         }
 
         #endregion
+
+        public IList<LabTestOrdered> GetByPatientId(int patientId)
+        {
+            var testList = new List<LabTestOrdered>();
+            var adapter = new appointment_has_lab_orderTableAdapter();
+            try
+            {
+                using (adapter)
+                {
+                    foreach (
+                        var row in
+                            adapter.GetData()
+                                   .Where(
+                                       tst =>
+                                           new AppointmentController().GetById(tst.appointment_id).PatientId ==
+                                           patientId))
+                    {
+                        var test = this.GetById(row.lab_order_id);
+                        testList.Add(test);
+                    }
+                }
+                return testList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

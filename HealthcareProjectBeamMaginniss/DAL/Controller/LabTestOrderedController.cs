@@ -54,5 +54,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         }
 
         #endregion
+
+        public IList<LabTestOrdered> GetByPatientId(int patientId)
+        {
+            return this.labTestOrderedRepository.GetByPatientId(patientId);
+        }
     }
 }

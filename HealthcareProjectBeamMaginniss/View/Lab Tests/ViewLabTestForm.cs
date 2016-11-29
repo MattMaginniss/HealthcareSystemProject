@@ -15,6 +15,7 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         private readonly Appointment appt;
         private readonly LabTestOrderedController labTestOrderedController;
         private readonly LabTestResultController labTestResultController;
+        private int patientId;
 
         #endregion
 
@@ -24,6 +25,17 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         {
             this.InitializeComponent();
             this.appt = appt;
+            this.patientId = 0;
+            this.labTestOrderedController = new LabTestOrderedController();
+            this.labTestResultController = new LabTestResultController();
+            this.populateDataView();
+        }
+
+        public ViewLabTestForm(int patientId)
+        {
+            this.InitializeComponent();
+            this.appt = null;
+            this.patientId = patientId;
             this.labTestOrderedController = new LabTestOrderedController();
             this.labTestResultController = new LabTestResultController();
             this.populateDataView();
@@ -49,7 +61,15 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         private void refreshTable()
         {
-            var data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentId);
+            IList<LabTestOrdered> data;
+            if (this.appt == null)
+            {
+                data = this.labTestOrderedController.GetByPatientId(this.patientId);
+            }
+            else
+            {
+                data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentId);
+            }
             this.attachResults(data);
             var bindingSource = new BindingSource {DataSource = data};
             this.dataGridView.DataSource = bindingSource;

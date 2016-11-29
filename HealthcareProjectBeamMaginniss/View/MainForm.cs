@@ -4,6 +4,8 @@ using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
 using HealthcareProjectBeamMaginniss.Properties;
 using HealthcareProjectBeamMaginniss.View.Appointments;
+using HealthcareProjectBeamMaginniss.View.Diagnoses;
+using HealthcareProjectBeamMaginniss.View.Lab_Tests;
 using HealthcareProjectBeamMaginniss.View.Patients;
 
 namespace HealthcareProjectBeamMaginniss.View
@@ -226,5 +228,50 @@ namespace HealthcareProjectBeamMaginniss.View
         }
 
         #endregion
+
+        private void btnViewPatientApts_Click(object sender, EventArgs e)
+        {
+            if (this.patientDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, Resources.MainForm_buttonAddAppointment_Click_Please_select_a_user,
+                   Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var patientId = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
+                var patientApts = new ViewAppointmentForm(patientId);
+                patientApts.ShowDialog();
+            }
+        }
+
+        private void btnViewPatientDiagnoses_Click(object sender, EventArgs e)
+        {
+            if (this.patientDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, Resources.MainForm_buttonAddAppointment_Click_Please_select_a_user,
+                   Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var patientId = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
+                var patientDiagnosis = new DiagnosisForm(patientId);
+                patientDiagnosis.ShowDialog();
+            }
+        }
+
+        private void btnViewPatientTests_Click(object sender, EventArgs e)
+        {
+            if (this.patientDataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, Resources.MainForm_buttonAddAppointment_Click_Please_select_a_user,
+                   Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var patientId = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
+                var patientTests = new ViewLabTestForm(patientId);
+                patientTests.ShowDialog();
+            }
+        }
     }
 }

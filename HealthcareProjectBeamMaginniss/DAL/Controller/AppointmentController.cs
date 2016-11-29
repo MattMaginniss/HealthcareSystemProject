@@ -88,6 +88,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.appointmentRepository.GetAppointmentByPatientFullNameAndDob(fName, lName, dob);
         }
 
+        public IList<Appointment> GetAppointmentByPatientId(int patientID)
+        {
+            return this.appointmentRepository.GetAppointmentByPatientId(patientID);
+        }
+
         #endregion
     }
 }

@@ -14,13 +14,20 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private readonly AppointmentController appointmentController;
         private BindingSource bindingSource;
+        private int patientId;
 
         #endregion
 
         #region Constructors
 
-        public ViewAppointmentForm()
+        public ViewAppointmentForm() : this(0)
         {
+
+        }
+
+        public ViewAppointmentForm(int patientId)
+        {
+            this.patientId = patientId;
             this.InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.populateTable();
@@ -65,8 +72,17 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private void updateTable()
         {
-            this.bindingSource = new BindingSource {DataSource = this.appointmentController.GetAll()};
-            this.dgvAppointment.DataSource = this.bindingSource;
+            if (this.patientId == 0)
+            {
+                this.bindingSource = new BindingSource {DataSource = this.appointmentController.GetAll()};
+                this.dgvAppointment.DataSource = this.bindingSource;
+            }
+            else
+            {
+                this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientId(this.patientId) };
+                this.dgvAppointment.DataSource = this.bindingSource;
+            }
+
         }
 
         private void addAppointmentColumn(string patientProperty, string columnTitle)

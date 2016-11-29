@@ -13,6 +13,7 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
         private readonly DiagnosisController diagnosisController;
         private readonly Appointment appt;
         private BindingSource bindingSource;
+        private int userId;
 
         #endregion
 
@@ -21,6 +22,16 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
         public DiagnosisForm(Appointment appt)
         {
             this.appt = appt;
+            this.userId = 0;
+            this.InitializeComponent();
+            this.diagnosisController = new DiagnosisController();
+            this.populateTable();
+        }
+
+        public DiagnosisForm(int userId)
+        {
+            this.userId = userId;
+            this.appt = null;
             this.InitializeComponent();
             this.diagnosisController = new DiagnosisController();
             this.populateTable();
@@ -65,10 +76,22 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         private void updateTable()
         {
-            try { 
-            this.bindingSource = new BindingSource {
-                DataSource = this.diagnosisController.GetAllDiagnosisByAptId(this.appt.AppointmentId)
-            };
+            try {
+                if (this.appt == null)
+                {
+                    this.bindingSource = new BindingSource
+                    {
+                        DataSource = this.diagnosisController.GetAllDiagnosisByPatientId(this.userId)
+                    };
+                }
+                else
+                {
+                    this.bindingSource = new BindingSource
+                    {
+                        DataSource = this.diagnosisController.GetAllDiagnosisByAptId(this.appt.AppointmentId)
+                    };
+                }
+            
             this.dgvDiagnosis.DataSource = this.bindingSource;
             }
             catch (Exception exc)
