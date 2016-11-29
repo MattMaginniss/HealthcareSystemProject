@@ -97,6 +97,7 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            try { 
             if (this.radioBtnName.Checked)
             {
                 var firstNameQuery = this.txtFirstName.Text.ToLower();
@@ -174,6 +175,11 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 {
                     this.updateTable();
                 }
+            }
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
             }
         }
 
@@ -261,6 +267,16 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 this.updateTable();
             }
         }
+
+        private void handleError(Exception e)
+        {
+            MessageBox.Show(null,
+                Resources.ViewAppointmentForm_handleError_Exception_occurred__ + e.Message +
+                Resources.ViewAppointmentForm_handleError_, Resources.ViewAppointmentForm_handleError_Error, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            this.Close();
+        }
+
 
         #endregion
     }

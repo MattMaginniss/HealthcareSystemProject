@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
@@ -31,10 +32,26 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private void loadStaff()
         {
-            var doctors = this.staffController.GetDoctors();
-            this.comboBoxDoctor.DisplayMember = "FullName";
-            this.comboBoxDoctor.ValueMember = "StaffId";
-            this.comboBoxDoctor.DataSource = doctors;
+            try { 
+                var doctors = this.staffController.GetDoctors();
+                this.comboBoxDoctor.DisplayMember = "FullName";
+                this.comboBoxDoctor.ValueMember = "StaffId";
+                this.comboBoxDoctor.DataSource = doctors;
+            }
+            catch (Exception e)
+            {
+                this.handleError(e);
+            }
+
+        }
+
+        private void handleError(Exception e)
+        {
+            MessageBox.Show(null,
+                Resources.AddAppointmentForm_handleError_Exception_occurred__ + e.Message +
+                Resources.AddAppointmentForm_handleError_, Resources.AddAppointmentForm_handleError_Error, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            this.Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -53,8 +70,14 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 return;
             }
             this.aptController = new AppointmentController();
+            try { 
             this.aptController.AddPartial(new Appointment(reason, date, doctor, this.patientId, symptoms));
-            Close();
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
+            }
+            this.Close();
         }
 
         #endregion

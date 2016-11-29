@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
@@ -22,8 +23,14 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
             this.InitializeComponent();
             this.staffController = new StaffController();
             this.apt = apt;
+            try { 
             this.loadStaff();
             this.fillForm();
+            }
+            catch (Exception e)
+            {
+                this.handleError(e);
+            }
         }
 
         #endregion
@@ -72,10 +79,24 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 return;
             }
             this.aptController = new AppointmentController();
+            try { 
             this.aptController.Update(new Appointment(this.apt.AppointmentId, reason, date, nurse, doctor,
                 this.apt.PatientId,
                 systolicBp, diastolicBp, temp, pulse, weight, symptoms));
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
+            }
             Close();
+        }
+        private void handleError(Exception e)
+        {
+            MessageBox.Show(null,
+                Resources.AppointmentCheckinForm_handleError_Exception_occurred__ + e.Message +
+                Resources.AppointmentCheckinForm_handleError_, Resources.AppointmentCheckinForm_handleError_Error, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            this.Close();
         }
 
         #endregion

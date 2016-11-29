@@ -61,6 +61,90 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Check your internet connection or contact your system administrator.
+        /// </summary>
+        internal static string AddAppointmentForm_handleError_ {
+            get {
+                return ResourceManager.GetString("AddAppointmentForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string AddAppointmentForm_handleError_Error {
+            get {
+                return ResourceManager.GetString("AddAppointmentForm_handleError_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception occurred: .
+        /// </summary>
+        internal static string AddAppointmentForm_handleError_Exception_occurred__ {
+            get {
+                return ResourceManager.GetString("AddAppointmentForm_handleError_Exception_occurred__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Check your internet connection or contact your system administrator.
+        /// </summary>
+        internal static string AddEditDiagnosisForm_btnSubmit_Click_ {
+            get {
+                return ResourceManager.GetString("AddEditDiagnosisForm_btnSubmit_Click_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string AddEditDiagnosisForm_btnSubmit_Click_Error {
+            get {
+                return ResourceManager.GetString("AddEditDiagnosisForm_btnSubmit_Click_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception occurred: .
+        /// </summary>
+        internal static string AddEditDiagnosisForm_btnSubmit_Click_Exception_occurred__ {
+            get {
+                return ResourceManager.GetString("AddEditDiagnosisForm_btnSubmit_Click_Exception_occurred__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Check your internet connection or contact your system administrator.
+        /// </summary>
+        internal static string AppointmentCheckinForm_handleError_ {
+            get {
+                return ResourceManager.GetString("AppointmentCheckinForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string AppointmentCheckinForm_handleError_Error {
+            get {
+                return ResourceManager.GetString("AppointmentCheckinForm_handleError_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception occurred: .
+        /// </summary>
+        internal static string AppointmentCheckinForm_handleError_Exception_occurred__ {
+            get {
+                return ResourceManager.GetString("AppointmentCheckinForm_handleError_Exception_occurred__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string DiagnosisForm_btnEdit_Click_Error {
@@ -75,6 +159,34 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         internal static string DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit {
             get {
                 return ResourceManager.GetString("DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Check your internet connection or contact your system administrator.
+        /// </summary>
+        internal static string DiagnosisForm_handleError_ {
+            get {
+                return ResourceManager.GetString("DiagnosisForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string DiagnosisForm_handleError_Error {
+            get {
+                return ResourceManager.GetString("DiagnosisForm_handleError_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception occurred: .
+        /// </summary>
+        internal static string DiagnosisForm_handleError_Exception_occurred__ {
+            get {
+                return ResourceManager.GetString("DiagnosisForm_handleError_Exception_occurred__", resourceCulture);
             }
         }
         
@@ -186,6 +298,34 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         internal static string ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment {
             get {
                 return ResourceManager.GetString("ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Check your internet connection or contact your system administrator.
+        /// </summary>
+        internal static string ViewAppointmentForm_handleError_ {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ViewAppointmentForm_handleError_Error {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_handleError_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception occurred: .
+        /// </summary>
+        internal static string ViewAppointmentForm_handleError_Exception_occurred__ {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_handleError_Exception_occurred__", resourceCulture);
             }
         }
         

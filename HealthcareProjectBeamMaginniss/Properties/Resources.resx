@@ -172,4 +172,54 @@ Results: </value>
   <data name="EditPatientForm_btnSubmit_Click_Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="AddAppointmentForm_handleError_Exception_occurred__" xml:space="preserve">
+    <value>Exception occurred: </value>
+  </data>
+  <data name="AddAppointmentForm_handleError_" xml:space="preserve">
+    <value>
+Check your internet connection or contact your system administrator</value>
+  </data>
+  <data name="AddAppointmentForm_handleError_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="AppointmentCheckinForm_handleError_Exception_occurred__" xml:space="preserve">
+    <value>Exception occurred: </value>
+  </data>
+  <data name="AppointmentCheckinForm_handleError_" xml:space="preserve">
+    <value>
+Check your internet connection or contact your system administrator</value>
+  </data>
+  <data name="AppointmentCheckinForm_handleError_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ViewAppointmentForm_handleError_Exception_occurred__" xml:space="preserve">
+    <value>Exception occurred: </value>
+  </data>
+  <data name="ViewAppointmentForm_handleError_" xml:space="preserve">
+    <value>
+Check your internet connection or contact your system administrator</value>
+  </data>
+  <data name="ViewAppointmentForm_handleError_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="AddEditDiagnosisForm_btnSubmit_Click_Exception_occurred__" xml:space="preserve">
+    <value>Exception occurred: </value>
+  </data>
+  <data name="AddEditDiagnosisForm_btnSubmit_Click_" xml:space="preserve">
+    <value>
+Check your internet connection or contact your system administrator</value>
+  </data>
+  <data name="AddEditDiagnosisForm_btnSubmit_Click_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="DiagnosisForm_handleError_Exception_occurred__" xml:space="preserve">
+    <value>Exception occurred: </value>
+  </data>
+  <data name="DiagnosisForm_handleError_" xml:space="preserve">
+    <value>
+Check your internet connection or contact your system administrator</value>
+  </data>
+  <data name="DiagnosisForm_handleError_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>

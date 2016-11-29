@@ -65,10 +65,16 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         private void updateTable()
         {
+            try { 
             this.bindingSource = new BindingSource {
                 DataSource = this.diagnosisController.GetAllDiagnosisByAptId(this.appt.AppointmentId)
             };
             this.dgvDiagnosis.DataSource = this.bindingSource;
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -88,13 +94,26 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
             }
             else
             {
+                try { 
                 var diagnosis = (Diagnosis) this.dgvDiagnosis.SelectedRows[0].DataBoundItem;
                 var editDiagnosis = new AddEditDiagnosisForm(diagnosis);
                 editDiagnosis.ShowDialog();
                 this.updateTable();
+                }
+                catch (Exception exc)
+                {
+                    this.handleError(exc);
+                }
             }
         }
-
+        private void handleError(Exception e)
+        {
+            MessageBox.Show(null,
+                Resources.DiagnosisForm_handleError_Exception_occurred__ + e.Message +
+                Resources.DiagnosisForm_handleError_, Resources.DiagnosisForm_handleError_Error, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            this.Close();
+        }
         #endregion
     }
 }
