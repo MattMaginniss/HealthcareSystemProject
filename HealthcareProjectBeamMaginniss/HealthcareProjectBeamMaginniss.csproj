@@ -90,6 +90,12 @@
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\AddEditDiagnosisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddEditDiagnosisForm.Designer.cs">
+      <DependentUpon>AddEditDiagnosisForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AppointmentCheckinForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AddEditDiagnosisForm.resx">
+      <DependentUpon>AddEditDiagnosisForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AppointmentCheckinForm.resx">
       <DependentUpon>AppointmentCheckinForm.cs</DependentUpon>
     </EmbeddedResource>

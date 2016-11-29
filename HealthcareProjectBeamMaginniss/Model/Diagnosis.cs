@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
-    class Diagnosis
+    public class Diagnosis
     {
         public int diagnosisId { get; }
         public string diagnosisInformation { get; }

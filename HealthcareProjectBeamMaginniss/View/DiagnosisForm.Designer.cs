@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dgvDiagnosis = new System.Windows.Forms.DataGridView();
             this.cs3230f16bDataSet = new HealthcareProjectBeamMaginniss.cs3230f16bDataSet();
             this.cs3230f16bDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -39,23 +39,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.cs3230f16bDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSubmit
+            // btnEdit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(397, 252);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 30;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(397, 252);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 30;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnCancel
+            // btnAdd
             // 
-            this.btnCancel.Location = new System.Drawing.Point(225, 252);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 29;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(225, 252);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 29;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvDiagnosis
             // 
@@ -84,8 +86,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 287);
             this.Controls.Add(this.dgvDiagnosis);
-            this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAdd);
             this.Name = "DiagnosisForm";
             this.Text = "DiagnosisForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosis)).EndInit();
@@ -97,8 +99,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvDiagnosis;
         private cs3230f16bDataSet cs3230f16bDataSet;
         private System.Windows.Forms.BindingSource cs3230f16bDataSetBindingSource;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    class DiagnosisRepository : IRepository<Diagnosis>
+    public class DiagnosisRepository : IRepository<Diagnosis>
     {
         public void Add(Diagnosis diagnosis)
         {
@@ -26,6 +27,25 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                     finalDiaByte = 1;
                 }
                 adapter.Insert(diagnosisId, diagnosisInformation, appointmentId, finalDiaByte);
+            }
+        }
+
+        public void Update(Diagnosis diagnosis)
+        {
+            var adapter = new diagnosisTableAdapter();
+            DataRow diaRow = null;
+            using (adapter)
+            {
+                diaRow = adapter.GetData().FirstOrDefault(dia => dia.diagnosisID == diagnosis.diagnosisId);
+            }
+            if (diaRow != null)
+            {
+                diaRow[1] = diagnosis.diagnosisInformation;
+                diaRow[3] = diagnosis.finalDiagnosis;
+                using (adapter)
+                {
+                    adapter.Update(diaRow);
+                }
             }
         }
 
@@ -63,7 +83,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 foreach (var row in adapter.GetData().Rows)
                 {
                     var diagnosis = getDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow)row);
-                    if (diagnosis.appointment_id == aptID)
+                    if (diagnosis.appointment_id.Equals(aptID))
                     {
                         diagnosisList.Add(diagnosis);
                     }

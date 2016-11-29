@@ -16,20 +16,21 @@ namespace HealthcareProjectBeamMaginniss.View
     {
         private BindingSource bindingSource;
         private readonly DiagnosisController diagnosisController;
-        public Appointment appt;
+        private Appointment appt;
         
         public DiagnosisForm(Appointment appt)
         {
             this.appt = appt;
             InitializeComponent();
-            this.populateTable();
             this.diagnosisController = new DiagnosisController();
+            this.populateTable();
         }
         private void populateTable()
         {
             this.dgvDiagnosis.AutoGenerateColumns = false;
             this.addDiagnosisColumn("diagnosisID", "id");
             this.addDiagnosisColumn("diagnosisInformation", "Diagnosis");
+            this.addDiagnosisColumn("finalDiagnosis", "Final?");
             this.updateTable();
             this.resizeToFit();
         }
@@ -49,6 +50,7 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.dgvDiagnosis.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dgvDiagnosis.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvDiagnosis.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         private void updateTable()
@@ -57,15 +59,24 @@ namespace HealthcareProjectBeamMaginniss.View
             {
                 this.bindingSource = new BindingSource
                 {
-                    DataSource = this.diagnosisController.GetAllDiagnosisByAptID(this.appt.AppointmentID)
+                    DataSource = this.diagnosisController.GetAllDiagnosisByAptID(2)
                 };
-
+                this.dgvDiagnosis.DataSource = this.bindingSource;
             }
             catch (NullReferenceException nre)
             {
-                this.dgvDiagnosis.Rows.Add(0, "There are no diagnosis for this appointment. Click 'add' below to add one.");
+                this.dgvDiagnosis.Rows.Add(0, "There are no diagnosis for this appointment. Click 'add' below to add one.", "No");
             }
-            this.dgvDiagnosis.DataSource = this.bindingSource;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

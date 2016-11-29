@@ -9,7 +9,7 @@ using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
-    class DiagnosisController
+    public class DiagnosisController
     {
         private readonly DiagnosisRepository diagnosisReposity;
 
@@ -26,6 +26,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         public void Add(Diagnosis diagnosis)
         {
             this.diagnosisReposity.Add(diagnosis);
+        }
+
+        public void Update(Diagnosis diagnosis)
+        {
+            this.diagnosisReposity.Update(diagnosis);
         }
 
         public Diagnosis GetById(int id)
