@@ -216,5 +216,20 @@ namespace HealthcareProjectBeamMaginniss.View
                 this.updateTable();
             }
         }
+
+        private void btnViewTests_Click(object sender, EventArgs e)
+        {
+            if (this.dgvAppointment.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select an appointment to view lab tests for", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var diagnosisForm = new ViewLabTestForm(appt);
+                diagnosisForm.ShowDialog();
+                this.updateTable();
+            }
+        }
     }
 }

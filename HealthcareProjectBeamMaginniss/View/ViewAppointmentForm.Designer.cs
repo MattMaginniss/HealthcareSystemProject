@@ -45,6 +45,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnOrderTests = new System.Windows.Forms.Button();
             this.btnDiagnosis = new System.Windows.Forms.Button();
+            this.btnViewTests = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -205,7 +206,7 @@
             // 
             // btnDiagnosis
             // 
-            this.btnDiagnosis.Location = new System.Drawing.Point(1156, 206);
+            this.btnDiagnosis.Location = new System.Drawing.Point(1155, 248);
             this.btnDiagnosis.Name = "btnDiagnosis";
             this.btnDiagnosis.Size = new System.Drawing.Size(95, 36);
             this.btnDiagnosis.TabIndex = 30;
@@ -213,11 +214,22 @@
             this.btnDiagnosis.UseVisualStyleBackColor = true;
             this.btnDiagnosis.Click += new System.EventHandler(this.btnDiagnosis_Click);
             // 
+            // btnViewTests
+            // 
+            this.btnViewTests.Location = new System.Drawing.Point(1155, 205);
+            this.btnViewTests.Name = "btnViewTests";
+            this.btnViewTests.Size = new System.Drawing.Size(96, 37);
+            this.btnViewTests.TabIndex = 31;
+            this.btnViewTests.Text = "View Ordered Tests";
+            this.btnViewTests.UseVisualStyleBackColor = true;
+            this.btnViewTests.Click += new System.EventHandler(this.btnViewTests_Click);
+            // 
             // ViewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 576);
+            this.Controls.Add(this.btnViewTests);
             this.Controls.Add(this.btnDiagnosis);
             this.Controls.Add(this.btnOrderTests);
             this.Controls.Add(this.btnDGVReset);
@@ -261,5 +273,6 @@
         private System.Windows.Forms.RadioButton radBtnBoth;
         private System.Windows.Forms.Button btnOrderTests;
         private System.Windows.Forms.Button btnDiagnosis;
+        private System.Windows.Forms.Button btnViewTests;
     }
 }
