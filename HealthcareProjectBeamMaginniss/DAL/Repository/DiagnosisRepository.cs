@@ -17,9 +17,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var diagnosisId = diagnosis.diagnosisId;
             var diagnosisInformation = diagnosis.diagnosisInformation;
             var appointmentId = diagnosis.appointment_id;
+            Boolean finalDiagnosis = diagnosis.finalDiagnosis;
             using (adapter)
             {
-                adapter.Insert(diagnosisId, diagnosisInformation, appointmentId);
+                byte finalDiaByte = 0;
+                if (finalDiagnosis)
+                {
+                    finalDiaByte = 1;
+                }
+                adapter.Insert(diagnosisId, diagnosisInformation, appointmentId, finalDiaByte);
             }
         }
 
@@ -71,7 +77,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var diagnosisId = row.diagnosisID;
             var diagnosisInformation = row.diagnosisInformation;
             var appointmentId = row.appointment_id;
-            return new Diagnosis(diagnosisId, diagnosisInformation, appointmentId);
+            var finalDiagnosis = row.finalDiagnosis;
+            return new Diagnosis(diagnosisId, diagnosisInformation, appointmentId, finalDiagnosis);
         }
     }
 }

@@ -13,11 +13,14 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         public int appointment_id { get; }
 
-        public Diagnosis(int diagnosisId, string diagnosisInformation, int appointment_id)
+        public Boolean finalDiagnosis { get; }
+
+        public Diagnosis(int diagnosisId, string diagnosisInformation, int appointment_id, Boolean finalDiagnosis)
         {
             this.diagnosisId = diagnosisId;
             this.diagnosisInformation = diagnosisInformation;
             this.appointment_id = appointment_id;
+            this.finalDiagnosis = finalDiagnosis;
         }
     }
 }
