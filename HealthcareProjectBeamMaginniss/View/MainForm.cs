@@ -65,7 +65,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void updateTable()
         {
-            this.bindingSource = new BindingSource {DataSource = this.patientController.GetAll()};
+            this.bindingSource = new BindingSource {DataSource = this.patientController.GetFirst30()};
             this.patientDataGridView.DataSource = this.bindingSource;
            
         }

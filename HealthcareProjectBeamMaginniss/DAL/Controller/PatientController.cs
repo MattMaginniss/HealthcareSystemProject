@@ -87,5 +87,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             return this.pr.GetPatientsByDateOfBirth(dob);
         }
+
+        public IList<Patient> GetFirst30()
+        {
+            return this.pr.GetFirst30();
+        }
+
+        public string GetName(int id)
+        {
+            string name = this.pr.GetById(id).FullName  ?? "";
+            return name;
+        }
     }
 }

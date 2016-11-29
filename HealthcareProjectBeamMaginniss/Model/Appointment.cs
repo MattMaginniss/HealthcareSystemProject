@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthcareProjectBeamMaginniss.DAL.Controller;
+using System;
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
@@ -8,8 +9,11 @@ namespace HealthcareProjectBeamMaginniss.Model
         public string ReasonForAppointment { get; }
         public DateTime date { get; }
         public int nureseID { get; }
+        public string nurseName => new StaffController().GetName(this.nureseID);
         public int doctorID { get; }
+        public string doctorName => new StaffController().GetName(this.doctorID);
         public int patientID { get; }
+        public string patientName => new PatientController().GetName(this.patientID);
         public int systolicBP { get; }
         public int diastolicBP { get; }
         public decimal temperature { get; }

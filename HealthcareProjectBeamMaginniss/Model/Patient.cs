@@ -27,6 +27,8 @@ namespace HealthcareProjectBeamMaginniss.Model
         /// </value>
         public string LastName { get; }
 
+        public string FullName => this.FirstName + " " + this.LastName;
+
         /// <summary>
         ///     Gets the dob.
         /// </summary>

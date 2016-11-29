@@ -54,8 +54,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
         public LabTestResult getTestFromRow(cs3230f16bDataSet.test_resultsRow row)
         {
+            if (row == null)
+            {
+                return null;
+            }
             var resultId = row.test_result_id;
-            var diagnosisID = row.lab_tests_diagnosisID;
             var testOrderedId = row.lab_tests_orderedID;
             var results = row.testResults;
             return new LabTestResult(resultId, testOrderedId, results);

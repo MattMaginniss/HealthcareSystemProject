@@ -31,9 +31,9 @@ namespace HealthcareProjectBeamMaginniss.View
             this.updateTable();
             this.addAppointmentColumn("ReasonForAppointment", "Reason");
             this.addAppointmentColumn("date", "Date");
-            this.addAppointmentColumn("nureseID", "Nurse");
-            this.addAppointmentColumn("doctorID", "Doctor");
-            this.addAppointmentColumn("patientID", "Patient");
+            this.addAppointmentColumn("nurseName", "Nurse");
+            this.addAppointmentColumn("doctorName", "Doctor");
+            this.addAppointmentColumn("patientName", "Patient");
             this.addAppointmentColumn("systolicBP", "systolicBP");
             this.addAppointmentColumn("diastolicBP", "diastolicBP");
             this.addAppointmentColumn("temperature", "temperature");

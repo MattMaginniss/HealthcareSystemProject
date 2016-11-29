@@ -51,5 +51,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             return this.staffRepository.GetNurses();
         }
+
+        public string GetName(int id)
+        {
+            var staff = this.staffRepository.GetById(id);
+            if(staff == null)
+            {
+                return "";
+            }
+            return staff.FullName;
+        }
     }
 }

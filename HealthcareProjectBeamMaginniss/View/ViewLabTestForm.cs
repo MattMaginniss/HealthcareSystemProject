@@ -31,8 +31,8 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.dataGridView.AutoGenerateColumns = false;
             refreshTable();
-            this.addTestColumn("TestId", "Test ID");
-            this.addTestColumn("DoctorId", "Doctor");
+            this.addTestColumn("TestName", "Test ID");
+            this.addTestColumn("DoctorName", "Doctor");
             this.addTestColumn("TestDate", "Date");
             var column = new DataGridViewCheckBoxColumn
             {
@@ -105,9 +105,12 @@ namespace HealthcareProjectBeamMaginniss.View
             if (this.dataGridView.SelectedRows.Count == 0)
             {
                 MessageBox.Show(this, "Please select a test to edit/add the results of", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             var test = (LabTestOrdered)this.dataGridView.SelectedRows[0].DataBoundItem;
-            
+            var labResultForm = new LabResultForm(test);
+            labResultForm.ShowDialog();
+            this.refreshTable();
         }
     }
 }

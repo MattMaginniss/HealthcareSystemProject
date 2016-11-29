@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthcareProjectBeamMaginniss.DAL.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,11 @@ namespace HealthcareProjectBeamMaginniss.Model
     {
         public int TestOrderedId { get; }
         public int TestId { get; }
+        public string TestName => new LabTestController().GetName(this.TestId);
 
         public int DoctorId { get; }
+        public string DoctorName => new StaffController().GetName(this.DoctorId);
+
 
         public DateTime TestDate { get;  }
 

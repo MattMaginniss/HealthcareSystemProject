@@ -85,6 +85,25 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        internal IList<Patient> GetFirst30()
+        {
+              var patientList = new List<Patient>();
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                    patientList.Add(patient);
+                    if(patientList.Count >= 30)
+                    {
+                        return patientList;
+                    }
+                }
+            }
+            return patientList;
+        }
+
         /// <summary>
         ///     Gets the patient by patientID.
         /// </summary>

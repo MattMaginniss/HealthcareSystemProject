@@ -15,6 +15,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
     {
         private Staff getStaffFromRow(cs3230f16bDataSet.staffRow row)
         {
+            if(row == null)
+            {
+                return null;
+            }
             var staffId = row.staffID;
             var fname = row.firstName ?? "";
             var lname = row.lastName ?? "";

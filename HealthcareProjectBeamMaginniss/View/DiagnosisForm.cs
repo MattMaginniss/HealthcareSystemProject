@@ -29,7 +29,7 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.dgvDiagnosis.AutoGenerateColumns = false;
             this.addDiagnosisColumn("diagnosisInformation", "Diagnosis");
-            this.addDiagnosisColumn("finalDiagnosis", "Final?");
+            this.addFinalDiagnosisColumn("finalDiagnosis", "Final?");
             this.updateTable();
             this.resizeToFit();
         }
@@ -38,6 +38,16 @@ namespace HealthcareProjectBeamMaginniss.View
         private void addDiagnosisColumn(string diagnosisProperty, string columnTitle)
         {
             var column = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = diagnosisProperty,
+                Name = columnTitle
+            };
+            this.dgvDiagnosis.Columns.Add(column);
+        }
+
+        private void addFinalDiagnosisColumn(string diagnosisProperty, string columnTitle)
+        {
+            var column = new DataGridViewCheckBoxColumn
             {
                 DataPropertyName = diagnosisProperty,
                 Name = columnTitle

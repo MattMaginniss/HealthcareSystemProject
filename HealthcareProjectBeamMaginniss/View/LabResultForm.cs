@@ -21,6 +21,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         public LabResultForm(LabTestOrdered testOrdered)
         {
+            InitializeComponent();
             this.testOrdered = testOrdered;
             this.resultController = new LabTestResultController();
             this.result = resultController.GetById(testOrdered.TestResultId);
@@ -29,7 +30,6 @@ namespace HealthcareProjectBeamMaginniss.View
                 result = new LabTestResult(this.testOrdered.TestOrderedId, "");
             }
             this.textBox.Text = this.result.TestResults;
-            InitializeComponent();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
