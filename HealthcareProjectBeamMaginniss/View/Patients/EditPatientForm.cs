@@ -20,6 +20,7 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
         public EditPatientForm(Patient patient)
         {
             this.InitializeComponent();
+            this.dateTimeDOB.MaxDate = DateTime.Today;
             this.loadCountries();
             this.patientId = patient.PatientId;
             this.txtFirstName.Text = patient.FirstName;
@@ -56,14 +57,7 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (this.dateTimeDOB.Value <= DateTime.Today)
-            {
-                this.editPatient();
-            }
-            else
-            {
-                MessageBox.Show("The patient cannot be born in the future. Please select a date today or earlier.");
-            }
+            this.editPatient();
         }
 
         private void editPatient()

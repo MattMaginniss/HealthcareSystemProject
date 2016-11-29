@@ -21,6 +21,7 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         public AddAppointmentForm(int patientId)
         {
             this.InitializeComponent();
+            this.dateTimeAppointment.MinDate = DateTime.Today;
             this.staffController = new StaffController();
             this.patientId = patientId;
             this.loadStaff();

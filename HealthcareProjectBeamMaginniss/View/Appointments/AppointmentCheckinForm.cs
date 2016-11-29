@@ -21,6 +21,7 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         public AppointmentCheckinForm(Appointment apt)
         {
             this.InitializeComponent();
+            this.dateTimeAppointment.MinDate = DateTime.Today;
             this.staffController = new StaffController();
             this.apt = apt;
             try

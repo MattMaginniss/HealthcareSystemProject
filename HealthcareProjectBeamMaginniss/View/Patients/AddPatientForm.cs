@@ -25,6 +25,7 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
         public AddPatientForm()
         {
             this.InitializeComponent();
+            this.dateTimeDOB.MaxDate = DateTime.Today;
             this.loadCountries();
         }
 
@@ -35,6 +36,7 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
         public AddPatientForm(PatientController patientController)
         {
             this.InitializeComponent();
+            this.dateTimeDOB.MaxDate = DateTime.Today;
             this.pr = patientController;
             this.loadCountries();
         }
@@ -97,14 +99,8 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (this.dateTimeDOB.Value <= DateTime.Today)
-            {
-                this.addPatient();
-            }
-            else
-            {
-                MessageBox.Show("The patient cannot be born in the future. Please select a date today or earlier.");
-            }
+            this.addPatient();
+            
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
