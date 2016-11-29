@@ -15,7 +15,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public void Add(Diagnosis diagnosis)
         {
             var adapter = new diagnosisTableAdapter();
-            var diagnosisId = diagnosis.diagnosisId;
             var diagnosisInformation = diagnosis.diagnosisInformation;
             var appointmentId = diagnosis.appointment_id;
             Boolean finalDiagnosis = diagnosis.finalDiagnosis;
@@ -26,7 +25,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 {
                     finalDiaByte = 1;
                 }
-                adapter.Insert(diagnosisId, diagnosisInformation, appointmentId, finalDiaByte);
+                adapter.Insert(diagnosisInformation, appointmentId, finalDiaByte);
             }
         }
 
