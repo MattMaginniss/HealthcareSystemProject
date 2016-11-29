@@ -40,6 +40,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.labTestOrderedRepository.GetAll();
         }
 
+        public IList<LabTestOrdered> GetByAppointmentId(int appointmentID)
+        {
+            return this.labTestOrderedRepository.GetByAppointmentId(appointmentID);
+        }
+
         public int GetLastID()
         {
             return this.labTestOrderedRepository.GetLastID();

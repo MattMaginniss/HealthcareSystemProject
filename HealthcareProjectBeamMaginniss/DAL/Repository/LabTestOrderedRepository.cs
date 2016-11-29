@@ -50,6 +50,21 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return testOrderedList;
         }
 
+        public IList<LabTestOrdered> GetByAppointmentId(int appointmentID)
+        {
+            var testList = new List<LabTestOrdered>();
+            var adapter = new appointment_has_lab_orderTableAdapter();
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Where(tst => tst.appointment_id == appointmentID))
+                {
+                    var test = this.GetById(row.lab_order_id);
+                    testList.Add(test);
+                }
+            }
+            return testList;
+        }
+
         public LabTestOrdered getTestOrderedFromRow(cs3230f16bDataSet.test_orderedRow row)
         {
             var testOrderedId = row.test_ordered_id;
@@ -58,7 +73,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var testDate = row.test_date;
             return new LabTestOrdered(testOrderedId, testId, doctorId, testDate);
         }
-
 
         public int GetLastID()
         {

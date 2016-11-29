@@ -15,12 +15,15 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         public DateTime TestDate { get;  }
 
+        public int TestResultId { get; set; }
+
         public LabTestOrdered(int testOrderedId, int testId, int doctorId, DateTime testDate)
         {
             this.TestOrderedId = testOrderedId;
             this.TestId = testId;
             this.DoctorId = doctorId;
             this.TestDate = testDate;
+            this.TestResultId = -1;
         }
 
         public LabTestOrdered(int testId, int doctorId, DateTime testDate)
@@ -28,6 +31,7 @@ namespace HealthcareProjectBeamMaginniss.Model
             this.TestId = testId;
             this.DoctorId = doctorId;
             this.TestDate = testDate;
+            this.TestResultId = -1;
         }
 
     }
