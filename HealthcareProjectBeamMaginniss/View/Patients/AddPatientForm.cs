@@ -43,7 +43,7 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         #region Methods
 
-        private void addUser()
+        private void addPatient()
         {
             var fname = this.txtFirstName.Text;
             var lname = this.txtLastName.Text;
@@ -97,7 +97,14 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            this.addUser();
+            if (this.dateTimeDOB.Value <= DateTime.Today)
+            {
+                this.addPatient();
+            }
+            else
+            {
+                MessageBox.Show("The patient cannot be born in the future. Please select a date today or earlier.");
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

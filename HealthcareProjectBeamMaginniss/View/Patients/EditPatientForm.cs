@@ -56,6 +56,18 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (this.dateTimeDOB.Value <= DateTime.Today)
+            {
+                this.editPatient();
+            }
+            else
+            {
+                MessageBox.Show("The patient cannot be born in the future. Please select a date today or earlier.");
+            }
+        }
+
+        private void editPatient()
+        {
             var fname = this.txtFirstName.Text;
             var lname = this.txtLastName.Text;
             var dob = this.dateTimeDOB.Value;
@@ -106,12 +118,12 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
             this.pc = new PatientController();
             this.pc.Update(new Patient(this.patientId, fname, lname, dob, sex, street1, street2, city, state, zip, ccode,
                 phone));
-            Close();
+            Dispose();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         #endregion
