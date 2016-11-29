@@ -31,25 +31,31 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.dataGridView.AutoGenerateColumns = false;
             var data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentID);
-            data = this.attachResults(data);
+            this.attachResults(data);
             var bindingSource = new BindingSource { DataSource = data };
             this.dataGridView.DataSource = bindingSource;
             this.addTestColumn("TestId", "Test ID");
             this.addTestColumn("DoctorId", "Doctor");
             this.addTestColumn("TestDate", "Date");
-        }
+            var column = new DataGridViewCheckBoxColumn
+            {
+                DataPropertyName = "HasResult",
+                Name = "Has Result?"
+            };
+            this.dataGridView.Columns.Add(column);
 
-        private IList<LabTestOrdered> attachResults(IList<LabTestOrdered> data)
+    }
+
+    private void attachResults(IList<LabTestOrdered> data)
         {
             foreach(var test in data)
             {
-                var result = this.labTestResultController.GetById(test.TestOrderedId);
+                var result = this.labTestResultController.GetAll().FirstOrDefault(res=>res.TestOrderId == test.TestOrderedId);
                 if(result != null)
                 {
-                  //  test.TestResultId = result.
+                    test.TestResultId = result.ResultId;
                 }
             }
-            return null;
         }
 
         private void addTestColumn(string testProperty, string columnTitle)

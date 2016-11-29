@@ -30,7 +30,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
             using (adapter)
             {
-                var result = adapter.GetData().FirstOrDefault(res => res.lab_tests_orderedID == id);
+                var result = adapter.GetData().FirstOrDefault(res => res.test_result_id == id);
                 return this.getTestFromRow(result);
             }
         }
@@ -54,10 +54,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
         public LabTestResult getTestFromRow(cs3230f16bDataSet.test_resultsRow row)
         {
+            var resultId = row.test_result_id;
             var diagnosisID = row.lab_tests_diagnosisID;
             var testOrderedId = row.lab_tests_orderedID;
             var results = row.testResults;
-            return new LabTestResult(diagnosisID, testOrderedId, results);
+            return new LabTestResult(resultId, diagnosisID, testOrderedId, results);
         }
 
 

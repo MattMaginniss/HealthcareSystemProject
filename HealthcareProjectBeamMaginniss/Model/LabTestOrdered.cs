@@ -17,6 +17,8 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         public int TestResultId { get; set; }
 
+        public bool HasResult => TestResultId > 0;
+
         public LabTestOrdered(int testOrderedId, int testId, int doctorId, DateTime testDate)
         {
             this.TestOrderedId = testOrderedId;
