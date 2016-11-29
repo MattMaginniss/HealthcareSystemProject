@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
+using System.Data;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
@@ -14,13 +15,12 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public void Add(LabTestResult result)
         {
             var adapter = new test_resultsTableAdapter();
-            var diagnosisID = result.DiagnosisId;
             var testOrderedId = result.TestOrderId;
             var results = result.TestResults;
 
             using (adapter)
             {
-                adapter.Insert(diagnosisID,testOrderedId,results);
+                adapter.Insert(testOrderedId,results);
             }
         }
 
@@ -58,7 +58,25 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var diagnosisID = row.lab_tests_diagnosisID;
             var testOrderedId = row.lab_tests_orderedID;
             var results = row.testResults;
-            return new LabTestResult(resultId, diagnosisID, testOrderedId, results);
+            return new LabTestResult(resultId, testOrderedId, results);
+        }
+
+        public void Update(LabTestResult result)
+        {
+            var adapter = new test_resultsTableAdapter();
+            DataRow resRow = null;
+            using (adapter)
+            {
+                resRow = adapter.GetData().FirstOrDefault(res => res.test_result_id == result.ResultId);
+            }
+            if (resRow != null)
+            {
+                resRow[2] = result.TestResults;
+                using (adapter)
+                {
+                    adapter.Update(resRow);
+                }
+            }
         }
 
 

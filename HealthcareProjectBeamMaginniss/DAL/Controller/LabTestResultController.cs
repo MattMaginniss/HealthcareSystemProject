@@ -38,5 +38,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
             return this.labTestResultRepository.GetAll();
         }
+
+        public void Update(LabTestResult result)
+        {
+            this.labTestResultRepository.Update(result);
+        }
     }
 }

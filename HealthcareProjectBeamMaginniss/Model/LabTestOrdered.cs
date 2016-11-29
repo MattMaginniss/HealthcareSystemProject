@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
-    class LabTestOrdered
+    public class LabTestOrdered
     {
         public int TestOrderedId { get; }
         public int TestId { get; }

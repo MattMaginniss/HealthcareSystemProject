@@ -31,6 +31,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.btnAddUpdateResult = new System.Windows.Forms.Button();
             this.btnViewResult = new System.Windows.Forms.Button();
+            this.btnOrderTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             this.btnAddUpdateResult.TabIndex = 1;
             this.btnAddUpdateResult.Text = "Add/Update Result";
             this.btnAddUpdateResult.UseVisualStyleBackColor = true;
+            this.btnAddUpdateResult.Click += new System.EventHandler(this.btnAddUpdateResult_Click);
             // 
             // btnViewResult
             // 
@@ -61,11 +63,22 @@
             this.btnViewResult.UseVisualStyleBackColor = true;
             this.btnViewResult.Click += new System.EventHandler(this.btnViewResult_Click);
             // 
+            // btnOrderTest
+            // 
+            this.btnOrderTest.Location = new System.Drawing.Point(455, 240);
+            this.btnOrderTest.Name = "btnOrderTest";
+            this.btnOrderTest.Size = new System.Drawing.Size(84, 23);
+            this.btnOrderTest.TabIndex = 3;
+            this.btnOrderTest.Text = "Order Test";
+            this.btnOrderTest.UseVisualStyleBackColor = true;
+            this.btnOrderTest.Click += new System.EventHandler(this.btnOrderTest_Click);
+            // 
             // ViewLabTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 275);
+            this.Controls.Add(this.btnOrderTest);
             this.Controls.Add(this.btnViewResult);
             this.Controls.Add(this.btnAddUpdateResult);
             this.Controls.Add(this.dataGridView);
@@ -81,5 +94,6 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnAddUpdateResult;
         private System.Windows.Forms.Button btnViewResult;
+        private System.Windows.Forms.Button btnOrderTest;
     }
 }

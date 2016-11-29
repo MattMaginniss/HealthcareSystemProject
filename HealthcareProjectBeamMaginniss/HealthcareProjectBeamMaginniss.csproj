@@ -138,6 +138,12 @@
     <Compile Include="View\HistogramForm.Designer.cs">
       <DependentUpon>HistogramForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\LabResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LabResultForm.Designer.cs">
+      <DependentUpon>LabResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\HistogramForm.resx">
       <DependentUpon>HistogramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LabResultForm.resx">
+      <DependentUpon>LabResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

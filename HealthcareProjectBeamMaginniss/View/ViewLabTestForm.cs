@@ -30,10 +30,7 @@ namespace HealthcareProjectBeamMaginniss.View
         private void populateDataView()
         {
             this.dataGridView.AutoGenerateColumns = false;
-            var data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentID);
-            this.attachResults(data);
-            var bindingSource = new BindingSource { DataSource = data };
-            this.dataGridView.DataSource = bindingSource;
+            refreshTable();
             this.addTestColumn("TestId", "Test ID");
             this.addTestColumn("DoctorId", "Doctor");
             this.addTestColumn("TestDate", "Date");
@@ -44,9 +41,17 @@ namespace HealthcareProjectBeamMaginniss.View
             };
             this.dataGridView.Columns.Add(column);
 
-    }
+        }
 
-    private void attachResults(IList<LabTestOrdered> data)
+        private void refreshTable()
+        {
+            var data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentID);
+            this.attachResults(data);
+            var bindingSource = new BindingSource { DataSource = data };
+            this.dataGridView.DataSource = bindingSource;
+        }
+
+        private void attachResults(IList<LabTestOrdered> data)
         {
             foreach(var test in data)
             {
@@ -84,6 +89,25 @@ namespace HealthcareProjectBeamMaginniss.View
                     MessageBox.Show("Test: " + testName + "\nResults: " + testResults);
                 }
             }
+        }
+
+
+
+        private void btnOrderTest_Click(object sender, EventArgs e)
+        { 
+            var orderLabTestForm = new OrderLabTestForm(this.appt);
+            orderLabTestForm.ShowDialog();
+            this.refreshTable();
+        }
+
+        private void btnAddUpdateResult_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select a test to edit/add the results of", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            var test = (LabTestOrdered)this.dataGridView.SelectedRows[0].DataBoundItem;
+            
         }
     }
 }
