@@ -180,6 +180,9 @@
     <EmbeddedResource Include="View\CreateLabTestForm.resx">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DiagnosisForm.resx">
+      <DependentUpon>DiagnosisForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EditPatientForm.resx">
       <DependentUpon>EditPatientForm.cs</DependentUpon>
     </EmbeddedResource>

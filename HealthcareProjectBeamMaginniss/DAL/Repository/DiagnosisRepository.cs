@@ -41,8 +41,26 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow)row);
-                    diagnosisList.Add(appointment);
+                    var diagnosis = getDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow)row);
+                    diagnosisList.Add(diagnosis);
+                }
+            }
+            return diagnosisList;
+        }
+
+        public IList<Diagnosis> GetAllDiagnosisByAptID(int aptID)
+        {
+            var diagnosisList = new List<Diagnosis>();
+            var adapter = new diagnosisTableAdapter();
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var diagnosis = getDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow)row);
+                    if (diagnosis.appointment_id == aptID)
+                    {
+                        diagnosisList.Add(diagnosis);
+                    }
                 }
             }
             return diagnosisList;
