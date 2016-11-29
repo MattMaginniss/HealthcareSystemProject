@@ -112,8 +112,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 {
                     foreach (var row in adapter.GetData().Where(diag => diag.appointment_id == aptId))
                     {
-                        var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow) row);
-                            diagnosisList.Add(diagnosis);
+                        var diagnosis = this.GetDiagnosisFromRow(row);
+                        diagnosisList.Add(diagnosis);
                     }
                 }
                 return diagnosisList;
@@ -133,8 +133,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return new Diagnosis(diagnosisId, diagnosisInformation, appointmentId, finalDiagnosis);
         }
 
-        #endregion
-
         public IList<Diagnosis> GetAllDiagnosisByPatientId(int patientId)
         {
             var diagnosisList = new List<Diagnosis>();
@@ -143,9 +141,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Where(diag => new AppointmentController().GetById(diag.appointment_id).PatientId == patientId))
+                    foreach (
+                        var row in
+                            adapter.GetData()
+                                   .Where(
+                                       diag =>
+                                           new AppointmentController().GetById(diag.appointment_id).PatientId ==
+                                           patientId))
                     {
-                        var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow)row);
+                        var diagnosis = this.GetDiagnosisFromRow(row);
                         diagnosisList.Add(diagnosis);
                     }
                 }
@@ -156,5 +160,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
+
+        #endregion
     }
-    }
+}

@@ -14,7 +14,7 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private readonly AppointmentController appointmentController;
         private BindingSource bindingSource;
-        private int patientId;
+        private readonly int patientId;
 
         #endregion
 
@@ -22,7 +22,6 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         public ViewAppointmentForm() : this(0)
         {
-
         }
 
         public ViewAppointmentForm(int patientId)
@@ -79,10 +78,11 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
             }
             else
             {
-                this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientId(this.patientId) };
+                this.bindingSource = new BindingSource {
+                    DataSource = this.appointmentController.GetAppointmentByPatientId(this.patientId)
+                };
                 this.dgvAppointment.DataSource = this.bindingSource;
             }
-
         }
 
         private void addAppointmentColumn(string patientProperty, string columnTitle)
@@ -113,85 +113,87 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try { 
-            if (this.radioBtnName.Checked)
+            try
             {
-                var firstNameQuery = this.txtFirstName.Text.ToLower();
-                var lastNameQuery = this.txtLastName.Text.ToLower();
+                if (this.radioBtnName.Checked)
+                {
+                    var firstNameQuery = this.txtFirstName.Text.ToLower();
+                    var lastNameQuery = this.txtLastName.Text.ToLower();
 
-                if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
-                {
-                    this.bindingSource = new BindingSource {
-                        DataSource =
-                            this.appointmentController.GetAppointmentByPatientFullName(firstNameQuery, lastNameQuery)
-                    };
-                    this.dgvAppointment.DataSource = this.bindingSource;
+                    if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
+                    {
+                        this.bindingSource = new BindingSource {
+                            DataSource =
+                                this.appointmentController.GetAppointmentByPatientFullName(firstNameQuery, lastNameQuery)
+                        };
+                        this.dgvAppointment.DataSource = this.bindingSource;
+                    }
+                    else if (!firstNameQuery.Equals(""))
+                    {
+                        this.bindingSource = new BindingSource {
+                            DataSource = this.appointmentController.GetAppointmentByPatientFirstName(firstNameQuery)
+                        };
+                        this.dgvAppointment.DataSource = this.bindingSource;
+                    }
+                    else if (!lastNameQuery.Equals(""))
+                    {
+                        this.bindingSource = new BindingSource {
+                            DataSource = this.appointmentController.GetAppointmentByPatientLastName(lastNameQuery)
+                        };
+                        this.dgvAppointment.DataSource = this.bindingSource;
+                    }
+                    else
+                    {
+                        this.updateTable();
+                    }
                 }
-                else if (!firstNameQuery.Equals(""))
+                else if (this.radBtnDOB.Checked)
                 {
-                    this.bindingSource = new BindingSource {
-                        DataSource = this.appointmentController.GetAppointmentByPatientFirstName(firstNameQuery)
-                    };
-                    this.dgvAppointment.DataSource = this.bindingSource;
-                }
-                else if (!lastNameQuery.Equals(""))
-                {
-                    this.bindingSource = new BindingSource {
-                        DataSource = this.appointmentController.GetAppointmentByPatientLastName(lastNameQuery)
-                    };
-                    this.dgvAppointment.DataSource = this.bindingSource;
-                }
-                else
-                {
-                    this.updateTable();
-                }
-            }
-            else if (this.radBtnDOB.Checked)
-            {
-                var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
+                    var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
-                this.bindingSource = new BindingSource {
-                    DataSource = this.appointmentController.GetAppointmentByPatientDateOfBirth(dobQuery)
-                };
-                this.dgvAppointment.DataSource = this.bindingSource;
-            }
-            else if (this.radBtnBoth.Checked)
-            {
-                var firstNameQuery = this.txtFirstName.Text.ToLower();
-                var lastNameQuery = this.txtLastName.Text.ToLower();
-                var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
+                    this.bindingSource = new BindingSource {
+                        DataSource = this.appointmentController.GetAppointmentByPatientDateOfBirth(dobQuery)
+                    };
+                    this.dgvAppointment.DataSource = this.bindingSource;
+                }
+                else if (this.radBtnBoth.Checked)
+                {
+                    var firstNameQuery = this.txtFirstName.Text.ToLower();
+                    var lastNameQuery = this.txtLastName.Text.ToLower();
+                    var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
-                if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
-                {
-                    this.bindingSource = new BindingSource {
-                        DataSource =
-                            this.appointmentController.GetAppointmentByPatientFullNameAndDob(firstNameQuery,
-                                lastNameQuery,
-                                dobQuery)
-                    };
-                    this.dgvAppointment.DataSource = this.bindingSource;
+                    if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
+                    {
+                        this.bindingSource = new BindingSource {
+                            DataSource =
+                                this.appointmentController.GetAppointmentByPatientFullNameAndDob(firstNameQuery,
+                                    lastNameQuery,
+                                    dobQuery)
+                        };
+                        this.dgvAppointment.DataSource = this.bindingSource;
+                    }
+                    else if (!firstNameQuery.Equals(""))
+                    {
+                        this.bindingSource = new BindingSource {
+                            DataSource =
+                                this.appointmentController.GetAppointmentByPatientFirstNameAndDob(firstNameQuery,
+                                    dobQuery)
+                        };
+                        this.dgvAppointment.DataSource = this.bindingSource;
+                    }
+                    else if (!lastNameQuery.Equals(""))
+                    {
+                        this.bindingSource = new BindingSource {
+                            DataSource =
+                                this.appointmentController.GetAppointmentByPatientLastNameAndDob(lastNameQuery, dobQuery)
+                        };
+                        this.dgvAppointment.DataSource = this.bindingSource;
+                    }
+                    else
+                    {
+                        this.updateTable();
+                    }
                 }
-                else if (!firstNameQuery.Equals(""))
-                {
-                    this.bindingSource = new BindingSource {
-                        DataSource =
-                            this.appointmentController.GetAppointmentByPatientFirstNameAndDob(firstNameQuery, dobQuery)
-                    };
-                    this.dgvAppointment.DataSource = this.bindingSource;
-                }
-                else if (!lastNameQuery.Equals(""))
-                {
-                    this.bindingSource = new BindingSource {
-                        DataSource =
-                            this.appointmentController.GetAppointmentByPatientLastNameAndDob(lastNameQuery, dobQuery)
-                    };
-                    this.dgvAppointment.DataSource = this.bindingSource;
-                }
-                else
-                {
-                    this.updateTable();
-                }
-            }
             }
             catch (Exception exc)
             {
@@ -288,11 +290,11 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         {
             MessageBox.Show(null,
                 Resources.ViewAppointmentForm_handleError_Exception_occurred__ + e.Message +
-                Resources.ViewAppointmentForm_handleError_, Resources.ViewAppointmentForm_handleError_Error, MessageBoxButtons.OK,
+                Resources.ViewAppointmentForm_handleError_, Resources.ViewAppointmentForm_handleError_Error,
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-            this.Close();
+            Close();
         }
-
 
         #endregion
     }

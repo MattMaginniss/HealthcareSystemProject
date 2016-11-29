@@ -41,26 +41,29 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            try { 
-            this.DiagnosisController = new DiagnosisController();
-            if (this.Edit)
+            try
             {
-                this.DiagnosisController.Update(new Diagnosis(this.Diagnosis.DiagnosisId, this.txtLabTestName.Text,
-                    this.Diagnosis.AppointmentId, this.chkFinal.Checked));
-            }
-            else
-            {
-                this.DiagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.AptId, this.chkFinal.Checked));
-            }
-            Close();
+                this.DiagnosisController = new DiagnosisController();
+                if (this.Edit)
+                {
+                    this.DiagnosisController.Update(new Diagnosis(this.Diagnosis.DiagnosisId, this.txtLabTestName.Text,
+                        this.Diagnosis.AppointmentId, this.chkFinal.Checked));
+                }
+                else
+                {
+                    this.DiagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.AptId,
+                        this.chkFinal.Checked));
+                }
+                Close();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(null,
-                Resources.AddEditDiagnosisForm_btnSubmit_Click_Exception_occurred__ + exc.Message +
-                Resources.AddEditDiagnosisForm_btnSubmit_Click_, Resources.AddEditDiagnosisForm_btnSubmit_Click_Error, MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-                this.Close();
+                    Resources.AddEditDiagnosisForm_btnSubmit_Click_Exception_occurred__ + exc.Message +
+                    Resources.AddEditDiagnosisForm_btnSubmit_Click_,
+                    Resources.AddEditDiagnosisForm_btnSubmit_Click_Error, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                Close();
             }
         }
 

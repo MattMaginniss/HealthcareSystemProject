@@ -378,8 +378,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        #endregion
-
         public IList<Appointment> GetAppointmentByPatientId(int patientId)
         {
             var appointmentList = new List<Appointment>();
@@ -389,7 +387,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (cs3230f16bDataSet.appointmentRow row in adapter.GetData().Where(apt =>apt.patientID == patientId))
+                    foreach (var row in adapter.GetData().Where(apt => apt.patientID == patientId))
                     {
                         var appointment = this.GetAppointmentFromRow(row);
                         appointmentList.Add(appointment);
@@ -403,5 +401,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
+
+        #endregion
     }
 }

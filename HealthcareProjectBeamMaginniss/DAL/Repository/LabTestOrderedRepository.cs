@@ -122,8 +122,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        #endregion
-
         public IList<LabTestOrdered> GetByPatientId(int patientId)
         {
             var testList = new List<LabTestOrdered>();
@@ -151,5 +149,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
+
+        #endregion
     }
 }

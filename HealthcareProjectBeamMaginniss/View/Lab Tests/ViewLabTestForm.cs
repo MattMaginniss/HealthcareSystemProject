@@ -15,7 +15,7 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         private readonly Appointment appt;
         private readonly LabTestOrderedController labTestOrderedController;
         private readonly LabTestResultController labTestResultController;
-        private int patientId;
+        private readonly int patientId;
 
         #endregion
 

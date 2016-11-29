@@ -53,11 +53,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.labTestOrderedRepository.GetLastId();
         }
 
-        #endregion
-
         public IList<LabTestOrdered> GetByPatientId(int patientId)
         {
             return this.labTestOrderedRepository.GetByPatientId(patientId);
         }
+
+        #endregion
     }
 }

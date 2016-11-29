@@ -13,7 +13,7 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
         private readonly DiagnosisController diagnosisController;
         private readonly Appointment appt;
         private BindingSource bindingSource;
-        private int userId;
+        private readonly int userId;
 
         #endregion
 
@@ -76,23 +76,22 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         private void updateTable()
         {
-            try {
+            try
+            {
                 if (this.appt == null)
                 {
-                    this.bindingSource = new BindingSource
-                    {
+                    this.bindingSource = new BindingSource {
                         DataSource = this.diagnosisController.GetAllDiagnosisByPatientId(this.userId)
                     };
                 }
                 else
                 {
-                    this.bindingSource = new BindingSource
-                    {
+                    this.bindingSource = new BindingSource {
                         DataSource = this.diagnosisController.GetAllDiagnosisByAptId(this.appt.AppointmentId)
                     };
                 }
-            
-            this.dgvDiagnosis.DataSource = this.bindingSource;
+
+                this.dgvDiagnosis.DataSource = this.bindingSource;
             }
             catch (Exception exc)
             {
@@ -117,11 +116,12 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
             }
             else
             {
-                try { 
-                var diagnosis = (Diagnosis) this.dgvDiagnosis.SelectedRows[0].DataBoundItem;
-                var editDiagnosis = new AddEditDiagnosisForm(diagnosis);
-                editDiagnosis.ShowDialog();
-                this.updateTable();
+                try
+                {
+                    var diagnosis = (Diagnosis) this.dgvDiagnosis.SelectedRows[0].DataBoundItem;
+                    var editDiagnosis = new AddEditDiagnosisForm(diagnosis);
+                    editDiagnosis.ShowDialog();
+                    this.updateTable();
                 }
                 catch (Exception exc)
                 {
@@ -129,14 +129,16 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
                 }
             }
         }
+
         private void handleError(Exception e)
         {
             MessageBox.Show(null,
                 Resources.DiagnosisForm_handleError_Exception_occurred__ + e.Message +
                 Resources.DiagnosisForm_handleError_, Resources.DiagnosisForm_handleError_Error, MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-            this.Close();
+            Close();
         }
+
         #endregion
     }
 }
