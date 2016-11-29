@@ -82,7 +82,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error, MessageBoxButtons.OK,
+                MessageBox.Show(this, Resources.ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment,
+                    Resources.ViewAppointmentForm_buttonCheckIn_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             else
@@ -210,7 +211,9 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.ViewAppointmentForm_btnOrderTests_Click_Please_select_an_appointment_to_order_tests_for, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error, MessageBoxButtons.OK,
+                MessageBox.Show(this,
+                    Resources.ViewAppointmentForm_btnOrderTests_Click_Please_select_an_appointment_to_order_tests_for,
+                    Resources.ViewAppointmentForm_buttonCheckIn_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             else
@@ -226,13 +229,16 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.ViewAppointmentForm_btnDiagnosis_Click_Please_select_an_appointment_to_add_update_diagnosis_to, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error,
+                MessageBox.Show(this,
+                    Resources
+                        .ViewAppointmentForm_btnDiagnosis_Click_Please_select_an_appointment_to_add_update_diagnosis_to,
+                    Resources.ViewAppointmentForm_buttonCheckIn_Click_Error,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 var appt = (Appointment) this.dgvAppointment.SelectedRows[0].DataBoundItem;
-                var diagnosisForm = new Diagnoses.DiagnosisForm(appt);
+                var diagnosisForm = new DiagnosisForm(appt);
                 diagnosisForm.ShowDialog();
                 this.updateTable();
             }
@@ -242,7 +248,9 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.ViewAppointmentForm_btnViewTests_Click_Please_select_an_appointment_to_view_lab_tests_for, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error,
+                MessageBox.Show(this,
+                    Resources.ViewAppointmentForm_btnViewTests_Click_Please_select_an_appointment_to_view_lab_tests_for,
+                    Resources.ViewAppointmentForm_buttonCheckIn_Click_Error,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else

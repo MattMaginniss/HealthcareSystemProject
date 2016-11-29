@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
@@ -14,10 +15,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var adapter = new lab_testsTableAdapter();
             var testName = test.TestName;
-
-            using (adapter)
+            try
             {
-                adapter.Insert(testName);
+                using (adapter)
+                {
+                    adapter.Insert(testName);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -25,10 +32,17 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var adapter = new lab_testsTableAdapter();
 
-            using (adapter)
+            try
             {
-                var test = adapter.GetData().FirstOrDefault(tst => tst.testCode == id);
-                return this.GetTestFromRow(test);
+                using (adapter)
+                {
+                    var test = adapter.GetData().FirstOrDefault(tst => tst.testCode == id);
+                    return this.GetTestFromRow(test);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -36,15 +50,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var testList = new List<LabTest>();
             var adapter = new lab_testsTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var test = this.GetTestFromRow((cs3230f16bDataSet.lab_testsRow) row);
-                    testList.Add(test);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var test = this.GetTestFromRow((cs3230f16bDataSet.lab_testsRow) row);
+                        testList.Add(test);
+                    }
                 }
+                return testList;
             }
-            return testList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public LabTest GetTestFromRow(cs3230f16bDataSet.lab_testsRow row)

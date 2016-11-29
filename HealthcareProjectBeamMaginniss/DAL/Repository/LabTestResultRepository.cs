@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
@@ -16,21 +17,33 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var adapter = new test_resultsTableAdapter();
             var testOrderedId = result.TestOrderId;
             var results = result.TestResults;
-
-            using (adapter)
+            try
             {
-                adapter.Insert(testOrderedId, results);
+                using (adapter)
+                {
+                    adapter.Insert(testOrderedId, results);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         public LabTestResult GetById(int id)
         {
             var adapter = new test_resultsTableAdapter();
-
-            using (adapter)
+            try
             {
-                var result = adapter.GetData().FirstOrDefault(res => res.test_result_id == id);
-                return this.GetTestFromRow(result);
+                using (adapter)
+                {
+                    var result = adapter.GetData().FirstOrDefault(res => res.test_result_id == id);
+                    return this.GetTestFromRow(result);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -38,15 +51,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var testList = new List<LabTestResult>();
             var adapter = new test_resultsTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var test = this.GetTestFromRow((cs3230f16bDataSet.test_resultsRow) row);
-                    testList.Add(test);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var test = this.GetTestFromRow((cs3230f16bDataSet.test_resultsRow) row);
+                        testList.Add(test);
+                    }
                 }
+                return testList;
             }
-            return testList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public LabTestResult GetTestFromRow(cs3230f16bDataSet.test_resultsRow row)
@@ -65,17 +85,24 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var adapter = new test_resultsTableAdapter();
             DataRow resRow = null;
-            using (adapter)
+            try
             {
-                resRow = adapter.GetData().FirstOrDefault(res => res.test_result_id == result.ResultId);
-            }
-            if (resRow != null)
-            {
-                resRow[2] = result.TestResults;
                 using (adapter)
                 {
-                    adapter.Update(resRow);
+                    resRow = adapter.GetData().FirstOrDefault(res => res.test_result_id == result.ResultId);
                 }
+                if (resRow != null)
+                {
+                    resRow[2] = result.TestResults;
+                    using (adapter)
+                    {
+                        adapter.Update(resRow);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 

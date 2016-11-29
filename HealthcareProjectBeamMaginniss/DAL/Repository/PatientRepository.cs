@@ -34,9 +34,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var zip = patient.Zip;
             var country = patient.Country;
             var phoneNo = patient.PhoneNo;
-            using (adapter)
+            try
             {
-                adapter.Insert(fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
+                using (adapter)
+                {
+                    adapter.Insert(fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -48,10 +55,17 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public Patient GetById(int id)
         {
             var adapter = new patientTableAdapter();
-            using (adapter)
+            try
             {
-                var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
-                return this.getPatientFromRow(patient);
+                using (adapter)
+                {
+                    var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
+                    return this.getPatientFromRow(patient);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -63,15 +77,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    patientList.Add(patient);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        patientList.Add(patient);
+                    }
                 }
+                return patientList;
             }
-            return patientList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         private Patient getPatientFromRow(cs3230f16bDataSet.patientRow row)
@@ -95,32 +116,53 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var adapter = new histogramOfPatientBirthYearTableAdapter();
             var dateDict = new Dictionary<int, int>();
-            foreach (cs3230f16bDataSet.histogramOfPatientBirthYearRow row in adapter.GetData(minYear).Rows)
+            try
             {
-                var year = row.Year;
-                var count = (int) row._Patients_born_;
-                dateDict.Add(year, count);
+                foreach (cs3230f16bDataSet.histogramOfPatientBirthYearRow row in adapter.GetData(minYear).Rows)
+                {
+                    var year = row.Year;
+                    var count = (int) row._Patients_born_;
+                    dateDict.Add(year, count);
+                }
+                return dateDict;
             }
-            return dateDict;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         internal int GetMinYear()
         {
             var adapter = new patientTableAdapter();
-            using (adapter)
+            try
             {
-                var oldest = adapter.GetData().Min(pat => pat.dateOfBirth);
-                return oldest.Year;
+                using (adapter)
+                {
+                    var oldest = adapter.GetData().Min(pat => pat.dateOfBirth);
+                    return oldest.Year;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         internal int GetMaxYear()
         {
             var adapter = new patientTableAdapter();
-            using (adapter)
+            try
             {
-                var youngest = adapter.GetData().Max(pat => pat.dateOfBirth);
-                return youngest.Year;
+                using (adapter)
+                {
+                    var youngest = adapter.GetData().Max(pat => pat.dateOfBirth);
+                    return youngest.Year;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -128,27 +170,34 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var adapter = new patientTableAdapter();
             DataRow patRow = null;
-            using (adapter)
+            try
             {
-                patRow = adapter.GetData().FirstOrDefault(pat => pat.patientID == patient.PatientId);
-            }
-            if (patRow != null)
-            {
-                patRow[1] = patient.FirstName;
-                patRow[2] = patient.LastName;
-                patRow[3] = patient.Dob;
-                patRow[4] = patient.Sex.ToString();
-                patRow[5] = patient.Street1;
-                patRow[6] = patient.Street2;
-                patRow[7] = patient.City;
-                patRow[8] = patient.State;
-                patRow[9] = patient.Zip;
-                patRow[10] = patient.Country;
-                patRow[11] = patient.PhoneNo;
                 using (adapter)
                 {
-                    adapter.Update(patRow);
+                    patRow = adapter.GetData().FirstOrDefault(pat => pat.patientID == patient.PatientId);
                 }
+                if (patRow != null)
+                {
+                    patRow[1] = patient.FirstName;
+                    patRow[2] = patient.LastName;
+                    patRow[3] = patient.Dob;
+                    patRow[4] = patient.Sex.ToString();
+                    patRow[5] = patient.Street1;
+                    patRow[6] = patient.Street2;
+                    patRow[7] = patient.City;
+                    patRow[8] = patient.State;
+                    patRow[9] = patient.Zip;
+                    patRow[10] = patient.Country;
+                    patRow[11] = patient.PhoneNo;
+                    using (adapter)
+                    {
+                        adapter.Update(patRow);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -156,99 +205,130 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    patientList.Add(patient);
-                    if (patientList.Count >= 30)
+                    foreach (var row in adapter.GetData().Rows)
                     {
-                        return patientList;
+                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        patientList.Add(patient);
+                        if (patientList.Count >= 30)
+                        {
+                            return patientList;
+                        }
                     }
                 }
+                return patientList;
             }
-            return patientList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IList<Patient> GetPatientsByFirstName(string fName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
-
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    if (patient.FirstName.ToLower().Equals(fName))
+                    foreach (var row in adapter.GetData().Rows)
                     {
-                        patientList.Add(patient);
+                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        if (patient.FirstName.ToLower().Equals(fName))
+                        {
+                            patientList.Add(patient);
+                        }
                     }
                 }
-            }
 
-            return patientList;
+                return patientList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IList<Patient> GetPatientsByLastName(string lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
-
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    if (patient.LastName.ToLower().Equals(lName))
+                    foreach (var row in adapter.GetData().Rows)
                     {
-                        patientList.Add(patient);
+                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        if (patient.LastName.ToLower().Equals(lName))
+                        {
+                            patientList.Add(patient);
+                        }
                     }
                 }
-            }
 
-            return patientList;
+                return patientList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IList<Patient> GetPatientsByFullName(string fName, string lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
-
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
+                    foreach (var row in adapter.GetData().Rows)
                     {
-                        patientList.Add(patient);
+                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
+                        {
+                            patientList.Add(patient);
+                        }
                     }
                 }
-            }
 
-            return patientList;
+                return patientList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IList<Patient> GetPatientsByDateOfBirth(string dob)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
-
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    if (patient.Dob.ToShortDateString().Equals(dob))
+                    foreach (var row in adapter.GetData().Rows)
                     {
-                        patientList.Add(patient);
+                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        if (patient.Dob.ToShortDateString().Equals(dob))
+                        {
+                            patientList.Add(patient);
+                        }
                     }
                 }
-            }
 
-            return patientList;
+                return patientList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         #endregion

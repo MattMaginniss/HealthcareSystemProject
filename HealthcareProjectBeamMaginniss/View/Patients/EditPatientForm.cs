@@ -94,7 +94,8 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
             }
             if (string.IsNullOrWhiteSpace(country) || !ctry.Contains(country))
             {
-                MessageBox.Show(this, Resources.EditPatientForm_btnSubmit_Click_Please_select_a_country, Resources.EditPatientForm_btnSubmit_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.EditPatientForm_btnSubmit_Click_Please_select_a_country,
+                    Resources.EditPatientForm_btnSubmit_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(zip))

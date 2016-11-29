@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
@@ -15,10 +16,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var adapter = new appointment_has_lab_orderTableAdapter();
             var appointmentId = aptLabOrder.AppointmentId;
             var labOrderId = aptLabOrder.LabOrderId;
-
-            using (adapter)
+            try
             {
-                adapter.Insert(appointmentId, labOrderId);
+                using (adapter)
+                {
+                    adapter.Insert(appointmentId, labOrderId);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -26,10 +33,17 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var adapter = new appointment_has_lab_orderTableAdapter();
 
-            using (adapter)
+            try
             {
-                var aptLabOrder = adapter.GetData().FirstOrDefault(alo => alo.appointment_id == id);
-                return this.GetAptTestOrderedFromRow(aptLabOrder);
+                using (adapter)
+                {
+                    var aptLabOrder = adapter.GetData().FirstOrDefault(alo => alo.appointment_id == id);
+                    return this.GetAptTestOrderedFromRow(aptLabOrder);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -37,15 +51,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var aptTestOrderedList = new List<AppointmentLabOrder>();
             var adapter = new appointment_has_lab_orderTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var test = this.GetAptTestOrderedFromRow((cs3230f16bDataSet.appointment_has_lab_orderRow) row);
-                    aptTestOrderedList.Add(test);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var test = this.GetAptTestOrderedFromRow((cs3230f16bDataSet.appointment_has_lab_orderRow) row);
+                        aptTestOrderedList.Add(test);
+                    }
                 }
+                return aptTestOrderedList;
             }
-            return aptTestOrderedList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public AppointmentLabOrder GetAptTestOrderedFromRow(cs3230f16bDataSet.appointment_has_lab_orderRow row)

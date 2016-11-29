@@ -81,7 +81,9 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         {
             if (this.dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.ViewLabTestForm_btnViewResult_Click_Please_select_a_test_to_view_the_results_of, Resources.ViewLabTestForm_btnViewResult_Click_Error, MessageBoxButtons.OK,
+                MessageBox.Show(this,
+                    Resources.ViewLabTestForm_btnViewResult_Click_Please_select_a_test_to_view_the_results_of,
+                    Resources.ViewLabTestForm_btnViewResult_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             else
@@ -91,7 +93,8 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
                 {
                     var testName = new LabTestController().GetById(test.TestId).TestName;
                     var testResults = this.labTestResultController.GetById(test.TestResultId).TestResults;
-                    MessageBox.Show(Resources.ViewLabTestForm_btnViewResult_Click_Test__ + testName + Resources.ViewLabTestForm_btnViewResult_Click_ + testResults);
+                    MessageBox.Show(Resources.ViewLabTestForm_btnViewResult_Click_Test__ + testName +
+                                    Resources.ViewLabTestForm_btnViewResult_Click_ + testResults);
                 }
             }
         }
@@ -107,7 +110,9 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         {
             if (this.dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.ViewLabTestForm_btnAddUpdateResult_Click_Please_select_a_test_to_edit_add_the_results_of, Resources.ViewLabTestForm_btnViewResult_Click_Error, MessageBoxButtons.OK,
+                MessageBox.Show(this,
+                    Resources.ViewLabTestForm_btnAddUpdateResult_Click_Please_select_a_test_to_edit_add_the_results_of,
+                    Resources.ViewLabTestForm_btnViewResult_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }

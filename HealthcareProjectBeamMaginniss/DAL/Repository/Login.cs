@@ -22,9 +22,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public bool CheckLogin(string userName, string password)
         {
             var adapter = new staff_credentialsTableAdapter();
-            using (adapter)
+            try
             {
-                try
+                using (adapter)
                 {
                     var staffCredentialsRow = adapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
                     if (staffCredentialsRow == null)
@@ -34,19 +34,19 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                     var pword = staffCredentialsRow.password;
                     return pword.Equals(password);
                 }
-                catch (Exception)
-                {
-                    return false;
-                }
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
 
         public string GetNameByUsername(string userName)
         {
             var loginAdapter = new staff_credentialsTableAdapter();
-            using (loginAdapter)
+            try
             {
-                try
+                using (loginAdapter)
                 {
                     var staffCredentialsRow =
                         loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
@@ -64,20 +64,20 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    return null;
-                }
+                return null;
             }
-            return null;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public int GetStaffTypeByUsername(string userName)
         {
             var loginAdapter = new staff_credentialsTableAdapter();
-            using (loginAdapter)
+            try
             {
-                try
+                using (loginAdapter)
                 {
                     var staffCredentialsRow =
                         loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
@@ -95,10 +95,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    return -1;
-                }
+            }
+            catch (Exception e)
+            {
+                return -1;
             }
             return -1;
         }

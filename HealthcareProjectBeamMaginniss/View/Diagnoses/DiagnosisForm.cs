@@ -82,7 +82,8 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
         {
             if (this.dgvDiagnosis.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit, Resources.DiagnosisForm_btnEdit_Click_Error, MessageBoxButtons.OK,
+                MessageBox.Show(this, Resources.DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit,
+                    Resources.DiagnosisForm_btnEdit_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             else

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
@@ -17,24 +18,38 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var diagnosisInformation = diagnosis.DiagnosisInformation;
             var appointmentId = diagnosis.AppointmentId;
             var finalDiagnosis = diagnosis.FinalDiagnosis;
-            using (adapter)
+            try
             {
-                byte finalDiaByte = 0;
-                if (finalDiagnosis)
+                using (adapter)
                 {
-                    finalDiaByte = 1;
+                    byte finalDiaByte = 0;
+                    if (finalDiagnosis)
+                    {
+                        finalDiaByte = 1;
+                    }
+                    adapter.Insert(diagnosisInformation, appointmentId, finalDiaByte);
                 }
-                adapter.Insert(diagnosisInformation, appointmentId, finalDiaByte);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         public Diagnosis GetById(int id)
         {
             var adapter = new diagnosisTableAdapter();
-            using (adapter)
+            try
             {
-                var diagnosis = adapter.GetData().FirstOrDefault(dia => dia.diagnosisID == id);
-                return this.GetDiagnosisFromRow(diagnosis);
+                using (adapter)
+                {
+                    var diagnosis = adapter.GetData().FirstOrDefault(dia => dia.diagnosisID == id);
+                    return this.GetDiagnosisFromRow(diagnosis);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -42,33 +57,47 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var diagnosisList = new List<Diagnosis>();
             var adapter = new diagnosisTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow) row);
-                    diagnosisList.Add(diagnosis);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow) row);
+                        diagnosisList.Add(diagnosis);
+                    }
                 }
+                return diagnosisList;
             }
-            return diagnosisList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void Update(Diagnosis diagnosis)
         {
             var adapter = new diagnosisTableAdapter();
-            DataRow diaRow = null;
-            using (adapter)
+            try
             {
-                diaRow = adapter.GetData().FirstOrDefault(dia => dia.diagnosisID == diagnosis.DiagnosisId);
-            }
-            if (diaRow != null)
-            {
-                diaRow[1] = diagnosis.DiagnosisInformation;
-                diaRow[3] = diagnosis.FinalDiagnosis;
+                DataRow diaRow = null;
                 using (adapter)
                 {
-                    adapter.Update(diaRow);
+                    diaRow = adapter.GetData().FirstOrDefault(dia => dia.diagnosisID == diagnosis.DiagnosisId);
                 }
+                if (diaRow != null)
+                {
+                    diaRow[1] = diagnosis.DiagnosisInformation;
+                    diaRow[3] = diagnosis.FinalDiagnosis;
+                    using (adapter)
+                    {
+                        adapter.Update(diaRow);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -76,18 +105,25 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var diagnosisList = new List<Diagnosis>();
             var adapter = new diagnosisTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow) row);
-                    if (diagnosis.AppointmentId.Equals(aptId))
+                    foreach (var row in adapter.GetData().Rows)
                     {
-                        diagnosisList.Add(diagnosis);
+                        var diagnosis = this.GetDiagnosisFromRow((cs3230f16bDataSet.diagnosisRow) row);
+                        if (diagnosis.AppointmentId.Equals(aptId))
+                        {
+                            diagnosisList.Add(diagnosis);
+                        }
                     }
                 }
+                return diagnosisList;
             }
-            return diagnosisList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Diagnosis GetDiagnosisFromRow(cs3230f16bDataSet.diagnosisRow row)

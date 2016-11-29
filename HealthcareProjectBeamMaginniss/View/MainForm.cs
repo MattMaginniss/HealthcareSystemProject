@@ -111,7 +111,8 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.patientDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.MainForm_buttonAddAppointment_Click_Please_select_a_user, Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.MainForm_buttonAddAppointment_Click_Please_select_a_user,
+                    Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -198,7 +199,8 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.patientDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, Resources.MainForm_btnEditPatient_Click_Please_select_a_user_to_edit, Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK,
+                MessageBox.Show(this, Resources.MainForm_btnEditPatient_Click_Please_select_a_user_to_edit,
+                    Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             else

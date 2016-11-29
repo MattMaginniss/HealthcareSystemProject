@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
@@ -26,9 +27,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var bdate = staff.Dob;
             var phoneNo = staff.PhoneNo;
             var staffType = staff.StaffType;
-            using (adapter)
+            try
             {
-                adapter.Insert(fname, lname, bdate, phoneNo, staffType);
+                using (adapter)
+                {
+                    adapter.Insert(fname, lname, bdate, phoneNo, staffType);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -40,10 +48,17 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public Staff GetById(int id)
         {
             var adapter = new staffTableAdapter();
-            using (adapter)
+            try
             {
-                var staff = adapter.GetData().FirstOrDefault(st => st.staffID == id);
-                return this.getStaffFromRow(staff);
+                using (adapter)
+                {
+                    var staff = adapter.GetData().FirstOrDefault(st => st.staffID == id);
+                    return this.getStaffFromRow(staff);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -55,15 +70,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var staffList = new List<Staff>();
             var adapter = new staffTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var staff = this.getStaffFromRow((cs3230f16bDataSet.staffRow) row);
-                    staffList.Add(staff);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var staff = this.getStaffFromRow((cs3230f16bDataSet.staffRow) row);
+                        staffList.Add(staff);
+                    }
                 }
+                return staffList;
             }
-            return staffList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         private Staff getStaffFromRow(cs3230f16bDataSet.staffRow row)
@@ -85,32 +107,46 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var staffList = new List<Staff>();
             var adapter = new staffTableAdapter();
-            using (adapter)
+            try
             {
-                var doctors = adapter.GetData().Where(st => st.staffType == 3);
-                foreach (var doctor in doctors)
+                using (adapter)
                 {
-                    var staff = this.getStaffFromRow(doctor);
-                    staffList.Add(staff);
+                    var doctors = adapter.GetData().Where(st => st.staffType == 3);
+                    foreach (var doctor in doctors)
+                    {
+                        var staff = this.getStaffFromRow(doctor);
+                        staffList.Add(staff);
+                    }
                 }
+                return staffList;
             }
-            return staffList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public List<Staff> GetNurses()
         {
             var staffList = new List<Staff>();
             var adapter = new staffTableAdapter();
-            using (adapter)
+            try
             {
-                var nurses = adapter.GetData().Where(st => st.staffType == 2);
-                foreach (var nurse in nurses)
+                using (adapter)
                 {
-                    var staff = this.getStaffFromRow(nurse);
-                    staffList.Add(staff);
+                    var nurses = adapter.GetData().Where(st => st.staffType == 2);
+                    foreach (var nurse in nurses)
+                    {
+                        var staff = this.getStaffFromRow(nurse);
+                        staffList.Add(staff);
+                    }
                 }
+                return staffList;
             }
-            return staffList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         #endregion

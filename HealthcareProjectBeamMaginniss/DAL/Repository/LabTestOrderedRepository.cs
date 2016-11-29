@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
@@ -16,21 +17,33 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var testId = labTestOrdered.TestId;
             var doctorId = labTestOrdered.DoctorId;
             var testDate = labTestOrdered.TestDate;
-
-            using (adapter)
+            try
             {
-                adapter.Insert(testId, doctorId, testDate);
+                using (adapter)
+                {
+                    adapter.Insert(testId, doctorId, testDate);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         public LabTestOrdered GetById(int id)
         {
             var adapter = new test_orderedTableAdapter();
-
-            using (adapter)
+            try
             {
-                var labTestOrdered = adapter.GetData().FirstOrDefault(lto => lto.test_ordered_id == id);
-                return this.GetTestOrderedFromRow(labTestOrdered);
+                using (adapter)
+                {
+                    var labTestOrdered = adapter.GetData().FirstOrDefault(lto => lto.test_ordered_id == id);
+                    return this.GetTestOrderedFromRow(labTestOrdered);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -38,30 +51,44 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         {
             var testOrderedList = new List<LabTestOrdered>();
             var adapter = new test_orderedTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Rows)
+                using (adapter)
                 {
-                    var test = this.GetTestOrderedFromRow((cs3230f16bDataSet.test_orderedRow) row);
-                    testOrderedList.Add(test);
+                    foreach (var row in adapter.GetData().Rows)
+                    {
+                        var test = this.GetTestOrderedFromRow((cs3230f16bDataSet.test_orderedRow) row);
+                        testOrderedList.Add(test);
+                    }
                 }
+                return testOrderedList;
             }
-            return testOrderedList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IList<LabTestOrdered> GetByAppointmentId(int appointmentId)
         {
             var testList = new List<LabTestOrdered>();
             var adapter = new appointment_has_lab_orderTableAdapter();
-            using (adapter)
+            try
             {
-                foreach (var row in adapter.GetData().Where(tst => tst.appointment_id == appointmentId))
+                using (adapter)
                 {
-                    var test = this.GetById(row.lab_order_id);
-                    testList.Add(test);
+                    foreach (var row in adapter.GetData().Where(tst => tst.appointment_id == appointmentId))
+                    {
+                        var test = this.GetById(row.lab_order_id);
+                        testList.Add(test);
+                    }
                 }
+                return testList;
             }
-            return testList;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public LabTestOrdered GetTestOrderedFromRow(cs3230f16bDataSet.test_orderedRow row)
@@ -76,14 +103,21 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public int GetLastId()
         {
             var adapter = new test_orderedTableAdapter();
-            using (adapter)
+            try
             {
-                var labTestOrdered = adapter.GetData().LastOrDefault();
-                if (labTestOrdered != null)
+                using (adapter)
                 {
-                    return labTestOrdered.test_ordered_id;
+                    var labTestOrdered = adapter.GetData().LastOrDefault();
+                    if (labTestOrdered != null)
+                    {
+                        return labTestOrdered.test_ordered_id;
+                    }
+                    return -1;
                 }
-                return -1;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
