@@ -44,6 +44,7 @@
             this.lblSeachForAppointment = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnOrderTests = new System.Windows.Forms.Button();
+            this.btnDiagnosis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -202,11 +203,22 @@
             this.btnOrderTests.UseVisualStyleBackColor = true;
             this.btnOrderTests.Click += new System.EventHandler(this.btnOrderTests_Click);
             // 
+            // btnDiagnosis
+            // 
+            this.btnDiagnosis.Location = new System.Drawing.Point(1156, 206);
+            this.btnDiagnosis.Name = "btnDiagnosis";
+            this.btnDiagnosis.Size = new System.Drawing.Size(95, 36);
+            this.btnDiagnosis.TabIndex = 30;
+            this.btnDiagnosis.Text = "Add/Update Diagnosis";
+            this.btnDiagnosis.UseVisualStyleBackColor = true;
+            this.btnDiagnosis.Click += new System.EventHandler(this.btnDiagnosis_Click);
+            // 
             // ViewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 576);
+            this.Controls.Add(this.btnDiagnosis);
             this.Controls.Add(this.btnOrderTests);
             this.Controls.Add(this.btnDGVReset);
             this.Controls.Add(this.groupBoxSearch);
@@ -248,5 +260,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.RadioButton radBtnBoth;
         private System.Windows.Forms.Button btnOrderTests;
+        private System.Windows.Forms.Button btnDiagnosis;
     }
 }

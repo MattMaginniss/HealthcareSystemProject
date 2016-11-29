@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="DAL\Controller\AppointmentController.cs" />
     <Compile Include="DAL\Controller\AppointmentLabOrderController.cs" />
+    <Compile Include="DAL\Controller\DiagnosisController.cs" />
     <Compile Include="DAL\Controller\FreeSqlController.cs" />
     <Compile Include="DAL\Controller\LabTestController.cs" />
     <Compile Include="DAL\Controller\LabTestOrderedController.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="DAL\Controller\StaffController.cs" />
     <Compile Include="DAL\Repository\AppointmentLabOrderRepository.cs" />
     <Compile Include="DAL\Repository\AppointmentRepository.cs" />
+    <Compile Include="DAL\Repository\DiagnosisRepository.cs" />
     <Compile Include="DAL\Repository\FreeSqlRepository.cs" />
     <Compile Include="DAL\Repository\LabTestOrderedRepository.cs" />
     <Compile Include="DAL\Repository\LabTestRepository.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\AppointmentLabOrder.cs" />
     <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\Diagnosis.cs" />
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\LabTestOrdered.cs" />
     <Compile Include="Model\Patient.cs" />
@@ -107,6 +110,12 @@
     </Compile>
     <Compile Include="View\CreateLabTestForm.Designer.cs">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DiagnosisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DiagnosisForm.Designer.cs">
+      <DependentUpon>DiagnosisForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EditPatientForm.cs">
       <SubType>Form</SubType>

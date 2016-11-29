@@ -191,13 +191,28 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select an appointment to order tests for.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Please select an appointment to order tests for", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
                 var orderLabTestForm = new OrderLabTestForm(appt);
                 orderLabTestForm.ShowDialog();
+                this.updateTable();
+            }
+        }
+
+        private void btnDiagnosis_Click(object sender, EventArgs e)
+        {
+            if (this.dgvAppointment.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select an appointment to add/update diagnosis to", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var diagnosisForm = new DiagnosisForm(appt);
+                diagnosisForm.ShowDialog();
                 this.updateTable();
             }
         }
