@@ -67,5 +67,23 @@ namespace HealthcareProjectBeamMaginniss.View
             };
             this.dataGridView.Columns.Add(column);
         }
+
+        private void btnViewResult_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(this, "Please select a test to view the results of", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var test = (LabTestOrdered)this.dataGridView.SelectedRows[0].DataBoundItem;
+                if (test.HasResult)
+                {
+                    var testName = new LabTestController().GetById(test.TestId).TestName;
+                    var testResults = this.labTestResultController.GetById(test.TestResultId).TestResults;
+                    MessageBox.Show("Test: " + testName + "\nResults: " + testResults);
+                }
+            }
+        }
     }
 }
