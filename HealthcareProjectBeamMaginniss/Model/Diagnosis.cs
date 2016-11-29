@@ -1,32 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthcareProjectBeamMaginniss.Model
+﻿namespace HealthcareProjectBeamMaginniss.Model
 {
     public class Diagnosis
     {
-        public int diagnosisId { get; }
-        public string diagnosisInformation { get; }
+        #region Properties
 
-        public int appointment_id { get; }
+        public int DiagnosisId { get; }
+        public string DiagnosisInformation { get; }
 
-        public Boolean finalDiagnosis { get; }
+        public int AppointmentId { get; }
 
-        public Diagnosis(int diagnosisId, string diagnosisInformation, int appointment_id, Boolean finalDiagnosis)
+        public bool FinalDiagnosis { get; }
+
+        #endregion
+
+        #region Constructors
+
+        public Diagnosis(int diagnosisId, string diagnosisInformation, int appointmentId, bool finalDiagnosis)
         {
-            this.diagnosisId = diagnosisId;
-            this.diagnosisInformation = diagnosisInformation;
-            this.appointment_id = appointment_id;
-            this.finalDiagnosis = finalDiagnosis;
+            this.DiagnosisId = diagnosisId;
+            this.DiagnosisInformation = diagnosisInformation;
+            this.AppointmentId = appointmentId;
+            this.FinalDiagnosis = finalDiagnosis;
         }
-        public Diagnosis(string diagnosisInformation, int appointment_id, Boolean finalDiagnosis)
+
+        public Diagnosis(string diagnosisInformation, int appointmentId, bool finalDiagnosis)
         {
-            this.diagnosisInformation = diagnosisInformation;
-            this.appointment_id = appointment_id;
-            this.finalDiagnosis = finalDiagnosis;
+            this.DiagnosisInformation = diagnosisInformation;
+            this.AppointmentId = appointmentId;
+            this.FinalDiagnosis = finalDiagnosis;
         }
+
+        #endregion
     }
 }

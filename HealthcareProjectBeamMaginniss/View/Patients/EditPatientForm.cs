@@ -1,26 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Patients
 {
     public partial class EditPatientForm : Form
     {
+        #region Data members
+
+        private readonly int patientId;
         private PatientController pc;
-        private int patientID;
+
+        #endregion
+
+        #region Constructors
+
         public EditPatientForm(Patient patient)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.loadCountries();
-            this.patientID = patient.PatientId;
+            this.patientId = patient.PatientId;
             this.txtFirstName.Text = patient.FirstName;
             this.txtLastName.Text = patient.LastName;
             this.dateTimeDOB.Value = patient.Dob;
@@ -39,6 +40,11 @@ namespace HealthcareProjectBeamMaginniss.View
             this.txtZip.Text = patient.Zip;
             this.txtPhone.Text = patient.PhoneNo;
         }
+
+        #endregion
+
+        #region Methods
+
         private void loadCountries()
         {
             var country = new Country();
@@ -47,6 +53,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 this.comboBoxCountry.Items.Add(ctry);
             }
         }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             var fname = this.txtFirstName.Text;
@@ -87,7 +94,7 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             if (string.IsNullOrWhiteSpace(country) || !ctry.Contains(country))
             {
-                MessageBox.Show(this, "Please select a country", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.EditPatientForm_btnSubmit_Click_Please_select_a_country, Resources.EditPatientForm_btnSubmit_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(zip))
@@ -96,15 +103,16 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             var ccode = ctry.Get(country);
             this.pc = new PatientController();
-            this.pc.Update(new Patient(this.patientID, fname, lname, dob, sex, street1, street2, city, state, zip, ccode, phone));
-            this.Close();
-
+            this.pc.Update(new Patient(this.patientId, fname, lname, dob, sex, street1, street2, city, state, zip, ccode,
+                phone));
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
+        #endregion
     }
 }

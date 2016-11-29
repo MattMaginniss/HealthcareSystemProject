@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
+using HealthcareProjectBeamMaginniss.View.Appointments;
+using HealthcareProjectBeamMaginniss.View.Patients;
 
 namespace HealthcareProjectBeamMaginniss.View
 {
@@ -13,12 +14,12 @@ namespace HealthcareProjectBeamMaginniss.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MainForm : Form
     {
-
         #region Data members
 
         private BindingSource bindingSource;
         private readonly PatientController patientController;
         private readonly LoginForm loginForm;
+
         #endregion
 
         #region Constructors
@@ -26,7 +27,7 @@ namespace HealthcareProjectBeamMaginniss.View
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainForm" /> class.
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="loginForm">The LoginForm</param>
         public MainForm(LoginForm loginForm)
         {
             this.loginForm = loginForm;
@@ -36,14 +37,9 @@ namespace HealthcareProjectBeamMaginniss.View
             this.displayName(loginForm.GetUsername());
         }
 
-        private void displayName(string username)
-        {
-            LoginController login = new LoginController();
-            var name = login.GetName(username) ?? "Unknown User";
-            this.lblWelcome.Text += name + "!";
-        }
-
         #endregion
+
+        #region Methods
 
         private void populateTable()
         {
@@ -67,13 +63,11 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.bindingSource = new BindingSource {DataSource = this.patientController.GetFirst30()};
             this.patientDataGridView.DataSource = this.bindingSource;
-           
         }
 
         private void addPatientColumn(string patientProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn
-            {
+            var column = new DataGridViewTextBoxColumn {
                 DataPropertyName = patientProperty,
                 Name = columnTitle
             };
@@ -109,57 +103,64 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void labelLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
+            Close();
             this.loginForm.Logout();
         }
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            if(this.patientDataGridView.SelectedRows.Count == 0)
+            if (this.patientDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select a user","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.MainForm_buttonAddAppointment_Click_Please_select_a_user, Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                var patient = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
+                var patient = ((Patient) this.patientDataGridView.SelectedRows[0].DataBoundItem).PatientId;
                 var addAppointment = new AddAppointmentForm(patient);
                 addAppointment.ShowDialog();
             }
-
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
             if (this.radioBtnName.Checked)
             {
-                string firstNameQuery = txtFirstName.Text.ToLower();
-                string lastNameQuery = txtLastName.Text.ToLower();
+                var firstNameQuery = this.txtFirstName.Text.ToLower();
+                var lastNameQuery = this.txtLastName.Text.ToLower();
 
                 if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource { DataSource = this.patientController.GetPatientsByFullName(firstNameQuery, lastNameQuery) };
+                    this.bindingSource = new BindingSource {
+                        DataSource = this.patientController.GetPatientsByFullName(firstNameQuery, lastNameQuery)
+                    };
                     this.patientDataGridView.DataSource = this.bindingSource;
-                } else if (!firstNameQuery.Equals(""))
+                }
+                else if (!firstNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource { DataSource = this.patientController.GetPatientsByFirstName(firstNameQuery) };
+                    this.bindingSource = new BindingSource {
+                        DataSource = this.patientController.GetPatientsByFirstName(firstNameQuery)
+                    };
                     this.patientDataGridView.DataSource = this.bindingSource;
-                } else if (!lastNameQuery.Equals(""))
+                }
+                else if (!lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource
-                    {
+                    this.bindingSource = new BindingSource {
                         DataSource = this.patientController.GetPatientsByLastName(lastNameQuery)
                     };
                     this.patientDataGridView.DataSource = this.bindingSource;
                 }
                 else
                 {
-                   this.updateTable(); 
+                    this.updateTable();
                 }
-            } else if (this.radBtnDOB.Checked)
+            }
+            else if (this.radBtnDOB.Checked)
             {
-                String dobQuery = dateTimeDateOfBirth.Value.ToShortDateString();
+                var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
-                this.bindingSource = new BindingSource { DataSource = this.patientController.GetPatientsByDateOfBirth(dobQuery) };
+                this.bindingSource = new BindingSource {
+                    DataSource = this.patientController.GetPatientsByDateOfBirth(dobQuery)
+                };
                 this.patientDataGridView.DataSource = this.bindingSource;
             }
         }
@@ -169,6 +170,7 @@ namespace HealthcareProjectBeamMaginniss.View
             var viewAppointments = new ViewAppointmentForm();
             viewAppointments.ShowDialog();
         }
+
         private void radioBtnName_CheckedChanged_1(object sender, EventArgs e)
         {
             this.txtFirstName.Enabled = true;
@@ -196,11 +198,12 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.patientDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select a user to edit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.MainForm_btnEditPatient_Click_Please_select_a_user_to_edit, Resources.MainForm_buttonAddAppointment_Click_Error, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             else
             {
-                var patient = ((Patient)this.patientDataGridView.SelectedRows[0].DataBoundItem);
+                var patient = (Patient) this.patientDataGridView.SelectedRows[0].DataBoundItem;
                 var editPatient = new EditPatientForm(patient);
                 editPatient.ShowDialog();
                 this.updateTable();
@@ -212,5 +215,14 @@ namespace HealthcareProjectBeamMaginniss.View
             var histogramForm = new HistogramForm();
             histogramForm.Show();
         }
+
+        private void displayName(string username)
+        {
+            var login = new LoginController();
+            var name = login.GetName(username) ?? "Unknown User";
+            this.lblWelcome.Text += name + Resources.MainForm_displayName__;
+        }
+
+        #endregion
     }
 }

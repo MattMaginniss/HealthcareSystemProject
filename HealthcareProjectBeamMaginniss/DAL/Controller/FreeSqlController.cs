@@ -1,25 +1,32 @@
-﻿using HealthcareProjectBeamMaginniss.DAL.Repository;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
+using HealthcareProjectBeamMaginniss.DAL.Repository;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
-    class FreeSqlController
+    internal class FreeSqlController
     {
+        #region Data members
+
         private readonly FreeSqlRepository fsr;
+
+        #endregion
+
+        #region Constructors
 
         public FreeSqlController()
         {
             this.fsr = new FreeSqlRepository();
         }
 
+        #endregion
+
+        #region Methods
+
         public DataTable RunQuery(string query)
         {
-            return fsr.RunQuery(query);
+            return this.fsr.RunQuery(query);
         }
+
+        #endregion
     }
 }

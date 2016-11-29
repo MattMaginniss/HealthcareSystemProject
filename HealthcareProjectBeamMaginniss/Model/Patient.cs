@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
@@ -9,8 +8,9 @@ namespace HealthcareProjectBeamMaginniss.Model
     public class Patient
     {
         #region Properties
+
         public int PatientId { get; }
-        
+
         /// <summary>
         ///     Gets the first name.
         /// </summary>
@@ -46,10 +46,10 @@ namespace HealthcareProjectBeamMaginniss.Model
         public string DobString => this.Dob.ToShortDateString();
 
         /// <summary>
-        /// Gets the sex.
+        ///     Gets the sex.
         /// </summary>
         /// <value>
-        /// The sex.
+        ///     The sex.
         /// </value>
         public char Sex { get; }
 
@@ -70,34 +70,34 @@ namespace HealthcareProjectBeamMaginniss.Model
         public string Street2 { get; }
 
         /// <summary>
-        /// Gets the city.
+        ///     Gets the city.
         /// </summary>
         /// <value>
-        /// The city.
+        ///     The city.
         /// </value>
         public string City { get; }
 
         /// <summary>
-        /// Gets the state.
+        ///     Gets the state.
         /// </summary>
         /// <value>
-        /// The state.
+        ///     The state.
         /// </value>
         public string State { get; }
 
         /// <summary>
-        /// Gets the zip.
+        ///     Gets the zip.
         /// </summary>
         /// <value>
-        /// The zip.
+        ///     The zip.
         /// </value>
-        public string Zip { get;  }
+        public string Zip { get; }
 
         /// <summary>
-        /// Gets the country.
+        ///     Gets the country.
         /// </summary>
         /// <value>
-        /// The country.
+        ///     The country.
         /// </value>
         public string Country { get; }
 
@@ -113,34 +113,37 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         #region Constructors
 
-        public Patient( int pid ,string firstName, string lastName, DateTime dob, char sex, string street1, string street2, string city, string state, string zip, string country, string phoneNo)
+        public Patient(int pid, string firstName, string lastName, DateTime dob, char sex, string street1,
+            string street2, string city, string state, string zip, string country, string phoneNo)
         {
             this.PatientId = pid;
-            FirstName = firstName;
-            LastName = lastName;
-            Dob = dob;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Dob = dob;
             this.Sex = sex;
-            Street1 = street1;
-            Street2 = street2;
-            City = city;
-            State = state;
+            this.Street1 = street1;
+            this.Street2 = street2;
+            this.City = city;
+            this.State = state;
             this.Zip = zip;
-            Country = country;
-            PhoneNo = phoneNo;
+            this.Country = country;
+            this.PhoneNo = phoneNo;
         }
-        public Patient(string firstName, string lastName, DateTime dob, char sex, string street1, string street2, string city, string state, string zip, string country, string phoneNo)
+
+        public Patient(string firstName, string lastName, DateTime dob, char sex, string street1, string street2,
+            string city, string state, string zip, string country, string phoneNo)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Dob = dob;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Dob = dob;
             this.Sex = sex;
-            Street1 = street1;
-            Street2 = street2;
-            City = city;
-            State = state;
+            this.Street1 = street1;
+            this.Street2 = street2;
+            this.City = city;
+            this.State = state;
             this.Zip = zip;
-            Country = country;
-            PhoneNo = phoneNo;
+            this.Country = country;
+            this.PhoneNo = phoneNo;
         }
 
         #endregion

@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
     public class Country
     {
+        #region Properties
+
         public Dictionary<string, string> CountryDict { get; }
+
+        #endregion
+
+        #region Constructors
 
         public Country()
         {
             this.CountryDict = new Dictionary<string, string>();
             this.addCountries();
         }
+
+        #endregion
+
+        #region Methods
 
         public bool Contains(string key)
         {
@@ -24,10 +32,8 @@ namespace HealthcareProjectBeamMaginniss.Model
             return this.CountryDict[key];
         }
 
-        
-
         /// <summary>
-        /// I'm so sorry
+        ///     I'm so sorry
         /// </summary>
         private void addCountries()
         {
@@ -225,5 +231,7 @@ namespace HealthcareProjectBeamMaginniss.Model
             this.CountryDict.Add("Zambia", "ZM");
             this.CountryDict.Add("Zimbabwe", "ZW");
         }
+
+        #endregion
     }
 }

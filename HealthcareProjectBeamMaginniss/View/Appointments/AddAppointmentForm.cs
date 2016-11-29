@@ -1,31 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
     public partial class AddAppointmentForm : Form
     {
+        #region Data members
+
+        private readonly int patientId;
         private readonly StaffController staffController;
         private AppointmentController aptController;
-        private readonly int patientID;
 
-        public AddAppointmentForm(int patientID)
+        #endregion
+
+        #region Constructors
+
+        public AddAppointmentForm(int patientId)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.staffController = new StaffController();
-            this.patientID = patientID;
+            this.patientId = patientId;
             this.loadStaff();
-
         }
+
+        #endregion
+
+        #region Methods
 
         private void loadStaff()
         {
@@ -37,7 +39,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
@@ -45,15 +47,16 @@ namespace HealthcareProjectBeamMaginniss.View
             var reason = this.txtBoxReason.Text;
             var symptoms = this.txtBoxSymptoms.Text;
             var date = this.dateTimeAppointment.Value;
-            var doctor = ((Staff)this.comboBoxDoctor.SelectedItem).StaffId;
+            var doctor = ((Staff) this.comboBoxDoctor.SelectedItem).StaffId;
             if (string.IsNullOrWhiteSpace(reason) || string.IsNullOrWhiteSpace(symptoms))
             {
                 return;
             }
             this.aptController = new AppointmentController();
-            this.aptController.AddPartial(new Appointment(reason,date,doctor, this.patientID,symptoms));
-            this.Close();
+            this.aptController.AddPartial(new Appointment(reason, date, doctor, this.patientId, symptoms));
+            Close();
         }
 
+        #endregion
     }
 }

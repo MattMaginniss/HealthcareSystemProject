@@ -1,30 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 {
     public partial class CreateLabTestForm : Form
     {
-        private LabTestController ltController;
+        #region Data members
+
+        private readonly LabTestController ltController;
+
+        #endregion
+
+        #region Constructors
 
         public CreateLabTestForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.ltController = new LabTestController();
         }
 
+        #endregion
+
+        #region Methods
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -35,7 +38,9 @@ namespace HealthcareProjectBeamMaginniss.View
                 return;
             }
             this.ltController.Add(new LabTest(labTestName));
-            this.Close();
+            Close();
         }
+
+        #endregion
     }
 }

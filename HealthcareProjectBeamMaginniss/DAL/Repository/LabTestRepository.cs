@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    class LabTestRepository:IRepository<LabTest>
+    internal class LabTestRepository : IRepository<LabTest>
     {
+        #region Methods
+
         public void Add(LabTest test)
         {
             var adapter = new lab_testsTableAdapter();
@@ -29,7 +28,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             using (adapter)
             {
                 var test = adapter.GetData().FirstOrDefault(tst => tst.testCode == id);
-                return this.getTestFromRow(test);
+                return this.GetTestFromRow(test);
             }
         }
 
@@ -41,22 +40,20 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var test = getTestFromRow((cs3230f16bDataSet.lab_testsRow)row);
+                    var test = this.GetTestFromRow((cs3230f16bDataSet.lab_testsRow) row);
                     testList.Add(test);
                 }
             }
             return testList;
         }
 
- 
-
-        public LabTest getTestFromRow(cs3230f16bDataSet.lab_testsRow row)
+        public LabTest GetTestFromRow(cs3230f16bDataSet.lab_testsRow row)
         {
             var testId = row.testCode;
             var testName = row.testName;
             return new LabTest(testId, testName);
         }
 
-
+        #endregion
     }
 }

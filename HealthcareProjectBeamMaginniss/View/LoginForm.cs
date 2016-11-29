@@ -30,10 +30,12 @@ namespace HealthcareProjectBeamMaginniss.View
 
         #endregion
 
+        #region Methods
+
         private void attemptLogin()
         {
             var username = this.txtUsername.Text;
-            var password = this.txtPassword.Text.GetHashCode()+"";
+            var password = this.txtPassword.Text.GetHashCode() + "";
             this.txtPassword.Clear();
 
             if (this.login.CheckLogin(username, password))
@@ -47,16 +49,15 @@ namespace HealthcareProjectBeamMaginniss.View
         }
 
         /// <summary>
-        /// Handles the user logging out from the main form.
+        ///     Handles the user logging out from the main form.
         /// </summary>
         public void Logout()
         {
-            this.Show();
+            Show();
         }
 
-
         /// <summary>
-        /// Gets the username for use elsewhere.
+        ///     Gets the username for use elsewhere.
         /// </summary>
         /// <returns>The username used to login</returns>
         public string GetUsername()
@@ -69,21 +70,19 @@ namespace HealthcareProjectBeamMaginniss.View
             this.username = this.txtUsername.Text.Trim();
             this.txtUsername.Clear();
             this.txtPassword.Clear();
-            var staffType = this.login.GetStaffType(username);
-            if(staffType == 1)
+            var staffType = this.login.GetStaffType(this.username);
+            if (staffType == 1)
             {
                 var queryForm = new QueryForm(this);
                 queryForm.Show();
-                this.Hide();
-
+                Hide();
             }
-            else if(staffType == 2)
+            else if (staffType == 2)
             {
                 var mainform = new MainForm(this);
                 mainform.Show();
-                this.Hide();
+                Hide();
             }
-
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -106,5 +105,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 this.attemptLogin();
             }
         }
+
+        #endregion
     }
 }

@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
-    class AppointmentLabOrderController
+    internal class AppointmentLabOrderController
     {
+        #region Data members
+
         private readonly AppointmentLabOrderRepository apptLabTestOrderedRepository;
+
+        #endregion
+
+        #region Constructors
 
         public AppointmentLabOrderController()
         {
@@ -22,11 +24,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.apptLabTestOrderedRepository = apptLabTestOrderedRepository;
         }
 
+        #endregion
+
+        #region Methods
 
         public void Add(AppointmentLabOrder aptLabTestOrdered)
         {
             this.apptLabTestOrderedRepository.Add(aptLabTestOrdered);
-
         }
 
         public AppointmentLabOrder GetById(int id)
@@ -36,8 +40,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         public IList<AppointmentLabOrder> GetAll()
         {
-
             return this.apptLabTestOrderedRepository.GetAll();
         }
+
+        #endregion
     }
 }

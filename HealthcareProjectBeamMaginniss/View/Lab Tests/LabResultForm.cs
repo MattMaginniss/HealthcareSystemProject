@@ -1,41 +1,43 @@
-﻿using HealthcareProjectBeamMaginniss.DAL.Controller;
-using HealthcareProjectBeamMaginniss.DAL.Repository;
-using HealthcareProjectBeamMaginniss.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using HealthcareProjectBeamMaginniss.DAL.Controller;
+using HealthcareProjectBeamMaginniss.Model;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 {
     public partial class LabResultForm : Form
     {
-        private LabTestOrdered testOrdered;
-        private LabTestResult result;
-        private LabTestResultController resultController;
+        #region Data members
+
+        private readonly LabTestResult result;
+        private readonly LabTestResultController resultController;
+        private readonly LabTestOrdered testOrdered;
+
+        #endregion
+
+        #region Constructors
 
         public LabResultForm(LabTestOrdered testOrdered)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.testOrdered = testOrdered;
             this.resultController = new LabTestResultController();
-            this.result = resultController.GetById(testOrdered.TestResultId);
-            if(result == null)
+            this.result = this.resultController.GetById(testOrdered.TestResultId);
+            if (this.result == null)
             {
-                result = new LabTestResult(this.testOrdered.TestOrderedId, "");
+                this.result = new LabTestResult(this.testOrdered.TestOrderedId, "");
             }
             this.textBox.Text = this.result.TestResults;
         }
 
+        #endregion
+
+        #region Methods
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             this.result.TestResults = this.textBox.Text;
-            if(this.result.ResultId > 0)
+            if (this.result.ResultId > 0)
             {
                 this.resultController.Update(this.result);
             }
@@ -43,12 +45,14 @@ namespace HealthcareProjectBeamMaginniss.View
             {
                 this.resultController.Add(this.result);
             }
-            this.Close();
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
+
+        #endregion
     }
 }

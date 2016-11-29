@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthcareProjectBeamMaginniss.Model
+﻿namespace HealthcareProjectBeamMaginniss.Model
 {
-    class AppointmentLabOrder
+    internal class AppointmentLabOrder
     {
+        #region Properties
+
         public int AppointmentId { get; }
         public int LabOrderId { get; }
+
+        #endregion
+
+        #region Constructors
 
         public AppointmentLabOrder(int apptId, int labOrderId)
         {
             this.AppointmentId = apptId;
             this.LabOrderId = labOrderId;
         }
+
+        #endregion
     }
 }

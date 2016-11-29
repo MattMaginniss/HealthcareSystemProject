@@ -1,11 +1,9 @@
 ﻿using System;
-using System.CodeDom;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Patients
 {
     /// <summary>
     ///     Form for adding a patient to the database
@@ -39,10 +37,11 @@ namespace HealthcareProjectBeamMaginniss.View
             this.InitializeComponent();
             this.pr = patientController;
             this.loadCountries();
-
         }
 
         #endregion
+
+        #region Methods
 
         private void addUser()
         {
@@ -55,7 +54,7 @@ namespace HealthcareProjectBeamMaginniss.View
             var city = this.txtCity.Text;
             var state = this.txtState.Text;
             var country = this.comboBoxCountry.Text;
-            var zip = this.txtZip.Text; 
+            var zip = this.txtZip.Text;
             var phone = this.txtPhone.Text;
             var ctry = new Country();
             if (string.IsNullOrWhiteSpace(fname))
@@ -91,7 +90,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 return;
             }
             var ccode = ctry.Get(country);
-            var p = new Patient(0, fname, lname, dob, sex, street1, street2,city,state,zip,ccode, phone);
+            var p = new Patient(0, fname, lname, dob, sex, street1, street2, city, state, zip, ccode, phone);
             this.pr.Add(p);
             Dispose();
         }
@@ -117,10 +116,12 @@ namespace HealthcareProjectBeamMaginniss.View
         private void loadCountries()
         {
             var country = new Country();
-            foreach(var ctry in country.CountryDict.Keys)
+            foreach (var ctry in country.CountryDict.Keys)
             {
                 this.comboBoxCountry.Items.Add(ctry);
             }
         }
+
+        #endregion
     }
 }

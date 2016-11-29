@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
+﻿using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -27,21 +25,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.pr = new PatientRepository();
         }
 
-        internal int getMaxYear()
-        {
-            return this.pr.GetMaxYear();
-        }
-
-        internal int getMinYear()
-        {
-            return this.pr.GetMinYear();
-        }
-
-        internal Dictionary<int, int> GetHistogramData(int minYear)
-        {
-            return this.pr.GetHistogramData(minYear);
-        }
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="PatientController" /> class.
         /// </summary>
@@ -52,6 +35,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         }
 
         #endregion
+
+        #region Methods
 
         /// <summary>
         ///     Adds the specified patient to the database
@@ -66,6 +51,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             this.pr.Update(patient);
         }
+
         /// <summary>
         ///     Gets the patient by patientID.
         /// </summary>
@@ -85,20 +71,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.pr.GetAll();
         }
 
-        public IList<Patient> GetPatientsByFirstName(String fName)
+        public IList<Patient> GetPatientsByFirstName(string fName)
         {
             return this.pr.GetPatientsByFirstName(fName);
         }
-        public IList<Patient> GetPatientsByLastName(String lName)
+
+        public IList<Patient> GetPatientsByLastName(string lName)
         {
             return this.pr.GetPatientsByLastName(lName);
         }
-        public IList<Patient> GetPatientsByFullName(String fName, String lName)
+
+        public IList<Patient> GetPatientsByFullName(string fName, string lName)
         {
             return this.pr.GetPatientsByFullName(fName, lName);
         }
 
-        public IList<Patient> GetPatientsByDateOfBirth(String dob)
+        public IList<Patient> GetPatientsByDateOfBirth(string dob)
         {
             return this.pr.GetPatientsByDateOfBirth(dob);
         }
@@ -110,8 +98,25 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         public string GetName(int id)
         {
-            string name = this.pr.GetById(id).FullName  ?? "";
+            var name = this.pr.GetById(id).FullName ?? "";
             return name;
         }
+
+        internal int GetMaxYear()
+        {
+            return this.pr.GetMaxYear();
+        }
+
+        internal int GetMinYear()
+        {
+            return this.pr.GetMinYear();
+        }
+
+        internal Dictionary<int, int> GetHistogramData(int minYear)
+        {
+            return this.pr.GetHistogramData(minYear);
+        }
+
+        #endregion
     }
 }

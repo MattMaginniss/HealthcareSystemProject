@@ -1,94 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
-using System.Data;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    public class AppointmentRepository:IRepository<Appointment>
+    public class AppointmentRepository : IRepository<Appointment>
     {
+        #region Methods
+
         public void Add(Appointment appointment)
         {
             var adapter = new appointmentTableAdapter();
             var reasonForAppointment = appointment.ReasonForAppointment;
-            var date = appointment.date;
-            var nureseId = appointment.nureseID;
-            var doctorId = appointment.doctorID;
-            var patientId = appointment.patientID;
-            var systolicBp = appointment.systolicBP;
-            var diastolicBp = appointment.diastolicBP;
-            var temperature = appointment.temperature;
-            var pulse = appointment.pulse;
-            var weight = appointment.weight;
-            var symptoms = appointment.symptoms;
+            var date = appointment.Date;
+            var nureseId = appointment.NureseId;
+            var doctorId = appointment.DoctorId;
+            var patientId = appointment.PatientId;
+            var systolicBp = appointment.SystolicBp;
+            var diastolicBp = appointment.DiastolicBp;
+            var temperature = appointment.Temperature;
+            var pulse = appointment.Pulse;
+            var weight = appointment.Weight;
+            var symptoms = appointment.Symptoms;
             using (adapter)
             {
-                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId,systolicBp, diastolicBp, temperature, pulse, weight, symptoms);
+                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId, systolicBp, diastolicBp,
+                    temperature, pulse, weight, symptoms);
             }
-        }
-
-        public void Update(Appointment appointment)
-        {
-            var adapter = new appointmentTableAdapter();
-            DataRow aptrow = null;
-            using (adapter)
-            {
-                aptrow = adapter.GetData().FirstOrDefault(apt => apt.appointmentID == appointment.AppointmentID);
-            }
-            if (aptrow != null)
-            {
-                aptrow[1] = appointment.ReasonForAppointment;
-                aptrow[2] = appointment.date;
-                aptrow[3] = appointment.nureseID;
-                aptrow[4] = appointment.doctorID;
-                aptrow[5] = appointment.patientID;
-                aptrow[6] = appointment.systolicBP;
-                aptrow[7] = appointment.diastolicBP;
-                aptrow[8] = appointment.temperature;
-                aptrow[9] = appointment.pulse;
-                aptrow[10] = appointment.weight;
-                aptrow[11] = appointment.symptoms;
-                using (adapter)
-                {
-                    adapter.Update(aptrow);
-                }
-            }
-
-        }
-
-        public void AddPartial(Appointment appointment)
-        {
-            var adapter = new appointmentTableAdapter();
-            var reasonForAppointment = appointment.ReasonForAppointment;
-            var date = appointment.date;
-            var doctorId = appointment.doctorID;
-            var patientId = appointment.patientID;
-            var symptoms = appointment.symptoms;
-
-            int nureseId = 0;
-            int systolicBp = 0;
-            int diastolicBp = 0;
-            int temperature = 0;
-            int pulse = 0;
-            int weight = 0;
-            using (adapter)
-            {
-                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId, systolicBp, diastolicBp, temperature, pulse, weight, symptoms);
-            }
-
         }
 
         public Appointment GetById(int id)
         {
-            var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
             using (adapter)
             {
                 var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
-                return this.getAppointmentFromRow(patient);
+                return this.GetAppointmentFromRow(patient);
             }
         }
 
@@ -100,14 +50,65 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
                     appointmentList.Add(appointment);
                 }
             }
             return appointmentList;
         }
 
-        public Appointment getAppointmentFromRow(cs3230f16bDataSet.appointmentRow row)
+        public void Update(Appointment appointment)
+        {
+            var adapter = new appointmentTableAdapter();
+            DataRow aptrow = null;
+            using (adapter)
+            {
+                aptrow = adapter.GetData().FirstOrDefault(apt => apt.appointmentID == appointment.AppointmentId);
+            }
+            if (aptrow == null)
+            {
+                return;
+            }
+            aptrow[1] = appointment.ReasonForAppointment;
+            aptrow[2] = appointment.Date;
+            aptrow[3] = appointment.NureseId;
+            aptrow[4] = appointment.DoctorId;
+            aptrow[5] = appointment.PatientId;
+            aptrow[6] = appointment.SystolicBp;
+            aptrow[7] = appointment.DiastolicBp;
+            aptrow[8] = appointment.Temperature;
+            aptrow[9] = appointment.Pulse;
+            aptrow[10] = appointment.Weight;
+            aptrow[11] = appointment.Symptoms;
+            using (adapter)
+            {
+                adapter.Update(aptrow);
+            }
+        }
+
+        public void AddPartial(Appointment appointment)
+        {
+            var adapter = new appointmentTableAdapter();
+            var reasonForAppointment = appointment.ReasonForAppointment;
+            var date = appointment.Date;
+            var doctorId = appointment.DoctorId;
+            var patientId = appointment.PatientId;
+            var symptoms = appointment.Symptoms;
+
+            var nureseId = 0;
+            var systolicBp = 0;
+            var diastolicBp = 0;
+            var temperature = 0;
+            var pulse = 0;
+            var weight = 0;
+            using (adapter)
+            {
+                adapter.Insert(reasonForAppointment, date, nureseId, doctorId, patientId, systolicBp, diastolicBp,
+                    temperature, pulse, weight, symptoms);
+            }
+        }
+
+        public Appointment GetAppointmentFromRow(cs3230f16bDataSet.appointmentRow row)
         {
             var appointmentId = row.appointmentID;
             var reasonForAppointment = row.reasonForAppointment;
@@ -122,11 +123,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var weight = row.weight;
             var symptoms = row.symptoms;
             return new Appointment(appointmentId, reasonForAppointment, date, nureseId, doctorId,
-            patientId, systolicBp, diastolicBp, temperature, pulse, weight,
-            symptoms);
+                patientId, systolicBp, diastolicBp, temperature, pulse, weight,
+                symptoms);
         }
 
-        public IList<Appointment> GetAppointmentByPatientDateOfBirth(String dob)
+        public IList<Appointment> GetAppointmentByPatientDateOfBirth(string dob)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -137,8 +138,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
                     if (patient.Dob.ToShortDateString().Equals(dob))
                     {
@@ -150,7 +151,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-        public IList<Appointment> GetAppointmentByPatientFirstName(String fName)
+        public IList<Appointment> GetAppointmentByPatientFirstName(string fName)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -161,8 +162,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
                     if (patient.FirstName.ToLower().Equals(fName))
                     {
@@ -174,7 +175,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-        public IList<Appointment> GetAppointmentByPatientLastName(String lName)
+        public IList<Appointment> GetAppointmentByPatientLastName(string lName)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -185,8 +186,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
                     if (patient.LastName.ToLower().Equals(lName))
                     {
@@ -198,7 +199,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-        public IList<Appointment> GetAppointmentByPatientFullName(String fName, String lName)
+        public IList<Appointment> GetAppointmentByPatientFullName(string fName, string lName)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -209,8 +210,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
                     if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
                     {
@@ -222,7 +223,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-        public IList<Appointment> GetAppointmentByPatientFirstNameAndDob(String fName, String dob)
+        public IList<Appointment> GetAppointmentByPatientFirstNameAndDob(string fName, string dob)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -233,8 +234,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
                     if (patient.FirstName.ToLower().Equals(fName) && patient.Dob.ToShortDateString().Equals(dob))
                     {
@@ -246,7 +247,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-        public IList<Appointment> GetAppointmentByPatientLastNameAndDob(String lName, String dob)
+        public IList<Appointment> GetAppointmentByPatientLastNameAndDob(string lName, string dob)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -257,8 +258,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
                     if (patient.LastName.ToLower().Equals(lName) && patient.Dob.ToShortDateString().Equals(dob))
                     {
@@ -270,8 +271,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return appointmentList;
         }
 
-
-        public IList<Appointment> GetAppointmentByPatientFullNameAndDob(String fName, String lName, String dob)
+        public IList<Appointment> GetAppointmentByPatientFullNameAndDob(string fName, string lName, string dob)
         {
             var appointmentList = new List<Appointment>();
             var adapter = new appointmentTableAdapter();
@@ -282,10 +282,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var appointment = getAppointmentFromRow((cs3230f16bDataSet.appointmentRow)row);
-                    var patient = patientRepository.GetById(appointment.patientID);
+                    var appointment = this.GetAppointmentFromRow((cs3230f16bDataSet.appointmentRow) row);
+                    var patient = patientRepository.GetById(appointment.PatientId);
 
-                    if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName) && patient.Dob.ToShortDateString().Equals(dob))
+                    if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName) &&
+                        patient.Dob.ToShortDateString().Equals(dob))
                     {
                         appointmentList.Add(appointment);
                     }
@@ -294,5 +295,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
             return appointmentList;
         }
+
+        #endregion
     }
 }

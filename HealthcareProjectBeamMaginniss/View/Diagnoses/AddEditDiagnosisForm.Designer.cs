@@ -1,4 +1,4 @@
-﻿namespace HealthcareProjectBeamMaginniss.View
+﻿namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 {
     partial class AddEditDiagnosisForm
     {
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -37,9 +37,10 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(164, 226);
+            this.btnSubmit.Location = new System.Drawing.Point(219, 278);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(100, 28);
             this.btnSubmit.TabIndex = 30;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(46, 226);
+            this.btnCancel.Location = new System.Drawing.Point(61, 278);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 29;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -58,42 +60,46 @@
             // lblLabTestName
             // 
             this.lblLabTestName.AutoSize = true;
-            this.lblLabTestName.Location = new System.Drawing.Point(18, 15);
+            this.lblLabTestName.Location = new System.Drawing.Point(24, 18);
+            this.lblLabTestName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLabTestName.Name = "lblLabTestName";
-            this.lblLabTestName.Size = new System.Drawing.Size(53, 13);
+            this.lblLabTestName.Size = new System.Drawing.Size(70, 17);
             this.lblLabTestName.TabIndex = 28;
             this.lblLabTestName.Text = "Diagnosis";
             // 
             // txtLabTestName
             // 
-            this.txtLabTestName.Location = new System.Drawing.Point(87, 12);
+            this.txtLabTestName.Location = new System.Drawing.Point(116, 15);
+            this.txtLabTestName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLabTestName.Multiline = true;
             this.txtLabTestName.Name = "txtLabTestName";
-            this.txtLabTestName.Size = new System.Drawing.Size(179, 166);
+            this.txtLabTestName.Size = new System.Drawing.Size(237, 203);
             this.txtLabTestName.TabIndex = 27;
             // 
             // chkFinal
             // 
             this.chkFinal.AutoSize = true;
-            this.chkFinal.Location = new System.Drawing.Point(91, 184);
+            this.chkFinal.Location = new System.Drawing.Point(121, 226);
+            this.chkFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkFinal.Name = "chkFinal";
-            this.chkFinal.Size = new System.Drawing.Size(103, 17);
+            this.chkFinal.Size = new System.Drawing.Size(134, 21);
             this.chkFinal.TabIndex = 31;
             this.chkFinal.Text = "Final Diagnosis?";
             this.chkFinal.UseVisualStyleBackColor = true;
             // 
             // AddEditDiagnosisForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(379, 321);
             this.Controls.Add(this.chkFinal);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblLabTestName);
             this.Controls.Add(this.txtLabTestName);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddEditDiagnosisForm";
-            this.Text = "AddEditDiagnosisForm";
+            this.Text = "Diagnosis Info";
             this.ResumeLayout(false);
             this.PerformLayout();
 

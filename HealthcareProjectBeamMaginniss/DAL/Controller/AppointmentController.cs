@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -7,7 +6,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
     public class AppointmentController
     {
+        #region Data members
+
         private readonly AppointmentRepository appointmentRepository;
+
+        #endregion
+
+        #region Constructors
 
         public AppointmentController()
         {
@@ -19,10 +24,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.appointmentRepository = appointmentRepository;
         }
 
+        #endregion
+
+        #region Methods
+
         public void Add(Appointment appointment)
         {
             this.appointmentRepository.Add(appointment);
-
         }
 
         public Appointment GetById(int id)
@@ -32,7 +40,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         public IList<Appointment> GetAll()
         {
-           
             return this.appointmentRepository.GetAll();
         }
 
@@ -46,35 +53,41 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.appointmentRepository.Update(appointment);
         }
 
-        public IList<Appointment> GetAppointmentByPatientFirstName(String fName)
+        public IList<Appointment> GetAppointmentByPatientFirstName(string fName)
         {
             return this.appointmentRepository.GetAppointmentByPatientFirstName(fName);
         }
-        public IList<Appointment> GetAppointmentByPatientLastName(String lName)
+
+        public IList<Appointment> GetAppointmentByPatientLastName(string lName)
         {
             return this.appointmentRepository.GetAppointmentByPatientLastName(lName);
         }
-        public IList<Appointment> GetAppointmentByPatientFullName(String fName, String lName)
+
+        public IList<Appointment> GetAppointmentByPatientFullName(string fName, string lName)
         {
             return this.appointmentRepository.GetAppointmentByPatientFullName(fName, lName);
         }
 
-        public IList<Appointment> GetAppointmentByPatientDateOfBirth(String dob)
+        public IList<Appointment> GetAppointmentByPatientDateOfBirth(string dob)
         {
             return this.appointmentRepository.GetAppointmentByPatientDateOfBirth(dob);
         }
 
-        public IList<Appointment> GetAppointmentByPatientFirstNameAndDob(String fName, String dob)
+        public IList<Appointment> GetAppointmentByPatientFirstNameAndDob(string fName, string dob)
         {
             return this.appointmentRepository.GetAppointmentByPatientFirstNameAndDob(fName, dob);
         }
-        public IList<Appointment> GetAppointmentByPatientLastNameAndDob(String lName, String dob)
+
+        public IList<Appointment> GetAppointmentByPatientLastNameAndDob(string lName, string dob)
         {
             return this.appointmentRepository.GetAppointmentByPatientLastNameAndDob(lName, dob);
         }
-        public IList<Appointment> GetAppointmentByPatientFullNameAndDob(String fName, String lName, String dob)
+
+        public IList<Appointment> GetAppointmentByPatientFullNameAndDob(string fName, string lName, string dob)
         {
             return this.appointmentRepository.GetAppointmentByPatientFullNameAndDob(fName, lName, dob);
         }
+
+        #endregion
     }
 }

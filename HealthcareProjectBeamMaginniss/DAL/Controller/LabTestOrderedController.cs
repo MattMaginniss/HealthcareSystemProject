@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
-    class LabTestOrderedController
+    internal class LabTestOrderedController
     {
+        #region Data members
+
         private readonly LabTestOrderedRepository labTestOrderedRepository;
-        
+
+        #endregion
+
+        #region Constructors
+
         public LabTestOrderedController()
         {
             this.labTestOrderedRepository = new LabTestOrderedRepository();
@@ -22,11 +24,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.labTestOrderedRepository = labTestOrderedRepository;
         }
 
+        #endregion
+
+        #region Methods
 
         public void Add(LabTestOrdered labTestOrdered)
         {
             this.labTestOrderedRepository.Add(labTestOrdered);
-
         }
 
         public LabTestOrdered GetById(int id)
@@ -36,18 +40,19 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         public IList<LabTestOrdered> GetAll()
         {
-
             return this.labTestOrderedRepository.GetAll();
         }
 
-        public IList<LabTestOrdered> GetByAppointmentId(int appointmentID)
+        public IList<LabTestOrdered> GetByAppointmentId(int appointmentId)
         {
-            return this.labTestOrderedRepository.GetByAppointmentId(appointmentID);
+            return this.labTestOrderedRepository.GetByAppointmentId(appointmentId);
         }
 
-        public int GetLastID()
+        public int GetLastId()
         {
-            return this.labTestOrderedRepository.GetLastID();
+            return this.labTestOrderedRepository.GetLastId();
         }
+
+        #endregion
     }
 }

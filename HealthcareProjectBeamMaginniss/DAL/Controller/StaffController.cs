@@ -6,7 +6,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
     public class StaffController
     {
+        #region Data members
+
         private readonly StaffRepository staffRepository;
+
+        #endregion
+
+        #region Constructors
 
         public StaffController()
         {
@@ -18,9 +24,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.staffRepository = staffRepository;
         }
 
+        #endregion
+
+        #region Methods
+
         public void Add(Staff staff)
         {
-           this.staffRepository.Add(staff);
+            this.staffRepository.Add(staff);
         }
 
         /// <summary>
@@ -55,11 +65,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         public string GetName(int id)
         {
             var staff = this.staffRepository.GetById(id);
-            if(staff == null)
+            if (staff == null)
             {
                 return "";
             }
             return staff.FullName;
         }
+
+        #endregion
     }
 }

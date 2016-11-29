@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
 using HealthcareProjectBeamMaginniss.Model;
-using System.Data;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    class LabTestResultRepository:IRepository<LabTestResult>
+    internal class LabTestResultRepository : IRepository<LabTestResult>
     {
+        #region Methods
+
         public void Add(LabTestResult result)
         {
             var adapter = new test_resultsTableAdapter();
@@ -20,7 +19,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
             using (adapter)
             {
-                adapter.Insert(testOrderedId,results);
+                adapter.Insert(testOrderedId, results);
             }
         }
 
@@ -31,7 +30,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             using (adapter)
             {
                 var result = adapter.GetData().FirstOrDefault(res => res.test_result_id == id);
-                return this.getTestFromRow(result);
+                return this.GetTestFromRow(result);
             }
         }
 
@@ -43,16 +42,14 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var test = getTestFromRow((cs3230f16bDataSet.test_resultsRow)row);
+                    var test = this.GetTestFromRow((cs3230f16bDataSet.test_resultsRow) row);
                     testList.Add(test);
                 }
             }
             return testList;
         }
 
- 
-
-        public LabTestResult getTestFromRow(cs3230f16bDataSet.test_resultsRow row)
+        public LabTestResult GetTestFromRow(cs3230f16bDataSet.test_resultsRow row)
         {
             if (row == null)
             {
@@ -82,6 +79,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-
+        #endregion
     }
 }

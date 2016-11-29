@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters;
 using HealthcareProjectBeamMaginniss.DAL.Interfaces;
@@ -13,27 +12,12 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
     /// <seealso cref="HealthcareProjectBeamMaginniss.DAL.Interfaces.IRepository{Patient}" />
     public class StaffRepository : IRepository<Staff>
     {
-        private Staff getStaffFromRow(cs3230f16bDataSet.staffRow row)
-        {
-            if(row == null)
-            {
-                return null;
-            }
-            var staffId = row.staffID;
-            var fname = row.firstName ?? "";
-            var lname = row.lastName ?? "";
-            var bdate = row.dateOfBirth;
-            var phoneNo = row._phone_?? "";
-            var staffType = row.staffType;
-            return new Staff(staffId, fname, lname, bdate, phoneNo, staffType);
-        }
-
         #region Methods
 
         /// <summary>
-        ///     Adds the specified patient to the database.
+        ///     Adds the specified staff to the database.
         /// </summary>
-        /// <param name="patient">The patient to add.</param>
+        /// <param name="staff">The staff to add.</param>
         public void Add(Staff staff)
         {
             var adapter = new staffTableAdapter();
@@ -41,7 +25,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var lname = staff.LastName;
             var bdate = staff.Dob;
             var phoneNo = staff.PhoneNo;
-            var staffType = staff.staffType;
+            var staffType = staff.StaffType;
             using (adapter)
             {
                 adapter.Insert(fname, lname, bdate, phoneNo, staffType);
@@ -59,7 +43,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             using (adapter)
             {
                 var staff = adapter.GetData().FirstOrDefault(st => st.staffID == id);
-                return getStaffFromRow(staff);
+                return this.getStaffFromRow(staff);
             }
         }
 
@@ -75,11 +59,26 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var staff = getStaffFromRow((cs3230f16bDataSet.staffRow) row);
+                    var staff = this.getStaffFromRow((cs3230f16bDataSet.staffRow) row);
                     staffList.Add(staff);
                 }
             }
             return staffList;
+        }
+
+        private Staff getStaffFromRow(cs3230f16bDataSet.staffRow row)
+        {
+            if (row == null)
+            {
+                return null;
+            }
+            var staffId = row.staffID;
+            var fname = row.firstName ?? "";
+            var lname = row.lastName ?? "";
+            var bdate = row.dateOfBirth;
+            var phoneNo = row._phone_ ?? "";
+            var staffType = row.staffType;
+            return new Staff(staffId, fname, lname, bdate, phoneNo, staffType);
         }
 
         public List<Staff> GetDoctors()
@@ -91,7 +90,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 var doctors = adapter.GetData().Where(st => st.staffType == 3);
                 foreach (var doctor in doctors)
                 {
-                    var staff = getStaffFromRow((cs3230f16bDataSet.staffRow)doctor);
+                    var staff = this.getStaffFromRow(doctor);
                     staffList.Add(staff);
                 }
             }
@@ -107,7 +106,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 var nurses = adapter.GetData().Where(st => st.staffType == 2);
                 foreach (var nurse in nurses)
                 {
-                    var staff = getStaffFromRow((cs3230f16bDataSet.staffRow)nurse);
+                    var staff = this.getStaffFromRow(nurse);
                     staffList.Add(staff);
                 }
             }

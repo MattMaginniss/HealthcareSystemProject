@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareProjectBeamMaginniss.Properties
-{
-
-
+namespace HealthcareProjectBeamMaginniss.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,217 @@ namespace HealthcareProjectBeamMaginniss.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HealthcareProjectBeamMaginniss.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string DiagnosisForm_btnEdit_Click_Error {
+            get {
+                return ResourceManager.GetString("DiagnosisForm_btnEdit_Click_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a diagnosis to edit.
+        /// </summary>
+        internal static string DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit {
+            get {
+                return ResourceManager.GetString("DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string EditPatientForm_btnSubmit_Click_Error {
+            get {
+                return ResourceManager.GetString("EditPatientForm_btnSubmit_Click_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a country.
+        /// </summary>
+        internal static string EditPatientForm_btnSubmit_Click_Please_select_a_country {
+            get {
+                return ResourceManager.GetString("EditPatientForm_btnSubmit_Click_Please_select_a_country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patients born after: .
+        /// </summary>
+        internal static string HistogramForm_HistogramForm_Patients_born_after__ {
+            get {
+                return ResourceManager.GetString("HistogramForm_HistogramForm_Patients_born_after__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a user to edit.
+        /// </summary>
+        internal static string MainForm_btnEditPatient_Click_Please_select_a_user_to_edit {
+            get {
+                return ResourceManager.GetString("MainForm_btnEditPatient_Click_Please_select_a_user_to_edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string MainForm_buttonAddAppointment_Click_Error {
+            get {
+                return ResourceManager.GetString("MainForm_buttonAddAppointment_Click_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a user.
+        /// </summary>
+        internal static string MainForm_buttonAddAppointment_Click_Please_select_a_user {
+            get {
+                return ResourceManager.GetString("MainForm_buttonAddAppointment_Click_Please_select_a_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to !.
+        /// </summary>
+        internal static string MainForm_displayName__ {
+            get {
+                return ResourceManager.GetString("MainForm_displayName__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an appointment to add/update diagnosis to.
+        /// </summary>
+        internal static string ViewAppointmentForm_btnDiagnosis_Click_Please_select_an_appointment_to_add_update_diagnosis_to {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_btnDiagnosis_Click_Please_select_an_appointment_to_add_update" +
+                        "_diagnosis_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an appointment to order tests for.
+        /// </summary>
+        internal static string ViewAppointmentForm_btnOrderTests_Click_Please_select_an_appointment_to_order_tests_for {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_btnOrderTests_Click_Please_select_an_appointment_to_order_tes" +
+                        "ts_for", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an appointment to view lab tests for.
+        /// </summary>
+        internal static string ViewAppointmentForm_btnViewTests_Click_Please_select_an_appointment_to_view_lab_tests_for {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_btnViewTests_Click_Please_select_an_appointment_to_view_lab_t" +
+                        "ests_for", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ViewAppointmentForm_buttonCheckIn_Click_Error {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_buttonCheckIn_Click_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an appointment.
+        /// </summary>
+        internal static string ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment {
+            get {
+                return ResourceManager.GetString("ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a test to edit/add the results of.
+        /// </summary>
+        internal static string ViewLabTestForm_btnAddUpdateResult_Click_Please_select_a_test_to_edit_add_the_results_of {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_btnAddUpdateResult_Click_Please_select_a_test_to_edit_add_the_res" +
+                        "ults_of", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Results: .
+        /// </summary>
+        internal static string ViewLabTestForm_btnViewResult_Click_ {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_btnViewResult_Click_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ViewLabTestForm_btnViewResult_Click_Error {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_btnViewResult_Click_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a test to view the results of.
+        /// </summary>
+        internal static string ViewLabTestForm_btnViewResult_Click_Please_select_a_test_to_view_the_results_of {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_btnViewResult_Click_Please_select_a_test_to_view_the_results_of", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test: .
+        /// </summary>
+        internal static string ViewLabTestForm_btnViewResult_Click_Test__ {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_btnViewResult_Click_Test__", resourceCulture);
             }
         }
     }

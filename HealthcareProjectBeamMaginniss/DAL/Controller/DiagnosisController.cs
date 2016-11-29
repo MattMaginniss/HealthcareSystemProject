@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -11,7 +6,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
     public class DiagnosisController
     {
+        #region Data members
+
         private readonly DiagnosisRepository diagnosisReposity;
+
+        #endregion
+
+        #region Constructors
 
         public DiagnosisController()
         {
@@ -22,6 +23,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             this.diagnosisReposity = diagnosisRepository;
         }
+
+        #endregion
+
+        #region Methods
 
         public void Add(Diagnosis diagnosis)
         {
@@ -43,9 +48,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.diagnosisReposity.GetAll();
         }
 
-        public IList<Diagnosis> GetAllDiagnosisByAptID(int id)
+        public IList<Diagnosis> GetAllDiagnosisByAptId(int id)
         {
-            return this.diagnosisReposity.GetAllDiagnosisByAptID(id);
+            return this.diagnosisReposity.GetAllDiagnosisByAptId(id);
         }
+
+        #endregion
     }
 }

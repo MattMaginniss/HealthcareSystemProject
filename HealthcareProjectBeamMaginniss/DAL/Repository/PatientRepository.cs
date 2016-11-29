@@ -14,56 +14,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
     /// <seealso cref="HealthcareProjectBeamMaginniss.DAL.Interfaces.IRepository{Patient}" />
     public class PatientRepository : IRepository<Patient>
     {
-        private Patient getPatientFromRow(cs3230f16bDataSet.patientRow row)
-        {
-            var pid = row.patientID;
-            var fname = row.IsfirstNameNull() ? "" : row.firstName;
-            var lname = row.IslastNameNull() ? "" : row.lastName;
-            var bdate = row.IsdateOfBirthNull() ? DateTime.MinValue : row.dateOfBirth;
-            var sex = row.IssexNull() ? ' ' : row.sex[0];
-            var street1 = row.Isstreet1Null() ? "" : row.street1;
-            var street2 = row.Isstreet2Null() ? "" : row.street2;
-            var city = row.IscityNull() ? "" : row.city;
-            var state = row.IsstateNull() ? "" : row.state;
-            var zip = row.IszipNull() ? "" : row.zip;
-            var country = row.IscountryNull() ? "" : row.country;
-            var phoneNo = row.Is_phone_Null() ? "" : row._phone_;
-            return new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
-        }
-
-        internal Dictionary<int,int> GetHistogramData(int minYear)
-        {
-            var adapter = new histogramOfPatientBirthYearTableAdapter();
-            Dictionary<int, int> dateDict = new Dictionary<int, int>();
-            foreach (cs3230f16bDataSet.histogramOfPatientBirthYearRow row in adapter.GetData(minYear).Rows) 
-            {
-                var year = row.Year;
-                var count = (int)row._Patients_born_;
-                dateDict.Add(year, count);
-            }
-            return dateDict;
-        }
-
-        internal int GetMinYear()
-        {
-            var adapter = new patientTableAdapter();
-            using (adapter)
-            {
-                var oldest = adapter.GetData().Min(pat => pat.dateOfBirth);
-                return oldest.Year;
-            }
-        }
-
-        internal int GetMaxYear()
-        {
-            var adapter = new patientTableAdapter();
-            using (adapter)
-            {
-                var youngest = adapter.GetData().Max(pat => pat.dateOfBirth);
-                return youngest.Year;
-            }
-        }
-
         #region Methods
 
         /// <summary>
@@ -87,6 +37,90 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             using (adapter)
             {
                 adapter.Insert(fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
+            }
+        }
+
+        /// <summary>
+        ///     Gets the patient by patientID.
+        /// </summary>
+        /// <param name="id">The patientID.</param>
+        /// <returns>Patient with specified patientID</returns>
+        public Patient GetById(int id)
+        {
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
+                return this.getPatientFromRow(patient);
+            }
+        }
+
+        /// <summary>
+        ///     Gets all patients.
+        /// </summary>
+        /// <returns>All patients</returns>
+        public IList<Patient> GetAll()
+        {
+            var patientList = new List<Patient>();
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                foreach (var row in adapter.GetData().Rows)
+                {
+                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                    patientList.Add(patient);
+                }
+            }
+            return patientList;
+        }
+
+        private Patient getPatientFromRow(cs3230f16bDataSet.patientRow row)
+        {
+            var pid = row.patientID;
+            var fname = row.IsfirstNameNull() ? "" : row.firstName;
+            var lname = row.IslastNameNull() ? "" : row.lastName;
+            var bdate = row.IsdateOfBirthNull() ? DateTime.MinValue : row.dateOfBirth;
+            var sex = row.IssexNull() ? ' ' : row.sex[0];
+            var street1 = row.Isstreet1Null() ? "" : row.street1;
+            var street2 = row.Isstreet2Null() ? "" : row.street2;
+            var city = row.IscityNull() ? "" : row.city;
+            var state = row.IsstateNull() ? "" : row.state;
+            var zip = row.IszipNull() ? "" : row.zip;
+            var country = row.IscountryNull() ? "" : row.country;
+            var phoneNo = row.Is_phone_Null() ? "" : row._phone_;
+            return new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
+        }
+
+        internal Dictionary<int, int> GetHistogramData(int minYear)
+        {
+            var adapter = new histogramOfPatientBirthYearTableAdapter();
+            var dateDict = new Dictionary<int, int>();
+            foreach (cs3230f16bDataSet.histogramOfPatientBirthYearRow row in adapter.GetData(minYear).Rows)
+            {
+                var year = row.Year;
+                var count = (int) row._Patients_born_;
+                dateDict.Add(year, count);
+            }
+            return dateDict;
+        }
+
+        internal int GetMinYear()
+        {
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                var oldest = adapter.GetData().Min(pat => pat.dateOfBirth);
+                return oldest.Year;
+            }
+        }
+
+        internal int GetMaxYear()
+        {
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                var youngest = adapter.GetData().Max(pat => pat.dateOfBirth);
+                return youngest.Year;
             }
         }
 
@@ -120,15 +154,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
         internal IList<Patient> GetFirst30()
         {
-              var patientList = new List<Patient>();
+            var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
             using (adapter)
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
                     patientList.Add(patient);
-                    if(patientList.Count >= 30)
+                    if (patientList.Count >= 30)
                     {
                         return patientList;
                     }
@@ -137,41 +171,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return patientList;
         }
 
-        /// <summary>
-        ///     Gets the patient by patientID.
-        /// </summary>
-        /// <param name="id">The patientID.</param>
-        /// <returns>Patient with specified patientID</returns>
-        public Patient GetById(int id)
-        {
-            var adapter = new patientTableAdapter();
-            using (adapter)
-            {
-                var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
-                return getPatientFromRow(patient);
-            }
-        }
-
-        /// <summary>
-        ///     Gets all patients.
-        /// </summary>
-        /// <returns>All patients</returns>
-        public IList<Patient> GetAll()
-        {
-            var patientList = new List<Patient>();
-            var adapter = new patientTableAdapter();
-            using (adapter)
-            {
-                foreach (var row in adapter.GetData().Rows)
-                {
-                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                    patientList.Add(patient);
-                }
-            }
-            return patientList;
-        }
-
-        public IList<Patient> GetPatientsByFirstName(String fName)
+        public IList<Patient> GetPatientsByFirstName(string fName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -180,7 +180,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
                     if (patient.FirstName.ToLower().Equals(fName))
                     {
                         patientList.Add(patient);
@@ -190,7 +190,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 
             return patientList;
         }
-        public IList<Patient> GetPatientsByLastName(String lName)
+
+        public IList<Patient> GetPatientsByLastName(string lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -199,7 +200,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
                     if (patient.LastName.ToLower().Equals(lName))
                     {
                         patientList.Add(patient);
@@ -210,8 +211,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return patientList;
         }
 
-
-        public IList<Patient> GetPatientsByFullName(String fName, String lName)
+        public IList<Patient> GetPatientsByFullName(string fName, string lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -220,7 +220,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
                     if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
                     {
                         patientList.Add(patient);
@@ -231,7 +231,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return patientList;
         }
 
-        public IList<Patient> GetPatientsByDateOfBirth(String dob)
+        public IList<Patient> GetPatientsByDateOfBirth(string dob)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -240,7 +240,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 foreach (var row in adapter.GetData().Rows)
                 {
-                    var patient = getPatientFromRow((cs3230f16bDataSet.patientRow)row);
+                    var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
                     if (patient.Dob.ToShortDateString().Equals(dob))
                     {
                         patientList.Add(patient);

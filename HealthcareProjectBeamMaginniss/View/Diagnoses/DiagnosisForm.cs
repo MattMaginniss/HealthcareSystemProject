@@ -1,30 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 {
     public partial class DiagnosisForm : Form
     {
-        private BindingSource bindingSource;
+        #region Data members
+
         private readonly DiagnosisController diagnosisController;
-        private Appointment appt;
-        
+        private readonly Appointment appt;
+        private BindingSource bindingSource;
+
+        #endregion
+
+        #region Constructors
+
         public DiagnosisForm(Appointment appt)
         {
             this.appt = appt;
-            InitializeComponent();
+            this.InitializeComponent();
             this.diagnosisController = new DiagnosisController();
             this.populateTable();
         }
+
+        #endregion
+
+        #region Methods
+
         private void populateTable()
         {
             this.dgvDiagnosis.AutoGenerateColumns = false;
@@ -34,11 +39,9 @@ namespace HealthcareProjectBeamMaginniss.View
             this.resizeToFit();
         }
 
-
         private void addDiagnosisColumn(string diagnosisProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn
-            {
+            var column = new DataGridViewTextBoxColumn {
                 DataPropertyName = diagnosisProperty,
                 Name = columnTitle
             };
@@ -47,8 +50,7 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void addFinalDiagnosisColumn(string diagnosisProperty, string columnTitle)
         {
-            var column = new DataGridViewCheckBoxColumn
-            {
+            var column = new DataGridViewCheckBoxColumn {
                 DataPropertyName = diagnosisProperty,
                 Name = columnTitle
             };
@@ -63,17 +65,15 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void updateTable()
         {
-            this.bindingSource = new BindingSource
-            {
-                DataSource = this.diagnosisController.GetAllDiagnosisByAptID(this.appt.AppointmentID)
+            this.bindingSource = new BindingSource {
+                DataSource = this.diagnosisController.GetAllDiagnosisByAptId(this.appt.AppointmentId)
             };
             this.dgvDiagnosis.DataSource = this.bindingSource;
-            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var addDiagnosis = new AddEditDiagnosisForm("Add Diagnosis", this.appt.AppointmentID);
+            var addDiagnosis = new AddEditDiagnosisForm(this.appt.AppointmentId);
             addDiagnosis.ShowDialog();
             this.updateTable();
         }
@@ -82,17 +82,18 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.dgvDiagnosis.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select a diagnosis to edit", "Error", MessageBoxButtons.OK,
+                MessageBox.Show(this, Resources.DiagnosisForm_btnEdit_Click_Please_select_a_diagnosis_to_edit, Resources.DiagnosisForm_btnEdit_Click_Error, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             else
             {
-                var diagnosis = (Diagnosis)this.dgvDiagnosis.SelectedRows[0].DataBoundItem;
-                var editDiagnosis = new AddEditDiagnosisForm("Edit Diagnosis", diagnosis);
+                var diagnosis = (Diagnosis) this.dgvDiagnosis.SelectedRows[0].DataBoundItem;
+                var editDiagnosis = new AddEditDiagnosisForm(diagnosis);
                 editDiagnosis.ShowDialog();
                 this.updateTable();
-
             }
         }
+
+        #endregion
     }
 }

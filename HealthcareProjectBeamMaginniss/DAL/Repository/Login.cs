@@ -41,7 +41,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-
         public string GetNameByUsername(string userName)
         {
             var loginAdapter = new staff_credentialsTableAdapter();
@@ -49,7 +48,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 try
                 {
-                    var staffCredentialsRow = loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
+                    var staffCredentialsRow =
+                        loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
                     if (staffCredentialsRow != null)
                     {
                         var id = staffCredentialsRow.staff_staffID;
@@ -60,7 +60,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                             if (staffRow != null)
                             {
                                 return staffRow.firstName + " " + staffRow.lastName;
-
                             }
                         }
                     }
@@ -73,14 +72,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return null;
         }
 
-        public int getStaffTypeByUsername(string userName)
+        public int GetStaffTypeByUsername(string userName)
         {
             var loginAdapter = new staff_credentialsTableAdapter();
             using (loginAdapter)
             {
                 try
                 {
-                    var staffCredentialsRow = loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
+                    var staffCredentialsRow =
+                        loginAdapter.GetData().FirstOrDefault(login => login.username.Equals(userName));
                     if (staffCredentialsRow != null)
                     {
                         var id = staffCredentialsRow.staff_staffID;
@@ -91,7 +91,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                             if (staffRow != null)
                             {
                                 return staffRow.staffType;
-
                             }
                         }
                     }
@@ -105,6 +104,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         }
 
         #endregion
-
     }
 }

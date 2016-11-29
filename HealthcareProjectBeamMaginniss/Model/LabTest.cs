@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthcareProjectBeamMaginniss.Model
+﻿namespace HealthcareProjectBeamMaginniss.Model
 {
-    class LabTest
+    internal class LabTest
     {
+        #region Properties
+
         public int LabTestId { get; }
         public string TestName { get; }
+
+        #endregion
+
+        #region Constructors
 
         public LabTest(int labTestId, string testName)
         {
             this.LabTestId = labTestId;
             this.TestName = testName;
         }
+
         public LabTest(string testName)
         {
             this.TestName = testName;
         }
+
+        #endregion
     }
 }

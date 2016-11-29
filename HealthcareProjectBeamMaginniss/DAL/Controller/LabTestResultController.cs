@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Controller
 {
-    class LabTestResultController
+    internal class LabTestResultController
     {
+        #region Data members
+
         private readonly LabTestResultRepository labTestResultRepository;
-        
+
+        #endregion
+
+        #region Constructors
+
         public LabTestResultController()
         {
             this.labTestResultRepository = new LabTestResultRepository();
@@ -22,10 +24,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.labTestResultRepository = labTestResultRepository;
         }
 
+        #endregion
+
+        #region Methods
+
         public void Add(LabTestResult labTestOrdered)
         {
             this.labTestResultRepository.Add(labTestOrdered);
-
         }
 
         public LabTestResult GetById(int id)
@@ -35,7 +40,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         public IList<LabTestResult> GetAll()
         {
-
             return this.labTestResultRepository.GetAll();
         }
 
@@ -43,5 +47,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             this.labTestResultRepository.Update(result);
         }
+
+        #endregion
     }
 }

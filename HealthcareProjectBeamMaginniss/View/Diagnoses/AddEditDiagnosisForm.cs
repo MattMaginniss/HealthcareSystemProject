@@ -1,61 +1,63 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 {
     public partial class AddEditDiagnosisForm : Form
     {
-        public Diagnosis diagnosis;
-        public Boolean edit;
-        public DiagnosisController diagnosisController;
-        public int aptId;
+        #region Data members
 
-        public AddEditDiagnosisForm(String formName, int aptId)
+        public int AptId;
+        public Diagnosis Diagnosis;
+        public DiagnosisController DiagnosisController;
+        public bool Edit;
+
+        #endregion
+
+        #region Constructors
+
+        public AddEditDiagnosisForm(int aptId)
         {
-            InitializeComponent();
-            this.Text = formName;
-            this.edit = false;
-            this.aptId = aptId;
+            this.InitializeComponent();
+            this.Edit = false;
+            this.AptId = aptId;
         }
 
-
-        public AddEditDiagnosisForm(String formName, Diagnosis diagnosis)
+        public AddEditDiagnosisForm(Diagnosis diagnosis)
         {
-            InitializeComponent();
-            this.Text = formName;
-            this.diagnosis = diagnosis;
-            this.edit = true;
-            this.txtLabTestName.Text = diagnosis.diagnosisInformation;
-            this.chkFinal.Checked = diagnosis.finalDiagnosis;
+            this.InitializeComponent();
+            this.Diagnosis = diagnosis;
+            this.Edit = true;
+            this.txtLabTestName.Text = diagnosis.DiagnosisInformation;
+            this.chkFinal.Checked = diagnosis.FinalDiagnosis;
         }
+
+        #endregion
+
+        #region Methods
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            this.diagnosisController = new DiagnosisController();
-            if (this.edit)
+            this.DiagnosisController = new DiagnosisController();
+            if (this.Edit)
             {
-                this.diagnosisController.Update(new Diagnosis(this.diagnosis.diagnosisId, this.txtLabTestName.Text,
-                    this.diagnosis.appointment_id, this.chkFinal.Checked));
+                this.DiagnosisController.Update(new Diagnosis(this.Diagnosis.DiagnosisId, this.txtLabTestName.Text,
+                    this.Diagnosis.AppointmentId, this.chkFinal.Checked));
             }
             else
             {
-                 this.diagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.aptId, this.chkFinal.Checked));  
+                this.DiagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.AptId, this.chkFinal.Checked));
             }
-            this.Close();
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
+
+        #endregion
     }
 }

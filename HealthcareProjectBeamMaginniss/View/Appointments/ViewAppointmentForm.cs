@@ -1,29 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
+using HealthcareProjectBeamMaginniss.View.Diagnoses;
+using HealthcareProjectBeamMaginniss.View.Lab_Tests;
 
-namespace HealthcareProjectBeamMaginniss.View
+namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
     public partial class ViewAppointmentForm : Form
     {
-        private BindingSource bindingSource;
+        #region Data members
+
         private readonly AppointmentController appointmentController;
+        private BindingSource bindingSource;
+
+        #endregion
+
+        #region Constructors
 
         public ViewAppointmentForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.appointmentController = new AppointmentController();
             this.populateTable();
-
         }
+
+        #endregion
+
+        #region Methods
 
         private void populateTable()
         {
@@ -60,14 +65,13 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void updateTable()
         {
-            this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAll() };
+            this.bindingSource = new BindingSource {DataSource = this.appointmentController.GetAll()};
             this.dgvAppointment.DataSource = this.bindingSource;
         }
 
         private void addAppointmentColumn(string patientProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn
-            {
+            var column = new DataGridViewTextBoxColumn {
                 DataPropertyName = patientProperty,
                 Name = columnTitle
             };
@@ -78,11 +82,12 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select an appointment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.ViewAppointmentForm_buttonCheckIn_Click_Please_select_an_appointment, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             else
             {
-                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var appt = (Appointment) this.dgvAppointment.SelectedRows[0].DataBoundItem;
                 var addAppointment = new AppointmentCheckinForm(appt);
                 addAppointment.ShowDialog();
                 this.updateTable();
@@ -93,23 +98,27 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.radioBtnName.Checked)
             {
-                string firstNameQuery = txtFirstName.Text.ToLower();
-                string lastNameQuery = txtLastName.Text.ToLower();
+                var firstNameQuery = this.txtFirstName.Text.ToLower();
+                var lastNameQuery = this.txtLastName.Text.ToLower();
 
                 if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFullName(firstNameQuery, lastNameQuery) };
+                    this.bindingSource = new BindingSource {
+                        DataSource =
+                            this.appointmentController.GetAppointmentByPatientFullName(firstNameQuery, lastNameQuery)
+                    };
                     this.dgvAppointment.DataSource = this.bindingSource;
                 }
                 else if (!firstNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFirstName(firstNameQuery) };
+                    this.bindingSource = new BindingSource {
+                        DataSource = this.appointmentController.GetAppointmentByPatientFirstName(firstNameQuery)
+                    };
                     this.dgvAppointment.DataSource = this.bindingSource;
                 }
                 else if (!lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource
-                    {
+                    this.bindingSource = new BindingSource {
                         DataSource = this.appointmentController.GetAppointmentByPatientLastName(lastNameQuery)
                     };
                     this.dgvAppointment.DataSource = this.bindingSource;
@@ -121,33 +130,42 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             else if (this.radBtnDOB.Checked)
             {
-                String dobQuery = dateTimeDateOfBirth.Value.ToShortDateString();
+                var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
-                this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientDateOfBirth(dobQuery) };
+                this.bindingSource = new BindingSource {
+                    DataSource = this.appointmentController.GetAppointmentByPatientDateOfBirth(dobQuery)
+                };
                 this.dgvAppointment.DataSource = this.bindingSource;
             }
-
             else if (this.radBtnBoth.Checked)
             {
-                string firstNameQuery = txtFirstName.Text.ToLower();
-                string lastNameQuery = txtLastName.Text.ToLower();
-                String dobQuery = dateTimeDateOfBirth.Value.ToShortDateString();
+                var firstNameQuery = this.txtFirstName.Text.ToLower();
+                var lastNameQuery = this.txtLastName.Text.ToLower();
+                var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
                 if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFullNameAndDob(firstNameQuery, lastNameQuery, dobQuery) };
+                    this.bindingSource = new BindingSource {
+                        DataSource =
+                            this.appointmentController.GetAppointmentByPatientFullNameAndDob(firstNameQuery,
+                                lastNameQuery,
+                                dobQuery)
+                    };
                     this.dgvAppointment.DataSource = this.bindingSource;
                 }
                 else if (!firstNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource { DataSource = this.appointmentController.GetAppointmentByPatientFirstNameAndDob(firstNameQuery, dobQuery) };
+                    this.bindingSource = new BindingSource {
+                        DataSource =
+                            this.appointmentController.GetAppointmentByPatientFirstNameAndDob(firstNameQuery, dobQuery)
+                    };
                     this.dgvAppointment.DataSource = this.bindingSource;
                 }
                 else if (!lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource
-                    {
-                        DataSource = this.appointmentController.GetAppointmentByPatientLastNameAndDob(lastNameQuery, dobQuery)
+                    this.bindingSource = new BindingSource {
+                        DataSource =
+                            this.appointmentController.GetAppointmentByPatientLastNameAndDob(lastNameQuery, dobQuery)
                     };
                     this.dgvAppointment.DataSource = this.bindingSource;
                 }
@@ -157,6 +175,7 @@ namespace HealthcareProjectBeamMaginniss.View
                 }
             }
         }
+
         private void radioBtnName_CheckedChanged(object sender, EventArgs e)
         {
             this.txtFirstName.Enabled = true;
@@ -191,11 +210,12 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select an appointment to order tests for", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.ViewAppointmentForm_btnOrderTests_Click_Please_select_an_appointment_to_order_tests_for, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             else
             {
-                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var appt = (Appointment) this.dgvAppointment.SelectedRows[0].DataBoundItem;
                 var orderLabTestForm = new OrderLabTestForm(appt);
                 orderLabTestForm.ShowDialog();
                 this.updateTable();
@@ -206,12 +226,13 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select an appointment to add/update diagnosis to", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.ViewAppointmentForm_btnDiagnosis_Click_Please_select_an_appointment_to_add_update_diagnosis_to, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
-                var diagnosisForm = new DiagnosisForm(appt);
+                var appt = (Appointment) this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var diagnosisForm = new Diagnoses.DiagnosisForm(appt);
                 diagnosisForm.ShowDialog();
                 this.updateTable();
             }
@@ -221,15 +242,18 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             if (this.dgvAppointment.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select an appointment to view lab tests for", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.ViewAppointmentForm_btnViewTests_Click_Please_select_an_appointment_to_view_lab_tests_for, Resources.ViewAppointmentForm_buttonCheckIn_Click_Error,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                var appt = (Appointment)this.dgvAppointment.SelectedRows[0].DataBoundItem;
+                var appt = (Appointment) this.dgvAppointment.SelectedRows[0].DataBoundItem;
                 var diagnosisForm = new ViewLabTestForm(appt);
                 diagnosisForm.ShowDialog();
                 this.updateTable();
             }
         }
+
+        #endregion
     }
 }

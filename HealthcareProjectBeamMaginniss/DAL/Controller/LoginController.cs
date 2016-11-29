@@ -34,6 +34,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         #endregion
 
+        #region Methods
+
         /// <summary>
         ///     Checks if the login is valid.
         /// </summary>
@@ -52,7 +54,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         public int GetStaffType(string username)
         {
-            return this.login.getStaffTypeByUsername(username);
+            return this.login.GetStaffTypeByUsername(username);
         }
+
+        #endregion
     }
 }
