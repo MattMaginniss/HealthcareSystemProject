@@ -17,11 +17,14 @@ namespace HealthcareProjectBeamMaginniss.View
         public Diagnosis diagnosis;
         public Boolean edit;
         public DiagnosisController diagnosisController;
-        public AddEditDiagnosisForm(String formName)
+        public int aptId;
+
+        public AddEditDiagnosisForm(String formName, int aptId)
         {
             InitializeComponent();
             this.Text = formName;
             this.edit = false;
+            this.aptId = aptId;
         }
 
 
@@ -31,6 +34,8 @@ namespace HealthcareProjectBeamMaginniss.View
             this.Text = formName;
             this.diagnosis = diagnosis;
             this.edit = true;
+            this.txtLabTestName.Text = diagnosis.diagnosisInformation;
+            this.chkFinal.Checked = diagnosis.finalDiagnosis;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -43,10 +48,14 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             else
             {
-                /* this.diagnosisController.Add(new Diagnosis(this.txtLabTestName.Text,
-                    this.diagnosis.appointment_id, this.chkFinal.Checked));
-                 */
+                 this.diagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.aptId, this.chkFinal.Checked));  
             }
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

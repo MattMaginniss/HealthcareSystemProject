@@ -22,5 +22,11 @@ namespace HealthcareProjectBeamMaginniss.Model
             this.appointment_id = appointment_id;
             this.finalDiagnosis = finalDiagnosis;
         }
+        public Diagnosis(string diagnosisInformation, int appointment_id, Boolean finalDiagnosis)
+        {
+            this.diagnosisInformation = diagnosisInformation;
+            this.appointment_id = appointment_id;
+            this.finalDiagnosis = finalDiagnosis;
+        }
     }
 }
