@@ -20,34 +20,36 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             InitializeComponent();
             this.pc = new PatientController();
+            this.setupTrackBar();
             this.getData();
+            this.labelYear.Text = "Patients born after: " + this.trackBarYear.Value;
+
+        }
+
+        private void setupTrackBar()
+        {
+            this.trackBarYear.Maximum = this.pc.getMaxYear();
+            this.trackBarYear.Minimum = this.pc.getMinYear();
+
         }
 
         private void getData()
         {
+            this.chart.Series[0].Points.Clear();
             this.chart.Series[0].Name = "Patient Birth Years";
-            var patients = this.pc.GetAll();
-            Dictionary<int, int> dateDict = new Dictionary<int, int>();
-            foreach(Patient p in patients)
-            {
-                DateTime dob = p.Dob;
-                var year = dob.Year;
-                if (dateDict.Keys.Contains(year))
-                {
-                    dateDict[year]++;
-                }
-                else
-                {
-                    dateDict.Add(year, 1);
-                }
-            }
-
+            var dateDict = this.pc.GetHistogramData(this.trackBarYear.Value);
             foreach(int k in dateDict.Keys)
             {
                 var point = this.chart.Series[0].Points.Add(dateDict[k]);
                 point.AxisLabel = k+"";
             }
 
+        }
+
+        private void trackBarYear_Scroll(object sender, EventArgs e)
+        {
+            this.labelYear.Text = "Patients born after: " + this.trackBarYear.Value;
+            this.getData();
         }
     }
 }

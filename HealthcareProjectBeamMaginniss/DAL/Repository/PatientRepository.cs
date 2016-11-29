@@ -31,6 +31,39 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo);
         }
 
+        internal Dictionary<int,int> GetHistogramData(int minYear)
+        {
+            var adapter = new histogramOfPatientBirthYearTableAdapter();
+            Dictionary<int, int> dateDict = new Dictionary<int, int>();
+            foreach (cs3230f16bDataSet.histogramOfPatientBirthYearRow row in adapter.GetData(minYear).Rows) 
+            {
+                var year = row.Year;
+                var count = (int)row._Patients_born_;
+                dateDict.Add(year, count);
+            }
+            return dateDict;
+        }
+
+        internal int GetMinYear()
+        {
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                var oldest = adapter.GetData().Min(pat => pat.dateOfBirth);
+                return oldest.Year;
+            }
+        }
+
+        internal int GetMaxYear()
+        {
+            var adapter = new patientTableAdapter();
+            using (adapter)
+            {
+                var youngest = adapter.GetData().Max(pat => pat.dateOfBirth);
+                return youngest.Year;
+            }
+        }
+
         #region Methods
 
         /// <summary>

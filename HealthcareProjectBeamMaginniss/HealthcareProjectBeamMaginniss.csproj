@@ -90,46 +90,46 @@
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\AddEditDiagnosisForm.cs">
+    <Compile Include="View\Diagnoses\AddEditDiagnosisForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddEditDiagnosisForm.Designer.cs">
+    <Compile Include="View\Diagnoses\AddEditDiagnosisForm.Designer.cs">
       <DependentUpon>AddEditDiagnosisForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AppointmentCheckinForm.cs">
+    <Compile Include="View\Appointments\AppointmentCheckinForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AppointmentCheckinForm.Designer.cs">
+    <Compile Include="View\Appointments\AppointmentCheckinForm.Designer.cs">
       <DependentUpon>AppointmentCheckinForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AddAppointmentForm.cs">
+    <Compile Include="View\Appointments\AddAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddAppointmentForm.Designer.cs">
+    <Compile Include="View\Appointments\AddAppointmentForm.Designer.cs">
       <DependentUpon>AddAppointmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AddPatientForm.cs">
+    <Compile Include="View\Patients\AddPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddPatientForm.Designer.cs">
+    <Compile Include="View\Patients\AddPatientForm.Designer.cs">
       <DependentUpon>AddPatientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CreateLabTestForm.cs">
+    <Compile Include="View\Lab Tests\CreateLabTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CreateLabTestForm.Designer.cs">
+    <Compile Include="View\Lab Tests\CreateLabTestForm.Designer.cs">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\DiagnosisForm.cs">
+    <Compile Include="View\Diagnoses\DiagnosisForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DiagnosisForm.Designer.cs">
+    <Compile Include="View\Diagnoses\DiagnosisForm.Designer.cs">
       <DependentUpon>DiagnosisForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EditPatientForm.cs">
+    <Compile Include="View\Patients\EditPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EditPatientForm.Designer.cs">
+    <Compile Include="View\Patients\EditPatientForm.Designer.cs">
       <DependentUpon>EditPatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\HistogramForm.cs">
@@ -138,10 +138,10 @@
     <Compile Include="View\HistogramForm.Designer.cs">
       <DependentUpon>HistogramForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LabResultForm.cs">
+    <Compile Include="View\Lab Tests\LabResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\LabResultForm.Designer.cs">
+    <Compile Include="View\Lab Tests\LabResultForm.Designer.cs">
       <DependentUpon>LabResultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
@@ -156,10 +156,10 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\OrderLabTestForm.cs">
+    <Compile Include="View\Lab Tests\OrderLabTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\OrderLabTestForm.Designer.cs">
+    <Compile Include="View\Lab Tests\OrderLabTestForm.Designer.cs">
       <DependentUpon>OrderLabTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\QueryForm.cs">
@@ -168,16 +168,16 @@
     <Compile Include="View\QueryForm.Designer.cs">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewAppointmentForm.cs">
+    <Compile Include="View\Appointments\ViewAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ViewAppointmentForm.Designer.cs">
+    <Compile Include="View\Appointments\ViewAppointmentForm.Designer.cs">
       <DependentUpon>ViewAppointmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewLabTestForm.cs">
+    <Compile Include="View\Lab Tests\ViewLabTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ViewLabTestForm.Designer.cs">
+    <Compile Include="View\Lab Tests\ViewLabTestForm.Designer.cs">
       <DependentUpon>ViewLabTestForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -189,31 +189,31 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\AddEditDiagnosisForm.resx">
+    <EmbeddedResource Include="View\Diagnoses\AddEditDiagnosisForm.resx">
       <DependentUpon>AddEditDiagnosisForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AppointmentCheckinForm.resx">
+    <EmbeddedResource Include="View\Appointments\AppointmentCheckinForm.resx">
       <DependentUpon>AppointmentCheckinForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AddAppointmentForm.resx">
+    <EmbeddedResource Include="View\Appointments\AddAppointmentForm.resx">
       <DependentUpon>AddAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AddPatientForm.resx">
+    <EmbeddedResource Include="View\Patients\AddPatientForm.resx">
       <DependentUpon>AddPatientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CreateLabTestForm.resx">
+    <EmbeddedResource Include="View\Lab Tests\CreateLabTestForm.resx">
       <DependentUpon>CreateLabTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\DiagnosisForm.resx">
+    <EmbeddedResource Include="View\Diagnoses\DiagnosisForm.resx">
       <DependentUpon>DiagnosisForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EditPatientForm.resx">
+    <EmbeddedResource Include="View\Patients\EditPatientForm.resx">
       <DependentUpon>EditPatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HistogramForm.resx">
       <DependentUpon>HistogramForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\LabResultForm.resx">
+    <EmbeddedResource Include="View\Lab Tests\LabResultForm.resx">
       <DependentUpon>LabResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
@@ -222,16 +222,16 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\OrderLabTestForm.resx">
+    <EmbeddedResource Include="View\Lab Tests\OrderLabTestForm.resx">
       <DependentUpon>OrderLabTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\QueryForm.resx">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ViewAppointmentForm.resx">
+    <EmbeddedResource Include="View\Appointments\ViewAppointmentForm.resx">
       <DependentUpon>ViewAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ViewLabTestForm.resx">
+    <EmbeddedResource Include="View\Lab Tests\ViewLabTestForm.resx">
       <DependentUpon>ViewLabTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="cs3230f16bDataSet.xsc">

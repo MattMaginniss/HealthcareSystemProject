@@ -27,6 +27,21 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             this.pr = new PatientRepository();
         }
 
+        internal int getMaxYear()
+        {
+            return this.pr.GetMaxYear();
+        }
+
+        internal int getMinYear()
+        {
+            return this.pr.GetMinYear();
+        }
+
+        internal Dictionary<int, int> GetHistogramData(int minYear)
+        {
+            return this.pr.GetHistogramData(minYear);
+        }
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="PatientController" /> class.
         /// </summary>
