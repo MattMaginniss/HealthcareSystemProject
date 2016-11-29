@@ -87,6 +87,7 @@ namespace HealthcareProjectBeamMaginniss.View
             }
             if (string.IsNullOrWhiteSpace(country) || !ctry.Contains(country))
             {
+                MessageBox.Show(this, "Please select a country", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(zip))
