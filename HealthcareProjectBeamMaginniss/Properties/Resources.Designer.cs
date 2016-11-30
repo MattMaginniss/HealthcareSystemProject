@@ -258,7 +258,7 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select a user to edit.
+        ///   Looks up a localized string similar to Please select a patient to edit.
         /// </summary>
         internal static string MainForm_btnEditPatient_Click_Please_select_a_user_to_edit {
             get {
@@ -276,7 +276,7 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select a user.
+        ///   Looks up a localized string similar to Please select a patient.
         /// </summary>
         internal static string MainForm_buttonAddAppointment_Click_Please_select_a_user {
             get {

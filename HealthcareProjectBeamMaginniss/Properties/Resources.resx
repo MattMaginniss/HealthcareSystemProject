@@ -155,13 +155,13 @@ Results: </value>
     <value>Please select a test to edit/add the results of</value>
   </data>
   <data name="MainForm_buttonAddAppointment_Click_Please_select_a_user" xml:space="preserve">
-    <value>Please select a user</value>
+    <value>Please select a patient</value>
   </data>
   <data name="MainForm_buttonAddAppointment_Click_Error" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="MainForm_btnEditPatient_Click_Please_select_a_user_to_edit" xml:space="preserve">
-    <value>Please select a user to edit</value>
+    <value>Please select a patient to edit</value>
   </data>
   <data name="MainForm_displayName__" xml:space="preserve">
     <value>!</value>
