@@ -61,30 +61,43 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         private void refreshTable()
         {
-            IList<LabTestOrdered> data;
-            if (this.appt == null)
-            {
-                data = this.labTestOrderedController.GetByPatientId(this.patientId);
+            try {
+                IList<LabTestOrdered> data;
+                if (this.appt == null)
+                {
+                    data = this.labTestOrderedController.GetByPatientId(this.patientId);
+                }
+                else
+                {
+                    data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentId);
+                }
+                this.attachResults(data);
+                var bindingSource = new BindingSource { DataSource = data };
+                this.dataGridView.DataSource = bindingSource;
             }
-            else
+            catch (Exception exc)
             {
-                data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentId);
+                this.handleError(exc);
             }
-            this.attachResults(data);
-            var bindingSource = new BindingSource {DataSource = data};
-            this.dataGridView.DataSource = bindingSource;
         }
 
         private void attachResults(IList<LabTestOrdered> data)
         {
             foreach (var test in data)
             {
-                var result =
+                try {
+                    var result =
                     this.labTestResultController.GetAll().FirstOrDefault(res => res.TestOrderId == test.TestOrderedId);
-                if (result != null)
-                {
-                    test.TestResultId = result.ResultId;
+                    if (result != null)
+                    {
+                        test.TestResultId = result.ResultId;
+                    }
                 }
+                catch (Exception exc)
+                {
+                    this.handleError(exc);
+                }
+               
             }
         }
 
@@ -111,10 +124,20 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
                 var test = (LabTestOrdered) this.dataGridView.SelectedRows[0].DataBoundItem;
                 if (test.HasResult)
                 {
-                    var testName = new LabTestController().GetById(test.TestId).TestName;
-                    var testResults = this.labTestResultController.GetById(test.TestResultId).TestResults;
-                    MessageBox.Show(Resources.ViewLabTestForm_btnViewResult_Click_Test__ + testName +
-                                    Resources.ViewLabTestForm_btnViewResult_Click_ + testResults);
+                    try {
+                        var testName = new LabTestController().GetById(test.TestId).TestName;
+                        var testResults = this.labTestResultController.GetById(test.TestResultId).TestResults;
+                        MessageBox.Show(Resources.ViewLabTestForm_btnViewResult_Click_Test__ + testName +
+                                        Resources.ViewLabTestForm_btnViewResult_Click_ + testResults);
+                    }
+                    catch (Exception exc)
+                    {
+                        this.handleError(exc);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No result!");
                 }
             }
         }
@@ -140,6 +163,12 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             var labResultForm = new LabResultForm(test);
             labResultForm.ShowDialog();
             this.refreshTable();
+        }
+
+        private void handleError(Exception exc)
+        {
+            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Close();
         }
 
         #endregion

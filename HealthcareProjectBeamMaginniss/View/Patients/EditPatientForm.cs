@@ -109,14 +109,27 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
                 return;
             }
             var ccode = ctry.Get(country);
-            this.pc = new PatientController();
-            this.pc.Update(new Patient(this.patientId, fname, lname, dob, sex, street1, street2, city, state, zip, ccode,
-                phone));
-            Dispose();
+            try
+            {
+                this.pc = new PatientController();
+                this.pc.Update(new Patient(this.patientId, fname, lname, dob, sex, street1, street2, city, state, zip, ccode,
+                    phone));
+                Dispose();
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void handleError(Exception exc)
+        {
+            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             this.Close();
         }
 

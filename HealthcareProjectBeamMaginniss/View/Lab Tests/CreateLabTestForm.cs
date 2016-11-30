@@ -37,8 +37,15 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             {
                 return;
             }
-            this.ltController.Add(new LabTest(labTestName));
-            Close();
+            try
+            {
+                this.ltController.Add(new LabTest(labTestName));
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(null,"An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         #endregion

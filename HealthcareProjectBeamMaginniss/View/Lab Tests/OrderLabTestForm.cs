@@ -57,12 +57,16 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             var labTest = ((LabTest) this.comboBoxLabTests.SelectedItem).LabTestId;
             var date = this.dateTimeLabTest.Value;
             var doctor = ((Staff) this.comboBoxDoctor.SelectedItem).StaffId;
-
-            var aptLabOrderController = new AppointmentLabOrderController();
-            this.ltoController.Add(new LabTestOrdered(labTest, doctor, date));
-            aptLabOrderController.Add(new AppointmentLabOrder(this.apt.AppointmentId, this.ltoController.GetLastId()));
-            Close();
-        }
+            try { 
+                var aptLabOrderController = new AppointmentLabOrderController();
+                this.ltoController.Add(new LabTestOrdered(labTest, doctor, date));
+                aptLabOrderController.Add(new AppointmentLabOrder(this.apt.AppointmentId, this.ltoController.GetLastId()));
+                Close();
+            }catch (Exception exc)
+            {
+                this.handleError(exc);
+            }
+}
 
         private void btnCreateTest_Click(object sender, EventArgs e)
         {
@@ -70,6 +74,13 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             createLabTest.ShowDialog();
             this.setUpForm();
         }
+
+        private void handleError(Exception exc)
+        {
+            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Close();
+        }
+
 
         #endregion
     }

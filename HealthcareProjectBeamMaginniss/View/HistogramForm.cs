@@ -30,19 +30,32 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void setupTrackBar()
         {
-            this.trackBarYear.Maximum = this.pc.GetMaxYear();
-            this.trackBarYear.Minimum = this.pc.GetMinYear();
+            try {
+                this.trackBarYear.Maximum = this.pc.GetMaxYear();
+                this.trackBarYear.Minimum = this.pc.GetMinYear();
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
+                this.Close();
+            }
         }
 
         private void getData()
         {
             this.chart.Series[0].Points.Clear();
             this.chart.Series[0].Name = "Patient Birth Years";
-            var dateDict = this.pc.GetHistogramData(this.trackBarYear.Value);
-            foreach (var k in dateDict.Keys)
+            try { 
+                var dateDict = this.pc.GetHistogramData(this.trackBarYear.Value);
+                foreach (var k in dateDict.Keys)
+                {
+                    var point = this.chart.Series[0].Points.Add(dateDict[k]);
+                    point.AxisLabel = k + "";
+                }
+            }
+            catch (Exception exc)
             {
-                var point = this.chart.Series[0].Points.Add(dateDict[k]);
-                point.AxisLabel = k + "";
+                this.handleError(exc);
             }
         }
 
@@ -52,6 +65,10 @@ namespace HealthcareProjectBeamMaginniss.View
             this.getData();
         }
 
+        private void handleError(Exception exc)
+        {
+            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         #endregion
     }
 }

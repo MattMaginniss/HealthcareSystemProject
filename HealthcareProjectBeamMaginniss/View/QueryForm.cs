@@ -35,7 +35,13 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void buttonExecute_Click(object sender, EventArgs e)
         {
-            this.dataGridView.DataSource = this.fsc.RunQuery(this.textBoxQuery.Text);
+            try {
+                this.dataGridView.DataSource = this.fsc.RunQuery(this.textBoxQuery.Text);
+            }
+            catch (Exception exc)
+            {
+                this.handleError(exc);
+            }
         }
 
         private void QueryForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -43,6 +49,11 @@ namespace HealthcareProjectBeamMaginniss.View
             this.form.Show();
         }
 
+        private void handleError(Exception exc)
+        {
+            MessageBox.Show(null, "An error occured. I would tell you to contact your sysadmin, but that's probably you :S.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Close();
+        }
         #endregion
     }
 }

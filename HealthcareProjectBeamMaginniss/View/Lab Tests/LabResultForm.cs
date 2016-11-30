@@ -37,13 +37,20 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             this.result.TestResults = this.textBox.Text;
-            if (this.result.ResultId > 0)
+            try
             {
-                this.resultController.Update(this.result);
+                if (this.result.ResultId > 0)
+                {
+                    this.resultController.Update(this.result);
+                }
+                else
+                {
+                    this.resultController.Add(this.result);
+                }
             }
-            else
+            catch (Exception exc)
             {
-                this.resultController.Add(this.result);
+                this.handleError(exc);
             }
             Close();
         }
@@ -51,6 +58,12 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void handleError(Exception exc)
+        {
+            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Close();
         }
 
         #endregion
