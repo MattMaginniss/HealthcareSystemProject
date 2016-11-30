@@ -41,8 +41,6 @@ namespace HealthcareProjectBeamMaginniss.View
 
         #endregion
 
-        #region Methods
-
         private void populateTable()
         {
             this.patientDataGridView.AutoGenerateColumns = false;
@@ -69,7 +67,8 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void addPatientColumn(string patientProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn {
+            var column = new DataGridViewTextBoxColumn
+            {
                 DataPropertyName = patientProperty,
                 Name = columnTitle
             };
@@ -133,21 +132,24 @@ namespace HealthcareProjectBeamMaginniss.View
 
                 if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource {
+                    this.bindingSource = new BindingSource
+                    {
                         DataSource = this.patientController.GetPatientsByFullName(firstNameQuery, lastNameQuery)
                     };
                     this.patientDataGridView.DataSource = this.bindingSource;
                 }
                 else if (!firstNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource {
+                    this.bindingSource = new BindingSource
+                    {
                         DataSource = this.patientController.GetPatientsByFirstName(firstNameQuery)
                     };
                     this.patientDataGridView.DataSource = this.bindingSource;
                 }
                 else if (!lastNameQuery.Equals(""))
                 {
-                    this.bindingSource = new BindingSource {
+                    this.bindingSource = new BindingSource
+                    {
                         DataSource = this.patientController.GetPatientsByLastName(lastNameQuery)
                     };
                     this.patientDataGridView.DataSource = this.bindingSource;
@@ -161,14 +163,16 @@ namespace HealthcareProjectBeamMaginniss.View
             {
                 var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
-                this.bindingSource = new BindingSource {
+                this.bindingSource = new BindingSource
+                {
                     DataSource = this.patientController.GetPatientsByDateOfBirth(dobQuery)
                 };
                 this.patientDataGridView.DataSource = this.bindingSource;
             }
             else if (this.radioButtonCountries.Checked)
             {
-                try {
+                try
+                {
                     var countryQuery = new Country().CountryDict[this.comboBoxCountries.Text];
                     this.bindingSource = new BindingSource
                     {
@@ -176,7 +180,7 @@ namespace HealthcareProjectBeamMaginniss.View
                     };
                     this.patientDataGridView.DataSource = this.bindingSource;
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     return;
                 }
@@ -284,17 +288,15 @@ namespace HealthcareProjectBeamMaginniss.View
             }
         }
 
-        #endregion
-
         private void radioButtonCountries_CheckedChanged(object sender, EventArgs e)
         {
-            if(this.comboBoxCountries.Items.Count == 0)
+            if (this.comboBoxCountries.Items.Count == 0)
             {
                 this.loadCountries();
             }
             this.comboBoxCountries.Enabled = this.radioButtonCountries.Checked;
+        }
 
-    }
         private void loadCountries()
         {
             var country = new Country();

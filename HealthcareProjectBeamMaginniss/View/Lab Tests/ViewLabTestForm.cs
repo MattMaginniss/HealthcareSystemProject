@@ -21,6 +21,10 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ViewLabTestForm" /> class. Use to view tests for a single appointment
+        /// </summary>
+        /// <param name="appt">The appointment.</param>
         public ViewLabTestForm(Appointment appt)
         {
             this.InitializeComponent();
@@ -31,6 +35,10 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             this.populateDataView();
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ViewLabTestForm" /> class. Use to view tests for a single patient
+        /// </summary>
+        /// <param name="patientId">The patient identifier.</param>
         public ViewLabTestForm(int patientId)
         {
             this.InitializeComponent();
@@ -43,8 +51,6 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         #endregion
 
-        #region Methods
-
         private void populateDataView()
         {
             this.dataGridView.AutoGenerateColumns = false;
@@ -52,7 +58,8 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             this.addTestColumn("TestName", "Test ID");
             this.addTestColumn("DoctorName", "Doctor");
             this.addTestColumn("TestDate", "Date");
-            var column = new DataGridViewCheckBoxColumn {
+            var column = new DataGridViewCheckBoxColumn
+            {
                 DataPropertyName = "HasResult",
                 Name = "Has Result?"
             };
@@ -61,8 +68,9 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         private void refreshTable()
         {
-            try {
-                IList<LabTestOrdered> data;
+            try
+            {
+                IList<LabTestOrder> data;
                 if (this.appt == null)
                 {
                     data = this.labTestOrderedController.GetByPatientId(this.patientId);
@@ -72,7 +80,7 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
                     data = this.labTestOrderedController.GetByAppointmentId(this.appt.AppointmentId);
                 }
                 this.attachResults(data);
-                var bindingSource = new BindingSource { DataSource = data };
+                var bindingSource = new BindingSource {DataSource = data};
                 this.dataGridView.DataSource = bindingSource;
             }
             catch (Exception exc)
@@ -81,13 +89,15 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             }
         }
 
-        private void attachResults(IList<LabTestOrdered> data)
+        private void attachResults(IList<LabTestOrder> data)
         {
             foreach (var test in data)
             {
-                try {
+                try
+                {
                     var result =
-                    this.labTestResultController.GetAll().FirstOrDefault(res => res.TestOrderId == test.TestOrderedId);
+                        this.labTestResultController.GetAll()
+                            .FirstOrDefault(res => res.TestOrderId == test.TestOrderedId);
                     if (result != null)
                     {
                         test.TestResultId = result.ResultId;
@@ -97,13 +107,13 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
                 {
                     this.handleError(exc);
                 }
-               
             }
         }
 
         private void addTestColumn(string testProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn {
+            var column = new DataGridViewTextBoxColumn
+            {
                 DataPropertyName = testProperty,
                 Name = columnTitle
             };
@@ -121,10 +131,11 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             }
             else
             {
-                var test = (LabTestOrdered) this.dataGridView.SelectedRows[0].DataBoundItem;
+                var test = (LabTestOrder) this.dataGridView.SelectedRows[0].DataBoundItem;
                 if (test.HasResult)
                 {
-                    try {
+                    try
+                    {
                         var testName = new LabTestController().GetById(test.TestId).TestName;
                         var testResults = this.labTestResultController.GetById(test.TestResultId).TestResults;
                         MessageBox.Show(Resources.ViewLabTestForm_btnViewResult_Click_Test__ + testName +
@@ -137,7 +148,7 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
                 }
                 else
                 {
-                    MessageBox.Show("No result!");
+                    MessageBox.Show(Resources.ViewLabTestForm_btnViewResult_Click_No_result_);
                 }
             }
         }
@@ -159,7 +170,7 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
                     MessageBoxIcon.Error);
                 return;
             }
-            var test = (LabTestOrdered) this.dataGridView.SelectedRows[0].DataBoundItem;
+            var test = (LabTestOrder) this.dataGridView.SelectedRows[0].DataBoundItem;
             var labResultForm = new LabResultForm(test);
             labResultForm.ShowDialog();
             this.refreshTable();
@@ -167,10 +178,9 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         private void handleError(Exception exc)
         {
-            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            this.Close();
+            MessageBox.Show(null, Resources.ViewLabTestForm_handleError_ + exc.Message, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            Close();
         }
-
-        #endregion
     }
 }

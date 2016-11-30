@@ -69,13 +69,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        #endregion
+
         public AppointmentLabOrder GetAptTestOrderedFromRow(cs3230f16bDataSet.appointment_has_lab_orderRow row)
         {
             var appointmentId = row.appointment_id;
             var labOrderId = row.lab_order_id;
             return new AppointmentLabOrder(appointmentId, labOrderId);
         }
-
-        #endregion
     }
 }

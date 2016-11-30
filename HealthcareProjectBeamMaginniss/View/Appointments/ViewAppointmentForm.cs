@@ -8,6 +8,10 @@ using HealthcareProjectBeamMaginniss.View.Lab_Tests;
 
 namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
+    /// <summary>
+    ///     Allows viewing of appointments
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ViewAppointmentForm : Form
     {
         #region Data members
@@ -20,10 +24,17 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ViewAppointmentForm" /> class.
+        /// </summary>
         public ViewAppointmentForm() : this(0)
         {
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ViewAppointmentForm" /> class.
+        /// </summary>
+        /// <param name="patientId">The patient identifier for whom to view appointments.</param>
         public ViewAppointmentForm(int patientId)
         {
             this.patientId = patientId;
@@ -33,8 +44,6 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         }
 
         #endregion
-
-        #region Methods
 
         private void populateTable()
         {
@@ -78,7 +87,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
             }
             else
             {
-                this.bindingSource = new BindingSource {
+                this.bindingSource = new BindingSource
+                {
                     DataSource = this.appointmentController.GetAppointmentByPatientId(this.patientId)
                 };
                 this.dgvAppointment.DataSource = this.bindingSource;
@@ -87,7 +97,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         private void addAppointmentColumn(string patientProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn {
+            var column = new DataGridViewTextBoxColumn
+            {
                 DataPropertyName = patientProperty,
                 Name = columnTitle
             };
@@ -122,7 +133,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
                     if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
                     {
-                        this.bindingSource = new BindingSource {
+                        this.bindingSource = new BindingSource
+                        {
                             DataSource =
                                 this.appointmentController.GetAppointmentByPatientFullName(firstNameQuery, lastNameQuery)
                         };
@@ -130,14 +142,16 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                     }
                     else if (!firstNameQuery.Equals(""))
                     {
-                        this.bindingSource = new BindingSource {
+                        this.bindingSource = new BindingSource
+                        {
                             DataSource = this.appointmentController.GetAppointmentByPatientFirstName(firstNameQuery)
                         };
                         this.dgvAppointment.DataSource = this.bindingSource;
                     }
                     else if (!lastNameQuery.Equals(""))
                     {
-                        this.bindingSource = new BindingSource {
+                        this.bindingSource = new BindingSource
+                        {
                             DataSource = this.appointmentController.GetAppointmentByPatientLastName(lastNameQuery)
                         };
                         this.dgvAppointment.DataSource = this.bindingSource;
@@ -151,7 +165,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 {
                     var dobQuery = this.dateTimeDateOfBirth.Value.ToShortDateString();
 
-                    this.bindingSource = new BindingSource {
+                    this.bindingSource = new BindingSource
+                    {
                         DataSource = this.appointmentController.GetAppointmentByPatientDateOfBirth(dobQuery)
                     };
                     this.dgvAppointment.DataSource = this.bindingSource;
@@ -164,7 +179,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
                     if (!firstNameQuery.Equals("") && !lastNameQuery.Equals(""))
                     {
-                        this.bindingSource = new BindingSource {
+                        this.bindingSource = new BindingSource
+                        {
                             DataSource =
                                 this.appointmentController.GetAppointmentByPatientFullNameAndDob(firstNameQuery,
                                     lastNameQuery,
@@ -174,7 +190,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                     }
                     else if (!firstNameQuery.Equals(""))
                     {
-                        this.bindingSource = new BindingSource {
+                        this.bindingSource = new BindingSource
+                        {
                             DataSource =
                                 this.appointmentController.GetAppointmentByPatientFirstNameAndDob(firstNameQuery,
                                     dobQuery)
@@ -183,7 +200,8 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                     }
                     else if (!lastNameQuery.Equals(""))
                     {
-                        this.bindingSource = new BindingSource {
+                        this.bindingSource = new BindingSource
+                        {
                             DataSource =
                                 this.appointmentController.GetAppointmentByPatientLastNameAndDob(lastNameQuery, dobQuery)
                         };
@@ -295,7 +313,5 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 MessageBoxIcon.Error);
             Close();
         }
-
-        #endregion
     }
 }

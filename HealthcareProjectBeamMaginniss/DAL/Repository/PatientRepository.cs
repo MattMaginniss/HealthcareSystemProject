@@ -61,14 +61,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 {
                     try
                     {
-                        var patient = adapter.GetData().Where(pat => pat.patientID == id).First();
+                        var patient = adapter.GetData().First(pat => pat.patientID == id);
                         return this.getPatientFromRow(patient);
                     }
                     catch (Exception)
                     {
                         return null;
                     }
-                    
                 }
             }
             catch (Exception e)
@@ -103,7 +102,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-
+        #endregion
 
         private Patient getPatientFromRow(cs3230f16bDataSet.patientRow row)
         {
@@ -176,12 +175,12 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public void Update(Patient patient)
+        internal void Update(Patient patient)
         {
             var adapter = new patientTableAdapter();
-            DataRow patRow = null;
             try
             {
+                DataRow patRow;
                 using (adapter)
                 {
                     patRow = adapter.GetData().FirstOrDefault(pat => pat.patientID == patient.PatientId);
@@ -237,7 +236,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<Patient> GetPatientsByFirstName(string fName)
+        internal IList<Patient> GetPatientsByFirstName(string fName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -247,10 +246,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 {
                     foreach (var row in adapter.GetData().Where(pat => pat.firstName.ToLower() == fName))
                     {
-                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        var patient = this.getPatientFromRow(row);
 
-                            patientList.Add(patient);
-                        
+                        patientList.Add(patient);
                     }
                 }
 
@@ -262,7 +260,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<Patient> GetPatientsByLastName(string lName)
+        internal IList<Patient> GetPatientsByLastName(string lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -272,10 +270,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 {
                     foreach (var row in adapter.GetData().Where(pat => pat.lastName.ToLower() == lName))
                     {
-                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        var patient = this.getPatientFromRow(row);
 
-                            patientList.Add(patient);
-                        
+                        patientList.Add(patient);
                     }
                 }
 
@@ -287,7 +284,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<Patient> GetPatientsByFullName(string fName, string lName)
+        internal IList<Patient> GetPatientsByFullName(string fName, string lName)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -295,11 +292,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Where(pat => pat.firstName.ToLower() == fName && pat.lastName.ToLower() == lName))
+                    foreach (
+                        var row in
+                            adapter.GetData()
+                                   .Where(pat => pat.firstName.ToLower() == fName && pat.lastName.ToLower() == lName))
                     {
-                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        var patient = this.getPatientFromRow(row);
                         patientList.Add(patient);
-                        
                     }
                 }
 
@@ -311,7 +310,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<Patient> GetPatientsByDateOfBirth(string dob)
+        internal IList<Patient> GetPatientsByDateOfBirth(string dob)
         {
             var patientList = new List<Patient>();
             var adapter = new patientTableAdapter();
@@ -319,11 +318,10 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Where(pat=>pat.dateOfBirth.ToShortDateString() == dob))
+                    foreach (var row in adapter.GetData().Where(pat => pat.dateOfBirth.ToShortDateString() == dob))
                     {
-                        var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
+                        var patient = this.getPatientFromRow(row);
                         patientList.Add(patient);
-                        
                     }
                 }
 
@@ -335,7 +333,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public object GetPatientsByCountry(string countryQuery)
+        internal IList<Patient> GetPatientsByCountry(string countryQuery)
         {
             var patientList = new List<Patient>();
 
@@ -356,7 +354,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                     var zip = row.IszipNull() ? "" : row.zip;
                     var country = row.IscountryNull() ? "" : row.country;
                     var phoneNo = row.Is_phone_Null() ? "" : row._phone_;
-                    patientList.Add(new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo));
+                    patientList.Add(new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip,
+                        country, phoneNo));
                 }
                 return patientList;
             }
@@ -365,7 +364,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

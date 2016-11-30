@@ -35,11 +35,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                     return pword.Equals(password);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
         }
+
+        #endregion
 
         public string GetNameByUsername(string userName)
         {
@@ -96,13 +98,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return -1;
             }
             return -1;
         }
-
-        #endregion
     }
 }

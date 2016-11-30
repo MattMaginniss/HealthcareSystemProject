@@ -6,6 +6,10 @@ using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
+    /// <summary>
+    ///     Allows a nurse to check in a patient and enter vital stats for a visit
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class AppointmentCheckinForm : Form
     {
         #region Data members
@@ -18,6 +22,10 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AppointmentCheckinForm" /> class.
+        /// </summary>
+        /// <param name="apt">The appointment.</param>
         public AppointmentCheckinForm(Appointment apt)
         {
             this.InitializeComponent();
@@ -36,8 +44,6 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         }
 
         #endregion
-
-        #region Methods
 
         private void fillForm()
         {
@@ -103,7 +109,5 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
                 MessageBoxIcon.Error);
             Close();
         }
-
-        #endregion
     }
 }

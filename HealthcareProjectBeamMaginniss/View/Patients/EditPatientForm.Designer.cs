@@ -1,5 +1,9 @@
 ﻿namespace HealthcareProjectBeamMaginniss.View.Patients
 {
+    /// <summary>
+    /// Allows updating of patient information
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class EditPatientForm
     {
         /// <summary>

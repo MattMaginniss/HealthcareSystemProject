@@ -2,7 +2,7 @@
 
 namespace HealthcareProjectBeamMaginniss.Model
 {
-    public class Country
+    internal class Country
     {
         #region Properties
 
@@ -19,8 +19,6 @@ namespace HealthcareProjectBeamMaginniss.Model
         }
 
         #endregion
-
-        #region Methods
 
         public bool Contains(string key)
         {
@@ -231,7 +229,5 @@ namespace HealthcareProjectBeamMaginniss.Model
             this.CountryDict.Add("Zambia", "ZM");
             this.CountryDict.Add("Zimbabwe", "ZW");
         }
-
-        #endregion
     }
 }

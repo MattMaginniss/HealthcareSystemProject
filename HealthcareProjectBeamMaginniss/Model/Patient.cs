@@ -9,6 +9,12 @@ namespace HealthcareProjectBeamMaginniss.Model
     {
         #region Properties
 
+        /// <summary>
+        ///     Gets the patient identifier.
+        /// </summary>
+        /// <value>
+        ///     The patient identifier.
+        /// </value>
         public int PatientId { get; }
 
         /// <summary>
@@ -27,6 +33,12 @@ namespace HealthcareProjectBeamMaginniss.Model
         /// </value>
         public string LastName { get; }
 
+        /// <summary>
+        ///     Gets the full name.
+        /// </summary>
+        /// <value>
+        ///     The full name.
+        /// </value>
         public string FullName => this.FirstName + " " + this.LastName;
 
         /// <summary>
@@ -113,23 +125,42 @@ namespace HealthcareProjectBeamMaginniss.Model
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Patient" /> class.
+        /// </summary>
+        /// <param name="pid">The pid.</param>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="dob">The dob.</param>
+        /// <param name="sex">The sex.</param>
+        /// <param name="street1">The street1.</param>
+        /// <param name="street2">The street2.</param>
+        /// <param name="city">The city.</param>
+        /// <param name="state">The state.</param>
+        /// <param name="zip">The zip.</param>
+        /// <param name="country">The country.</param>
+        /// <param name="phoneNo">The phone no.</param>
         public Patient(int pid, string firstName, string lastName, DateTime dob, char sex, string street1,
             string street2, string city, string state, string zip, string country, string phoneNo)
+            : this(firstName, lastName, dob, sex, street1, street2, city, state, zip, country, phoneNo)
         {
             this.PatientId = pid;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Dob = dob;
-            this.Sex = sex;
-            this.Street1 = street1;
-            this.Street2 = street2;
-            this.City = city;
-            this.State = state;
-            this.Zip = zip;
-            this.Country = country;
-            this.PhoneNo = phoneNo;
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Patient" /> class.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="dob">The dob.</param>
+        /// <param name="sex">The sex.</param>
+        /// <param name="street1">The street1.</param>
+        /// <param name="street2">The street2.</param>
+        /// <param name="city">The city.</param>
+        /// <param name="state">The state.</param>
+        /// <param name="zip">The zip.</param>
+        /// <param name="country">The country.</param>
+        /// <param name="phoneNo">The phone no.</param>
         public Patient(string firstName, string lastName, DateTime dob, char sex, string street1, string street2,
             string city, string state, string zip, string country, string phoneNo)
         {

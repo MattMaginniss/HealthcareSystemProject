@@ -26,8 +26,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         #endregion
 
-        #region Methods
-
         public void Add(AppointmentLabOrder aptLabTestOrdered)
         {
             this.apptLabTestOrderedRepository.Add(aptLabTestOrdered);
@@ -42,7 +40,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             return this.apptLabTestOrderedRepository.GetAll();
         }
-
-        #endregion
     }
 }

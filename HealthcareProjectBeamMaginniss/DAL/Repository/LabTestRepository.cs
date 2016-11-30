@@ -68,13 +68,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        #endregion
+
         public LabTest GetTestFromRow(cs3230f16bDataSet.lab_testsRow row)
         {
             var testId = row.testCode;
             var testName = row.testName;
             return new LabTest(testId, testName);
         }
-
-        #endregion
     }
 }

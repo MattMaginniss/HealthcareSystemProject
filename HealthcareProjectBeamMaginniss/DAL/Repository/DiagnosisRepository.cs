@@ -9,7 +9,7 @@ using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    public class DiagnosisRepository : IRepository<Diagnosis>
+    internal class DiagnosisRepository : IRepository<Diagnosis>
     {
         #region Methods
 
@@ -76,12 +76,14 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        #endregion
+
         public void Update(Diagnosis diagnosis)
         {
             var adapter = new diagnosisTableAdapter();
             try
             {
-                DataRow diaRow = null;
+                DataRow diaRow;
                 using (adapter)
                 {
                     diaRow = adapter.GetData().FirstOrDefault(dia => dia.diagnosisID == diagnosis.DiagnosisId);
@@ -160,7 +162,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

@@ -20,13 +20,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         #endregion
 
-        #region Methods
-
         public DataTable RunQuery(string query)
         {
             return this.fsr.RunQuery(query);
         }
-
-        #endregion
     }
 }

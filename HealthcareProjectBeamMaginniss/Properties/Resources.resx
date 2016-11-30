@@ -222,4 +222,35 @@ Check your internet connection or contact your system administrator</value>
   <data name="DiagnosisForm_handleError_Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="HistogramForm_handleError_" xml:space="preserve">
+    <value>An error occured. Please try again later.
+</value>
+  </data>
+  <data name="CreateLabTestForm_btnSubmit_Click_" xml:space="preserve">
+    <value>An error occured. Please try again later.
+</value>
+  </data>
+  <data name="LabResultForm_handleError_" xml:space="preserve">
+    <value>An error occured. Please try again later.
+</value>
+  </data>
+  <data name="OrderLabTestForm_handleError_" xml:space="preserve">
+    <value>An error occured. Please try again later.
+</value>
+  </data>
+  <data name="ViewLabTestForm_btnViewResult_Click_No_result_" xml:space="preserve">
+    <value>No result!</value>
+  </data>
+  <data name="ViewLabTestForm_handleError_" xml:space="preserve">
+    <value>An error occured. Please try again later.
+</value>
+  </data>
+  <data name="EditPatientForm_handleError_" xml:space="preserve">
+    <value>An error occured. Please try again later.
+</value>
+  </data>
+  <data name="QueryForm_handleError_" xml:space="preserve">
+    <value>An error occured. I would tell you to contact your sysadmin, but that's probably you :S.
+</value>
+  </data>
 </root>

@@ -1,5 +1,9 @@
 ﻿namespace HealthcareProjectBeamMaginniss.View
 {
+    /// <summary>
+    /// Displays a histogram of patients' birth years 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class HistogramForm
     {
         /// <summary>

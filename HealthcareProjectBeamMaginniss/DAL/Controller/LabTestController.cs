@@ -26,8 +26,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         #endregion
 
-        #region Methods
-
         public void Add(LabTest labTest)
         {
             this.labTestRepository.Add(labTest);
@@ -48,7 +46,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             var name = this.labTestRepository.GetById(id).TestName ?? "";
             return name;
         }
-
-        #endregion
     }
 }

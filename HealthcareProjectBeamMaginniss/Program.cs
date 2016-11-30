@@ -9,8 +9,6 @@ namespace HealthcareProjectBeamMaginniss
     /// </summary>
     internal static class Program
     {
-        #region Methods
-
         /// <summary>
         ///     The main entry point for the application.
         /// </summary>
@@ -21,7 +19,5 @@ namespace HealthcareProjectBeamMaginniss
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
         }
-
-        #endregion
     }
 }

@@ -15,6 +15,9 @@ namespace HealthcareProjectBeamMaginniss.View
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="HistogramForm" /> class.
+        /// </summary>
         public HistogramForm()
         {
             this.InitializeComponent();
@@ -26,18 +29,17 @@ namespace HealthcareProjectBeamMaginniss.View
 
         #endregion
 
-        #region Methods
-
         private void setupTrackBar()
         {
-            try {
+            try
+            {
                 this.trackBarYear.Maximum = this.pc.GetMaxYear();
                 this.trackBarYear.Minimum = this.pc.GetMinYear();
             }
             catch (Exception exc)
             {
                 this.handleError(exc);
-                this.Close();
+                Close();
             }
         }
 
@@ -45,7 +47,8 @@ namespace HealthcareProjectBeamMaginniss.View
         {
             this.chart.Series[0].Points.Clear();
             this.chart.Series[0].Name = "Patient Birth Years";
-            try { 
+            try
+            {
                 var dateDict = this.pc.GetHistogramData(this.trackBarYear.Value);
                 foreach (var k in dateDict.Keys)
                 {
@@ -67,8 +70,8 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void handleError(Exception exc)
         {
-            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(null, Resources.HistogramForm_handleError_ + exc.Message, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
-        #endregion
     }
 }

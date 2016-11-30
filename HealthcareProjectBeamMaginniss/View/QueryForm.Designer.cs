@@ -41,19 +41,20 @@
             this.textBoxQuery.AcceptsReturn = true;
             this.textBoxQuery.AcceptsTab = true;
             this.textBoxQuery.AllowDrop = true;
-            this.textBoxQuery.Location = new System.Drawing.Point(16, 382);
-            this.textBoxQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxQuery.Location = new System.Drawing.Point(12, 310);
             this.textBoxQuery.Multiline = true;
             this.textBoxQuery.Name = "textBoxQuery";
-            this.textBoxQuery.Size = new System.Drawing.Size(1144, 358);
+            this.textBoxQuery.Size = new System.Drawing.Size(859, 292);
             this.textBoxQuery.TabIndex = 0;
             // 
             // buttonExecute
             // 
-            this.buttonExecute.Location = new System.Drawing.Point(956, 748);
-            this.buttonExecute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExecute.Location = new System.Drawing.Point(717, 608);
             this.buttonExecute.Name = "buttonExecute";
-            this.buttonExecute.Size = new System.Drawing.Size(205, 63);
+            this.buttonExecute.Size = new System.Drawing.Size(154, 51);
             this.buttonExecute.TabIndex = 1;
             this.buttonExecute.Text = "Execute";
             this.buttonExecute.UseVisualStyleBackColor = true;
@@ -61,10 +62,10 @@
             // 
             // buttonQuit
             // 
-            this.buttonQuit.Location = new System.Drawing.Point(17, 748);
-            this.buttonQuit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonQuit.Location = new System.Drawing.Point(13, 608);
             this.buttonQuit.Name = "buttonQuit";
-            this.buttonQuit.Size = new System.Drawing.Size(205, 63);
+            this.buttonQuit.Size = new System.Drawing.Size(154, 51);
             this.buttonQuit.TabIndex = 2;
             this.buttonQuit.Text = "Quit";
             this.buttonQuit.UseVisualStyleBackColor = true;
@@ -72,35 +73,38 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(17, 16);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView.Location = new System.Drawing.Point(13, 13);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(1144, 358);
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.Size = new System.Drawing.Size(858, 291);
             this.dataGridView.TabIndex = 3;
             // 
             // labelWelcome
             // 
+            this.labelWelcome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWelcome.Location = new System.Drawing.Point(333, 761);
-            this.labelWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelWelcome.Location = new System.Drawing.Point(250, 618);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(150, 31);
+            this.labelWelcome.Size = new System.Drawing.Size(122, 25);
             this.labelWelcome.TabIndex = 4;
             this.labelWelcome.Text = "Welcome, ";
             // 
             // QueryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 826);
+            this.ClientSize = new System.Drawing.Size(883, 671);
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonExecute);
             this.Controls.Add(this.textBoxQuery);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "QueryForm";
             this.Text = "Admin Console";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QueryForm_FormClosing);

@@ -145,6 +145,16 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occured. Please try again later.
+        ///.
+        /// </summary>
+        internal static string CreateLabTestForm_btnSubmit_Click_ {
+            get {
+                return ResourceManager.GetString("CreateLabTestForm_btnSubmit_Click_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string DiagnosisForm_btnEdit_Click_Error {
@@ -209,11 +219,41 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occured. Please try again later.
+        ///.
+        /// </summary>
+        internal static string EditPatientForm_handleError_ {
+            get {
+                return ResourceManager.GetString("EditPatientForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured. Please try again later.
+        ///.
+        /// </summary>
+        internal static string HistogramForm_handleError_ {
+            get {
+                return ResourceManager.GetString("HistogramForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patients born after: .
         /// </summary>
         internal static string HistogramForm_HistogramForm_Patients_born_after__ {
             get {
                 return ResourceManager.GetString("HistogramForm_HistogramForm_Patients_born_after__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured. Please try again later.
+        ///.
+        /// </summary>
+        internal static string LabResultForm_handleError_ {
+            get {
+                return ResourceManager.GetString("LabResultForm_handleError_", resourceCulture);
             }
         }
         
@@ -250,6 +290,26 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         internal static string MainForm_displayName__ {
             get {
                 return ResourceManager.GetString("MainForm_displayName__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured. Please try again later.
+        ///.
+        /// </summary>
+        internal static string OrderLabTestForm_handleError_ {
+            get {
+                return ResourceManager.GetString("OrderLabTestForm_handleError_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured. I would tell you to contact your sysadmin, but that&apos;s probably you :S.
+        ///.
+        /// </summary>
+        internal static string QueryForm_handleError_ {
+            get {
+                return ResourceManager.GetString("QueryForm_handleError_", resourceCulture);
             }
         }
         
@@ -359,6 +419,15 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No result!.
+        /// </summary>
+        internal static string ViewLabTestForm_btnViewResult_Click_No_result_ {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_btnViewResult_Click_No_result_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select a test to view the results of.
         /// </summary>
         internal static string ViewLabTestForm_btnViewResult_Click_Please_select_a_test_to_view_the_results_of {
@@ -373,6 +442,16 @@ namespace HealthcareProjectBeamMaginniss.Properties {
         internal static string ViewLabTestForm_btnViewResult_Click_Test__ {
             get {
                 return ResourceManager.GetString("ViewLabTestForm_btnViewResult_Click_Test__", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured. Please try again later.
+        ///.
+        /// </summary>
+        internal static string ViewLabTestForm_handleError_ {
+            get {
+                return ResourceManager.GetString("ViewLabTestForm_handleError_", resourceCulture);
             }
         }
     }

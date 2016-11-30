@@ -30,8 +30,6 @@ namespace HealthcareProjectBeamMaginniss.View
 
         #endregion
 
-        #region Methods
-
         private void attemptLogin()
         {
             var username = this.txtUsername.Text;
@@ -105,7 +103,5 @@ namespace HealthcareProjectBeamMaginniss.View
                 this.attemptLogin();
             }
         }
-
-        #endregion
     }
 }

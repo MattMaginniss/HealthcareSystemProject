@@ -8,16 +8,16 @@ using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    internal class LabTestOrderedRepository : IRepository<LabTestOrdered>
+    internal class LabTestOrderedRepository : IRepository<LabTestOrder>
     {
         #region Methods
 
-        public void Add(LabTestOrdered labTestOrdered)
+        public void Add(LabTestOrder labTestOrder)
         {
             var adapter = new test_orderedTableAdapter();
-            var testId = labTestOrdered.TestId;
-            var doctorId = labTestOrdered.DoctorId;
-            var testDate = labTestOrdered.TestDate;
+            var testId = labTestOrder.TestId;
+            var doctorId = labTestOrder.DoctorId;
+            var testDate = labTestOrder.TestDate;
             try
             {
                 using (adapter)
@@ -31,7 +31,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public LabTestOrdered GetById(int id)
+        public LabTestOrder GetById(int id)
         {
             var adapter = new test_orderedTableAdapter();
             try
@@ -48,9 +48,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<LabTestOrdered> GetAll()
+        public IList<LabTestOrder> GetAll()
         {
-            var testOrderedList = new List<LabTestOrdered>();
+            var testOrderedList = new List<LabTestOrder>();
             var adapter = new test_orderedTableAdapter();
             try
             {
@@ -70,9 +70,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<LabTestOrdered> GetByAppointmentId(int appointmentId)
+        #endregion
+
+        public IList<LabTestOrder> GetByAppointmentId(int appointmentId)
         {
-            var testList = new List<LabTestOrdered>();
+            var testList = new List<LabTestOrder>();
             var adapter = new appointment_has_lab_orderTableAdapter();
             try
             {
@@ -92,13 +94,13 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public LabTestOrdered GetTestOrderedFromRow(cs3230f16bDataSet.test_orderedRow row)
+        public LabTestOrder GetTestOrderedFromRow(cs3230f16bDataSet.test_orderedRow row)
         {
             var testOrderedId = row.test_ordered_id;
             var testId = row.test_id;
             var doctorId = row.doctor_id;
             var testDate = row.test_date;
-            return new LabTestOrdered(testOrderedId, testId, doctorId, testDate);
+            return new LabTestOrder(testOrderedId, testId, doctorId, testDate);
         }
 
         public int GetLastId()
@@ -122,9 +124,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public IList<LabTestOrdered> GetByPatientId(int patientId)
+        public IList<LabTestOrder> GetByPatientId(int patientId)
         {
-            var testList = new List<LabTestOrdered>();
+            var testList = new List<LabTestOrder>();
             var adapter = new appointment_has_lab_orderTableAdapter();
             try
             {
@@ -149,7 +151,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

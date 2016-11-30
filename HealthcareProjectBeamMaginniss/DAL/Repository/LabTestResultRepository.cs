@@ -69,6 +69,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        #endregion
+
         public LabTestResult GetTestFromRow(cs3230f16bDataSet.test_resultsRow row)
         {
             if (row == null)
@@ -84,9 +86,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
         public void Update(LabTestResult result)
         {
             var adapter = new test_resultsTableAdapter();
-            DataRow resRow = null;
             try
             {
+                DataRow resRow;
                 using (adapter)
                 {
                     resRow = adapter.GetData().FirstOrDefault(res => res.test_result_id == result.ResultId);
@@ -105,7 +107,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

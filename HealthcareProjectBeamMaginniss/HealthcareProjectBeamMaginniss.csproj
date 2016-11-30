@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\HealthcareProjectBeamMaginniss.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -85,7 +86,7 @@
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Diagnosis.cs" />
     <Compile Include="Model\LabTest.cs" />
-    <Compile Include="Model\LabTestOrdered.cs" />
+    <Compile Include="Model\LabTestOrder.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />

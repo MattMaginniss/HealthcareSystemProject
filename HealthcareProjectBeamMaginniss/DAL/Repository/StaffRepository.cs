@@ -54,7 +54,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 {
                     try
                     {
-                        var staff = adapter.GetData().Where(st => st.staffID == id).First();
+                        var staff = adapter.GetData().First(st => st.staffID == id);
                         return this.getStaffFromRow(staff);
                     }
                     catch (Exception)
@@ -95,6 +95,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        #endregion
+
         private Staff getStaffFromRow(cs3230f16bDataSet.staffRow row)
         {
             if (row == null)
@@ -110,7 +112,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             return new Staff(staffId, fname, lname, bdate, phoneNo, staffType);
         }
 
-        public List<Staff> GetDoctors()
+        internal List<Staff> GetDoctors()
         {
             var staffList = new List<Staff>();
             var adapter = new staffTableAdapter();
@@ -133,7 +135,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
-        public List<Staff> GetNurses()
+        internal List<Staff> GetNurses()
         {
             var staffList = new List<Staff>();
             var adapter = new staffTableAdapter();
@@ -155,7 +157,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

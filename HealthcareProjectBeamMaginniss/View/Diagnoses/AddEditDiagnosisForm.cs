@@ -6,52 +6,62 @@ using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 {
+    /// <summary>
+    ///     Allows the creation and modification of diagnoses
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class AddEditDiagnosisForm : Form
     {
         #region Data members
 
-        public int AptId;
-        public Diagnosis Diagnosis;
-        public DiagnosisController DiagnosisController;
-        public bool Edit;
+        private readonly int aptId;
+        private readonly Diagnosis diagnosis;
+        private DiagnosisController diagnosisController;
+        private readonly bool edit;
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddEditDiagnosisForm" /> class.
+        /// </summary>
+        /// <param name="aptId">The appointment identifier.</param>
         public AddEditDiagnosisForm(int aptId)
         {
             this.InitializeComponent();
-            this.Edit = false;
-            this.AptId = aptId;
+            this.edit = false;
+            this.aptId = aptId;
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddEditDiagnosisForm" /> class.
+        /// </summary>
+        /// <param name="diagnosis">The diagnosis.</param>
         public AddEditDiagnosisForm(Diagnosis diagnosis)
         {
             this.InitializeComponent();
-            this.Diagnosis = diagnosis;
-            this.Edit = true;
+            this.diagnosis = diagnosis;
+            this.edit = true;
             this.txtLabTestName.Text = diagnosis.DiagnosisInformation;
             this.chkFinal.Checked = diagnosis.FinalDiagnosis;
         }
 
         #endregion
 
-        #region Methods
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                this.DiagnosisController = new DiagnosisController();
-                if (this.Edit)
+                this.diagnosisController = new DiagnosisController();
+                if (this.edit)
                 {
-                    this.DiagnosisController.Update(new Diagnosis(this.Diagnosis.DiagnosisId, this.txtLabTestName.Text,
-                        this.Diagnosis.AppointmentId, this.chkFinal.Checked));
+                    this.diagnosisController.Update(new Diagnosis(this.diagnosis.DiagnosisId, this.txtLabTestName.Text,
+                        this.diagnosis.AppointmentId, this.chkFinal.Checked));
                 }
                 else
                 {
-                    this.DiagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.AptId,
+                    this.diagnosisController.Add(new Diagnosis(this.txtLabTestName.Text, this.aptId,
                         this.chkFinal.Checked));
                 }
                 Close();
@@ -71,7 +81,5 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
         {
             Close();
         }
-
-        #endregion
     }
 }

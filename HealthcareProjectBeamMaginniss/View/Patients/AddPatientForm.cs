@@ -43,8 +43,6 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         #endregion
 
-        #region Methods
-
         private void addPatient()
         {
             var fname = this.txtFirstName.Text;
@@ -100,7 +98,6 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
         private void addButton_Click(object sender, EventArgs e)
         {
             this.addPatient();
-            
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -124,7 +121,5 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
                 this.comboBoxCountry.Items.Add(ctry);
             }
         }
-
-        #endregion
     }
 }

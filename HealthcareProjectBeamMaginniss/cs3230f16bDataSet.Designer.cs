@@ -64,6 +64,8 @@ namespace HealthcareProjectBeamMaginniss {
         
         private global::System.Data.DataRelation relationfk_doctor_has_doctor_specialties_staff1;
         
+        private global::System.Data.DataRelation relationstaff_types;
+        
         private global::System.Data.DataRelation relationfk_staffCredentials_staff1;
         
         private global::System.Data.DataRelation relationfk_test_results_diagnosis_has_lab_tests1;
@@ -528,6 +530,7 @@ namespace HealthcareProjectBeamMaginniss {
             this.relationdiagnosis_apt_id = this.Relations["diagnosis_apt_id"];
             this.relationfk_doctor_has_doctor_specialties_doctor_specialties1 = this.Relations["fk_doctor_has_doctor_specialties_doctor_specialties1"];
             this.relationfk_doctor_has_doctor_specialties_staff1 = this.Relations["fk_doctor_has_doctor_specialties_staff1"];
+            this.relationstaff_types = this.Relations["staff_types"];
             this.relationfk_staffCredentials_staff1 = this.Relations["fk_staffCredentials_staff1"];
             this.relationfk_test_results_diagnosis_has_lab_tests1 = this.Relations["fk_test_results_diagnosis_has_lab_tests1"];
         }
@@ -592,6 +595,10 @@ namespace HealthcareProjectBeamMaginniss {
                         this.tablestaff.staffIDColumn}, new global::System.Data.DataColumn[] {
                         this.tabledoctor_has_doctor_specialties.staff_staffIDColumn}, false);
             this.Relations.Add(this.relationfk_doctor_has_doctor_specialties_staff1);
+            this.relationstaff_types = new global::System.Data.DataRelation("staff_types", new global::System.Data.DataColumn[] {
+                        this.tablestaff_types.staffTypeIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablestaff.staffTypeColumn}, false);
+            this.Relations.Add(this.relationstaff_types);
             this.relationfk_staffCredentials_staff1 = new global::System.Data.DataRelation("fk_staffCredentials_staff1", new global::System.Data.DataColumn[] {
                         this.tablestaff.staffIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablestaff_credentials.staff_staffIDColumn}, false);
@@ -3228,7 +3235,7 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public staffRow AddstaffRow(string firstName, string lastName, System.DateTime dateOfBirth, string _phone_, int staffType) {
+            public staffRow AddstaffRow(string firstName, string lastName, System.DateTime dateOfBirth, string _phone_, staff_typesRow parentstaff_typesRowBystaff_types) {
                 staffRow rowstaffRow = ((staffRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3236,7 +3243,10 @@ namespace HealthcareProjectBeamMaginniss {
                         lastName,
                         dateOfBirth,
                         _phone_,
-                        staffType};
+                        null};
+                if ((parentstaff_typesRowBystaff_types != null)) {
+                    columnValuesArray[5] = parentstaff_typesRowBystaff_types[0];
+                }
                 rowstaffRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstaffRow);
                 return rowstaffRow;
@@ -3835,6 +3845,13 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public staff_typesRow FindBystaffTypeID(int staffTypeID) {
+                return ((staff_typesRow)(this.Rows.Find(new object[] {
+                            staffTypeID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 staff_typesDataTable cln = ((staff_typesDataTable)(base.Clone()));
                 cln.InitVars();
@@ -3861,7 +3878,10 @@ namespace HealthcareProjectBeamMaginniss {
                 base.Columns.Add(this.columnstaffTypeID);
                 this.columnstaffTypeName = new global::System.Data.DataColumn("staffTypeName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstaffTypeName);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnstaffTypeID}, true));
                 this.columnstaffTypeID.AllowDBNull = false;
+                this.columnstaffTypeID.Unique = true;
                 this.columnstaffTypeName.AllowDBNull = false;
                 this.columnstaffTypeName.MaxLength = 45;
             }
@@ -6375,6 +6395,17 @@ namespace HealthcareProjectBeamMaginniss {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public staff_typesRow staff_typesRow {
+                get {
+                    return ((staff_typesRow)(this.GetParentRow(this.Table.ParentRelations["staff_types"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["staff_types"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public appointmentRow[] GetappointmentRowsByfk_appointment_staff1() {
                 if ((this.Table.ChildRelations["fk_appointment_staff1"] == null)) {
                     return new appointmentRow[0];
@@ -6510,6 +6541,17 @@ namespace HealthcareProjectBeamMaginniss {
                 }
                 set {
                     this[this.tablestaff_types.staffTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public staffRow[] GetstaffRows() {
+                if ((this.Table.ChildRelations["staff_types"] == null)) {
+                    return new staffRow[0];
+                }
+                else {
+                    return ((staffRow[])(base.GetChildRows(this.Table.ChildRelations["staff_types"])));
                 }
             }
         }
@@ -12619,11 +12661,32 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("staffTypeID", "staffTypeID");
             tableMapping.ColumnMappings.Add("staffTypeName", "staffTypeName");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `staff_types` WHERE ((`staffTypeID` = @p1) AND (`staffTypeName` = @p2" +
+                "))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "staffTypeID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "staffTypeName";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `staff_types` (`staffTypeID`, `staffTypeName`) VALUES (@p1, @p2)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
@@ -12637,6 +12700,41 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "staffTypeName";
             this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE `staff_types` SET `staffTypeID` = @p1, `staffTypeName` = @p2 WHERE ((`staf" +
+                "fTypeID` = @p3) AND (`staffTypeName` = @p4))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "staffTypeID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "staffTypeName";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "staffTypeID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "staffTypeName";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12712,6 +12810,34 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int p1, string p2) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int p1, string p2) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
@@ -12735,6 +12861,49 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int p1, string p2, int p3, string p4) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(p3));
+            if ((p4 == null)) {
+                throw new global::System.ArgumentNullException("p4");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(p4));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string p2, int p3, string p4) {
+            return this.Update(p3, p2, p3, p4);
         }
     }
     
@@ -14220,6 +14389,15 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(cs3230f16bDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._staff_typesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.staff_types.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._staff_typesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._patientTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.patient.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -14310,15 +14488,6 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._staff_typesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.staff_types.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._staff_typesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._test_resultsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.test_results.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -14338,6 +14507,14 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(cs3230f16bDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._staff_typesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.staff_types.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._staff_typesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._patientTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.patient.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -14418,14 +14595,6 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._staff_typesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.staff_types.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._staff_typesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._test_resultsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.test_results.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -14449,14 +14618,6 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._test_resultsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._staff_typesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.staff_types.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._staff_typesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -14537,6 +14698,14 @@ namespace HealthcareProjectBeamMaginniss.cs3230f16bDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._patientTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._staff_typesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.staff_types.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._staff_typesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

@@ -6,6 +6,10 @@ using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 {
+    /// <summary>
+    ///     Allows viewing of diagnoses made for a particular patient or appointment
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class DiagnosisForm : Form
     {
         #region Data members
@@ -19,6 +23,11 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DiagnosisForm" /> class. Use if you want to view diagnoses for a
+        ///     specific appointment
+        /// </summary>
+        /// <param name="appt">The appointment of the diagnoses.</param>
         public DiagnosisForm(Appointment appt)
         {
             this.appt = appt;
@@ -28,6 +37,11 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
             this.populateTable();
         }
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DiagnosisForm" /> class. Use if you want to view diagnoses for a
+        ///     specific patient
+        /// </summary>
+        /// <param name="userId">The patient identifier of the diagnoses.</param>
         public DiagnosisForm(int userId)
         {
             this.userId = userId;
@@ -38,8 +52,6 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
         }
 
         #endregion
-
-        #region Methods
 
         private void populateTable()
         {
@@ -52,7 +64,8 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         private void addDiagnosisColumn(string diagnosisProperty, string columnTitle)
         {
-            var column = new DataGridViewTextBoxColumn {
+            var column = new DataGridViewTextBoxColumn
+            {
                 DataPropertyName = diagnosisProperty,
                 Name = columnTitle
             };
@@ -61,7 +74,8 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
 
         private void addFinalDiagnosisColumn(string diagnosisProperty, string columnTitle)
         {
-            var column = new DataGridViewCheckBoxColumn {
+            var column = new DataGridViewCheckBoxColumn
+            {
                 DataPropertyName = diagnosisProperty,
                 Name = columnTitle
             };
@@ -80,13 +94,15 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
             {
                 if (this.appt == null)
                 {
-                    this.bindingSource = new BindingSource {
+                    this.bindingSource = new BindingSource
+                    {
                         DataSource = this.diagnosisController.GetAllDiagnosisByPatientId(this.userId)
                     };
                 }
                 else
                 {
-                    this.bindingSource = new BindingSource {
+                    this.bindingSource = new BindingSource
+                    {
                         DataSource = this.diagnosisController.GetAllDiagnosisByAptId(this.appt.AppointmentId)
                     };
                 }
@@ -138,7 +154,5 @@ namespace HealthcareProjectBeamMaginniss.View.Diagnoses
                 MessageBoxIcon.Error);
             Close();
         }
-
-        #endregion
     }
 }

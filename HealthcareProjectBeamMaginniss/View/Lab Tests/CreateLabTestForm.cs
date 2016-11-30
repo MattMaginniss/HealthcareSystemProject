@@ -2,9 +2,14 @@
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 {
+    /// <summary>
+    ///     Creates a new lab test that can then be ordered by a doctor
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class CreateLabTestForm : Form
     {
         #region Data members
@@ -15,6 +20,9 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="CreateLabTestForm" /> class.
+        /// </summary>
         public CreateLabTestForm()
         {
             this.InitializeComponent();
@@ -22,8 +30,6 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         }
 
         #endregion
-
-        #region Methods
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -41,13 +47,12 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             {
                 this.ltController.Add(new LabTest(labTestName));
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
-                MessageBox.Show(null,"An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+                MessageBox.Show(null, Resources.CreateLabTestForm_btnSubmit_Click_ + exc.Message, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                Close();
             }
         }
-
-        #endregion
     }
 }

@@ -7,8 +7,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
     internal class FreeSqlRepository
     {
-        #region Methods
-
         public DataTable RunQuery(string query)
         {
             try
@@ -35,7 +33,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

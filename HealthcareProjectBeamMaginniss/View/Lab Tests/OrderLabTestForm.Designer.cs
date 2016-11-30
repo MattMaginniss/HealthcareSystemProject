@@ -1,5 +1,9 @@
 ﻿namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 {
+    /// <summary>
+    /// Partial class for <seealso cref="OrderLabTestForm" />
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class OrderLabTestForm
     {
         /// <summary>

@@ -26,8 +26,6 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         #endregion
 
-        #region Methods
-
         public void Add(LabTestResult labTestOrdered)
         {
             this.labTestResultRepository.Add(labTestOrdered);
@@ -47,7 +45,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         {
             this.labTestResultRepository.Update(result);
         }
-
-        #endregion
     }
 }

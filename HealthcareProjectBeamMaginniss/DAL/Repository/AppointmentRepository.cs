@@ -8,7 +8,7 @@ using HealthcareProjectBeamMaginniss.Model;
 
 namespace HealthcareProjectBeamMaginniss.DAL.Repository
 {
-    public class AppointmentRepository : IRepository<Appointment>
+    internal class AppointmentRepository : IRepository<Appointment>
     {
         #region Methods
 
@@ -79,12 +79,14 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             }
         }
 
+        #endregion
+
         public void Update(Appointment appointment)
         {
             var adapter = new appointmentTableAdapter();
-            DataRow aptrow = null;
             try
             {
+                DataRow aptrow;
                 using (adapter)
                 {
                     aptrow = adapter.GetData().FirstOrDefault(apt => apt.appointmentID == appointment.AppointmentId);
@@ -151,7 +153,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 return null;
             }
             var appointmentId = row.appointmentID;
-            var reasonForAppointment = row.IsreasonForAppointmentNull()? " ":row.reasonForAppointment;
+            var reasonForAppointment = row.IsreasonForAppointmentNull() ? " " : row.reasonForAppointment;
             var date = row.IsdateScheduledNull() ? DateTime.MinValue : row.dateScheduled;
             var nureseId = row.nurse_StaffID;
             var doctorId = row.doctor_StaffID;
@@ -161,7 +163,7 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             var temperature = row.IstemperatureNull() ? 0 : row.temperature;
             var pulse = row.IspulseNull() ? 0 : row.pulse;
             var weight = row.IsweightNull() ? 0 : row.weight;
-            var symptoms = row.IssymptomsNull()? " ":row.symptoms;
+            var symptoms = row.IssymptomsNull() ? " " : row.symptoms;
             return new Appointment(appointmentId, reasonForAppointment, date, nureseId, doctorId,
                 patientId, systolicBp, diastolicBp, temperature, pulse, weight,
                 symptoms);
@@ -401,7 +403,5 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
-
-        #endregion
     }
 }

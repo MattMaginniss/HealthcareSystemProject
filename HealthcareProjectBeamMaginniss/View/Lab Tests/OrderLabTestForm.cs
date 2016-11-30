@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using HealthcareProjectBeamMaginniss.DAL.Controller;
 using HealthcareProjectBeamMaginniss.Model;
+using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 {
@@ -18,6 +19,10 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="OrderLabTestForm" /> class.
+        /// </summary>
+        /// <param name="apt">The appointment to order a test for.</param>
         public OrderLabTestForm(Appointment apt)
         {
             this.InitializeComponent();
@@ -29,8 +34,6 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
         }
 
         #endregion
-
-        #region Methods
 
         private void setUpForm()
         {
@@ -57,16 +60,18 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
             var labTest = ((LabTest) this.comboBoxLabTests.SelectedItem).LabTestId;
             var date = this.dateTimeLabTest.Value;
             var doctor = ((Staff) this.comboBoxDoctor.SelectedItem).StaffId;
-            try { 
+            try
+            {
                 var aptLabOrderController = new AppointmentLabOrderController();
-                this.ltoController.Add(new LabTestOrdered(labTest, doctor, date));
+                this.ltoController.Add(new LabTestOrder(labTest, doctor, date));
                 aptLabOrderController.Add(new AppointmentLabOrder(this.apt.AppointmentId, this.ltoController.GetLastId()));
                 Close();
-            }catch (Exception exc)
+            }
+            catch (Exception exc)
             {
                 this.handleError(exc);
             }
-}
+        }
 
         private void btnCreateTest_Click(object sender, EventArgs e)
         {
@@ -77,11 +82,9 @@ namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 
         private void handleError(Exception exc)
         {
-            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            this.Close();
+            MessageBox.Show(null, Resources.OrderLabTestForm_handleError_ + exc.Message, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            Close();
         }
-
-
-        #endregion
     }
 }

@@ -6,6 +6,10 @@ using HealthcareProjectBeamMaginniss.Properties;
 
 namespace HealthcareProjectBeamMaginniss.View.Appointments
 {
+    /// <summary>
+    ///     Allows the adding of a new appointment
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class AddAppointmentForm : Form
     {
         #region Data members
@@ -18,6 +22,10 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddAppointmentForm" /> class.
+        /// </summary>
+        /// <param name="patientId">The patient identifier for whom to create an appointment.</param>
         public AddAppointmentForm(int patientId)
         {
             this.InitializeComponent();
@@ -28,8 +36,6 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
         }
 
         #endregion
-
-        #region Methods
 
         private void loadStaff()
         {
@@ -82,7 +88,5 @@ namespace HealthcareProjectBeamMaginniss.View.Appointments
             }
             Close();
         }
-
-        #endregion
     }
 }

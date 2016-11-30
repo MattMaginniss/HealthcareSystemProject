@@ -26,24 +26,22 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
 
         #endregion
 
-        #region Methods
-
-        public void Add(LabTestOrdered labTestOrdered)
+        public void Add(LabTestOrder labTestOrder)
         {
-            this.labTestOrderedRepository.Add(labTestOrdered);
+            this.labTestOrderedRepository.Add(labTestOrder);
         }
 
-        public LabTestOrdered GetById(int id)
+        public LabTestOrder GetById(int id)
         {
             return this.labTestOrderedRepository.GetById(id);
         }
 
-        public IList<LabTestOrdered> GetAll()
+        public IList<LabTestOrder> GetAll()
         {
             return this.labTestOrderedRepository.GetAll();
         }
 
-        public IList<LabTestOrdered> GetByAppointmentId(int appointmentId)
+        public IList<LabTestOrder> GetByAppointmentId(int appointmentId)
         {
             return this.labTestOrderedRepository.GetByAppointmentId(appointmentId);
         }
@@ -53,11 +51,9 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
             return this.labTestOrderedRepository.GetLastId();
         }
 
-        public IList<LabTestOrdered> GetByPatientId(int patientId)
+        public IList<LabTestOrder> GetByPatientId(int patientId)
         {
             return this.labTestOrderedRepository.GetByPatientId(patientId);
         }
-
-        #endregion
     }
 }

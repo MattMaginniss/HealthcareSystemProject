@@ -1,5 +1,9 @@
 ﻿namespace HealthcareProjectBeamMaginniss.View.Lab_Tests
 {
+    /// <summary>
+    /// Allows viewing of a lab test and its results
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class ViewLabTestForm
     {
         /// <summary>

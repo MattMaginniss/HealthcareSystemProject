@@ -17,6 +17,10 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         #region Constructors
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="EditPatientForm" /> class.
+        /// </summary>
+        /// <param name="patient">The patient to update.</param>
         public EditPatientForm(Patient patient)
         {
             this.InitializeComponent();
@@ -43,8 +47,6 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
         }
 
         #endregion
-
-        #region Methods
 
         private void loadCountries()
         {
@@ -112,7 +114,8 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
             try
             {
                 this.pc = new PatientController();
-                this.pc.Update(new Patient(this.patientId, fname, lname, dob, sex, street1, street2, city, state, zip, ccode,
+                this.pc.Update(new Patient(this.patientId, fname, lname, dob, sex, street1, street2, city, state, zip,
+                    ccode,
                     phone));
                 Dispose();
             }
@@ -124,15 +127,14 @@ namespace HealthcareProjectBeamMaginniss.View.Patients
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void handleError(Exception exc)
         {
-            MessageBox.Show(null, "An error occured. Please try again later.\n" + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            this.Close();
+            MessageBox.Show(null, Resources.EditPatientForm_handleError_ + exc.Message, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            Close();
         }
-
-        #endregion
     }
 }
