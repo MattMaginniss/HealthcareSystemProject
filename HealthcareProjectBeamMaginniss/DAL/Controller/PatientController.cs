@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HealthcareProjectBeamMaginniss.DAL.Repository;
 using HealthcareProjectBeamMaginniss.Model;
 
@@ -115,6 +116,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Controller
         internal Dictionary<int, int> GetHistogramData(int minYear)
         {
             return this.pr.GetHistogramData(minYear);
+        }
+
+        internal object GetPatientsByCountry(string countryQuery)
+        {
+            return this.pr.GetPatientsByCountry(countryQuery);
         }
 
         #endregion

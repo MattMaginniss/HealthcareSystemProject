@@ -51,6 +51,8 @@
             this.btnViewPatientDiagnoses = new System.Windows.Forms.Button();
             this.btnViewPatientTests = new System.Windows.Forms.Button();
             this.btnViewPatientApts = new System.Windows.Forms.Button();
+            this.radioButtonCountries = new System.Windows.Forms.RadioButton();
+            this.comboBoxCountries = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.groupBoxSearch.SuspendLayout();
             this.SuspendLayout();
@@ -60,18 +62,16 @@
             this.patientDataGridView.AllowUserToAddRows = false;
             this.patientDataGridView.AllowUserToDeleteRows = false;
             this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientDataGridView.Location = new System.Drawing.Point(16, 106);
-            this.patientDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientDataGridView.Location = new System.Drawing.Point(12, 86);
             this.patientDataGridView.Name = "patientDataGridView";
-            this.patientDataGridView.Size = new System.Drawing.Size(1220, 700);
+            this.patientDataGridView.Size = new System.Drawing.Size(915, 569);
             this.patientDataGridView.TabIndex = 0;
             // 
             // btnAddPatientButton
             // 
-            this.btnAddPatientButton.Location = new System.Drawing.Point(1244, 106);
-            this.btnAddPatientButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddPatientButton.Location = new System.Drawing.Point(933, 86);
             this.btnAddPatientButton.Name = "btnAddPatientButton";
-            this.btnAddPatientButton.Size = new System.Drawing.Size(192, 28);
+            this.btnAddPatientButton.Size = new System.Drawing.Size(144, 23);
             this.btnAddPatientButton.TabIndex = 1;
             this.btnAddPatientButton.Text = "Add Patient";
             this.btnAddPatientButton.UseVisualStyleBackColor = true;
@@ -79,10 +79,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(1005, 30);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Location = new System.Drawing.Point(754, 23);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(192, 32);
+            this.btnSearch.Size = new System.Drawing.Size(144, 26);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search Patient Data";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -91,20 +90,18 @@
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(1244, 11);
-            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWelcome.Location = new System.Drawing.Point(933, 9);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(74, 17);
+            this.lblWelcome.Size = new System.Drawing.Size(58, 13);
             this.lblWelcome.TabIndex = 3;
             this.lblWelcome.Text = "Welcome, ";
             // 
             // lblLogout
             // 
             this.lblLogout.AutoSize = true;
-            this.lblLogout.Location = new System.Drawing.Point(1244, 38);
-            this.lblLogout.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogout.Location = new System.Drawing.Point(933, 31);
             this.lblLogout.Name = "lblLogout";
-            this.lblLogout.Size = new System.Drawing.Size(52, 17);
+            this.lblLogout.Size = new System.Drawing.Size(40, 13);
             this.lblLogout.TabIndex = 4;
             this.lblLogout.TabStop = true;
             this.lblLogout.Text = "Logout";
@@ -112,10 +109,9 @@
             // 
             // btnAddAppointment
             // 
-            this.btnAddAppointment.Location = new System.Drawing.Point(1244, 177);
-            this.btnAddAppointment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddAppointment.Location = new System.Drawing.Point(933, 144);
             this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(192, 28);
+            this.btnAddAppointment.Size = new System.Drawing.Size(144, 23);
             this.btnAddAppointment.TabIndex = 5;
             this.btnAddAppointment.Text = "Add Appointment";
             this.btnAddAppointment.UseVisualStyleBackColor = true;
@@ -123,10 +119,9 @@
             // 
             // btnViewAppointments
             // 
-            this.btnViewAppointments.Location = new System.Drawing.Point(1244, 467);
-            this.btnViewAppointments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnViewAppointments.Location = new System.Drawing.Point(933, 379);
             this.btnViewAppointments.Name = "btnViewAppointments";
-            this.btnViewAppointments.Size = new System.Drawing.Size(192, 28);
+            this.btnViewAppointments.Size = new System.Drawing.Size(144, 23);
             this.btnViewAppointments.TabIndex = 6;
             this.btnViewAppointments.Text = "View All Appointments";
             this.btnViewAppointments.UseVisualStyleBackColor = true;
@@ -134,13 +129,12 @@
             // 
             // groupBoxSearch
             // 
+            this.groupBoxSearch.Controls.Add(this.radioButtonCountries);
             this.groupBoxSearch.Controls.Add(this.radioBtnName);
             this.groupBoxSearch.Controls.Add(this.radBtnDOB);
-            this.groupBoxSearch.Location = new System.Drawing.Point(185, 22);
-            this.groupBoxSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSearch.Location = new System.Drawing.Point(139, 9);
             this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxSearch.Size = new System.Drawing.Size(151, 79);
+            this.groupBoxSearch.Size = new System.Drawing.Size(113, 73);
             this.groupBoxSearch.TabIndex = 17;
             this.groupBoxSearch.TabStop = false;
             // 
@@ -148,10 +142,9 @@
             // 
             this.radioBtnName.AutoSize = true;
             this.radioBtnName.Checked = true;
-            this.radioBtnName.Location = new System.Drawing.Point(19, 16);
-            this.radioBtnName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBtnName.Location = new System.Drawing.Point(14, 13);
             this.radioBtnName.Name = "radioBtnName";
-            this.radioBtnName.Size = new System.Drawing.Size(66, 21);
+            this.radioBtnName.Size = new System.Drawing.Size(53, 17);
             this.radioBtnName.TabIndex = 1;
             this.radioBtnName.TabStop = true;
             this.radioBtnName.Text = "Name";
@@ -161,10 +154,9 @@
             // radBtnDOB
             // 
             this.radBtnDOB.AutoSize = true;
-            this.radBtnDOB.Location = new System.Drawing.Point(19, 44);
-            this.radBtnDOB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radBtnDOB.Location = new System.Drawing.Point(14, 31);
             this.radBtnDOB.Name = "radBtnDOB";
-            this.radBtnDOB.Size = new System.Drawing.Size(108, 21);
+            this.radBtnDOB.Size = new System.Drawing.Size(84, 17);
             this.radBtnDOB.TabIndex = 0;
             this.radBtnDOB.Text = "Date of Birth";
             this.radBtnDOB.UseVisualStyleBackColor = true;
@@ -172,76 +164,68 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(453, 68);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLastName.Location = new System.Drawing.Point(340, 55);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(197, 22);
+            this.txtLastName.Size = new System.Drawing.Size(149, 20);
             this.txtLastName.TabIndex = 15;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(453, 33);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstName.Location = new System.Drawing.Point(340, 27);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(197, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(149, 20);
             this.txtFirstName.TabIndex = 14;
             // 
             // dateTimeDateOfBirth
             // 
             this.dateTimeDateOfBirth.Enabled = false;
-            this.dateTimeDateOfBirth.Location = new System.Drawing.Point(756, 33);
-            this.dateTimeDateOfBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeDateOfBirth.Location = new System.Drawing.Point(567, 27);
             this.dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
-            this.dateTimeDateOfBirth.Size = new System.Drawing.Size(240, 22);
+            this.dateTimeDateOfBirth.Size = new System.Drawing.Size(181, 20);
             this.dateTimeDateOfBirth.TabIndex = 13;
             this.dateTimeDateOfBirth.Value = new System.DateTime(2016, 11, 25, 0, 0, 0, 0);
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(364, 71);
-            this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLastName.Location = new System.Drawing.Point(273, 58);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(80, 17);
+            this.lblLastName.Size = new System.Drawing.Size(61, 13);
             this.lblLastName.TabIndex = 12;
             this.lblLastName.Text = "Last Name:";
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(365, 36);
-            this.lblFirstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFirstName.Location = new System.Drawing.Point(274, 29);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(80, 17);
+            this.lblFirstName.Size = new System.Drawing.Size(60, 13);
             this.lblFirstName.TabIndex = 11;
             this.lblFirstName.Text = "First Name:";
             // 
             // lblDoB
             // 
             this.lblDoB.AutoSize = true;
-            this.lblDoB.Location = new System.Drawing.Point(660, 36);
-            this.lblDoB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDoB.Location = new System.Drawing.Point(495, 29);
             this.lblDoB.Name = "lblDoB";
-            this.lblDoB.Size = new System.Drawing.Size(91, 17);
+            this.lblDoB.Size = new System.Drawing.Size(69, 13);
             this.lblDoB.TabIndex = 10;
             this.lblDoB.Text = "Date of Birth:";
             // 
             // lblSeachForPatient
             // 
             this.lblSeachForPatient.AutoSize = true;
-            this.lblSeachForPatient.Location = new System.Drawing.Point(32, 54);
-            this.lblSeachForPatient.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeachForPatient.Location = new System.Drawing.Point(24, 44);
             this.lblSeachForPatient.Name = "lblSeachForPatient";
-            this.lblSeachForPatient.Size = new System.Drawing.Size(145, 17);
+            this.lblSeachForPatient.Size = new System.Drawing.Size(109, 13);
             this.lblSeachForPatient.TabIndex = 9;
             this.lblSeachForPatient.Text = "Search for Patient by:";
             // 
             // btnDGVReset
             // 
-            this.btnDGVReset.Location = new System.Drawing.Point(1005, 70);
-            this.btnDGVReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDGVReset.Location = new System.Drawing.Point(754, 57);
             this.btnDGVReset.Name = "btnDGVReset";
-            this.btnDGVReset.Size = new System.Drawing.Size(192, 28);
+            this.btnDGVReset.Size = new System.Drawing.Size(144, 23);
             this.btnDGVReset.TabIndex = 18;
             this.btnDGVReset.Text = "Reset";
             this.btnDGVReset.UseVisualStyleBackColor = true;
@@ -249,10 +233,9 @@
             // 
             // btnEditPatient
             // 
-            this.btnEditPatient.Location = new System.Drawing.Point(1244, 142);
-            this.btnEditPatient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditPatient.Location = new System.Drawing.Point(933, 115);
             this.btnEditPatient.Name = "btnEditPatient";
-            this.btnEditPatient.Size = new System.Drawing.Size(192, 28);
+            this.btnEditPatient.Size = new System.Drawing.Size(144, 23);
             this.btnEditPatient.TabIndex = 19;
             this.btnEditPatient.Text = "Edit Patient";
             this.btnEditPatient.UseVisualStyleBackColor = true;
@@ -260,10 +243,9 @@
             // 
             // btnDoBReport
             // 
-            this.btnDoBReport.Location = new System.Drawing.Point(1244, 503);
-            this.btnDoBReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDoBReport.Location = new System.Drawing.Point(933, 409);
             this.btnDoBReport.Name = "btnDoBReport";
-            this.btnDoBReport.Size = new System.Drawing.Size(192, 28);
+            this.btnDoBReport.Size = new System.Drawing.Size(144, 23);
             this.btnDoBReport.TabIndex = 20;
             this.btnDoBReport.Text = "View Patient DoB Report";
             this.btnDoBReport.UseVisualStyleBackColor = true;
@@ -271,9 +253,10 @@
             // 
             // btnViewPatientDiagnoses
             // 
-            this.btnViewPatientDiagnoses.Location = new System.Drawing.Point(1244, 314);
+            this.btnViewPatientDiagnoses.Location = new System.Drawing.Point(933, 255);
+            this.btnViewPatientDiagnoses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewPatientDiagnoses.Name = "btnViewPatientDiagnoses";
-            this.btnViewPatientDiagnoses.Size = new System.Drawing.Size(192, 23);
+            this.btnViewPatientDiagnoses.Size = new System.Drawing.Size(144, 19);
             this.btnViewPatientDiagnoses.TabIndex = 21;
             this.btnViewPatientDiagnoses.Text = "View Patient Diagnoses";
             this.btnViewPatientDiagnoses.UseVisualStyleBackColor = true;
@@ -281,9 +264,10 @@
             // 
             // btnViewPatientTests
             // 
-            this.btnViewPatientTests.Location = new System.Drawing.Point(1243, 343);
+            this.btnViewPatientTests.Location = new System.Drawing.Point(932, 279);
+            this.btnViewPatientTests.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewPatientTests.Name = "btnViewPatientTests";
-            this.btnViewPatientTests.Size = new System.Drawing.Size(193, 23);
+            this.btnViewPatientTests.Size = new System.Drawing.Size(145, 19);
             this.btnViewPatientTests.TabIndex = 22;
             this.btnViewPatientTests.Text = "View Patient Tests";
             this.btnViewPatientTests.UseVisualStyleBackColor = true;
@@ -291,20 +275,42 @@
             // 
             // btnViewPatientApts
             // 
-            this.btnViewPatientApts.Location = new System.Drawing.Point(1244, 279);
-            this.btnViewPatientApts.Margin = new System.Windows.Forms.Padding(4);
+            this.btnViewPatientApts.Location = new System.Drawing.Point(933, 227);
             this.btnViewPatientApts.Name = "btnViewPatientApts";
-            this.btnViewPatientApts.Size = new System.Drawing.Size(192, 28);
+            this.btnViewPatientApts.Size = new System.Drawing.Size(144, 23);
             this.btnViewPatientApts.TabIndex = 23;
             this.btnViewPatientApts.Text = "View Patient Appointments";
             this.btnViewPatientApts.UseVisualStyleBackColor = true;
             this.btnViewPatientApts.Click += new System.EventHandler(this.btnViewPatientApts_Click);
             // 
+            // radioButtonCountries
+            // 
+            this.radioButtonCountries.AutoSize = true;
+            this.radioButtonCountries.Location = new System.Drawing.Point(14, 51);
+            this.radioButtonCountries.Name = "radioButtonCountries";
+            this.radioButtonCountries.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonCountries.TabIndex = 2;
+            this.radioButtonCountries.TabStop = true;
+            this.radioButtonCountries.Text = "Country";
+            this.radioButtonCountries.UseVisualStyleBackColor = true;
+            this.radioButtonCountries.CheckedChanged += new System.EventHandler(this.radioButtonCountries_CheckedChanged);
+            // 
+            // comboBoxCountries
+            // 
+            this.comboBoxCountries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCountries.Enabled = false;
+            this.comboBoxCountries.FormattingEnabled = true;
+            this.comboBoxCountries.Location = new System.Drawing.Point(567, 55);
+            this.comboBoxCountries.Name = "comboBoxCountries";
+            this.comboBoxCountries.Size = new System.Drawing.Size(181, 21);
+            this.comboBoxCountries.TabIndex = 24;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1453, 828);
+            this.ClientSize = new System.Drawing.Size(1090, 673);
+            this.Controls.Add(this.comboBoxCountries);
             this.Controls.Add(this.btnViewPatientApts);
             this.Controls.Add(this.btnViewPatientTests);
             this.Controls.Add(this.btnViewPatientDiagnoses);
@@ -326,7 +332,6 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnAddPatientButton);
             this.Controls.Add(this.patientDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "NATT Healthcare Systems";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -363,5 +368,7 @@
         private System.Windows.Forms.Button btnViewPatientDiagnoses;
         private System.Windows.Forms.Button btnViewPatientTests;
         private System.Windows.Forms.Button btnViewPatientApts;
+        private System.Windows.Forms.RadioButton radioButtonCountries;
+        private System.Windows.Forms.ComboBox comboBoxCountries;
     }
 }

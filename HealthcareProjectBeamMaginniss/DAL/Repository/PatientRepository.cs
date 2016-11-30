@@ -59,8 +59,16 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    var patient = adapter.GetData().FirstOrDefault(pat => pat.patientID == id);
-                    return this.getPatientFromRow(patient);
+                    try
+                    {
+                        var patient = adapter.GetData().Where(pat => pat.patientID == id).First();
+                        return this.getPatientFromRow(patient);
+                    }
+                    catch (Exception)
+                    {
+                        return null;
+                    }
+                    
                 }
             }
             catch (Exception e)
@@ -94,6 +102,8 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 throw e;
             }
         }
+
+
 
         private Patient getPatientFromRow(cs3230f16bDataSet.patientRow row)
         {
@@ -235,13 +245,12 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Rows)
+                    foreach (var row in adapter.GetData().Where(pat => pat.firstName.ToLower() == fName))
                     {
                         var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                        if (patient.FirstName.ToLower().Equals(fName))
-                        {
+
                             patientList.Add(patient);
-                        }
+                        
                     }
                 }
 
@@ -261,13 +270,12 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Rows)
+                    foreach (var row in adapter.GetData().Where(pat => pat.lastName.ToLower() == lName))
                     {
                         var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                        if (patient.LastName.ToLower().Equals(lName))
-                        {
+
                             patientList.Add(patient);
-                        }
+                        
                     }
                 }
 
@@ -287,13 +295,11 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Rows)
+                    foreach (var row in adapter.GetData().Where(pat => pat.firstName.ToLower() == fName && pat.lastName.ToLower() == lName))
                     {
                         var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                        if (patient.FirstName.ToLower().Equals(fName) && patient.LastName.ToLower().Equals(lName))
-                        {
-                            patientList.Add(patient);
-                        }
+                        patientList.Add(patient);
+                        
                     }
                 }
 
@@ -313,16 +319,45 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    foreach (var row in adapter.GetData().Rows)
+                    foreach (var row in adapter.GetData().Where(pat=>pat.dateOfBirth.ToShortDateString() == dob))
                     {
                         var patient = this.getPatientFromRow((cs3230f16bDataSet.patientRow) row);
-                        if (patient.Dob.ToShortDateString().Equals(dob))
-                        {
-                            patientList.Add(patient);
-                        }
+                        patientList.Add(patient);
+                        
                     }
                 }
 
+                return patientList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public object GetPatientsByCountry(string countryQuery)
+        {
+            var patientList = new List<Patient>();
+
+            var adapter = new patientsByCountryCodeTableAdapter();
+            try
+            {
+                foreach (cs3230f16bDataSet.patientsByCountryCodeRow row in adapter.GetData(countryQuery).Rows)
+                {
+                    var pid = row.patientID;
+                    var fname = row.IsfirstNameNull() ? "" : row.firstName;
+                    var lname = row.IslastNameNull() ? "" : row.lastName;
+                    var bdate = row.IsdateOfBirthNull() ? DateTime.MinValue : row.dateOfBirth;
+                    var sex = row.IssexNull() ? ' ' : row.sex[0];
+                    var street1 = row.Isstreet1Null() ? "" : row.street1;
+                    var street2 = row.Isstreet2Null() ? "" : row.street2;
+                    var city = row.IscityNull() ? "" : row.city;
+                    var state = row.IsstateNull() ? "" : row.state;
+                    var zip = row.IszipNull() ? "" : row.zip;
+                    var country = row.IscountryNull() ? "" : row.country;
+                    var phoneNo = row.Is_phone_Null() ? "" : row._phone_;
+                    patientList.Add(new Patient(pid, fname, lname, bdate, sex, street1, street2, city, state, zip, country, phoneNo));
+                }
                 return patientList;
             }
             catch (Exception e)

@@ -166,6 +166,21 @@ namespace HealthcareProjectBeamMaginniss.View
                 };
                 this.patientDataGridView.DataSource = this.bindingSource;
             }
+            else if (this.radioButtonCountries.Checked)
+            {
+                try {
+                    var countryQuery = new Country().CountryDict[this.comboBoxCountries.Text];
+                    this.bindingSource = new BindingSource
+                    {
+                        DataSource = this.patientController.GetPatientsByCountry(countryQuery)
+                    };
+                    this.patientDataGridView.DataSource = this.bindingSource;
+                }
+                catch(Exception)
+                {
+                    return;
+                }
+            }
         }
 
         private void buttonViewAppointments_Click(object sender, EventArgs e)
@@ -176,16 +191,13 @@ namespace HealthcareProjectBeamMaginniss.View
 
         private void radioBtnName_CheckedChanged_1(object sender, EventArgs e)
         {
-            this.txtFirstName.Enabled = true;
-            this.txtLastName.Enabled = true;
-            this.dateTimeDateOfBirth.Enabled = false;
+            this.txtFirstName.Enabled = this.radioBtnName.Checked;
+            this.txtLastName.Enabled = this.radioBtnName.Checked;
         }
 
         private void radBtnDOB_CheckedChanged_1(object sender, EventArgs e)
         {
-            this.txtFirstName.Enabled = false;
-            this.txtLastName.Enabled = false;
-            this.dateTimeDateOfBirth.Enabled = true;
+            this.dateTimeDateOfBirth.Enabled = this.radBtnDOB.Checked;
         }
 
         private void btnDGVReset_Click(object sender, EventArgs e)
@@ -273,5 +285,23 @@ namespace HealthcareProjectBeamMaginniss.View
         }
 
         #endregion
+
+        private void radioButtonCountries_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.comboBoxCountries.Items.Count == 0)
+            {
+                this.loadCountries();
+            }
+            this.comboBoxCountries.Enabled = this.radioButtonCountries.Checked;
+
+    }
+        private void loadCountries()
+        {
+            var country = new Country();
+            foreach (var ctry in country.CountryDict.Keys)
+            {
+                this.comboBoxCountries.Items.Add(ctry);
+            }
+        }
     }
 }

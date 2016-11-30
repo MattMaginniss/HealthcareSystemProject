@@ -52,8 +52,15 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
             {
                 using (adapter)
                 {
-                    var staff = adapter.GetData().FirstOrDefault(st => st.staffID == id);
-                    return this.getStaffFromRow(staff);
+                    try
+                    {
+                        var staff = adapter.GetData().Where(st => st.staffID == id).First();
+                        return this.getStaffFromRow(staff);
+                    }
+                    catch (Exception)
+                    {
+                        return null;
+                    }
                 }
             }
             catch (Exception e)

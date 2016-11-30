@@ -151,17 +151,17 @@ namespace HealthcareProjectBeamMaginniss.DAL.Repository
                 return null;
             }
             var appointmentId = row.appointmentID;
-            var reasonForAppointment = row.reasonForAppointment;
-            var date = row.dateScheduled;
+            var reasonForAppointment = row.IsreasonForAppointmentNull()? " ":row.reasonForAppointment;
+            var date = row.IsdateScheduledNull() ? DateTime.MinValue : row.dateScheduled;
             var nureseId = row.nurse_StaffID;
             var doctorId = row.doctor_StaffID;
             var patientId = row.patientID;
-            var systolicBp = row.systolicBP;
-            var diastolicBp = row.diastolicBP;
-            var temperature = row.temperature;
-            var pulse = row.pulse;
-            var weight = row.weight;
-            var symptoms = row.symptoms;
+            var systolicBp = row.IssystolicBPNull() ? 0 : row.systolicBP;
+            var diastolicBp = row.IsdiastolicBPNull() ? 0 : row.diastolicBP;
+            var temperature = row.IstemperatureNull() ? 0 : row.temperature;
+            var pulse = row.IspulseNull() ? 0 : row.pulse;
+            var weight = row.IsweightNull() ? 0 : row.weight;
+            var symptoms = row.IssymptomsNull()? " ":row.symptoms;
             return new Appointment(appointmentId, reasonForAppointment, date, nureseId, doctorId,
                 patientId, systolicBp, diastolicBp, temperature, pulse, weight,
                 symptoms);
